@@ -7,6 +7,9 @@
 ### Set up alias
 `alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'`
 
+### Hide untracked files
+`dotfiles config --local status.showUntrackedFiles no`
+
 ### Check out the contents
 `dotfiles checkout`
 
