@@ -4,9 +4,12 @@
 ### Clone the repo
 `git clone --bare git@github.com:AndersNS/dotfiles.git $HOME/.dotfiles`
 
-Install the zsh theme:
+## Install the zsh theme:
 
 `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`
+
+## Install SpaceVim
+`curl -sLf https://spacevim.org/install.sh | bash`
 
 ### Set up alias
 `alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'`
