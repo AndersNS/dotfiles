@@ -32,6 +32,8 @@ set shortmess+=c
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+
+" AutoInstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

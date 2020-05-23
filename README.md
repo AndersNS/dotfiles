@@ -20,8 +20,19 @@ I use Fura Code NF from https://www.nerdfonts.com/
 ### Check out the contents
 `dotfiles checkout`
 
-
 > If you already have some of the files you'll get an error. Delete them or something. 
+
+### Set up vim
+1. Open a vim file
+2. Install plugins `:PlugInstall`
+3. Install YouCompleteMe
+```
+cd ~/.vim/plugged/YouCompleteMe
+./install.py --clang-completer
+
+
+```
+
 
 
 ## Alias Usage
