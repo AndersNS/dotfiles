@@ -43,9 +43,12 @@ endif
 " :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'rust-lang/rust.vim'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'leafgarland/typescript-vim'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
@@ -55,6 +58,9 @@ call plug#end()
 
 colorscheme gruvbox
 set background=dark
+
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -66,6 +72,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+" Set space as leader key
 let mapleader = " "
 
 let g:netrw_browse_split = 2
@@ -89,11 +97,9 @@ nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
 " YouCompleteMe Bindings
-fun! GoYCM()
-    nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
-    nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
-    nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
-endfun
+nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
 
 function! s:check_back_space() abort
     let col = col('.') - 1
