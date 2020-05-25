@@ -21,7 +21,7 @@ set undofile
 set incsearch
 "
 " Give more space for displaying messages.
-"set cmdheight=2
+set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -79,7 +79,7 @@ let g:ctrlp_custom_ignore = {
 " Set space as leader key
 let mapleader = " "
 
-"let g:netrw_browse_split = 2
+let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
@@ -93,8 +93,11 @@ nnoremap <leader>l :wincmd l<CR>
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
 " Show files
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>pv :NERDTreeFind<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+" Yank to system clipboard
+nnoremap <C-c> "*y<CR>
 
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
