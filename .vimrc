@@ -21,7 +21,7 @@ set undofile
 set incsearch
 "
 " Give more space for displaying messages.
-set cmdheight=2
+"set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -43,6 +43,8 @@ endif
 " :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'editorconfig/editorconfig-vim'
@@ -59,6 +61,7 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
+let g:airline_theme='base16_gruvbox_dark_hard'
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 
@@ -76,7 +79,7 @@ let g:ctrlp_custom_ignore = {
 " Set space as leader key
 let mapleader = " "
 
-let g:netrw_browse_split = 2
+"let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
@@ -105,3 +108,6 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+
+
