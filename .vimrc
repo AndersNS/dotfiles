@@ -46,11 +46,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
-Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'gruvbox-community/gruvbox'
 Plug 'leafgarland/typescript-vim'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
@@ -61,6 +62,7 @@ call plug#end()
 colorscheme gruvbox
 set background=dark
 
+let g:airline_powerline_fonts = 1
 let g:airline_theme='base16_gruvbox_dark_hard'
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
@@ -102,10 +104,54 @@ nnoremap <C-c> "*y<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
+" Coc settings begin
+
+
+
+" Use tab for trigger completion with characters ahead and navigate.
+" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" " other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try  `:verbose imap <CR>`.
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
+nnoremap <leader>cr :CocRestart
+
 " YouCompleteMe Bindings
-nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
-nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
-nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+"nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
+"nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+"nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+"nnoremap <buffer> <silent> <leader>ff :YcmCompleter Format<CR>
+"nnoremap <buffer> <silent> <leader>gh :YcmShowDetailedDiagnostic<CR>
+
 
 function! s:check_back_space() abort
     let col = col('.') - 1
