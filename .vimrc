@@ -46,7 +46,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
-"Plug 'ycm-core/YouCompleteMe'
+Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
@@ -86,6 +86,10 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 let g:ctrlp_use_caching = 0
+
+"Clear search
+nnoremap <F3> :set hlsearch!<CR>
+
 
 " Change window focus
 nnoremap <leader>h :wincmd h<CR>
