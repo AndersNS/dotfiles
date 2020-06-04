@@ -55,7 +55,10 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'leafgarland/typescript-vim'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
-Plug 'git@github.com:ctrlpvim/ctrlp.vim.git'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
 
 call plug#end()
 
@@ -67,16 +70,16 @@ let g:airline_theme='base16_gruvbox_dark_hard'
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 
+
+" Prettier Config
+" Allow auto formatting for files without "@format" or "@prettier" tag
+let g:prettier#autoformat_require_pragma = 0
+nmap <leader>py <Plug>(Prettier)
+
+
 if executable('rg')
     let g:rg_derive_root='true'
 endif
-
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 " Set space as leader key
 let mapleader = " "
@@ -90,6 +93,9 @@ let g:ctrlp_use_caching = 0
 "Clear search
 nnoremap <F3> :set hlsearch!<CR>
 
+" Toggle paste mode (prevents weird indentation on paste)
+set pastetoggle=<F2>
+
 
 " Change window focus
 nnoremap <leader>h :wincmd h<CR>
@@ -101,6 +107,7 @@ nnoremap <leader>u :UndotreeShow<CR>
 " Show files
 nnoremap <leader>pv :NERDTreeFind<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-p> :GFiles<CR>
 
 " Yank to system clipboard
 nnoremap <C-c> "*y<CR>
@@ -147,15 +154,24 @@ nmap <leader>g[ <Plug>(coc-diagnostic-prev)
 nmap <leader>g] <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf :CocAction doHover<CR>
+
 nnoremap <leader>cr :CocRestart
 
-" YouCompleteMe Bindings
-"nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
-"nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
-"nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
-"nnoremap <buffer> <silent> <leader>ff :YcmCompleter Format<CR>
-"nnoremap <buffer> <silent> <leader>gh :YcmShowDetailedDiagnostic<CR>
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 function! s:check_back_space() abort
     let col = col('.') - 1
