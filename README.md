@@ -24,11 +24,7 @@ I use Fura Code NF from https://www.nerdfonts.com/
 ### Set up vim
 1. Open a vim file
 2. (Should happen automatically: Install plugins `:PlugInstall`)
-3. Install YouCompleteMe ([docs](https://github.com/ycm-core/YouCompleteMe#quick-start-installing-all-completers-1))
-```
-cd ~/.vim/plugged/YouCompleteMe
-./install.py --ts-completer 
-```
+3. Install CocServers `:CocInstall coc-json coc-tsserver`
 
 
 ## Alias Usage
