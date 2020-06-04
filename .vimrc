@@ -30,9 +30,10 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+"set colorcolumn=120
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-
+" PLUGINS
 " AutoInstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -58,10 +59,11 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
+" THEME
 colorscheme gruvbox
 set background=dark
 
@@ -70,17 +72,15 @@ let g:airline_theme='base16_gruvbox_dark_hard'
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 
+" Make editorconfig and fugitive play nice together
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Prettier Config
+" PRETTIER 
 " Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
-nmap <leader>py <Plug>(Prettier)
 
 
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
+" KEYBINDS
 " Set space as leader key
 let mapleader = " "
 
@@ -88,14 +88,14 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
-let g:ctrlp_use_caching = 0
+"Prettier format
+nmap <leader>py <Plug>(Prettier)
 
 "Clear search
 nnoremap <F3> :set hlsearch!<CR>
 
 " Toggle paste mode (prevents weird indentation on paste)
 set pastetoggle=<F2>
-
 
 " Change window focus
 nnoremap <leader>h :wincmd h<CR>
@@ -115,9 +115,7 @@ nnoremap <C-c> "*y<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
-" Coc settings begin
-
-
+" COC
 
 " Use tab for trigger completion with characters ahead and navigate.
 " " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -172,11 +170,4 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-
 
