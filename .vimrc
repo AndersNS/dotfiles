@@ -75,6 +75,10 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 " Make editorconfig and fugitive play nice together
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
 " PRETTIER 
 " Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
@@ -84,10 +88,14 @@ let g:prettier#autoformat_require_pragma = 0
 " Set space as leader key
 let mapleader = " "
 
+nnoremap <Leader>src  :so ~/.vimrc<CR>
+nnoremap <Leader>erc :e ~/.vimrc<CR>
+
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
-
+let g:vrfr_rg = 'true'
+"
 "Prettier format
 nmap <leader>py <Plug>(Prettier)
 
@@ -107,7 +115,10 @@ nnoremap <leader>u :UndotreeShow<CR>
 " Show files
 nnoremap <leader>pv :NERDTreeFind<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-p> :GFiles<CR>
+
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>gf :GFiles<CR>
 
 " Yank to system clipboard
 nnoremap <C-c> "*y<CR>
