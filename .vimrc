@@ -51,9 +51,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'sheerun/vim-polyglot'
 Plug 'gruvbox-community/gruvbox'
-Plug 'leafgarland/typescript-vim'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -62,6 +61,8 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
+
+let g:coc_global_extensions=[ 'coc-omnisharp', 'coc-json', 'coc-css',  'coc-tsserver']
 
 " THEME
 colorscheme gruvbox
@@ -82,7 +83,6 @@ endif
 " PRETTIER 
 " Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
 
 
 " KEYBINDS

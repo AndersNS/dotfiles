@@ -7,6 +7,9 @@ I use Fura Code NF from https://www.nerdfonts.com/
 ### Clone this repo
 `git clone --bare git@github.com:AndersNS/dotfiles.git $HOME/.dotfiles`
 
+### Install Oh My Zsh
+`sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
 ### Install the zsh theme:
 `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`
 
@@ -23,11 +26,11 @@ I use Fura Code NF from https://www.nerdfonts.com/
 
 ### Set up vim
 1. Open a vim file
-2. (Should happen automatically: Install plugins `:PlugInstall`)
-3. Install CocServers `:CocInstall coc-json coc-tsserver`
+2. (Should happen automatically) Install plugins `:PlugInstall`
+3. (Should happen automatically) Install CocServers `:CocInstall coc-json coc-tsserver coc-css coc-omnisharp`
 
 
-## Alias Usage
+# Dotfiles Alias Usage
 ```
 dotfiles status
 dotfiles add .vimrc
