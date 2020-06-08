@@ -117,3 +117,4 @@ alias dotfiles='/usr/bin/git --git-dir=/home/andersns/.dotfiles/ --work-tree=/ho
 # # --follow: Follow symlinks
 # # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
+POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
