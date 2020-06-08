@@ -89,7 +89,9 @@ let g:prettier#autoformat = 1
 " Set space as leader key
 let mapleader = " "
 
+" Source (reload) vimrc
 nnoremap <Leader>src  :so ~/.vimrc<CR>
+" Edit vimrc
 nnoremap <Leader>erc :e ~/.vimrc<CR>
 
 let g:netrw_browse_split = 2
@@ -122,7 +124,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>gf :GFiles<CR>
 
 " Yank to system clipboard
-nnoremap <C-c> "*y<CR>
+nnoremap <Leader>y "*y<CR>
 
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
@@ -183,3 +185,11 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
