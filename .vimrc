@@ -98,7 +98,7 @@ let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:vrfr_rg = 'true'
-"
+
 "Prettier format
 nmap <leader>py <Plug>(Prettier)
 
@@ -108,20 +108,31 @@ nnoremap <F3> :set hlsearch!<CR>
 " Toggle paste mode (prevents weird indentation on paste)
 set pastetoggle=<F2>
 
-" Change window focus
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
+" Buffers & windows
+nnoremap <leader>wh :wincmd h<CR>
+nnoremap <leader>wj :wincmd j<CR>
+nnoremap <leader>wk :wincmd k<CR>
+nnoremap <leader>wl :wincmd l<CR>
+
+nnoremap <leader>ws :sp<CR>
+nnoremap <leader>wv :vsp<CR>
+
+nnoremap <leader>qq :q<CR>
+
+
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
-" Show files
-nnoremap <leader>pv :NERDTreeFind<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
 
-nnoremap <C-p> :Files<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>gf :GFiles<CR>
+" Files 
+nnoremap <leader>ft :NERDTreeToggle<CR>
+nnoremap <leader>pv :NERDTreeFind<CR>
+
+nnoremap <leader>fs :w <CR>
+nnoremap <leader>fS :wa <CR>
+
+nnoremap <leader>pf :Files<CR>
+nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>pg :GFiles<CR>
 
 " Yank to system clipboard
 nnoremap <Leader>y "*y<CR>
