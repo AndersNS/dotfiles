@@ -82,6 +82,8 @@ endif
 
 " PRETTIER 
 " Allow auto formatting for files without "@format" or "@prettier" tag
+let g:prettier#autoformat_require_pragma = 0
+" Allow autofmrat for files that have "@format" or "@prettier" tag 
 let g:prettier#autoformat = 1
 
 
