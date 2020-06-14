@@ -116,5 +116,7 @@ alias dotfiles='/usr/bin/git --git-dir=/home/andersns/.dotfiles/ --work-tree=/ho
 # # --hidden: Search hidden files and folders
 # # --follow: Follow symlinks
 # # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden --glob "!.git/*"'
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
