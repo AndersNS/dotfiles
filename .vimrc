@@ -52,6 +52,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
+Plug 'alampros/vim-styled-jsx'
 Plug 'gruvbox-community/gruvbox'
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
