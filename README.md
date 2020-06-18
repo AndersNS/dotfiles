@@ -64,6 +64,7 @@ Vertical resize -: `<leader> -`
 
 
 
+Make this window the only one: `<leader> wo`
 Close buffer: `<leader> qq`
 
 

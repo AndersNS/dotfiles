@@ -10,12 +10,15 @@ set shiftwidth=4
 set expandtab
 set smartindent
 
+set signcolumn=yes
 set number relativenumber 
 set nu rnu
 set nowrap
 set smartcase
 set noswapfile
 set nobackup
+set nowritebackup
+set guifont=Fura\ Code\ NF
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
@@ -60,6 +63,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -127,8 +131,14 @@ nnoremap <leader>wl :wincmd l<CR>
 
 nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
+nnoremap <leader>wo :wincmd oCR>
 
 nnoremap <leader>qq :q<CR>
+
+" TAB in general mode will move to text buffer
+nnoremap <silent> <TAB> :bnext<CR>
+" SHIFT-TAB will go back
+nnoremap <silent> <S-TAB> :bprevious<CR>
 
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
