@@ -42,7 +42,9 @@ dotfiles push
 
 
 # Vim Keybindings
-> WIP
+
+Exit insert mode `jj`
+
 ## Buffers & Windows
 Window left: `<leader> wh` 
 
@@ -56,9 +58,9 @@ Split horizontal: `<leader> ws`
 
 Split vertical: `<leader> wv` 
 
-Vertical resize +: `<leader> +`  
+Vertical resize +: `<leader> +`
 
-Vertical resize -: `<leader> -`  
+Vertical resize -: `<leader> -`
 
 
 

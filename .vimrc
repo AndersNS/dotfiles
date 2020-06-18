@@ -81,6 +81,14 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+
+" Make more room to display messages
+let g:netrw_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+
+let g:vrfr_rg = 'true'
+
 " PRETTIER 
 " Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
@@ -92,21 +100,21 @@ let g:prettier#autoformat = 1
 " Set space as leader key
 let mapleader = " "
 
+" Hit jj to exit insert mode
+imap jj <Esc>
+
 " Source (reload) vimrc
 nnoremap <Leader>src  :so ~/.vimrc<CR>
 " Edit vimrc
 nnoremap <Leader>erc :e ~/.vimrc<CR>
 
-let g:netrw_browse_split = 2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let g:vrfr_rg = 'true'
 
 "Prettier format
 nmap <leader>py <Plug>(Prettier)
 
 "Clear search
 nnoremap <F3> :set hlsearch!<CR>
+
 
 " Toggle paste mode (prevents weird indentation on paste)
 set pastetoggle=<F2>
@@ -121,7 +129,6 @@ nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
 
 nnoremap <leader>qq :q<CR>
-
 
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
