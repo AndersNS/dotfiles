@@ -65,6 +65,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
