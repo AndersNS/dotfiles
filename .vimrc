@@ -131,7 +131,7 @@ nnoremap <leader>wl :wincmd l<CR>
 
 nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
-nnoremap <leader>wo :wincmd oCR>
+nnoremap <leader>wo :wincmd o<CR>
 
 nnoremap <leader>qq :q<CR>
 
@@ -153,6 +153,8 @@ nnoremap <leader>fS :wa <CR>
 nnoremap <leader>pf :Files<CR>
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>pg :GFiles<CR>
+
+nnoremap <leader>sp :Rg<CR>
 
 " Yank to system clipboard
 nnoremap <Leader>y "*y<CR>
