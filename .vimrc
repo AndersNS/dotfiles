@@ -61,6 +61,7 @@ Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
@@ -93,12 +94,41 @@ let g:netrw_winsize = 25
 
 let g:vrfr_rg = 'true'
 
+"Ranbow.vim config
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+
+autocmd FileType * RainbowParentheses
+
 " PRETTIER 
 " Allow auto formatting for files without "@format" or "@prettier" tag
 let g:prettier#autoformat_require_pragma = 0
 " Allow autofmrat for files that have "@format" or "@prettier" tag 
 let g:prettier#autoformat = 1
 
+" Start Screen / startify
+let g:startify_session_dir = '~/.config/nvim/session'
+
+let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   Files']                        },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+          \ ]
+
+let g:startify_bookmarks = [
+            \ { 'i': '~/.vimrc'  },
+            \ { 'z': '~/.zshrc'  },
+            \ '~/source',
+            \ ]
+
+let g:startify_session_autoload = 1
+let g:startify_session_delete_buffers = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_session_persistence = 1
+
+let g:startify_enable_special = 0
 
 " KEYBINDS
 " Set space as leader key
