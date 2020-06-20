@@ -66,6 +66,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'airblade/vim-rooter'
 
 call plug#end()
 
@@ -78,6 +79,18 @@ set background=dark
 " AIRLINE
 " Enable tabs
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let airline#extensions#tabline#show_splits = 0
+let airline#extensions#tabline#tabs_label = ''
+
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#buffers_label = ''
+let g:airline#extensions#tabline#tabs_label = ''
+
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Disable tabline close button
 let g:airline#extensions#tabline#show_close_button = 0
@@ -88,7 +101,7 @@ let g:airline#extensions#tabline#fnamecollapse = 1
 " Always show tabs
 set showtabline=2
 
-" Enable 
+" Enable powerline fonts
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -169,7 +182,7 @@ nnoremap <Leader>erc :e ~/.vimrc<CR>
 nmap <leader>py <Plug>(Prettier)
 
 "Clear search
-nnoremap <F3> :set hlsearch!<CR>
+nnoremap <silent> <F3> :let @/ = ""<CR>
 
 
 " Toggle paste mode (prevents weird indentation on paste)
@@ -187,10 +200,14 @@ nnoremap <leader>wo :wincmd o<CR>
 
 nnoremap <leader>qq :q<CR>
 
+nnoremap <leader>bd :bd <CR>
+nnoremap <leader>ba :bw \| :NERDTreeToggle<CR>
+
 " TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB will go back
 nnoremap <silent> <S-TAB> :bprevious<CR>
+
 
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
