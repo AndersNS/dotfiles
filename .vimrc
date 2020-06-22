@@ -47,6 +47,7 @@ endif
 " :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rust-lang/rust.vim'
@@ -64,7 +65,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-rooter'
 
@@ -329,4 +329,11 @@ if executable(s:clip)
         autocmd!
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
-endif
+end
+
+autocmd VimEnter *
+        \   if !argc()
+        \ |   Startify
+        \ |   NERDTree
+        \ |   wincmd w
+        \ | endif
