@@ -154,6 +154,7 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
             \ { 'i': '~/.vimrc'  },
             \ { 'z': '~/.zshrc'  },
+            \ { 't': '~/.tmux.conf'  },
             \ '~/source',
             \ ]
 
