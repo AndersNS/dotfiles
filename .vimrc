@@ -63,7 +63,6 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-rooter'
@@ -73,7 +72,7 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
-let g:coc_global_extensions=[ 'coc-omnisharp', 'coc-json', 'coc-css',  'coc-tsserver']
+let g:coc_global_extensions=[ 'coc-omnisharp', 'coc-json', 'coc-css',  'coc-tsserver', 'coc-prettier']
 
 " THEME
 colorscheme gruvbox
@@ -144,12 +143,6 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 autocmd FileType * RainbowParentheses
 
-" PRETTIER 
-" Allow auto formatting for files without "@format" or "@prettier" tag
-let g:prettier#autoformat_require_pragma = 0
-" Allow autofmrat for files that have "@format" or "@prettier" tag 
-let g:prettier#autoformat = 1
-
 " Start Screen / startify
 let g:startify_session_dir = '~/.config/nvim/session'
 
@@ -199,10 +192,6 @@ nnoremap <leader>, :Startify<CR>
 nnoremap <leader>S  :so ~/.vimrc<CR>
 " Edit vimrc
 nnoremap <leader>. :e ~/.vimrc<CR>
-
-
-"Prettier format
-nmap <leader>py <Plug>(Prettier)
 
 "Clear search
 nnoremap <silent> <F3> :let @/ = ""<CR>
@@ -325,9 +314,11 @@ nmap <leader>gr <Plug>(coc-references)
 nmap <leader>gr <Plug>(coc-rename)
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gq <Plug>(coc-fix-current)
+nmap <silent> <leader>gQ <Plug>(coc-fix-current)
+nmap <silent> <leader>gf <Plug>(coc-format)
+
 " Apply AutoFix to problem on the current line.
-nmap <leader>gf :CocAction doHover<CR>
+nmap <leader>gq :CocAction doHover<CR>
 
 nnoremap <leader>gZ :CocRestart
 
@@ -382,9 +373,10 @@ let g:which_key_map['g'] = {
       \ 'R' : ['<Plug>(coc-references)'              , 'references'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
-      \ 'f' : ['CocAction doHover'                   , 'hover'],
-      \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
+      \ 'q' : ['CocAction doHover'                   , 'hover'],
+      \ 'Q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
       \ 'Z' : ['CocRestart'                          , 'restart'],
+      \ 'f' : ['<Plug>(coc-format)'                  , 'format'],
       \ }
 
 
