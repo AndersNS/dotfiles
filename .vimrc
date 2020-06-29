@@ -67,6 +67,9 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'airblade/vim-rooter'
+Plug 'alvan/vim-closetag'
+Plug 'liuchengxu/vim-which-key'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -86,10 +89,11 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 let airline#extensions#tabline#show_splits = 0
 let airline#extensions#tabline#tabs_label = ''
 
-let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#buffers_label = ''
 let g:airline#extensions#tabline#tabs_label = ''
 
+let g:airline#extensions#tabline#formatter = 'jsformatter'
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Disable tabline close button
@@ -110,6 +114,11 @@ let g:airline_theme='base16_gruvbox_dark_hard'
 
 " We dont need to see mode anymore (covered by airline)
 set noshowmode
+
+" Set files for automatically closing tags
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
 
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
@@ -169,14 +178,27 @@ let g:startify_enable_special = 0
 " KEYBINDS
 " Set space as leader key
 let mapleader = " "
+" Hook up whichkey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" Set whichkey delay (default is 1000)
+set timeoutlen=500 
 
 " Hit jj to exit insert mode
 imap jj <Esc>
 
+" Comment stuff
+nnoremap <leader>/ :Commentary<CR>
+
+" Commands
+nnoremap <leader>; :Commands<CR>
+
+" Show start screen
+nnoremap <leader>, :Startify<CR> 
+
 " Source (reload) vimrc
-nnoremap <Leader>src  :so ~/.vimrc<CR>
+nnoremap <leader>S  :so ~/.vimrc<CR>
 " Edit vimrc
-nnoremap <Leader>erc :e ~/.vimrc<CR>
+nnoremap <leader>. :e ~/.vimrc<CR>
 
 
 "Prettier format
@@ -199,8 +221,9 @@ nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
 nnoremap <leader>wo :wincmd o<CR>
 
-nnoremap <leader>qq :q<CR>
+nnoremap <leader>q :q<CR>
 
+nnoremap <leader>d :bd <CR>
 nnoremap <leader>bd :bd <CR>
 nnoremap <leader>ba :%bw \| :NERDTreeToggle<CR>
 
@@ -214,17 +237,17 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
 " Files 
-nnoremap <leader>ft :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>pv :NERDTreeFind<CR>
 
 nnoremap <leader>fs :w <CR>
 nnoremap <leader>fS :wa <CR>
+nnoremap <leader>ff :Rg<CR>
 
 nnoremap <leader>pf :Files<CR>
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>pg :GFiles<CR>
 
-nnoremap <leader>sp :Rg<CR>
 
 " Yank to system clipboard
 nnoremap <Leader>y "*y<CR>
@@ -296,19 +319,17 @@ else
 endif
 
 nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
-nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <leader>gr <Plug>(coc-rename)
 nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
-
+nmap <silent> <leader>gq <Plug>(coc-fix-current)
 " Apply AutoFix to problem on the current line.
-nmap <leader>qf :CocAction doHover<CR>
+nmap <leader>gf :CocAction doHover<CR>
 
-nnoremap <leader>cr :CocRestart
+nnoremap <leader>gZ :CocRestart
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -323,6 +344,61 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" WHICHKEY config
+" Create map to add keys to
+let g:which_key_map =  {}"
+" Define a separator
+let g:which_key_sep = '→'
+let g:which_key_use_floating_win = 1
+" Change the colors if you want
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeyDesc      Function
+
+" Single mappings
+let g:which_key_map['/'] = [ ':Commentary'  , 'comment'  ]
+let g:which_key_map[';'] = [ ':Commands'    , 'commands'  ]
+let g:which_key_map['.'] = [ ':e ~/.vimrc'    , 'edit vimrc'  ]
+let g:which_key_map['S'] = [ ':so ~/.vimrc'    , 'source vimrc'  ]
+let g:which_key_map['e'] = [ ':NERDTreeToggle'    , 'explorer'  ]
+let g:which_key_map['d'] = [ ':bd'    , 'delete buffer'  ]
+let g:which_key_map[','] = [ ':Startify'    , 'start screen'  ]
+let g:which_key_map['y'] = [ ':"*y'    , 'yank to system buffer'  ]
+let g:which_key_map['u'] = [ ':UndotreeShow'    , 'undotree'  ]
+let g:which_key_map['q'] = [ ':q'    , 'quit'  ]
+
+" Ignored mappings
+let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]
+let g:which_key_map['-'] = [ ':vertical resize -5', 'which_key_ignore'  ]
+
+" Language service mappings
+let g:which_key_map['g'] = {
+      \ 'name' : '+language' ,
+      \ 'd' : ['<Plug>(coc-definition)'              , 'definition'],
+      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
+      \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
+      \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
+      \ 'R' : ['<Plug>(coc-references)'              , 'references'],
+      \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
+      \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
+      \ 'f' : ['CocAction doHover'                   , 'hover'],
+      \ 'q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
+      \ 'Z' : ['CocRestart'                          , 'restart'],
+      \ }
+
+
+" Files
+let g:which_key_map['f'] = {
+      \ 'name' : '+files' ,
+      \ 's' : [':w'              , 'write'],
+      \ 'S' : [':wa'              , 'write all'],
+      \ 'f' : [':Rg'              , 'find files'],
+      \ }
+
+call which_key#register('<Space>', "g:which_key_map")
+
+
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
@@ -332,6 +408,7 @@ if executable(s:clip)
     augroup END
 end
 
+" Trick to prevent Startify and NERDTree crashing each other
 autocmd VimEnter *
         \   if !argc()
         \ |   Startify
