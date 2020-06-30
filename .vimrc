@@ -215,6 +215,11 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>d :bd <CR>
 nnoremap <leader>bd :bd <CR>
 nnoremap <leader>ba :%bw \| :NERDTreeToggle<CR>
+nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bf :bfirst<CR>
+nnoremap <leader>bl :blast<CR>
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bn :bnext<CR>
 
 " TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
@@ -222,20 +227,21 @@ nnoremap <silent> <TAB> :bnext<CR>
 nnoremap <silent> <S-TAB> :bprevious<CR>
 
 
+
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
 
 " Files 
 nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>pv :NERDTreeFind<CR>
+nnoremap <leader>p :Files<CR>
+
+nnoremap <leader>fv :NERDTreeFind<CR>
 
 nnoremap <leader>fs :w <CR>
 nnoremap <leader>fS :wa <CR>
 nnoremap <leader>ff :Rg<CR>
 
-nnoremap <leader>pf :Files<CR>
-nnoremap <leader>bb :Buffers<CR>
-nnoremap <leader>pg :GFiles<CR>
+nnoremap <leader>fg :GFiles<CR>
 
 
 " Yank to system clipboard
@@ -358,10 +364,34 @@ let g:which_key_map[','] = [ ':Startify'            , 'start screen'  ]
 let g:which_key_map['y'] = [ ':"*y'                 , 'yank to system buffer'  ]
 let g:which_key_map['u'] = [ ':UndotreeShow'        , 'undotree'  ]
 let g:which_key_map['q'] = [ ':q'                   , 'quit'  ]
+let g:which_key_map['p'] = [ ':Files'               , 'find files'  ]
 
 " Ignored mappings
 let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]
 let g:which_key_map['-'] = [ ':vertical resize -5', 'which_key_ignore'  ]
+
+" Windows
+let g:which_key_map['w'] = {
+      \ 'name' : '+windows' ,
+      \ 'h' : [':wincmd h'              , 'left'],
+      \ 'j' : [':wincmd j'              , 'down'],
+      \ 'k' : [':wincmd k'              , 'up'],
+      \ 'l' : [':wincmd l'              , 'right'],
+      \ 's' : [':sp'                    , 'horizontal split'],
+      \ 'v' : [':vsp'                   , 'vertical split'],
+      \ 'o' : [':wincmd o'              , 'close all other windows'],
+      \ }
+
+let g:which_key_map['b'] = {
+      \ 'name' : '+buffers' ,
+      \ 'd' : [':bd'                        , 'close buffer'],
+      \ 'a' : [':%bw \| :NERDTreeToggl'     , 'close all buffers'],
+      \ 'b' : [':Buffers'                   , 'show buffers'],
+      \ 'f' : [':bfirst'                    , 'first buffer'],
+      \ 'l' : [':blast'                     , 'last buffer'],
+      \ 'p' : [':bprevious'                 , 'previous buffer'],
+      \ 'n' : [':bnext'                     , 'next buffer'],
+      \ }
 
 " Language service mappings
 let g:which_key_map['g'] = {
@@ -379,14 +409,15 @@ let g:which_key_map['g'] = {
       \ 'f' : ['<Plug>(coc-format)'                  , 'format'],
       \ }
 
-
 " Files
 let g:which_key_map['f'] = {
       \ 'name' : '+files' ,
-      \ 's' : [':w'              , 'write'],
-      \ 'S' : [':wa'              , 'write all'],
-      \ 'f' : [':Rg'              , 'find files'],
+      \ 's' : [':w'                 , 'write'],
+      \ 'S' : [':wa'                , 'write all'],
+      \ 'f' : [':Rg'                , 'find files'],
+      \ 'g' : [':GFiles'            , 'git files'],
       \ }
+
 
 call which_key#register('<Space>', "g:which_key_map")
 
