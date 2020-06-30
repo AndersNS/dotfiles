@@ -117,7 +117,7 @@ set noshowmode
 " Set files for automatically closing tags
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript,typescriptreact, javascriptreact'
 
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
@@ -209,6 +209,7 @@ nnoremap <leader>wl :wincmd l<CR>
 nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
 nnoremap <leader>wo :wincmd o<CR>
+nnoremap <leader>w= <C-W>=
 
 nnoremap <leader>q :q<CR>
 
@@ -380,6 +381,7 @@ let g:which_key_map['w'] = {
       \ 's' : [':sp'                    , 'horizontal split'],
       \ 'v' : [':vsp'                   , 'vertical split'],
       \ 'o' : [':wincmd o'              , 'close all other windows'],
+      \ '=' : ['<C-W>='                 , 'windows same size'],
       \ }
 
 let g:which_key_map['b'] = {
