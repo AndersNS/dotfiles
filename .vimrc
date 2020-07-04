@@ -234,6 +234,7 @@ nnoremap <leader>u :UndotreeShow<CR>
 
 " Files 
 nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <leader>p :Files<CR>
 
 nnoremap <leader>fv :NERDTreeFind<CR>
@@ -387,7 +388,7 @@ let g:which_key_map['w'] = {
 let g:which_key_map['b'] = {
       \ 'name' : '+buffers' ,
       \ 'd' : [':bd'                        , 'close buffer'],
-      \ 'a' : [':%bw \| :NERDTreeToggl'     , 'close all buffers'],
+      \ 'a' : [':%bw \| :NERDTreeToggle'     , 'close all buffers'],
       \ 'b' : [':Buffers'                   , 'show buffers'],
       \ 'f' : [':bfirst'                    , 'first buffer'],
       \ 'l' : [':blast'                     , 'last buffer'],
@@ -418,6 +419,7 @@ let g:which_key_map['f'] = {
       \ 'S' : [':wa'                , 'write all'],
       \ 'f' : [':Rg'                , 'find files'],
       \ 'g' : [':GFiles'            , 'git files'],
+      \ 't' : [':NERDTreeToggle'    , 'toggle explorer'],
       \ }
 
 
