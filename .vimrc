@@ -47,6 +47,8 @@ endif
 " :PlugInstall to install plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-surround'
+Plug 'voldikss/vim-floaterm'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -126,7 +128,7 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 if executable('rg')
-    let g:rg_derive_root='true'
+let g:rg_derive_root='true'
 endif
 
 
@@ -147,18 +149,18 @@ autocmd FileType * RainbowParentheses
 let g:startify_session_dir = '~/.config/nvim/session'
 
 let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   Files']                        },
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-          \ { 'type': 'sessions',  'header': ['   Sessions']                     },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
-          \ ]
+      \ { 'type': 'files',     'header': ['   Files']                        },
+      \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+      \ { 'type': 'sessions',  'header': ['   Sessions']                     },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']                    },
+      \ ]
 
 let g:startify_bookmarks = [
-            \ { 'i': '~/.vimrc'  },
-            \ { 'z': '~/.zshrc'  },
-            \ { 't': '~/.tmux.conf'  },
-            \ '~/source',
-            \ ]
+        \ { 'i': '~/.vimrc'  },
+        \ { 'z': '~/.zshrc'  },
+        \ { 't': '~/.tmux.conf'  },
+        \ '~/source',
+        \ ]
 
 let g:startify_session_autoload = 1
 let g:startify_session_delete_buffers = 1
@@ -171,8 +173,11 @@ let g:startify_enable_special = 0
 " KEYBINDS
 " Set space as leader key
 let mapleader = " "
+
 " Hook up whichkey
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
 " Set whichkey delay (default is 1000)
 set timeoutlen=500 
 
@@ -194,7 +199,7 @@ nnoremap <leader>S  :so ~/.vimrc<CR>
 nnoremap <leader>. :e ~/.vimrc<CR>
 
 "Clear search
-nnoremap <silent> <F3> :let @/ = ""<CR>
+nnoremap <silent><leader>s :let @/ = ""<CR>
 
 
 " Toggle paste mode (prevents weird indentation on paste)
@@ -261,31 +266,31 @@ let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 
 " Make fzf window follow color scheem colors
 let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+        \ { 'fg':      ['fg', 'Normal'],
+\ 'bg':      ['bg', 'Normal'],
+\ 'hl':      ['fg', 'Comment'],
+\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\ 'hl+':     ['fg', 'Statement'],
+\ 'info':    ['fg', 'PreProc'],
+\ 'border':  ['fg', 'Ignore'],
+\ 'prompt':  ['fg', 'Conditional'],
+\ 'pointer': ['fg', 'Exception'],
+\ 'marker':  ['fg', 'Keyword'],
+\ 'spinner': ['fg', 'Label'],
+\ 'header':  ['fg', 'Comment'] }
 
 "Get Files
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
 
- " Make Ripgrep ONLY search file contents and not filenames
+" Make Ripgrep ONLY search file contents and not filenames
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
-  \   <bang>0)
+\ call fzf#vim#grep(
+\   'rg --column --line-number --hidden --smart-case --no-heading --color=always '.shellescape(<q-args>), 1,
+\   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+\           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+\   <bang>0)
 
 " COC
 
@@ -343,17 +348,40 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" FLOATERM
+let g:floaterm_keymap_toggle = '<F1>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+
+" Floaterm
+let g:floaterm_gitcommit='floaterm'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=1
+let g:floaterm_autoclose=1
+
+
 " WHICHKEY config
 " Create map to add keys to
 let g:which_key_map =  {}"
+
+
 " Define a separator
 let g:which_key_sep = '→'
-let g:which_key_use_floating_win = 1
+let g:which_key_use_floating_win = 0
+
 " Change the colors if you want
 highlight default link WhichKey          Operator
 highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyGroup     Identifier
 highlight default link WhichKeyDesc      Function
+
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
 let g:which_key_map['/'] = [ ':Commentary'          , 'comment'  ]
@@ -367,6 +395,8 @@ let g:which_key_map['y'] = [ ':"*y'                 , 'yank to system buffer'  ]
 let g:which_key_map['u'] = [ ':UndotreeShow'        , 'undotree'  ]
 let g:which_key_map['q'] = [ ':q'                   , 'quit'  ]
 let g:which_key_map['p'] = [ ':Files'               , 'find files'  ]
+let g:which_key_map['s'] = [ ':let @/ = ""'         , 'clear search'  ]
+let g:which_key_map['i'] = [ ':let @/ = ""'         , 'clear search'  ]
 
 " Ignored mappings
 let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]
@@ -420,6 +450,18 @@ let g:which_key_map['f'] = {
       \ 'f' : [':Rg'                , 'find files'],
       \ 'g' : [':GFiles'            , 'git files'],
       \ 't' : [':NERDTreeToggle'    , 'toggle explorer'],
+      \ }
+
+" Terminal
+let g:which_key_map.t = {
+      \ 'name' : '+terminal' ,
+      \ ';' : [':FloatermNew'                                   , 'terminal'],
+      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
+      \ 'n' : [':FloatermNew node'                              , 'node'],
+      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
+      \ 'p' : [':FloatermNew python'                            , 'python'],
+      \ 't' : [':FloatermToggle'                                , 'toggle'],
       \ }
 
 
