@@ -22,7 +22,10 @@ set guifont=Fura\ Code\ NF
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-"
+
+vnoremap < <gv
+vnoremap > >gv
+
 " Give more space for displaying messages.
 set cmdheight=2
 
@@ -61,7 +64,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'alampros/vim-styled-jsx'
 Plug 'gruvbox-community/gruvbox'
 Plug 'mbbill/undotree'
-Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -74,7 +76,7 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
-let g:coc_global_extensions=[ 'coc-omnisharp', 'coc-json', 'coc-css',  'coc-tsserver', 'coc-prettier']
+let g:coc_global_extensions=[ 'coc-omnisharp', 'coc-json', 'coc-css',  'coc-tsserver', 'coc-prettier', 'coc-explorer']
 
 " THEME
 colorscheme gruvbox
@@ -128,7 +130,7 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx,*js set filetype=typescript.tsx
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 if executable('rg')
-let g:rg_derive_root='true'
+    let g:rg_derive_root='true'
 endif
 
 
@@ -213,14 +215,12 @@ nnoremap <leader>wl :wincmd l<CR>
 
 nnoremap <leader>ws :sp<CR>
 nnoremap <leader>wv :vsp<CR>
-nnoremap <leader>wo :wincmd o<CR>
-nnoremap <leader>w= <C-W>=
 
 nnoremap <leader>q :q<CR>
 
-nnoremap <leader>d :bd <CR>
-nnoremap <leader>bd :bd <CR>
-nnoremap <leader>ba :%bw \| :NERDTreeToggle<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>ba :%bw \| :CocCommand explorer<CR>
 nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>bf :bfirst<CR>
 nnoremap <leader>bl :blast<CR>
@@ -232,17 +232,14 @@ nnoremap <silent> <TAB> :bnext<CR>
 " SHIFT-TAB will go back
 nnoremap <silent> <S-TAB> :bprevious<CR>
 
-
-
 " Open undotree
 nnoremap <leader>u :UndotreeShow<CR>
 
-" Files 
-nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>ft :NERDTreeToggle<CR>
-nnoremap <leader>p :Files<CR>
+" Explorer 
+nnoremap <leader>e :CocCommand explorer<CR>
+nnoremap <leader>ft :CocCommand explorer --preset floating<CR>
 
-nnoremap <leader>fv :NERDTreeFind<CR>
+nnoremap <leader>p :Files<CR>
 
 nnoremap <leader>fs :w <CR>
 nnoremap <leader>fS :wa <CR>
@@ -256,6 +253,12 @@ nnoremap <Leader>y "*y<CR>
 
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+
+" Use alt + hjkl to resize windows
+nnoremap <silent> <M-j>    :resize -2<CR>
+nnoremap <silent> <M-k>    :resize +2<CR>
+nnoremap <silent> <M-h>    :vertical resize -2<CR>
+nnoremap <silent> <M-l>    :vertical resize +2<CR>
 
 " FZF 
 " Make FZF show in the middle of the screen
@@ -348,6 +351,41 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.vim',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+
+
 " FLOATERM
 let g:floaterm_keymap_toggle = '<F1>'
 let g:floaterm_keymap_next   = '<F2>'
@@ -388,7 +426,7 @@ let g:which_key_map['/'] = [ ':Commentary'          , 'comment'  ]
 let g:which_key_map[';'] = [ ':Commands'            , 'commands'  ]
 let g:which_key_map['.'] = [ ':e ~/.vimrc'          , 'edit vimrc'  ]
 let g:which_key_map['S'] = [ ':so ~/.vimrc'         , 'source vimrc'  ]
-let g:which_key_map['e'] = [ ':NERDTreeToggle'      , 'explorer'  ]
+let g:which_key_map['e'] = [ ':CocCommand explorer' , 'explorer'  ]
 let g:which_key_map['d'] = [ ':bd'                  , 'delete buffer'  ]
 let g:which_key_map[','] = [ ':Startify'            , 'start screen'  ]
 let g:which_key_map['y'] = [ ':"*y'                 , 'yank to system buffer'  ]
@@ -412,18 +450,18 @@ let g:which_key_map['w'] = {
       \ 's' : [':sp'                    , 'horizontal split'],
       \ 'v' : [':vsp'                   , 'vertical split'],
       \ 'o' : [':wincmd o'              , 'close all other windows'],
-      \ '=' : ['<C-W>='                 , 'windows same size'],
+      \ '=' : ['<C-w> ='                , 'windows same size'],
       \ }
 
 let g:which_key_map['b'] = {
       \ 'name' : '+buffers' ,
-      \ 'd' : [':bd'                        , 'close buffer'],
-      \ 'a' : [':%bw \| :NERDTreeToggle'     , 'close all buffers'],
-      \ 'b' : [':Buffers'                   , 'show buffers'],
-      \ 'f' : [':bfirst'                    , 'first buffer'],
-      \ 'l' : [':blast'                     , 'last buffer'],
-      \ 'p' : [':bprevious'                 , 'previous buffer'],
-      \ 'n' : [':bnext'                     , 'next buffer'],
+      \ 'd' : [':bd'                            , 'close buffer'],
+      \ 'a' : [':%bw \| :CocCommand explorer'   , 'close all buffers'],
+      \ 'b' : [':Buffers'                       , 'show buffers'],
+      \ 'f' : [':bfirst'                        , 'first buffer'],
+      \ 'l' : [':blast'                         , 'last buffer'],
+      \ 'p' : [':bprevious'                     , 'previous buffer'],
+      \ 'n' : [':bnext'                         , 'next buffer'],
       \ }
 
 " Language service mappings
@@ -445,11 +483,11 @@ let g:which_key_map['g'] = {
 " Files
 let g:which_key_map['f'] = {
       \ 'name' : '+files' ,
-      \ 's' : [':w'                 , 'write'],
-      \ 'S' : [':wa'                , 'write all'],
-      \ 'f' : [':Rg'                , 'find files'],
-      \ 'g' : [':GFiles'            , 'git files'],
-      \ 't' : [':NERDTreeToggle'    , 'toggle explorer'],
+      \ 's' : [':w'                     , 'write'],
+      \ 'S' : [':wa'                    , 'write all'],
+      \ 'f' : [':Rg'                    , 'find files'],
+      \ 'g' : [':GFiles'                , 'git files'],
+      \ 't' : [':CocCommand explorer'   , 'toggle explorer'],
       \ }
 
 " Terminal
@@ -477,10 +515,5 @@ if executable(s:clip)
     augroup END
 end
 
-" Trick to prevent Startify and NERDTree crashing each other
-autocmd VimEnter *
-        \   if !argc()
-        \ |   Startify
-        \ |   NERDTree
-        \ |   wincmd w
-        \ | endif
+
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
