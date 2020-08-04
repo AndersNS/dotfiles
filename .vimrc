@@ -76,7 +76,16 @@ Plug 'tpope/vim-commentary'
 
 call plug#end()
 
-let g:coc_global_extensions=[ 'coc-omnisharp', 'coc-json', 'coc-css',  'coc-tsserver', 'coc-prettier', 'coc-explorer']
+let g:coc_global_extensions = [ 
+    \ 'coc-omnisharp', 
+    \ 'coc-json', 
+    \ 'coc-css',  
+    \ 'coc-tsserver', 
+    \ 'coc-prettier', 
+    \ 'coc-explorer', 
+    \ 'coc-marketplace',
+    \ 'coc-angular',
+    \ ]
 
 " THEME
 colorscheme gruvbox
