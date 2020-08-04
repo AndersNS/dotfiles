@@ -8,6 +8,7 @@ let g:coc_global_extensions = [
     \ 'coc-explorer', 
     \ 'coc-marketplace',
     \ 'coc-angular',
+    \ 'coc-yank',
     \ ]
 
 
@@ -36,21 +37,11 @@ if exists('*complete_info')
 else
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gt <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>gr <Plug>(coc-rename)
-nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gQ <Plug>(coc-fix-current)
-nmap <silent> <leader>gf <Plug>(coc-format)
-
-" Apply AutoFix to problem on the current line.
-nmap <leader>gq :CocAction doHover<CR>
-
-nnoremap <leader>gZ :CocRestart
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
