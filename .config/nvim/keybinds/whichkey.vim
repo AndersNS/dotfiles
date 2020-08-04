@@ -17,7 +17,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['/'] = [ ':Commentary'          , 'comment'  ]
+let g:which_key_map['/'] = [ ':call Comment()'          , 'comment'  ]
 let g:which_key_map[';'] = [ ':Commands'            , 'commands'  ]
 let g:which_key_map['.'] = [ ':e ~/.vimrc'          , 'edit vimrc'  ]
 let g:which_key_map['S'] = [ ':so ~/.vimrc'         , 'source vimrc'  ]
@@ -30,6 +30,7 @@ let g:which_key_map['q'] = [ ':q'                   , 'quit'  ]
 let g:which_key_map['p'] = [ ':Files'               , 'find files'  ]
 let g:which_key_map['s'] = [ ':let @/ = ""'         , 'clear search'  ]
 let g:which_key_map['i'] = [ ':let @/ = ""'         , 'clear search'  ]
+let g:which_key_map['y'] = [ ':CocList -A --normal yank'         , 'clear search'  ]
 
 " Ignored mappings
 let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]
@@ -63,7 +64,7 @@ let g:which_key_map['b'] = {
 let g:which_key_map['g'] = {
       \ 'name' : '+language' ,
       \ 'd' : ['<Plug>(coc-definition)'              , 'definition'],
-      \ 't' : ['<Plug>(coc-type-definition)'         , 'type definition'],
+      \ 'y' : ['<Plug>(coc-type-definition)'         , 'type definition'],
       \ 'i' : ['<Plug>(coc-implementation)'          , 'implementation'],
       \ 'r' : ['<Plug>(coc-rename)'                  , 'rename'],
       \ 'R' : ['<Plug>(coc-references)'              , 'references'],
@@ -78,15 +79,16 @@ let g:which_key_map['g'] = {
 " Files
 let g:which_key_map['f'] = {
       \ 'name' : '+files' ,
-      \ 's' : [':w'                     , 'write'],
-      \ 'S' : [':wa'                    , 'write all'],
-      \ 'f' : [':Rg'                    , 'find files'],
-      \ 'g' : [':GFiles'                , 'git files'],
-      \ 't' : [':CocCommand explorer'   , 'toggle explorer'],
+      \ 's' : [':w'                                         , 'write'],
+      \ 'S' : [':wa'                                        , 'write all'],
+      \ 'f' : [':Rg'                                        , 'find files'],
+      \ 'g' : [':GFiles'                                    , 'git files'],
+      \ 't' : [':CocCommand explorer'                       , 'toggle explorer'],
+      \ 'e' : [':CocCommand explorer --preset floating'     , 'toggle explorer'],
       \ }
 
 " Terminal
-let g:which_key_map.t = {
+let g:which_key_map['t'] = {
       \ 'name' : '+terminal' ,
       \ ';' : [':FloatermNew'                                   , 'terminal'],
       \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
