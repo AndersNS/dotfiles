@@ -9,7 +9,6 @@ set expandtab
 set smarttab
 set smartindent
 set autoindent
-set cursorline
 set hidden
 set signcolumn=yes
 set number relativenumber 
