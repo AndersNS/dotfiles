@@ -51,7 +51,7 @@ source $HOME/.config/nvim/plug-configs/coc.vim
 source $HOME/.config/nvim/plug-configs/editorconfig.vim
 source $HOME/.config/nvim/plug-configs/floaterm.vim
 source $HOME/.config/nvim/plug-configs/fzf.vim
-source $HOME/.config/nvim/plug-configs/nerd-commenter.vim
+source $HOME/.config/nvim/plug-configs/commentary.vim
 source $HOME/.config/nvim/plug-configs/rainbow.vim
 source $HOME/.config/nvim/plug-configs/start-screen.vim
 
