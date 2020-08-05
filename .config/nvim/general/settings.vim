@@ -34,8 +34,6 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Enable theme
-colorscheme gruvbox
 set background=dark
 
 " Always show tabs
