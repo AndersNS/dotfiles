@@ -2,14 +2,10 @@
 let g:which_key_map =  {}"
 
 " Define a separator
-let g:which_key_sep = '→'
+let g:which_key_sep = '->'
 let g:which_key_use_floating_win = 0
 
-" Change the colors if you want
-highlight default link WhichKey          Operator
-highlight default link WhichKeySeperator DiffAdded
-highlight default link WhichKeyGroup     Identifier
-highlight default link WhichKeyDesc      Function
+set timeoutlen=500
 
 " Hide status line
 autocmd! FileType which_key

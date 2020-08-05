@@ -13,9 +13,6 @@ nnoremap <Space> <Nop>
 nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
-" Set whichkey delay (default is 1000)
-set timeoutlen=500 
-
 " Hit jj to exit insert mode
 imap jj <Esc>
 
