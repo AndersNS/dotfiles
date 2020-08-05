@@ -28,6 +28,7 @@ let g:which_key_map['p'] = [ ':Files'                           , 'find files'  
 let g:which_key_map['s'] = [ ':let @/ = ""'                     , 'clear search'  ]
 let g:which_key_map['i'] = [ ':let @/ = ""'                     , 'clear search'  ]
 let g:which_key_map['y'] = [ ':CocList -A --normal yank'        , 'yank history'  ]
+let g:which_key_map['z'] = [ ':Goyo'                            , 'zen'  ]
 
 " Ignored mappings
 let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]

@@ -35,6 +35,7 @@ Plug 'airblade/vim-rooter'
 Plug 'alvan/vim-closetag'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-commentary'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
