@@ -17,20 +17,19 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['/'] = [ ':call Comment()'          , 'comment'  ]
-let g:which_key_map[';'] = [ ':Commands'            , 'commands'  ]
-let g:which_key_map['.'] = [ ':e ~/.vimrc'          , 'edit vimrc'  ]
-let g:which_key_map['S'] = [ ':so ~/.vimrc'         , 'source vimrc'  ]
-let g:which_key_map['e'] = [ ':CocCommand explorer' , 'explorer'  ]
-let g:which_key_map['d'] = [ ':bd'                  , 'delete buffer'  ]
-let g:which_key_map[','] = [ ':Startify'            , 'start screen'  ]
-let g:which_key_map['y'] = [ ':"*y'                 , 'yank to system buffer'  ]
-let g:which_key_map['u'] = [ ':UndotreeShow'        , 'undotree'  ]
-let g:which_key_map['q'] = [ ':q'                   , 'quit'  ]
-let g:which_key_map['p'] = [ ':Files'               , 'find files'  ]
-let g:which_key_map['s'] = [ ':let @/ = ""'         , 'clear search'  ]
-let g:which_key_map['i'] = [ ':let @/ = ""'         , 'clear search'  ]
-let g:which_key_map['y'] = [ ':CocList -A --normal yank'         , 'clear search'  ]
+let g:which_key_map['/'] = [ ':call Comment()'                  , 'comment'  ]
+let g:which_key_map[';'] = [ ':Commands'                        , 'commands'  ]
+let g:which_key_map['S'] = [ ':so ~/.config/nvim/init.vim'      , 'source init.vim'  ]
+let g:which_key_map['e'] = [ ':CocCommand explorer'             , 'explorer'  ]
+let g:which_key_map['d'] = [ ':bd'                              , 'delete buffer'  ]
+let g:which_key_map[','] = [ ':Startify'                        , 'start screen'  ]
+let g:which_key_map['y'] = [ ':"*y'                             , 'yank to system buffer'  ]
+let g:which_key_map['u'] = [ ':UndotreeShow'                    , 'undotree'  ]
+let g:which_key_map['q'] = [ ':q'                               , 'quit'  ]
+let g:which_key_map['p'] = [ ':Files'                           , 'find files'  ]
+let g:which_key_map['s'] = [ ':let @/ = ""'                     , 'clear search'  ]
+let g:which_key_map['i'] = [ ':let @/ = ""'                     , 'clear search'  ]
+let g:which_key_map['y'] = [ ':CocList -A --normal yank'        , 'yank history'  ]
 
 " Ignored mappings
 let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]
