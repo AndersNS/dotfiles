@@ -8,14 +8,8 @@ vnoremap > >gv
 let mapleader = " "
 nnoremap <Space> <Nop>
 
-
-" Hook up whichkey
-nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
 " Hit jj to exit insert mode
 imap jj <Esc>
-
 
 " Toggle paste mode (prevents weird indentation on paste)
 set pastetoggle=<F2>

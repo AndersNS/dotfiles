@@ -1,16 +1,18 @@
+" Hook up whichkey
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
 " Create map to add keys to
 let g:which_key_map =  {}"
 
 " Define a separator
 let g:which_key_sep = '->'
-let g:which_key_use_floating_win = 0
-
-set timeoutlen=500
+let g:which_key_use_floating_win = 1
 
 " Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+" autocmd! FileType which_key
+" autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  " \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
 let g:which_key_map['/'] = [ ':call Comment()'                  , 'comment'  ]
