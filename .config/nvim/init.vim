@@ -36,6 +36,7 @@ Plug 'alvan/vim-closetag'
 Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -45,7 +46,8 @@ source $HOME/.config/nvim/keybinds/keys.vim
 source $HOME/.config/nvim/keybinds/whichkey.vim
 
 source $HOME/.config/nvim/theme/airline.vim
-source $HOME/.config/nvim/theme/gruvbox.vim
+" source $HOME/.config/nvim/theme/gruvbox.vim
+source $HOME/.config/nvim/theme/nord.vim
 
 source $HOME/.config/nvim/plug-configs/closetag.vim
 source $HOME/.config/nvim/plug-configs/coc.vim

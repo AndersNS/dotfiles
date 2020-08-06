@@ -4,6 +4,12 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}"
+highlight default link WhichKey          Function
+highlight default link WhichKeySeperator Function
+highlight default link WhichKeyGroup     Keyword
+highlight default link WhichKeyDesc      Identifier
+
+highlight default link WhichKeyFloating Pmenu
 
 " Define a separator
 let g:which_key_sep = '->'

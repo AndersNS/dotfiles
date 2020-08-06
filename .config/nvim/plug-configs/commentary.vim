@@ -6,4 +6,4 @@ function! Comment()
   endif
  endfunction
 
-vnoremap <silent> <space>/ :call Comment()
+vnoremap <silent> <space>/ :call Comment()<cr>
