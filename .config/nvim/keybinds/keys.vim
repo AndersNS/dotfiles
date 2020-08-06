@@ -11,6 +11,8 @@ nnoremap <Space> <Nop>
 " Hit jj to exit insert mode
 imap jj <Esc>
 
+" Save
+nnoremap <C-s> :w<cr>
 " Toggle paste mode (prevents weird indentation on paste)
 set pastetoggle=<F2>
 
