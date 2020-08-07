@@ -28,7 +28,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi'
 Plug 'airblade/vim-rooter'
