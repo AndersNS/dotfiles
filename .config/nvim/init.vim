@@ -37,6 +37,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -51,6 +52,7 @@ source $HOME/.config/nvim/theme/nord.vim
 
 source $HOME/.config/nvim/plug-configs/closetag.vim
 source $HOME/.config/nvim/plug-configs/coc.vim
+source $HOME/.config/nvim/plug-configs/easymotion.vim
 source $HOME/.config/nvim/plug-configs/editorconfig.vim
 source $HOME/.config/nvim/plug-configs/floaterm.vim
 source $HOME/.config/nvim/plug-configs/fzf.vim
@@ -60,6 +62,7 @@ source $HOME/.config/nvim/plug-configs/start-screen.vim
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+
 if executable(s:clip)
     augroup WSLYank
         autocmd!
