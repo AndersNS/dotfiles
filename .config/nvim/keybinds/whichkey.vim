@@ -39,6 +39,8 @@ let g:which_key_map['s'] = [ ':let @/ = ""'                     , 'clear search'
 let g:which_key_map['i'] = [ ':let @/ = ""'                     , 'clear search'  ]
 let g:which_key_map['y'] = [ ':CocList -A --normal yank'        , 'yank history'  ]
 let g:which_key_map['z'] = [ ':Goyo'                            , 'zen'  ]
+let g:which_key_map['j'] = [ '<Plug>(easymotion-j)'             , 'line motion down'  ]
+let g:which_key_map['k'] = [ '<Plug>(easymotion-k)'             , 'line motion up'  ]
 
 " Ignored mappings
 let g:which_key_map['+'] = [ ':vertical resize +5'    , 'which_key_ignore'  ]
