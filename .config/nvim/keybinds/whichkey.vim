@@ -11,6 +11,10 @@ highlight default link WhichKeyDesc      Identifier
 
 highlight default link WhichKeyFloating Pmenu
 
+function! CloseAll()
+    execute ":%bd \|:CocCommand explorer"
+ endfunction
+
 " Define a separator
 let g:which_key_sep = '->'
 let g:which_key_use_floating_win = 1
@@ -56,7 +60,7 @@ let g:which_key_map['w'] = {
 let g:which_key_map['b'] = {
       \ 'name' : '+buffers' ,
       \ 'd' : [':bd'                            , 'close buffer'],
-      \ 'a' : [':%bw \| :CocCommand explorer'   , 'close all buffers'],
+      \ 'a' : [':call CloseAll()'   , 'close all buffers'],
       \ 'b' : [':Buffers'                       , 'show buffers'],
       \ 'f' : [':bfirst'                        , 'first buffer'],
       \ 'l' : [':blast'                         , 'last buffer'],
