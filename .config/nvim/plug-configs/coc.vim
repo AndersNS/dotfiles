@@ -66,6 +66,7 @@ let g:coc_explorer_global_presets = {
 \   },
 \   'floating': {
 \     'position': 'floating',
+\     'floating-width': 150,
 \     'open-action-strategy': 'sourceWindow',
 \   },
 \   'floatingTop': {

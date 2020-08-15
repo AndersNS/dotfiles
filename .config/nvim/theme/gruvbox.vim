@@ -7,3 +7,5 @@ if (has("termguicolors"))
 endif
 
 colorscheme gruvbox
+
+let g:airline_theme='gruvbox'

@@ -37,6 +37,7 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/gruvbox-material'
 Plug 'easymotion/vim-easymotion'
 
 call plug#end()
@@ -48,7 +49,8 @@ source $HOME/.config/nvim/keybinds/whichkey.vim
 
 source $HOME/.config/nvim/theme/airline.vim
 " source $HOME/.config/nvim/theme/gruvbox.vim
-source $HOME/.config/nvim/theme/nord.vim
+source $HOME/.config/nvim/theme/gruvbox-material.vim
+"source $HOME/.config/nvim/theme/nord.vim
 
 source $HOME/.config/nvim/plug-configs/closetag.vim
 source $HOME/.config/nvim/plug-configs/coc.vim
