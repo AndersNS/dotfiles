@@ -121,6 +121,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$(yarn global bin)"
+export PATH="$PATH:$HOME/go/bin"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

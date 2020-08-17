@@ -105,7 +105,7 @@ let g:which_key_map['t'] = {
       \ ';' : [':FloatermNew'           , 'terminal'],
       \ 'f' : [':FloatermNew fzf'       , 'fzf'],
       \ 'g' : [':FloatermNew lazygit'   , 'git'],
-      \ 'n' : [':FloatermNew node'      , 'node'],
+      \ 'n' : [':FloatermNew lazynpm'   , 'npm'],
       \ 'N' : [':FloatermNew nnn'       , 'nnn'],
       \ 'p' : [':FloatermNew python'    , 'python'],
       \ 't' : [':FloatermToggle'        , 'toggle'],

@@ -22,6 +22,7 @@ set guifont=Fura\ Code\ NF
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
+set mouse=a
 
 set iskeyword+=- " Treat word separated by dash as text objects
 set formatoptions-=cro " Stop newline continuation of comments
