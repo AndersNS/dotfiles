@@ -40,6 +40,7 @@ let g:which_key_map['s'] = [ ':let @/ = ""'                               , 'cle
 let g:which_key_map['i'] = [ ':let @/ = ""'                               , 'clear search'  ]
 let g:which_key_map['y'] = [ ':CocList -A --normal yank'                  , 'yank history'  ]
 let g:which_key_map['z'] = [ ':Goyo'                                      , 'zen'  ]
+let g:which_key_map['='] = [ '<C-w>='                                     , 'balance windows'  ]
 let g:which_key_map['j'] = [ '<Plug>(easymotion-j)'                       , 'line motion down'  ]
 let g:which_key_map['k'] = [ '<Plug>(easymotion-k)'                       , 'line motion up'  ]
 let g:which_key_map['l'] = [ '<Plug>(easymotion-overwin-line)'            , 'move to line'  ]
@@ -61,6 +62,7 @@ let g:which_key_map['w'] = {
       \ '=' : ['<C-w> ='                , 'windows same size'],
       \ }
 
+" Buffers
 let g:which_key_map['b'] = {
       \ 'name' : '+buffers' ,
       \ 'd' : [':bd'                            , 'close buffer'],
@@ -93,10 +95,11 @@ let g:which_key_map['f'] = {
       \ 'name' : '+files' ,
       \ 's' : [':w'                                         , 'write'],
       \ 'S' : [':wa'                                        , 'write all'],
+      \ 'e' : [':CocCommand explorer'                       , 'toggle explorer'],
+      \ 'r' : [':Farr --source=rgnvim'                      , 'replace in project'],
+      \ 'b' : [':Farr --source=rgnvim'                      , 'replace in buffer'],
       \ 'f' : [':Rg'                                        , 'find files'],
       \ 'g' : [':GFiles'                                    , 'git files'],
-      \ 't' : [':CocCommand explorer'                       , 'toggle explorer'],
-      \ 'e' : [':CocCommand explorer --preset floating'     , 'toggle explorer'],
       \ }
 
 " Terminal

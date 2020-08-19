@@ -39,6 +39,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'easymotion/vim-easymotion'
+Plug 'brooth/far.vim'
 
 call plug#end()
 
@@ -56,6 +57,7 @@ source $HOME/.config/nvim/plug-configs/closetag.vim
 source $HOME/.config/nvim/plug-configs/coc.vim
 source $HOME/.config/nvim/plug-configs/easymotion.vim
 source $HOME/.config/nvim/plug-configs/editorconfig.vim
+source $HOME/.config/nvim/plug-configs/far.vim
 source $HOME/.config/nvim/plug-configs/floaterm.vim
 source $HOME/.config/nvim/plug-configs/fzf.vim
 source $HOME/.config/nvim/plug-configs/commentary.vim
