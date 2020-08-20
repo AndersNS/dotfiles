@@ -11,7 +11,8 @@ let g:startify_bookmarks = [
         \ { 'i': '~/.config/nvim/init.vim'  },
         \ { 'z': '~/.zshrc'  },
         \ { 't': '~/.tmux.conf'  },
-        \ '~/source',
+        \ { 'a': '~/.config/alacritty/alacritty.yml'  },
+        \ { 's': '~/source' },
         \ ]
 
 let g:startify_session_autoload = 1
