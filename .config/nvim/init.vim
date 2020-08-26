@@ -17,7 +17,6 @@ Plug 'voldikss/vim-floaterm'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
@@ -40,6 +39,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'easymotion/vim-easymotion'
 Plug 'brooth/far.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 call plug#end()
 
@@ -63,6 +63,7 @@ source $HOME/.config/nvim/plug-configs/fzf.vim
 source $HOME/.config/nvim/plug-configs/commentary.vim
 source $HOME/.config/nvim/plug-configs/rainbow.vim
 source $HOME/.config/nvim/plug-configs/start-screen.vim
+source $HOME/.config/nvim/plug-configs/markdown-preview.vim
 
 " WSL yank support
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
