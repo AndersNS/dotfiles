@@ -1,2 +1,2 @@
-let g:neovide_fullscreen=v:true
+let g:neovide_fullscreen=v:false
 
