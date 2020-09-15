@@ -18,7 +18,7 @@ set smartcase
 set noswapfile
 set nobackup
 set nowritebackup
-set guifont=Fura\ Code\ NF
+set guifont=FiraCode\ Nerd\ Font
 set undodir=~/.vim/undodir
 set undofile
 set incsearch

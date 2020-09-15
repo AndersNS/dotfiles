@@ -45,6 +45,7 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 call plug#end()
 
 source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/general/neovide.vim
 
 source $HOME/.config/nvim/keybinds/keys.vim
 source $HOME/.config/nvim/keybinds/whichkey.vim

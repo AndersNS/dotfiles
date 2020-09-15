@@ -2,9 +2,30 @@
 
 ## Set up a new computer
 
+### Install dependencies
+
+```zsh
+brew install node
+
+# Fuzzy finder
+brew install fzf
+
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
+
+# Better faster grep
+brew install ripgrep
+
+brew install cmake
+brew install watchman
+
+# Terminal git "gui"
+brew install jesseduffield/lazygit/lazygit
+```
+
 ### Install Nerd Fonts
 
-I use Fura Code NF from https://www.nerdfonts.com/
+I use Fira Code Nerd Font from https://www.nerdfonts.com/
 
 ### Clone this repo
 
@@ -42,11 +63,14 @@ Syntax highlighting
 
 > If you already have some of the files you'll get an error. Delete them or something.
 
-### Set up vim
+### neovim first run
 
-1. Open a vim file
+1. Open a nvim with `nvim`
 2. (Should happen automatically) Install plugins `:PlugInstall`
-3. (Should happen automatically) Install CocServers `:CocInstall coc-json coc-tsserver coc-css coc-omnisharp`
+3. (Should happen automatical) Install CocPlugins
+4. Restart nvim
+
+> In your first run you will probably get some weird errors because of missing plugins and color themes
 
 # Dotfiles Alias Usage
 
