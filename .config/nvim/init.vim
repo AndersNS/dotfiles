@@ -52,9 +52,9 @@ source $HOME/.config/nvim/keybinds/whichkey.vim
 
 source $HOME/.config/nvim/theme/airline.vim
 " source $HOME/.config/nvim/theme/gruvbox.vim
-" source $HOME/.config/nvim/theme/gruvbox-material.vim
+source $HOME/.config/nvim/theme/gruvbox-material.vim
 " source $HOME/.config/nvim/theme/nord.vim
-source $HOME/.config/nvim/theme/material.vim
+" source $HOME/.config/nvim/theme/material.vim
 
 source $HOME/.config/nvim/plug-configs/closetag.vim
 source $HOME/.config/nvim/plug-configs/coc.vim
