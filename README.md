@@ -19,8 +19,15 @@ brew install ripgrep
 brew install cmake
 brew install watchman
 
-# Terminal git "gui"
+brew install docker
+brew install docker-compose
+
+# Terminal "gui"s
 brew install jesseduffield/lazygit/lazygit
+brew install jesseduffield/lazydocker/lazydocker
+brew install jesseduffield/lazynpm/lazynpm
+
+
 ```
 
 ### Install Nerd Fonts
