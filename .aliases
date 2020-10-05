@@ -22,4 +22,6 @@ alias merged='git branch --merged master'
 alias branchclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git branch -d'
 alias dfu="dotfiles add -u && dotfiles add $HOME/.config/nvim/**/*.vim"
 alias lzn='lazynpm'
+alias lzd='lazydocker'
+alias lzg='lazygit'
 alias neovide='(~/utils/neovide &) > /dev/null'
