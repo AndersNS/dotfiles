@@ -4,7 +4,8 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_palette = 'material'
 
 colorscheme gruvbox-material
 
