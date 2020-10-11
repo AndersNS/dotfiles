@@ -37,7 +37,6 @@ let g:which_key_map['u'] = [ ':UndotreeShow'                              , 'und
 let g:which_key_map['q'] = [ ':q'                                         , 'quit'  ]
 let g:which_key_map['p'] = [ ':Files'                                     , 'find files'  ]
 let g:which_key_map['s'] = [ ':let @/ = ""'                               , 'clear search'  ]
-let g:which_key_map['i'] = [ ':let @/ = ""'                               , 'clear search'  ]
 let g:which_key_map['y'] = [ ':CocList -A --normal yank'                  , 'yank history'  ]
 let g:which_key_map['z'] = [ ':Goyo'                                      , 'zen'  ]
 let g:which_key_map['='] = [ '<C-w>='                                     , 'balance windows'  ]

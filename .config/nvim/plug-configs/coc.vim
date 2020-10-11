@@ -28,7 +28,12 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <C-space> coc#refresh()
+inoremap <silent><expr> kk coc#refresh()
+inoremap <silent><expr> <C-@> coc#refresh()
+inoremap <silent><expr> <C-\> coc#refresh()
+
+
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
