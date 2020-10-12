@@ -11,7 +11,6 @@ if exists('g:vscode')
   source $HOME/.config/nvim/vscode/settings.vim
   source $HOME/.config/nvim/vscode/highlightyank.vim
 else
-
   source $HOME/.config/nvim/theme/airline.vim
   " source $HOME/.config/nvim/theme/gruvbox.vim
   source $HOME/.config/nvim/theme/gruvbox-material.vim

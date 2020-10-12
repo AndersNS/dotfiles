@@ -29,7 +29,7 @@ endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <C-space> coc#refresh()
-inoremap <silent><expr> kk coc#refresh()
+inoremap <silent><expr> jk coc#refresh()
 inoremap <silent><expr> <C-@> coc#refresh()
 inoremap <silent><expr> <C-\> coc#refresh()
 
