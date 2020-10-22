@@ -43,6 +43,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'brooth/far.vim'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
     Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+    Plug 'hashivim/vim-terraform'
   endif
 
 
