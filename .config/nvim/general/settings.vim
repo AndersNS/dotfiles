@@ -52,3 +52,5 @@ if executable('rg')
 endif
 
 let g:vrfr_rg = 'true'
+
+au BufRead,BufNewFile *.config setfiletype xml
