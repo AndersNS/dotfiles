@@ -10,6 +10,9 @@ brew install node
 # Fuzzy finder
 brew install fzf
 
+# Syntax highlight everywhere
+brew install bat
+
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
 
