@@ -13,6 +13,7 @@ imap jj <Esc>
 
 " Save
 nnoremap <C-s> :w<cr>
+inoremap <C-s> <Esc>:w<cr>
 
 nnoremap <silent> <C-h> :wincmd h<CR>
 nnoremap <silent> <C-j> :wincmd j<CR>

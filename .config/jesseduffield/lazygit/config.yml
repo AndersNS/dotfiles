@@ -1,5 +1,6 @@
 reporting: "on"
 startuppopupversion: 1
+
 gui:
   # stuff relating to the UI
   scrollHeight: 2 # how many lines you scroll by

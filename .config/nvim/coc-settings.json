@@ -11,6 +11,7 @@
     "rust",
     "cs"
   ],
+  "omnisharp.version": "v1.37.5",
   "explorer.width": 50,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,

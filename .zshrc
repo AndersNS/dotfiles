@@ -135,3 +135,8 @@ autoload -Uz compinit && compinit
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+
+# To make R work properly
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

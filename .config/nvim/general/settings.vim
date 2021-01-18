@@ -25,6 +25,7 @@ set undofile
 set incsearch
 set mouse=a
 set clipboard=unnamedplus
+set scrolloff=8
 
 set iskeyword+=- " Treat word separated by dash as text objects
 set formatoptions-=cro " Stop newline continuation of comments

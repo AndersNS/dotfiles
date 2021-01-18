@@ -83,6 +83,7 @@ let g:which_key_map['g'] = {
       \ 'R' : ['<Plug>(coc-references)'              , 'references'],
       \ 'p' : ['<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'],
       \ 'n' : ['<Plug>(coc-diagnostic-next)'         , 'next diagnostic'],
+      \ 'A' : [':<C-u>CocList diagnostics'           , 'all diagnostics'],
       \ 'q' : [':CocFix'                             , 'fix'],
       \ 'Q' : ['<Plug>(coc-fix-current)'             , 'quickfix'],
       \ 'Z' : [':CocRestart'                         , 'restart'],
