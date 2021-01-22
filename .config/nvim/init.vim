@@ -26,6 +26,7 @@ else
   source $HOME/.config/nvim/plug-configs/fzf.vim
   source $HOME/.config/nvim/plug-configs/commentary.vim
   source $HOME/.config/nvim/plug-configs/rainbow.vim
+  source $HOME/.config/nvim/plug-configs/rooter.vim
   source $HOME/.config/nvim/plug-configs/start-screen.vim
   source $HOME/.config/nvim/plug-configs/markdown-preview.vim
 
