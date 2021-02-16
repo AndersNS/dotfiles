@@ -16,7 +16,7 @@ else
   " source $HOME/.config/nvim/theme/gruvbox-material.vim
    source $HOME/.config/nvim/theme/nord.vim
   " source $HOME/.config/nvim/theme/material.vim
-
+  " source $HOME/.config/nvim/plug-configs/lsp.vim
   source $HOME/.config/nvim/plug-configs/closetag.vim
   source $HOME/.config/nvim/plug-configs/coc.vim
   source $HOME/.config/nvim/plug-configs/easymotion.vim

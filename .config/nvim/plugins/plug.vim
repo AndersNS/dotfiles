@@ -22,6 +22,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'ryanoasis/vim-devicons'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'tpope/vim-fugitive'
     Plug 'sheerun/vim-polyglot'
