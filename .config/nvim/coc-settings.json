@@ -9,7 +9,9 @@
     "html",
     "json",
     "rust",
-    "cs"
+    "cs",
+    "yaml",
+    "yml"
   ],
   "suggest.completionItemKindLabels": {
     "method": "  ",
@@ -39,11 +41,13 @@
     "enumMember": "  "
   },
   "omnisharp.path": "/Users/andersns/utils/omnisharp/run",
+  "suggest.removeDuplicateItems": true,
   "explorer.width": 50,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.keyMappings.global": {
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
-  }
+  },
+  "angular.experimental-ivy": true
 }

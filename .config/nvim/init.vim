@@ -13,8 +13,8 @@ if exists('g:vscode')
 else
   source $HOME/.config/nvim/theme/airline.vim
   " source $HOME/.config/nvim/theme/gruvbox.vim
-  " source $HOME/.config/nvim/theme/gruvbox-material.vim
-   source $HOME/.config/nvim/theme/nord.vim
+  source $HOME/.config/nvim/theme/gruvbox-material.vim
+   " source $HOME/.config/nvim/theme/nord.vim
   " source $HOME/.config/nvim/theme/material.vim
   " source $HOME/.config/nvim/plug-configs/lsp.vim
   source $HOME/.config/nvim/plug-configs/closetag.vim
