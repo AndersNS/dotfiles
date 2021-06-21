@@ -49,5 +49,11 @@
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
   },
-  "angular.experimental-ivy": true
+  "angular.experimental-ivy": true,
+  "languageserver": {
+    "erlang": {
+      "command": "erlang_ls",
+      "filetypes": ["erlang"]
+    }
+  }
 }

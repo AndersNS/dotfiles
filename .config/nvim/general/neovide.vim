@@ -1,5 +1,5 @@
 if exists('g:neovide')
-   set guifont=Hack\ Nerd\ Font:h18
+   set guifont=FiraCode\ Nerd\ Font:h16
    let g:neovide_fullscreen=v:false
    let g:neovide_cursor_animation_length=0.07
    let g:neovide_cursor_antialiasing=v:false

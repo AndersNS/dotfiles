@@ -10,6 +10,7 @@ let g:coc_global_extensions = [
     \ 'coc-angular',
     \ 'coc-yank',
     \ 'coc-rls',
+    \ 'coc-erlang_ls',
     \ ]
 
 

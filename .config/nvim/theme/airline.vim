@@ -27,5 +27,7 @@ let g:airline_powerline_fonts = 1
 " let g:airline_right_sep = ''
 " let g:airline_right_alt_sep = ''
 
+let g:airline#extensions#scrollbar#enabled = 0 
+
 " We dont need to see mode anymore (covered by airline)
 set noshowmode
