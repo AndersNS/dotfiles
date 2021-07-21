@@ -110,6 +110,7 @@ source $HOME/.aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfa='dotfiles add -u && dotfiles commit'
 alias vim='nvim'
+alias nvim='lvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
