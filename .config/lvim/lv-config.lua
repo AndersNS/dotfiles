@@ -140,8 +140,9 @@ lvim.lang.lua.autoformat = true
 lvim.lang.typescript.linter = "eslint"
 
 lvim.lang.tailwindcss.active = true
+lvim.lang.tailwindcss.filetypes = { "html" }
 
--- require("lsp.angular-ls")
+require("lsp.angular-ls")
 
 vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>", { noremap = true, silent = true })

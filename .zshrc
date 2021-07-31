@@ -109,6 +109,7 @@ export NVM_DIR="$HOME/.nvm"
 source $HOME/.aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfa='dotfiles add -u && dotfiles commit'
+alias dfc='dotfiles add -u && dotfiles commit -m $1'
 alias dfs='dotfiles status'
 alias dfu="dotfiles add -u && dotfiles add $HOME/.config/lvim/**/*.lua"
 alias vim='nvim'
