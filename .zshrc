@@ -112,7 +112,9 @@ alias dfa='dotfiles add -u && dotfiles commit'
 alias dfc='dotfiles add -u && dotfiles commit -m $1'
 alias dfs='dotfiles status'
 alias dfu="dotfiles add -u && dotfiles add $HOME/.config/lvim/**/*.lua"
-alias vim='nvim'
+alias dfd="dotfiles diff"
+alias gg="lazygit"
+alias vim='lvim'
 alias nvim='lvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

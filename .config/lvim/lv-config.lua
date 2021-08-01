@@ -22,6 +22,8 @@ lvim.builtin.telescope.active = true
 lvim.builtin.telescope.defaults.path_display = {}
 lvim.builtin.compe.autocomplete = true
 
+lvim.lsp.default_keybinds = true
+
 lvim.plugins = {
 	{
 		"blackCauldron7/surround.nvim",
@@ -83,6 +85,13 @@ lvim.plugins = {
 		end,
 	},
 	{
+		"simrat39/symbols-outline.nvim",
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
+	},
+	{
 		"glepnir/lspsaga.nvim",
 		event = "BufRead",
 		config = function()
@@ -94,31 +103,33 @@ lvim.plugins = {
 			-- scroll up hover doc
 			vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
 
-			-- 			-- lsp provider to find the cursor word definition and reference
-			-- 			vim.cmd("nnoremap <silent> gr <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>")
-			--
-			-- 			-- code action
-			-- 			-- vim.cmd("nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>")
-			-- 			-- vim.cmd("vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>")
-			--
-			-- 			-- show hover doc
-			-- 			vim.cmd("nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
-			--
-			-- 			-- show signature help
-			-- 			vim.cmd("nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-			--
-			-- 			-- rename
-			-- 			vim.cmd("nnoremap <silent>gR <cmd>lua require('lspsaga.rename').rename()<CR>")
-			--
-			-- 			-- preview definition
-			-- 			vim.cmd("nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
-			--
-			-- 			-- show diagnostics
-			-- 			vim.cmd("nnoremap <silent><leader>gl <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>")
-			--
-			-- 			-- jump diagnostic
-			-- 			vim.cmd("nnoremap <silent> gn <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>")
-			-- 			vim.cmd("nnoremap <silent> gp <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
+			if not lvim.lsp.default_keybinds then
+				-- lsp provider to find the cursor word definition and reference
+				vim.cmd("nnoremap <silent> gr <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>")
+
+				-- code action
+				vim.cmd("nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>")
+				vim.cmd("vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>")
+
+				-- show hover doc
+				vim.cmd("nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
+
+				-- show signature help
+				vim.cmd("nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
+
+				-- rename
+				vim.cmd("nnoremap <silent>gR <cmd>lua require('lspsaga.rename').rename()<CR>")
+
+				-- preview definition
+				vim.cmd("nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
+
+				-- show diagnostics
+				vim.cmd("nnoremap <silent><leader>gl <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>")
+
+				-- jump diagnostic
+				vim.cmd("nnoremap <silent> gn <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>")
+				vim.cmd("nnoremap <silent> gp <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
+			end
 		end,
 	},
 }
@@ -132,12 +143,24 @@ lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = false
 
-lvim.lsp.default_keybinds = true
-
 lvim.lang.lua.autoformat = true
 
 -- javascript
-lvim.lang.typescript.linter = "eslint"
+lvim.lang.typescript.linter = { "eslint" }
+lvim.lang.typescript.formatters = {
+	{
+		exe = "prettier",
+		args = {},
+	},
+}
+
+lvim.lang.typescriptreact.linter = { "eslint" }
+lvim.lang.typescriptreact.formatters = {
+	{
+		exe = "prettier",
+		args = {},
+	},
+}
 
 lvim.lang.tailwindcss.active = true
 lvim.lang.tailwindcss.filetypes = { "html" }
@@ -177,7 +200,6 @@ lvim.builtin.which_key.mappings["f"] = {
 }
 lvim.builtin.which_key.mappings["L"] = {
 	name = "LSP",
-
 	A = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
 	a = { "<cmd>Lspsaga range_code_action<cr>", "Selected Action" },
 	d = {
