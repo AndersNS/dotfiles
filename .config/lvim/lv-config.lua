@@ -145,6 +145,11 @@ lvim.builtin.treesitter.highlight.enabled = false
 
 lvim.lang.lua.autoformat = true
 
+lvim.lang.tailwindcss.active = true
+if lvim.lang.tailwindcss.active then
+  require "lsp.tailwind-ls"
+end
+
 -- javascript
 lvim.lang.typescript.linter = { "eslint" }
 lvim.lang.typescript.formatters = {
@@ -163,7 +168,6 @@ lvim.lang.typescriptreact.formatters = {
 }
 
 lvim.lang.tailwindcss.active = true
-lvim.lang.tailwindcss.filetypes = { "html" }
 
 require("lsp.angular-ls")
 
