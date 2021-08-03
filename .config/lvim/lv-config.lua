@@ -21,7 +21,6 @@ lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
 lvim.builtin.telescope.defaults.path_display = {}
 lvim.builtin.compe.autocomplete = true
-
 lvim.lsp.default_keybinds = true
 
 lvim.plugins = {
@@ -144,10 +143,16 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = false
 
 lvim.lang.lua.autoformat = true
+lvim.lang.lua.formatters = {
+	{
+		exe = "stylua",
+		args = {},
+	},
+}
 
 lvim.lang.tailwindcss.active = true
 if lvim.lang.tailwindcss.active then
-  require "lsp.tailwind-ls"
+	require("lsp.tailwind-ls")
 end
 
 -- javascript
@@ -202,6 +207,8 @@ lvim.builtin.which_key.mappings["f"] = {
 	R = { "<cmd>Telescope registers<cr>", "Registers" },
 	t = { "<cmd>Telescope live_grep<cr>", "Text" },
 }
+lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
+lvim.builtin.which_key.mappings["l"]["L"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }
 lvim.builtin.which_key.mappings["L"] = {
 	name = "LSP",
 	A = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
