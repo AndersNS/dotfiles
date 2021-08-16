@@ -19,9 +19,10 @@ lvim.builtin.dashboard.active = false
 lvim.builtin.galaxyline.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
-lvim.builtin.telescope.defaults.path_display = {}
+-- lvim.builtin.telescope.defaults.path_display = {}
 lvim.builtin.compe.autocomplete = true
 lvim.lsp.default_keybinds = true
+lvim.builtin.nvimtree.width = 70
 
 lvim.plugins = {
 	{
@@ -73,11 +74,11 @@ lvim.plugins = {
 			vim.g.startify_enable_special = 0
 
 			vim.cmd("let g:dashboard_session_directory = $HOME..'/.config/nvim/.sessions'")
-			vim.cmd("let packages = len(globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1))")
+			vim.cmd("let packages = len(globpath('~/.local/share/lunarvim/site/pack/packer/start', '*', 0, 1))")
 
 			vim.api.nvim_exec(
 				[[
-    let g:startify_custom_footer = ['LuaJIT loaded '..packages..' plugins']
+    let g:startify_custom_footer = ['    Loaded '..packages..' plugins  ']
 ]],
 				false
 			)
@@ -166,6 +167,13 @@ lvim.lang.typescript.formatters = {
 
 lvim.lang.typescriptreact.linter = { "eslint" }
 lvim.lang.typescriptreact.formatters = {
+	{
+		exe = "prettier",
+		args = {},
+	},
+}
+
+lvim.lang.html.formatters = {
 	{
 		exe = "prettier",
 		args = {},
