@@ -1,0 +1,75 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+"set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set highlightedyank
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+set showmode
+set incsearch
+set nu
+set scrolloff=5
+set relativenumber
+set number 
+
+""" Idea specific settings ------------------
+set ideajoin
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+imap jj <Esc>
+imap jk <Esc>
+map <tab> <Action>(NextTab)
+map <s-tab> <Action>(PreviousTab)
+map <leader>S <Action>(IdeaVim.ReloadVimRc.reload)
+
+map <leader>z   <Action>(ToggleDistractionFreeMode)
+
+map <leader>wv  <Action>(SplitVertically)
+map <leader>ws  <Action>(SplitHorizontally)
+map <C-h> <Action>(NextSplitter)
+map <C-l> <Action>(PrevSplitter)
+map <leader>q   <Action>(CloseContent)
+map <leader>c   <Action>(CloseContent)
+nnoremap <C-t> :action Back<CR>
+
+map <leader>e   <Action>(SelectInProjectView)
+map <leader>s   <Action>(SelectInProjectView)
+map <leader>a   <Action>(Annotate)
+map <leader>b   <Action>(ToggleLineBreakpoint)
+map <leader>p   <Action>(SearchEverywhere)
+map <leader>ff  <Action>(FindInPath)
+map <leader>fs  <Action>(SaveAll)
+map <C-s>       <Action>(SaveDocument)
+map <leader>w   <Action>(SaveDocument)
+map <leader>/   <Action>(CommentByLineComment)
+
+" Language
+map <leader>la  <Action>(ShowIntentionActions)
+map K           <Action>(QuickJavaDoc)
+map <leader>lr  <Action>(RenameElement)
+map gr          <Action>(RenameElement)
+map <leader>lf  <Action>(ReformatCode)
+map <C-n>  <Action>(GotoNextError)
+map <C-p>  <Action>(GotoPreviousError)
+map <leader>lR  <Action>(FindUsages)
+map <leader>ld  <Action>(GotoDeclaration)
+map <leader>li  <Action>(GotoImplementation)
+map gd  <Action>(GotoDeclaration)
+map gy  <Action>(GotoImplementation)
+map gr  <Action>(FindUsages)
+
+
+
+" Debugging
+map <leader>db <Action>(ToggleLineBreakpoint)

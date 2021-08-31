@@ -116,6 +116,7 @@ alias dfd="dotfiles diff"
 alias gg="lazygit"
 alias vim='lvim'
 alias nvim='lvim'
+alias cat='bat'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -132,6 +133,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$(yarn global bin)"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
+export GOPATH="$HOME/go"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

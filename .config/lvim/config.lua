@@ -2,9 +2,9 @@
 lvim.format_on_save = true
 lvim.auto_complete = true
 
--- O.colorscheme = "gruvbox-material"
--- O.colorscheme = "lunar"
-lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "onedarker"
+lvim.colorscheme = "gruvbox-material"
 vim.g.tokyonight_style = "storm"
 
 lvim.auto_close_tree = 1
@@ -16,7 +16,7 @@ lvim.transparent_window = false
 
 -- After changing plugin configsd exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = false
-lvim.builtin.galaxyline.active = true
+lvim.builtin.lualine.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
 -- lvim.builtin.telescope.defaults.path_display = {}
@@ -32,6 +32,11 @@ lvim.plugins = {
 		end,
 	},
 	{ "sainnhe/gruvbox-material" },
+	{
+		"iamcco/markdown-preview.nvim",
+		run = [[sh -c 'cd app && yarn install']],
+		ft = { "markdown" },
+	},
 	{ "folke/tokyonight.nvim" },
 	{ "yashguptaz/calvera-dark.nvim" },
 	{ "andymass/vim-matchup" },
@@ -180,6 +185,13 @@ lvim.lang.html.formatters = {
 	},
 }
 
+lvim.lang.json.formatters = {
+	{
+		exe = "prettier",
+		args = {},
+	},
+}
+
 lvim.lang.tailwindcss.active = true
 
 require("lsp.angular-ls")
@@ -217,6 +229,7 @@ lvim.builtin.which_key.mappings["f"] = {
 }
 lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
 lvim.builtin.which_key.mappings["l"]["L"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }
+lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" }
 lvim.builtin.which_key.mappings["L"] = {
 	name = "LSP",
 	A = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
