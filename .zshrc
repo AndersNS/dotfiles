@@ -117,6 +117,8 @@ alias gg="lazygit"
 alias vim='lvim'
 alias nvim='lvim'
 alias cat='bat'
+alias ns='npm start'
+alias n='npm'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -132,6 +134,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$(yarn global bin)"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
 export GOPATH="$HOME/go"
 
@@ -142,7 +145,6 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 autoload -Uz compinit && compinit
 
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/usr/local/opt/node@14/bin:$PATH"
@@ -150,3 +152,5 @@ export PATH="/usr/local/opt/node@14/bin:$PATH"
 # To make R work properly
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+eval "$(zoxide init zsh)"

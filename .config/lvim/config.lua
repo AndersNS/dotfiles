@@ -3,8 +3,8 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 
 -- lvim.colorscheme = "tokyonight"
--- lvim.colorscheme = "onedarker"
-lvim.colorscheme = "gruvbox-material"
+lvim.colorscheme = "onedarker"
+-- lvim.colorscheme = "gruvbox-material"
 vim.g.tokyonight_style = "storm"
 
 lvim.auto_close_tree = 1
@@ -56,10 +56,11 @@ lvim.plugins = {
 			}
 
 			vim.g.startify_bookmarks = {
-				{ i = "~/.config/lvim/lv-config.lua" },
+				{ i = "~/.config/lvim/config.lua" },
 				{ z = "~/.zshrc" },
 				{ t = "~/.tmux.conf" },
 				{ a = "~/.config/alacritty/alacritty.yml" },
+				{ k = "~/.config/kitty/kitty.conf" },
 				{ s = "~/source" },
 			}
 
