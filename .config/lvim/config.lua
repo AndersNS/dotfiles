@@ -1,6 +1,22 @@
+-- settings
+local init_custom_options = function()
+	local custom_options = {
+		relativenumber = true, -- Set relative numbered lines
+		scrolloff = 10, -- Determines the number of context lines you would like to see above and below the cursor
+		ignorecase = true, -- Ignore case in search
+		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.  timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
+	}
+
+	for k, v in pairs(custom_options) do
+		vim.opt[k] = v
+	end
+end
+init_custom_options()
+
 -- general
 lvim.format_on_save = true
 lvim.auto_complete = true
+lvim.lsp.automatic_servers_installation = true
 
 -- lvim.colorscheme = "tokyonight"
 lvim.colorscheme = "onedarker"
@@ -19,10 +35,21 @@ lvim.builtin.dashboard.active = false
 lvim.builtin.lualine.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
--- lvim.builtin.telescope.defaults.path_display = {}
-lvim.builtin.compe.autocomplete = true
-lvim.lsp.default_keybinds = true
-lvim.builtin.nvimtree.width = 70
+lvim.builtin.autopairs.active = true
+
+-- Treesitter
+-- if you don't want all the parsers change this to a table of the ones you want
+lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.autotag.enable = true
+lvim.builtin.treesitter.matchup.enable = true
+lvim.builtin.treesitter.highlight.enabled = true
+lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ignore_install = { "haskell" }
+
+-- lvim.builtin.nvimtree.width = 70
+lvim.builtin.nvimtree.side = "left"
+lvim.builtin.nvimtree.show_icons.git = 1
+lvim.builtin.nvimtree.hide_dotfiles = 0
 
 lvim.plugins = {
 	{
@@ -95,47 +122,97 @@ lvim.plugins = {
 	},
 	{
 		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
+	},
+	-- {
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	config = function()
+	-- 		vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
+	-- 		vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
+
+	-- 		-- scroll down hover doc or scroll in definition preview
+	-- 		vim.cmd("nnoremap <silent> <C-f> <cmd>LspSaga smart_scroll_with_saga(1)<CR>")
+	-- 		-- scroll up hover doc
+	-- 		vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+
+	-- 			-- lsp provider to find the cursor word definition and reference
+	-- 			vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
+
+	-- 			-- code action
+	-- 			-- vim.cmd("nnoremap <silent><leader>ca <cmd>Lspsaga code_actionCR>")
+	-- 			-- vim.cmd("vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>")
+
+	-- 			-- show hover doc
+	-- 			vim.cmd("nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
+
+	-- 			-- show signature help
+	-- 			vim.cmd("nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
+
+	-- 			-- rename
+	-- 			vim.cmd("nnoremap <silent>gR <cmd>lua require('lspsaga.rename').rename()<CR>")
+
+	-- 			-- preview definition
+	-- 			vim.cmd("nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
+
+	-- 			-- show diagnostics
+	-- 			vim.cmd("nnoremap <silent><leader>gl <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>")
+
+	-- 			-- jump diagnostic
+	-- 			vim.cmd("nnoremap <silent> gn <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>")
+	-- 			vim.cmd("nnoremap <silent> gp <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
+	-- 	end,
+	-- },
+	{
+		"tzachar/cmp-tabnine",
+		config = function()
+			local tabnine = require("cmp_tabnine.config")
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 20,
+				sort = true,
+			})
+		end,
+
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
 	},
 	{
-		"glepnir/lspsaga.nvim",
-		event = "BufRead",
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
-			vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
-
-			-- scroll down hover doc or scroll in definition preview
-			vim.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
-			-- scroll up hover doc
-			vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
-
-			if not lvim.lsp.default_keybinds then
-				-- lsp provider to find the cursor word definition and reference
-				vim.cmd("nnoremap <silent> gr <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>")
-
-				-- code action
-				vim.cmd("nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>")
-				vim.cmd("vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>")
-
-				-- show hover doc
-				vim.cmd("nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
-
-				-- show signature help
-				vim.cmd("nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-
-				-- rename
-				vim.cmd("nnoremap <silent>gR <cmd>lua require('lspsaga.rename').rename()<CR>")
-
-				-- preview definition
-				vim.cmd("nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
-
-				-- show diagnostics
-				vim.cmd("nnoremap <silent><leader>gl <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>")
-
-				-- jump diagnostic
-				vim.cmd("nnoremap <silent> gn <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>")
-				vim.cmd("nnoremap <silent> gp <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
-			end
+			require("trouble").setup({
+				position = "bottom", -- position of the list can be: bottom, top, left, right
+				height = 10, -- height of the trouble list when position is top or bottom
+				width = 50, -- width of the list when position is left or right
+				icons = true, -- use devicons for filenames
+				mode = "lsp_document_diagnostics",
+				action_keys = { -- key mappings for actions in the trouble list
+					-- map to {} to remove a mapping, for example:
+					-- close = {},
+					close = "q", -- close the list
+					cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
+					refresh = "r", -- manually refresh
+					jump = { "<cr>", "<tab>" }, -- jump to the diagnostic or open / close folds
+					open_split = { "<c-x>" }, -- open buffer in new split
+					open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+					open_tab = { "<c-t>" }, -- open buffer in new tab
+					jump_close = { "o" }, -- jump to the diagnostic and close the list
+					toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
+					toggle_preview = "P", -- toggle auto_preview
+					hover = "K", -- opens a small popup with the full multiline message
+					preview = "p", -- preview the diagnostic location
+					close_folds = { "zM", "zm" }, -- close all folds
+					open_folds = { "zR", "zr" }, -- open all folds
+					toggle_fold = { "zA", "za" }, -- toggle fold of current file
+					previous = "k", -- preview item
+					next = "j", -- next item
+				},
+				indent_lines = true, -- add an indent guide below the fold icons
+				auto_open = false, -- automatically open the list when you have diagnostics
+				auto_close = true, -- automatically close the list when you have no diagnostics
+				auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+				auto_fold = false, -- automatically fold a file trouble list at creation
+				use_lsp_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
+			})
 		end,
 	},
 }
@@ -143,60 +220,25 @@ lvim.plugins = {
 -- dashboard
 -- lvim.dashboard.custom_header = {""}
 -- lvim.dashboard.footer = {""}
-
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = false
-
-lvim.lang.lua.autoformat = true
-lvim.lang.lua.formatters = {
+-- set a formatter, this will override the language server formatting capabilities (if it exists)
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{
+		exe = "prettier",
+		---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+		filetypes = { "javascript", "typescript", "typescriptreact", "json", "html" },
+	},
 	{
 		exe = "stylua",
-		args = {},
+		filetypes = { "lua" },
 	},
-}
-
-lvim.lang.tailwindcss.active = true
-if lvim.lang.tailwindcss.active then
-	require("lsp.tailwind-ls")
-end
-
--- javascript
-lvim.lang.typescript.linter = { "eslint" }
-lvim.lang.typescript.formatters = {
 	{
-		exe = "prettier",
-		args = {},
+		exe = "uncrustify",
+		filetypes = { "cs" },
 	},
-}
+})
 
-lvim.lang.typescriptreact.linter = { "eslint" }
-lvim.lang.typescriptreact.formatters = {
-	{
-		exe = "prettier",
-		args = {},
-	},
-}
-
-lvim.lang.html.formatters = {
-	{
-		exe = "prettier",
-		args = {},
-	},
-}
-
-lvim.lang.json.formatters = {
-	{
-		exe = "prettier",
-		args = {},
-	},
-}
-
-lvim.lang.tailwindcss.active = true
-
-require("lsp.angular-ls")
-
+vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>", { noremap = true, silent = true })
 
@@ -228,39 +270,7 @@ lvim.builtin.which_key.mappings["f"] = {
 	R = { "<cmd>Telescope registers<cr>", "Registers" },
 	t = { "<cmd>Telescope live_grep<cr>", "Text" },
 }
-lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
-lvim.builtin.which_key.mappings["l"]["L"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }
-lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" }
-lvim.builtin.which_key.mappings["L"] = {
-	name = "LSP",
-	A = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
-	a = { "<cmd>Lspsaga range_code_action<cr>", "Selected Action" },
-	d = {
-		"<cmd>Telescope lsp_document_diagnostics<cr>",
-		"Document Diagnostics",
-	},
-	w = {
-		"<cmd>Telescope lsp_workspace_diagnostics<cr>",
-		"Workspace Diagnostics",
-	},
-	f = { "<cmd>silent FormatWrite<cr>", "Format" },
-	h = { "<cmd>Lspsaga hover_doc<cr>", "Hover Doc" },
-	i = { "<cmd>LspInfo<cr>", "Info" },
-	j = { "<cmd>Lspsaga diagnostic_jump_prev<cr>", "Prev Diagnostic" },
-	k = { "<cmd>Lspsaga diagnostic_jump_next<cr>", "Next Diagnostic" },
-	l = { "<cmd>Lspsaga lsp_finder<cr>", "LSP Finder" },
-	L = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" },
-	p = { "<cmd>Lspsaga preview_definition<cr>", "Preview Definition" },
-	q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
-	r = { "<cmd>Lspsaga rename<cr>", "Rename" },
-	s = {
-		"<cmd>SymbolsOutline<cr>",
-		"Document Symbols",
-	},
-	S = {
-		"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-		"Workspace Symbols",
-	},
-	t = { "<cmd>LspTypeDefinition<cr>", "Type Definition" },
-	x = { "<cmd>cclose<cr>", "Close Quickfix" },
-}
+-- lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" }
+-- lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>Lspsaga lsp_finder<cr>", "References" }
+-- lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
+-- lvim.builtin.which_key.mappings["l"]["L"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }

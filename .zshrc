@@ -116,7 +116,6 @@ alias dfd="dotfiles diff"
 alias gg="lazygit"
 alias vim='lvim'
 alias nvim='lvim'
-alias cat='bat'
 alias ns='npm start'
 alias n='npm'
 
