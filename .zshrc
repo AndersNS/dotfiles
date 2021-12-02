@@ -66,7 +66,12 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  aliases
   git
+  fzf
+  docker
+  docker-compose
+  tmux
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -118,6 +123,7 @@ alias vim='lvim'
 alias nvim='lvim'
 alias ns='npm start'
 alias n='npm'
+alias rider='open -na "Rider.app" --args "$@"'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
