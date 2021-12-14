@@ -124,6 +124,8 @@ alias nvim='lvim'
 alias ns='npm start'
 alias n='npm'
 alias rider='open -na "Rider.app" --args "$@"'
+alias tmhdir='tmux attach -t hdir || tmux new -s hdir'
+alias tmvar='tmux attach -t variant || tmux new -s variant'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
