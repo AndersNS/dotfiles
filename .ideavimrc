@@ -42,11 +42,14 @@ map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 map <leader>q   <Action>(CloseContent)
 map <leader>c   <Action>(CloseContent)
+map <leader>be   <Action>(CloseAllEditorsButActive)
+map <leader>bw   <Action>(CloseAllEditors)
+CloseAllEditors
 nnoremap <C-t> :action Back<CR>
 
 map <leader>e   <Action>(SelectInProjectView)
 map <leader>gl  <Action>(Annotate)
-map <leader>b   <Action>(ToggleLineBreakpoint)
+map <leader>db   <Action>(ToggleLineBreakpoint)
 map <leader>p   <Action>(SearchEverywhere)
 map <leader>ff  <Action>(FindInPath)
 map <leader>fs  <Action>(SaveAll)
@@ -71,5 +74,3 @@ map gd          <Action>(GotoDeclaration)
 map gy          <Action>(GotoImplementation)
 map gr          <Action>(FindUsages)
 
-" Debugging
-map <leader>db <Action>(ToggleLineBreakpoint)
