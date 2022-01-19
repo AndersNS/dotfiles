@@ -5,11 +5,14 @@ local init_custom_options = function()
 		scrolloff = 10, -- Determines the number of context lines you would like to see above and below the cursor
 		ignorecase = true, -- Ignore case in search
 		smartcase = true, -- Case-sensitive search when search term contains uppercase characters. Otherwise, case-sensitive search.  timeoutlen = 200, -- Time to wait for a mapped sequence to complete (in milliseconds)
+		spell = false,
 	}
 
 	for k, v in pairs(custom_options) do
 		vim.opt[k] = v
 	end
+
+	vim.api.nvim_command("autocmd BufEnter * set nospell")
 end
 init_custom_options()
 
@@ -18,10 +21,15 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 lvim.lsp.automatic_servers_installation = true
 
--- lvim.colorscheme = "tokyonight"
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "tokyonight"
+vim.g.tokyonight_style = "night"
+
+-- lvim.colorscheme = "onedarker"
+
 -- lvim.colorscheme = "gruvbox-material"
-vim.g.tokyonight_style = "storm"
+vim.g.gruvbox_material_background = "hard"
+vim.g.gruvbox_material_enable_italic = 1
+vim.g.gruvbox_material_disable_italic_comment = 1
 
 lvim.auto_close_tree = 1
 lvim.line_wrap_cursor_movement = false
@@ -37,9 +45,23 @@ lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 
+lvim.builtin.lualine.style = "lvim"
+-- lvim.builtin.lualine.options = {
+-- 	theme = "gruvbox-material",
+-- }
 -- Treesitter
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.rainbow.enable = true
+lvim.builtin.treesitter.rainbow = {
+	enable = true,
+	colors = {
+		"Gold",
+		"Orchid",
+		"DodgerBlue",
+		-- "Cornsilk",
+		-- "Salmon",
+		-- "LawnGreen",
+	},
+	disable = { "html" },
+}
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.highlight.enabled = true
@@ -49,7 +71,6 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 -- lvim.builtin.nvimtree.width = 70
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
-lvim.builtin.nvimtree.hide_dotfiles = 0
 
 lvim.plugins = {
 	{
@@ -59,6 +80,7 @@ lvim.plugins = {
 		end,
 	},
 	{ "sainnhe/gruvbox-material" },
+	{ "sotte/presenting.vim", ft = { "markdown" } },
 	{
 		"iamcco/markdown-preview.nvim",
 		run = [[sh -c 'cd app && yarn install']],
@@ -67,6 +89,7 @@ lvim.plugins = {
 	{ "folke/tokyonight.nvim" },
 	{ "yashguptaz/calvera-dark.nvim" },
 	{ "andymass/vim-matchup" },
+	{ "jxnblk/vim-mdx-js" },
 	{
 		"mhinz/vim-startify",
 		event = "BufWinEnter",
@@ -161,20 +184,20 @@ lvim.plugins = {
 	-- 			vim.cmd("nnoremap <silent> gp <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
 	-- 	end,
 	-- },
-	{
-		"tzachar/cmp-tabnine",
-		config = function()
-			local tabnine = require("cmp_tabnine.config")
-			tabnine:setup({
-				max_lines = 1000,
-				max_num_results = 20,
-				sort = true,
-			})
-		end,
+	-- {
+	-- 	"tzachar/cmp-tabnine",
+	-- 	config = function()
+	-- 		local tabnine = require("cmp_tabnine.config")
+	-- 		tabnine:setup({
+	-- 			max_lines = 1000,
+	-- 			max_num_results = 20,
+	-- 			sort = true,
+	-- 		})
+	-- 	end,
 
-		run = "./install.sh",
-		requires = "hrsh7th/nvim-cmp",
-	},
+	-- 	run = "./install.sh",
+	-- 	requires = "hrsh7th/nvim-cmp",
+	-- },
 	{
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -184,7 +207,7 @@ lvim.plugins = {
 				height = 10, -- height of the trouble list when position is top or bottom
 				width = 50, -- width of the list when position is left or right
 				icons = true, -- use devicons for filenames
-				mode = "lsp_document_diagnostics",
+				mode = "document_diagnostics",
 				action_keys = { -- key mappings for actions in the trouble list
 					-- map to {} to remove a mapping, for example:
 					-- close = {},
@@ -211,7 +234,7 @@ lvim.plugins = {
 				auto_close = true, -- automatically close the list when you have no diagnostics
 				auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
 				auto_fold = false, -- automatically fold a file trouble list at creation
-				use_lsp_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
+				use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
 			})
 		end,
 	},
@@ -226,7 +249,7 @@ formatters.setup({
 	{
 		exe = "prettier",
 		---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-		filetypes = { "javascript", "typescript", "typescriptreact", "json", "html" },
+		filetypes = { "javascript", "typescript", "typescriptreact", "json", "jsonc", "html" },
 	},
 	{
 		exe = "stylua",

@@ -77,6 +77,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source $(dirname $(gem which colorls))/tab_complete.sh
 
 # User configuration
 
@@ -126,6 +127,8 @@ alias n='npm'
 alias rider='open -na "Rider.app" --args "$@"'
 alias tmhdir='tmux attach -t hdir || tmux new -s hdir'
 alias tmvar='tmux attach -t variant || tmux new -s variant'
+alias tmn='tmux attach -t $1 || tmux new -s $1'
+alias lc='colorls -lA --sd'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

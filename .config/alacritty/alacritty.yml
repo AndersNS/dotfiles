@@ -1,31 +1,73 @@
+env:
+  # TERM variable
+  #
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  TERM: xterm-256color
+
+# colors:
+#   # Default colors
+#   primary:
+#     background: "#1e2127"
+#     # background: "#2E3440"
+#     foreground: "#D8DEE9"
+
+#   # Normal colors
+#   normal:
+#     black: "#3B4252"
+#     red: "#BF616A"
+#     green: "#A3BE8C"
+#     yellow: "#EBCB8B"
+#     blue: "#81A1C1"
+#     magenta: "#B48EAD"
+#     cyan: "#88C0D0"
+#     white: "#abb2bf"
+
+#   # Bright colors
+#   bright:
+#     black: "#5c6370"
+#     red: "#e06c75"
+#     green: "#98c379"
+#     yellow: "#d19a66"
+#     blue: "#61afef"
+#     magenta: "#c678dd"
+#     cyan: "#56b6c2"
+#     white: "#ECEFF4"
+
+# TokyoNight Alacritty Colors
 colors:
   # Default colors
   primary:
-    background: "#1e2127"
-    # background: "#2E3440"
-    foreground: "#D8DEE9"
+    background: '0x1a1b26'
+    foreground: '0xc0caf5'
 
   # Normal colors
   normal:
-    black: "#3B4252"
-    red: "#BF616A"
-    green: "#A3BE8C"
-    yellow: "#EBCB8B"
-    blue: "#81A1C1"
-    magenta: "#B48EAD"
-    cyan: "#88C0D0"
-    white: "#abb2bf"
+    black:   '0x15161E'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xa9b1d6'
 
   # Bright colors
   bright:
-    black: "#5c6370"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#d19a66"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#ECEFF4"
+    black:   '0x414868'
+    red:     '0xf7768e'
+    green:   '0x9ece6a'
+    yellow:  '0xe0af68'
+    blue:    '0x7aa2f7'
+    magenta: '0xbb9af7'
+    cyan:    '0x7dcfff'
+    white:   '0xc0caf5'
+
+  indexed_colors:
+    - { index: 16, color: '0xff9e64' }
+    - { index: 17, color: '0xdb4b4b' }
 
 background_opacity: 1.0
 
@@ -44,19 +86,24 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 14.0
+  size: 16.0
 
   offset:
     x: 0
-    y: 0
+    y: 1
   glyph_offset:
     x: 0
-    y: 0
+    y: 1
 
 window:
+  title: Alacritty
   padding:
-    x: 2
-    y: 2
+    x: 0
+    y: 0
+  dynamic_padding: true
+  class:
+    instance: Alacritty
+    general: Alacritty 
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -81,6 +128,4 @@ key_bindings:
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: Key0, mods: Control, action: ResetFontSize }
   - { key: Equals, mods: Control, action: IncreaseFontSize }
-  - { key: Add, mods: Control, action: IncreaseFontSize }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
