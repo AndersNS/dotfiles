@@ -11,8 +11,6 @@ local init_custom_options = function()
 	for k, v in pairs(custom_options) do
 		vim.opt[k] = v
 	end
-
-	vim.api.nvim_command("autocmd BufEnter * set nospell")
 end
 init_custom_options()
 

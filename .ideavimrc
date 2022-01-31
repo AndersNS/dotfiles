@@ -49,7 +49,11 @@ nnoremap <C-t> :action Back<CR>
 
 map <leader>e   <Action>(SelectInProjectView)
 map <leader>gl  <Action>(Annotate)
+
 map <leader>db   <Action>(ToggleLineBreakpoint)
+map <leader>dr <Action>(mainRunToolbarDebugProcess)
+map <leader>ds <Action>(RunToolbarStopAction)
+
 map <leader>p   <Action>(SearchEverywhere)
 map <leader>ff  <Action>(FindInPath)
 map <leader>fs  <Action>(SaveAll)
