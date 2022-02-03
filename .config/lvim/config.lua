@@ -144,6 +144,13 @@ lvim.plugins = {
 	{
 		"windwp/nvim-ts-autotag",
 	},
+	{
+		"j-hui/fidget.nvim",
+		event = "BufWinEnter",
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
 	-- {
 	-- 	"glepnir/lspsaga.nvim",
 	-- 	config = function()

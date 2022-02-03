@@ -44,8 +44,6 @@ map <leader>q   <Action>(CloseContent)
 map <leader>c   <Action>(CloseContent)
 map <leader>be   <Action>(CloseAllEditorsButActive)
 map <leader>bw   <Action>(CloseAllEditors)
-CloseAllEditors
-nnoremap <C-t> :action Back<CR>
 
 map <leader>e   <Action>(SelectInProjectView)
 map <leader>gl  <Action>(Annotate)
