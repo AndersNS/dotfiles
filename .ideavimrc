@@ -61,6 +61,8 @@ map <leader>/   <Action>(CommentByLineComment)
 map <leader>s   :let @/=""<CR>
 map <leader>e   <Action>(SelectInProjectView)
 
+map <leader>td  <Action>(RiderUnitTestDebugContextAction)
+
 " Language
 map <leader>la  <Action>(ShowIntentionActions)
 map K           <Action>(QuickJavaDoc)

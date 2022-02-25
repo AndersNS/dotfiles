@@ -66,7 +66,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.ensure_installed = "maintained"
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 
--- lvim.builtin.nvimtree.width = 70
+lvim.builtin.nvimtree.width = 70
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 
