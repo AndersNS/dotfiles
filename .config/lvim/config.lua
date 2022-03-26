@@ -19,7 +19,7 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 lvim.lsp.automatic_servers_installation = true
 
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "nightfox"
 vim.g.tokyonight_style = "night"
 
 -- lvim.colorscheme = "onedarker"
@@ -71,13 +71,8 @@ lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 
 lvim.plugins = {
-	{
-		"blackCauldron7/surround.nvim",
-		config = function()
-			require("surround").setup({})
-		end,
-	},
 	{ "sainnhe/gruvbox-material" },
+	{ "EdenEast/nightfox.nvim" },
 	{ "sotte/presenting.vim", ft = { "markdown" } },
 	{
 		"iamcco/markdown-preview.nvim",
@@ -88,6 +83,12 @@ lvim.plugins = {
 	{ "yashguptaz/calvera-dark.nvim" },
 	{ "andymass/vim-matchup" },
 	{ "jxnblk/vim-mdx-js" },
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 	{
 		"mhinz/vim-startify",
 		event = "BufWinEnter",
@@ -151,58 +152,6 @@ lvim.plugins = {
 			require("fidget").setup({})
 		end,
 	},
-	-- {
-	-- 	"glepnir/lspsaga.nvim",
-	-- 	config = function()
-	-- 		vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
-	-- 		vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
-
-	-- 		-- scroll down hover doc or scroll in definition preview
-	-- 		vim.cmd("nnoremap <silent> <C-f> <cmd>LspSaga smart_scroll_with_saga(1)<CR>")
-	-- 		-- scroll up hover doc
-	-- 		vim.cmd("nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
-
-	-- 			-- lsp provider to find the cursor word definition and reference
-	-- 			vim.cmd("nnoremap <silent> gr <cmd>Lspsaga lsp_finder<CR>")
-
-	-- 			-- code action
-	-- 			-- vim.cmd("nnoremap <silent><leader>ca <cmd>Lspsaga code_actionCR>")
-	-- 			-- vim.cmd("vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>")
-
-	-- 			-- show hover doc
-	-- 			vim.cmd("nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
-
-	-- 			-- show signature help
-	-- 			vim.cmd("nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-
-	-- 			-- rename
-	-- 			vim.cmd("nnoremap <silent>gR <cmd>lua require('lspsaga.rename').rename()<CR>")
-
-	-- 			-- preview definition
-	-- 			vim.cmd("nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
-
-	-- 			-- show diagnostics
-	-- 			vim.cmd("nnoremap <silent><leader>gl <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>")
-
-	-- 			-- jump diagnostic
-	-- 			vim.cmd("nnoremap <silent> gn <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>")
-	-- 			vim.cmd("nnoremap <silent> gp <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>")
-	-- 	end,
-	-- },
-	-- {
-	-- 	"tzachar/cmp-tabnine",
-	-- 	config = function()
-	-- 		local tabnine = require("cmp_tabnine.config")
-	-- 		tabnine:setup({
-	-- 			max_lines = 1000,
-	-- 			max_num_results = 20,
-	-- 			sort = true,
-	-- 		})
-	-- 	end,
-
-	-- 	run = "./install.sh",
-	-- 	requires = "hrsh7th/nvim-cmp",
-	-- },
 	{
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -254,7 +203,7 @@ formatters.setup({
 	{
 		exe = "prettier",
 		---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-		filetypes = { "javascript", "typescript", "typescriptreact", "json", "jsonc", "html" },
+		filetypes = { "css", "javascript", "typescript", "typescriptreact", "json", "jsonc", "html" },
 	},
 	{
 		exe = "stylua",
@@ -267,8 +216,8 @@ formatters.setup({
 })
 
 vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<TAB>", ":BufferNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<TAB>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
@@ -277,7 +226,7 @@ vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferPrevious<CR>", { noremap = true,
 lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file" }
 lvim.builtin.which_key.mappings["h"] = nil
 lvim.builtin.which_key.mappings["s"] = { ':let @/=""<CR>', "No Highlight" }
-lvim.builtin.which_key.mappings["c"] = { ":BufferClose<CR>", "Close buffer" }
+lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }
 lvim.builtin.which_key.mappings["P"] = {
 	name = "Packer",
 	c = { "<cmd>PackerCompile<cr>", "Compile" },
