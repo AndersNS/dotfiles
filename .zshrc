@@ -127,6 +127,7 @@ alias n='npm'
 alias rider='open -na "Rider.app" --args $1'
 alias tmhdir='tmux attach -t hdir || tmux new -s hdir'
 alias tmvar='tmux attach -t variant || tmux new -s variant'
+alias tmpriv='tmux attach -t priv || tmux new -s priv'
 alias tmn='tmux attach -t $1 || tmux new -s $1'
 alias lc='colorls -lA --sd'
 
