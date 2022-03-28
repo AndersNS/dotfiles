@@ -1,4 +1,3 @@
--- settings
 local init_custom_options = function()
 	local custom_options = {
 		relativenumber = true, -- Set relative numbered lines
@@ -50,36 +49,78 @@ lvim.builtin.lualine.style = "lvim"
 -- Treesitter
 lvim.builtin.treesitter.rainbow = {
 	enable = true,
-	colors = {
-		"Gold",
-		"Orchid",
-		"DodgerBlue",
-		-- "Cornsilk",
-		-- "Salmon",
-		-- "LawnGreen",
-	},
-	disable = { "html" },
+	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+	max_file_lines = nil, -- Do not enable for files with more than n lines, int
 }
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.treesitter.ensure_installed = "maintained"
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ignore_install = { "" }
 
 lvim.builtin.nvimtree.width = 70
 lvim.builtin.nvimtree.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
 
+local home = vim.fn.expand("~/notes")
+require("telekasten").setup({
+	home = home,
+	dailies = home .. "/" .. "daily",
+	weeklies = home .. "/" .. "weekly",
+	templates = home .. "/" .. "templates",
+
+	-- set to `nil` or do not specify if you do not want a template
+	template_new_note = home .. "/" .. "templates/new.md",
+
+	-- template for newly created daily notes (goto_today)
+	-- set to `nil` or do not specify if you do not want a template
+	template_new_daily = home .. "/" .. "templates/daily.md",
+
+	-- template for newly created weekly notes (goto_thisweek)
+	-- set to `nil` or do not specify if you do not want a template
+	template_new_weekly = home .. "/" .. "templates/weekly.md",
+
+	auto_set_filetype = true,
+
+	extension = ".md",
+	follow_creates_nonexisting = true,
+	dailies_create_nonexisting = true,
+	weeklies_create_nonexisting = true,
+})
+
 lvim.plugins = {
 	{ "sainnhe/gruvbox-material" },
 	{ "EdenEast/nightfox.nvim" },
+	{
+		"renerocksai/telekasten.nvim",
+	},
+	{ "renerocksai/calendar-vim" },
+	{ "mzlogin/vim-markdown-toc" },
+
+	{
+		"ggandor/leap.nvim",
+		config = function() end,
+	},
+	{ "tpope/vim-repeat" },
 	{ "sotte/presenting.vim", ft = { "markdown" } },
 	{
 		"iamcco/markdown-preview.nvim",
 		run = [[sh -c 'cd app && yarn install']],
 		ft = { "markdown" },
 	},
+	{
+		"npxbr/glow.nvim",
+		ft = { "markdown", "telekasten" },
+		-- run = "yay -S glow"
+	},
 	{ "folke/tokyonight.nvim" },
+	{
+		"folke/lsp-colors.nvim",
+		event = "BufRead",
+	},
+	{
+		"p00f/nvim-ts-rainbow",
+	},
 	{ "yashguptaz/calvera-dark.nvim" },
 	{ "andymass/vim-matchup" },
 	{ "jxnblk/vim-mdx-js" },
@@ -110,7 +151,7 @@ lvim.plugins = {
 				{ t = "~/.tmux.conf" },
 				{ a = "~/.config/alacritty/alacritty.yml" },
 				{ k = "~/.config/kitty/kitty.conf" },
-				{ s = "~/source" },
+				{ n = "~/notes" },
 			}
 
 			vim.g.startify_commands = {
@@ -227,6 +268,7 @@ lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file
 lvim.builtin.which_key.mappings["h"] = nil
 lvim.builtin.which_key.mappings["s"] = { ':let @/=""<CR>', "No Highlight" }
 lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }
+lvim.builtin.which_key.mappings["n"] = { ":Telekasten<CR>", "Telekasten" }
 lvim.builtin.which_key.mappings["P"] = {
 	name = "Packer",
 	c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -251,3 +293,6 @@ lvim.builtin.which_key.mappings["f"] = {
 -- lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>Lspsaga lsp_finder<cr>", "References" }
 -- lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
 -- lvim.builtin.which_key.mappings["l"]["L"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }
+-- Not sure why config function doesnt work, but there you go, might give some errors on startup
+
+require("leap").set_default_keymaps()
