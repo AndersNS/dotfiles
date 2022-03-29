@@ -12,7 +12,6 @@ local init_custom_options = function()
 	end
 end
 init_custom_options()
-
 -- general
 lvim.format_on_save = true
 lvim.auto_complete = true
@@ -20,6 +19,8 @@ lvim.lsp.automatic_servers_installation = true
 
 lvim.colorscheme = "nightfox"
 vim.g.tokyonight_style = "night"
+
+lvim.builtin.notify.active = false -- TODO
 
 -- lvim.colorscheme = "onedarker"
 
@@ -42,16 +43,15 @@ lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 
-lvim.builtin.lualine.style = "lvim"
--- lvim.builtin.lualine.options = {
--- 	theme = "gruvbox-material",
--- }
+-- lvim.builtin.lualine.style = "lvim"
+
 -- Treesitter
 lvim.builtin.treesitter.rainbow = {
 	enable = true,
 	extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 	max_file_lines = nil, -- Do not enable for files with more than n lines, int
 }
+
 lvim.builtin.treesitter.autotag.enable = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.highlight.enabled = true
@@ -81,6 +81,7 @@ require("telekasten").setup({
 	template_new_weekly = home .. "/" .. "templates/weekly.md",
 
 	auto_set_filetype = true,
+	command_palette_theme = "dropdown",
 
 	extension = ".md",
 	follow_creates_nonexisting = true,
@@ -102,6 +103,10 @@ lvim.plugins = {
 		config = function() end,
 	},
 	{ "tpope/vim-repeat" },
+	{
+		"tpope/vim-surround",
+		keys = { "c", "d", "y" },
+	},
 	{ "sotte/presenting.vim", ft = { "markdown" } },
 	{
 		"iamcco/markdown-preview.nvim",
@@ -268,7 +273,20 @@ lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file
 lvim.builtin.which_key.mappings["h"] = nil
 lvim.builtin.which_key.mappings["s"] = { ':let @/=""<CR>', "No Highlight" }
 lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }
-lvim.builtin.which_key.mappings["n"] = { ":Telekasten<CR>", "Telekasten" }
+lvim.builtin.which_key.mappings["n"] = {
+	name = "Notes",
+	p = { ":Telekasten<CR>", "Telekasten" },
+	T = { "<cmd>lua require('telekasten').goto_today()<CR>", "Today" },
+	w = { "<cmd>lua require('telekasten').goto_thisweek()<CR>", "This week" },
+	n = { "<cmd>lua require('telekasten').new_note()<CR>", "New Note" },
+	t = { ":lua require('telekasten').toggle_todo()<CR>", "Toggle todo" },
+	r = { ":lua require('telekasten').rename_note()<CR>", "Rename" },
+	f = { "<cmd>lua require('telekasten').find_notes()<CR>", "Find notes" },
+	z = { ":lua require('telekasten').follow_link()<CR>", "Follow link" },
+	l = { ":lua require('telekasten').insert_link({ i=true })<CR>", "Insert link" },
+	s = { ":!cd ~/notes && git add --all && git commit -m 'Took some notes' && git push && cd - <CR>", "Sync" },
+}
+
 lvim.builtin.which_key.mappings["P"] = {
 	name = "Packer",
 	c = { "<cmd>PackerCompile<cr>", "Compile" },
