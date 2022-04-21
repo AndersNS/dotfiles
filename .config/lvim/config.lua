@@ -89,6 +89,8 @@ require("telekasten").setup({
 	weeklies_create_nonexisting = true,
 })
 
+-- vim.list_extend(lvim.lsp.override, { "rust_analyzer" })
+
 lvim.plugins = {
 	{ "sainnhe/gruvbox-material" },
 	{ "EdenEast/nightfox.nvim" },
@@ -96,6 +98,7 @@ lvim.plugins = {
 		"renerocksai/telekasten.nvim",
 	},
 	{ "renerocksai/calendar-vim" },
+	{ "stevearc/dressing.nvim" },
 	{ "mzlogin/vim-markdown-toc" },
 
 	{
@@ -132,8 +135,34 @@ lvim.plugins = {
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				"css",
+				"javascript",
+				html = {
+					mode = "foreground",
+				},
+			})
 		end,
+	},
+	{
+		"simrat39/rust-tools.nvim",
+		config = function()
+			require("rust-tools").setup({
+				tools = {
+					autoSetHints = true,
+					hover_with_actions = true,
+					runnables = {
+						use_telescope = true,
+					},
+				},
+				server = {
+					cmd = { vim.fn.stdpath("data") .. "/lsp_servers/rust/rust-analyzer" },
+					on_attach = require("lvim.lsp").common_on_attach,
+					on_init = require("lvim.lsp").common_on_init,
+				},
+			})
+		end,
+		ft = { "rust", "rs" },
 	},
 	{
 		"mhinz/vim-startify",
@@ -307,10 +336,14 @@ lvim.builtin.which_key.mappings["f"] = {
 	R = { "<cmd>Telescope registers<cr>", "Registers" },
 	t = { "<cmd>Telescope live_grep<cr>", "Text" },
 }
+
 -- lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" }
 -- lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>Lspsaga lsp_finder<cr>", "References" }
 -- lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
--- lvim.builtin.which_key.mappings["l"]["L"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Line Diagnostics" }
+lvim.builtin.which_key.mappings["l"]["d"] = {
+	"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
+	"Buffer diagnostics",
+}
 -- Not sure why config function doesnt work, but there you go, might give some errors on startup
 
 require("leap").set_default_keymaps()

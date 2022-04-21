@@ -130,6 +130,7 @@ alias tmvar='tmux attach -t variant || tmux new -s variant'
 alias tmpriv='tmux attach -t priv || tmux new -s priv'
 alias tmn='tmux attach -t $1 || tmux new -s $1'
 alias lc='colorls -lA --sd'
+alias lzd='lazydocker'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
