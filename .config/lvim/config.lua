@@ -18,7 +18,6 @@ lvim.auto_complete = true
 lvim.lsp.automatic_servers_installation = true
 
 lvim.colorscheme = "nightfox"
-vim.g.tokyonight_style = "night"
 
 lvim.builtin.notify.active = false -- TODO
 
