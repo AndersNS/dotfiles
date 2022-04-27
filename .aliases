@@ -1,5 +1,4 @@
 alias gl='git log --oneline --all --graph --decorate $*'
-alias pwd='cd'
 alias clear='cls'
 alias unalias='alias /d $1'
 alias gitlog='git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master $1'
