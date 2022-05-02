@@ -4,7 +4,19 @@ M.config = function()
 	lvim.plugins = {
 		{ "sainnhe/gruvbox-material" },
 		{ "EdenEast/nightfox.nvim" },
-		{ "folke/tokyonight.nvim" },
+		-- { "folke/tokyonight.nvim" },
+		{
+			"abzcoding/tokyonight.nvim",
+			branch = "feat/local",
+			config = function()
+				require("user.theme").tokyonight()
+				vim.cmd([[colorscheme tokyonight]])
+			end,
+			cond = function()
+				local _time = os.date("*t")
+				return _time.hour >= 9 and _time.hour < 17
+			end,
+		},
 		{
 			"rose-pine/neovim",
 			as = "rose-pine",
@@ -12,11 +24,10 @@ M.config = function()
 				require("user.theme").rose_pine()
 				vim.cmd([[colorscheme rose-pine]])
 			end,
-			-- cond = function()
-			-- 	local _time = os.date("*t")
-			-- 	-- return (_time.hour >= 1 and _time.hour < 9)
-			-- 	return false
-			-- end,
+			cond = function()
+				local _time = os.date("*t")
+				return (_time.hour >= 1 and _time.hour < 9)
+			end,
 		},
 		{
 			"catppuccin/nvim",
@@ -26,11 +37,10 @@ M.config = function()
 
 				vim.cmd([[colorscheme catppuccin]])
 			end,
-			-- cond = function()
-			-- 	local _time = os.date("*t")
-			-- 	-- return (_time.hour >= 17 and _time.hour < 21)
-			-- 	return false
-			-- end,
+			cond = function()
+				local _time = os.date("*t")
+				return (_time.hour >= 17 and _time.hour < 21)
+			end,
 		},
 		{
 			"rebelot/kanagawa.nvim",
@@ -38,11 +48,10 @@ M.config = function()
 				require("user.theme").kanagawa()
 				vim.cmd([[colorscheme kanagawa]])
 			end,
-			-- cond = function()
-			-- 	local _time = os.date("*t")
-			-- 	-- return (_time.hour >= 21 and _time.hour < 24) or (_time.hour >= 0 and _time.hour < 1)
-			-- 	return true
-			-- end,
+			cond = function()
+				local _time = os.date("*t")
+				return (_time.hour >= 21 and _time.hour < 24) or (_time.hour >= 0 and _time.hour < 1)
+			end,
 		},
 		{ "stevearc/dressing.nvim" },
 		{ "mzlogin/vim-markdown-toc" },
@@ -175,6 +184,20 @@ M.config = function()
 				})
 			end,
 			cmd = "Trouble",
+		},
+		{
+			"jose-elias-alvarez/nvim-lsp-ts-utils",
+			ft = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+			},
+			opt = true,
+			event = "BufReadPre",
+			before = "williamboman/nvim-lsp-installer",
 		},
 	}
 end

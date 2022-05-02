@@ -10,6 +10,7 @@ M.config = function()
 	lvim.builtin.dap.on_config_done = function(_)
 		lvim.builtin.which_key.mappings["d"]["g"] = { "<cmd>lua require('dapui').toggle() <CR>", "Toggle UI" }
 	end
+	lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>lua vim.lsp.buf.code_action() <CR>", "Code actions" }
 	lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file" }
 	lvim.builtin.which_key.mappings["h"] = nil
 	lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }

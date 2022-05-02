@@ -13,6 +13,8 @@ local opts = {
 			enable_import_on_completion = false,
 			import_all_timeout = 5000, -- ms
 
+			auto_inlay_hints = false,
+
 			-- eslint
 			eslint_enable_code_actions = true,
 			eslint_enable_disable_comments = true,
