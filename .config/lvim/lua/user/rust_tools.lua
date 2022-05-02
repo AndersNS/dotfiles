@@ -6,6 +6,8 @@ M.config = function()
 		return
 	end
 
+	vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
+
 	local lsp_installer_servers = require("nvim-lsp-installer.servers")
 	local _, requested_server = lsp_installer_servers.get_server("rust_analyzer")
 
