@@ -34,7 +34,6 @@ M.config = function()
 			as = "catppuccin",
 			config = function()
 				require("user.theme").catppuccin()
-
 				vim.cmd([[colorscheme catppuccin]])
 			end,
 			cond = function()
