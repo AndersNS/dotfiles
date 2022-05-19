@@ -10,6 +10,7 @@ M.config = function()
 	lvim.builtin.dap.on_config_done = function(_)
 		lvim.builtin.which_key.mappings["d"]["g"] = { "<cmd>lua require('dapui').toggle() <CR>", "Toggle UI" }
 	end
+
 	lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>lua vim.lsp.buf.code_action() <CR>", "Code actions" }
 	lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file" }
 	lvim.builtin.which_key.mappings["h"] = nil
@@ -22,6 +23,11 @@ M.config = function()
 		s = { "<cmd>PackerSync<cr>", "Sync" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 		t = { "<cmd>PackerStatus<cr>", "Status" },
+	}
+	lvim.builtin.which_key.mappings["t"] = {
+		name = "Terminal",
+		h = { ":ToggleTerm size=20  direction=horizontal<CR>", "Horizontal" },
+		v = { ":ToggleTerm size= direction=vertical<CR>", "Vertical" },
 	}
 	lvim.builtin.which_key.mappings["f"] = lvim.builtin.which_key.mappings["s"]
 	lvim.builtin.which_key.mappings["s"] = { ':let @/=""<CR>', "No Highlight" }

@@ -84,6 +84,7 @@ M.config = function()
 			config = function()
 				require("colorizer").setup({
 					"css",
+					"scss",
 					"javascript",
 					html = {
 						mode = "foreground",

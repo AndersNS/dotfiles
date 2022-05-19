@@ -31,6 +31,14 @@ lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.dap.active = true
 
+lvim.builtin.terminal.persist_size = true
+lvim.builtin.terminal.size = function(term)
+	if term.direction == "horizontal" then
+		return 15
+	elseif term.direction == "vertical" then
+		return vim.o.columns * 0.4
+	end
+end
 require("user.treesitter").config()
 require("user.plugins").config()
 require("user.dap").config()
