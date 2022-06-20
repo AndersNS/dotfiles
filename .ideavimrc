@@ -10,6 +10,8 @@ set argtextobj
 set textobj-entire
 set ReplaceWithRegister
 set highlightedyank
+set sneak
+set which-key
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -21,6 +23,7 @@ set nu
 set scrolloff=5
 set relativenumber
 set number 
+set notimeout
 
 """ Idea specific settings ------------------
 set ideajoin
@@ -32,49 +35,82 @@ imap jk <Esc>
 
 map <tab>       <Action>(NextTab)
 map <s-tab>     <Action>(PreviousTab)
-map <leader>S   <Action>(IdeaVim.ReloadVimRc.reload)
 
+let g:WhichKeyDesc_zen = "<Space>z  Zen"
 map <leader>z   <Action>(ToggleDistractionFreeMode)
 
 map <leader>wv  <Action>(SplitVertically)
 map <leader>ws  <Action>(SplitHorizontally)
+
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
+
+" Buffers / windows
+let g:WhichKeyDesc_quit = "<Space>q  Quit"
 map <leader>q   <Action>(CloseContent)
+let g:WhichKeyDesc_close = "<Space>c  Close"
 map <leader>c   <Action>(CloseContent)
+
+let g:WhichKeyDesc_buffer = "<Space>b  Buffers"
+let g:WhichKeyDesc_buffer_all_but_active = "<Space>be Close all but active"
 map <leader>be  <Action>(CloseAllEditorsButActive)
+let g:WhichKeyDesc_buffer_all = "<Space>bw Close all"
 map <leader>bw  <Action>(CloseAllEditors)
 
-map <leader>e   <Action>(SelectInProjectView)
+" Git
+let g:WhichKeyDesc_git = "<Space>g  Git"
+let g:WhichKeyDesc_git_blame = "<Space>gl  Blame"
 map <leader>gl  <Action>(Annotate)
+let g:WhichKeyDesc_git_branches = "<Space>gb  Branches"
+map <leader>gb  <Action>(Git.Branches)
 
+" Debugging
+let g:WhichKeyDesc_debug = "<Space>d  Debug"
+let g:WhichKeyDesc_debug_breakpoint = "<Space>db  Breakpoint toggle"
 map <leader>db  <Action>(ToggleLineBreakpoint)
-map <leader>dr  <Action>(mainRunToolbarDebugProcess)
-map <leader>ds  <Action>(RunToolbarStopAction)
-
-map <leader>p   <Action>(SearchEverywhere)
-map <leader>ff  <Action>(FindInPath)
-map <leader>fs  <Action>(SaveAll)
-map <C-s>       <Action>(SaveDocument)
-map <leader>w   <Action>(SaveDocument)
-map <leader>/   <Action>(CommentByLineComment)
-map <leader>s   :let @/=""<CR>
-map <leader>e   <Action>(SelectInProjectView)
+let g:WhichKeyDesc_debug_run = "<Space>dr Run with debugging"
+map <leader>dr  <Action>(Debug)
+let g:WhichKeyDesc_debug_stop = "<Space>ds Stop debugging"
+map <leader>ds  <Action>(Stop)
 
 map <leader>td  <Action>(RiderUnitTestDebugContextAction)
 
+" Search
+let g:WhichKeyDesc_p = "<Space>p  Find"
+map <leader>p   <Action>(SearchEverywhere)
+
+let g:WhichKeyDesc_search = "<Space>f  Search"
+let g:WhichKeyDesc_search_text = "<Space>ff Text"
+map <leader>ft  <Action>(FindInPath)
+let g:WhichKeyDesc_search_recent = "<Space>ff  Recent"
+map <leader>fr  <Action>(RecentFiles)
+
+map <C-s>       <Action>(SaveDocument)
+let g:WhichKeyDesc_write = "<Space>w  Write"
+map <leader>w   <Action>(SaveDocument)
+let g:WhichKeyDesc_comment = "<Space>/  Comment"
+map <leader>/   <Action>(CommentByLineComment)
+
+let g:WhichKeyDesc_clear = "<Space>s  NoHighlight"
+map <leader>s   :let @/=""<CR>
+let g:WhichKeyDesc_explorer = "<Space>e  Explorer"
+map <leader>e   <Action>(SelectInProjectView)
+
+
 " Language
-map <leader>la  <Action>(ShowIntentionActions)
 map K           <Action>(QuickJavaDoc)
-map <leader>lr  <Action>(RenameElement)
 map gr          <Action>(RenameElement)
-map <leader>lf  <Action>(ReformatCode)
-map <C-n>       <Action>(GotoNextError)
-map <C-p>       <Action>(GotoPreviousError)
-map <leader>lR  <Action>(FindUsages)
-map <leader>ld  <Action>(GotoDeclaration)
-map <leader>li  <Action>(GotoImplementation)
 map gd          <Action>(GotoDeclaration)
 map gy          <Action>(GotoImplementation)
 map gr          <Action>(FindUsages)
+map <C-n>       <Action>(GotoNextError)
+map <C-p>       <Action>(GotoPreviousError)
+
+let g:WhichKeyDesc_lang = "<Space>l  LSP"
+map <leader>la  <Action>(ShowIntentionActions)
+map <leader>lr  <Action>(RenameElement)
+map <leader>lf  <Action>(ReformatCode)
+map <leader>lR  <Action>(FindUsages)
+map <leader>ld  <Action>(GotoDeclaration)
+map <leader>li  <Action>(GotoImplementation)
 

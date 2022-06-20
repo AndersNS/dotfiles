@@ -17,6 +17,11 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 lvim.lsp.automatic_servers_installation = true
 
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+vim.cmd([[colorscheme catppuccin]])
+
+lvim.colorscheme = "catppuccin"
+
 lvim.builtin.notify.active = true
 
 lvim.auto_close_tree = 1
