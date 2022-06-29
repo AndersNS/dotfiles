@@ -44,6 +44,7 @@ lvim.builtin.terminal.size = function(term)
 		return vim.o.columns * 0.4
 	end
 end
+
 require("user.treesitter").config()
 require("user.plugins").config()
 require("user.dap").config()

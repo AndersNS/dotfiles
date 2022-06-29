@@ -39,9 +39,6 @@ map <s-tab>     <Action>(PreviousTab)
 let g:WhichKeyDesc_zen = "<Space>z  Zen"
 map <leader>z   <Action>(ToggleDistractionFreeMode)
 
-map <leader>wv  <Action>(SplitVertically)
-map <leader>ws  <Action>(SplitHorizontally)
-
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 
