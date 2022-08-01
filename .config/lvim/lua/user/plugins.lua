@@ -49,11 +49,20 @@ M.config = function()
 			end,
 			cond = function() end,
 		},
+		{
+			"max397574/better-escape.nvim",
+			event = "InsertEnter",
+			config = function()
+				require("user.better-escape").config()
+			end,
+		},
 		{ "stevearc/dressing.nvim" },
 		{ "mzlogin/vim-markdown-toc" },
 		{
 			"ggandor/leap.nvim",
-			config = function() end,
+			config = function()
+				require("leap").set_default_keymaps()
+			end,
 		},
 		{ "tpope/vim-repeat" },
 		{

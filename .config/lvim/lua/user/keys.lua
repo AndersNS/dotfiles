@@ -4,6 +4,13 @@ M.config = function()
 	vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<TAB>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<C-c>", "<cmd> %y+ <CR>", { noremap = true, silent = false })
+	vim.api.nvim_set_keymap("i", "<C-b>", "<ESC>^i", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("i", "<C-e>", "<END>", { noremap = true, silent = true })
+
+	lvim.keys.insert_mode["kj"] = false
+	lvim.keys.insert_mode["jj"] = false
+	lvim.keys.insert_mode["jk"] = false
 
 	-- Autocommands (https://neovim.io/doc/user/autocmd.html)
 	-- lvim.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
