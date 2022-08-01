@@ -21,13 +21,14 @@ vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])
 
 lvim.colorscheme = "catppuccin"
-
 lvim.builtin.notify.active = true
 
 lvim.auto_close_tree = 1
 lvim.line_wrap_cursor_movement = false
 lvim.document_highlight = true
 lvim.transparent_window = false
+lvim.builtin.nvimtree.setup.filters.dotfiles = true
+lvim.builtin.nvimtree.setup.view.width = 60
 
 lvim.builtin.alpha.active = false
 lvim.builtin.lualine.active = true
@@ -35,6 +36,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.dap.active = true
+lvim.builtin.luasnip.sources.friendly_snippets = true
 
 lvim.builtin.terminal.persist_size = true
 lvim.builtin.terminal.size = function(term)
