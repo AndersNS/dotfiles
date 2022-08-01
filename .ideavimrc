@@ -33,6 +33,9 @@ set idearefactormode=keep
 imap jj <Esc>
 imap jk <Esc>
 
+imap <C-b> <ESC>^i
+imap <C-e> <END>
+
 map <tab>       <Action>(NextTab)
 map <s-tab>     <Action>(PreviousTab)
 
@@ -96,7 +99,7 @@ map <leader>e   <Action>(SelectInProjectView)
 
 " Language
 map K           <Action>(QuickJavaDoc)
-map gr          <Action>(RenameElement)
+map gR          <Action>(RenameElement)
 map gd          <Action>(GotoDeclaration)
 map gy          <Action>(GotoImplementation)
 map gr          <Action>(FindUsages)
