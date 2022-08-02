@@ -17,7 +17,7 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 lvim.lsp.automatic_servers_installation = true
 
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+-- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])
 
 lvim.colorscheme = "catppuccin"
@@ -37,7 +37,6 @@ lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.luasnip.sources.friendly_snippets = true
-
 lvim.builtin.terminal.persist_size = true
 lvim.builtin.terminal.size = function(term)
 	if term.direction == "horizontal" then
