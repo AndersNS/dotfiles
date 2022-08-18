@@ -130,8 +130,10 @@ alias tmvar='tmux attach -t variant || tmux new -s variant'
 alias tmpriv='tmux attach -t priv || tmux new -s priv'
 alias tmn='tmux attach -t $1 || tmux new -s $1'
 alias lc='exa -la --icons'
+alias exat='exa -T --icons --git-ignore'
 alias lzd='lazydocker'
 alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
+alias docker='podman'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -151,6 +153,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
 export GOPATH="$HOME/go"
 
+export DOCKER_HOST='unix:///Users/andersns/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fpath+=${ZDOTDIR:-~}/.zsh_functions
