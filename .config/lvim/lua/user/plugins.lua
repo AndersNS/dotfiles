@@ -91,6 +91,19 @@ M.config = function()
       ft = { "rust", "rs" },
     },
     {
+      "Saecki/crates.nvim",
+      event = { "BufRead Cargo.toml" },
+      requires = { "plenary.nvim" },
+      config = function()
+        require("crates").setup({
+          null_ls = {
+            enabled = true,
+            name = "Crates",
+          },
+        })
+      end,
+    },
+    {
       "mhinz/vim-startify",
       disable = lvim.builtin.alpha.active,
       config = function()

@@ -17,7 +17,7 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 lvim.lsp.automatic_servers_installation = true
 
--- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+-- vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 vim.cmd([[colorscheme catppuccin]])
 
 lvim.colorscheme = "catppuccin"
@@ -45,6 +45,7 @@ lvim.builtin.terminal.size = function(term)
 		return vim.o.columns * 0.4
 	end
 end
+lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 require("user.treesitter").config()
 require("user.plugins").config()

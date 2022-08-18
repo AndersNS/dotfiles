@@ -67,9 +67,9 @@ local config = {
 			hop = false,
 			indent_blankline = true,
 			lightspeed = false,
-			["neo-tree"] = true,
+			["neo-tree"] = false,
 			notify = true,
-			["nvim-tree"] = false,
+			["nvim-tree"] = true,
 			["nvim-web-devicons"] = true,
 			rainbow = true,
 			symbols_outline = false,
@@ -106,7 +106,7 @@ local config = {
 				null_ls.builtins.formatting.rufo,
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.rustfmt,
+				-- null_ls.builtins.formatting.rustfmt,
 
 				-- Set a linter
 				null_ls.builtins.diagnostics.rubocop,
@@ -131,7 +131,28 @@ local config = {
 			return config -- return final config table
 		end,
 		treesitter = {
-			ensure_installed = { "lua" },
+			ensure_installed = {
+				"lua",
+				"bash",
+				"c_sharp",
+				"css",
+				"dockerfile",
+				"erlang",
+				"html",
+				"http",
+				"javascript",
+				"json",
+				"json5",
+				"llvm",
+				"python",
+				"rust",
+				"scss",
+				"sql",
+				"toml",
+				"tsx",
+				"typescript",
+				"yaml",
+			},
 		},
 		["nvim-lsp-installer"] = {
 			ensure_installed = { "sumneko_lua" },
@@ -161,6 +182,93 @@ local config = {
 				["<leader>"] = {
 					-- which-key registration table for normal mode, leader prefix
 					-- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
+					d = {
+						name = "Debugger",
+						b = {
+							function()
+								require("dap").toggle_breakpoint()
+							end,
+							"Toggle Breakpoint",
+						},
+						B = {
+							function()
+								require("dap").clear_breakpoints()
+							end,
+							"Clear Breakpoints",
+						},
+						c = {
+							function()
+								require("dap").continue()
+							end,
+							"Continue",
+						},
+						i = {
+							function()
+								require("dap").step_into()
+							end,
+							"Step Into",
+						},
+						l = {
+							function()
+								require("dapui").float_element("breakpoints")
+							end,
+							"List Breakpoints",
+						},
+						o = {
+							function()
+								require("dap").step_over()
+							end,
+							"Step Over",
+						},
+						q = {
+							function()
+								require("dap").close()
+							end,
+							"Close Session",
+						},
+						Q = {
+							function()
+								require("dap").terminate()
+							end,
+							"Terminate",
+						},
+						r = {
+							function()
+								require("dap").repl.toggle()
+							end,
+							"REPL",
+						},
+						s = {
+							function()
+								require("dapui").float_element("scopes")
+							end,
+							"Scopes",
+						},
+						t = {
+							function()
+								require("dapui").float_element("stacks")
+							end,
+							"Threads",
+						},
+						u = {
+							function()
+								require("dapui").toggle()
+							end,
+							"Toggle Debugger UI",
+						},
+						w = {
+							function()
+								require("dapui").float_element("watches")
+							end,
+							"Watches",
+						},
+						x = {
+							function()
+								require("dap.ui.widgets").hover()
+							end,
+							"Inspect",
+						},
+					},
 				},
 			},
 		},
@@ -187,6 +295,7 @@ local config = {
 		servers = {
 			-- "pyright"
 		},
+		skip_setup = { "rust_analyzer" },
 		-- easily add or disable built in mappings added during LSP attaching
 		mappings = {
 			n = {
@@ -203,8 +312,7 @@ local config = {
 		-- end,
 
 		-- Add overrides for LSP server settings, the keys are the name of the server
-		["server-settings"] = {
-		},
+		["server-settings"] = {},
 	},
 
 	-- Diagnostics configuration (for vim.diagnostics.config({}))
