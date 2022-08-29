@@ -85,7 +85,7 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 source $HOME/.aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfgg='gg --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dfa='dotfiles add $HOME/.config/astronvim/lua/user/**/*.lua && dotfiles add -u && dotfiles commit'
+alias dfa='dotfiles add $HOME/.config/astronvim/lua/user/**/*.lua && dotfiles add -u && dotfiles commit -S'
 alias dfc='dotfiles add -u && dotfiles commit -m $1'
 alias dfs='dotfiles status'
 alias dfu="dotfiles add -u && dotfiles add $HOME/.config/lvim/**/*.lua"
@@ -140,3 +140,4 @@ eval "$(zoxide init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+export GPG_TTY=$(tty)
