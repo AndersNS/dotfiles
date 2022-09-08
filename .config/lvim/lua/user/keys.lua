@@ -2,8 +2,8 @@ local M = {}
 
 M.config = function()
 	vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
-	-- vim.api.nvim_set_keymap("n", "<TAB>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-	-- vim.api.nvim_set_keymap("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<C-c>", "<cmd> %y+ <CR>", { noremap = true, silent = false })
 	vim.api.nvim_set_keymap("i", "<C-b>", "<ESC>^i", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("i", "<C-e>", "<END>", { noremap = true, silent = true })
@@ -14,6 +14,12 @@ M.config = function()
 	lvim.keys.insert_mode["kj"] = false
 	lvim.keys.insert_mode["jj"] = false
 	lvim.keys.insert_mode["jk"] = false
+
+	-- resize with arrows
+	vim.keymap.set("n", "<Left>", require("smart-splits").resize_left)
+	vim.keymap.set("n", "<Down>", require("smart-splits").resize_down)
+	vim.keymap.set("n", "<Up>", require("smart-splits").resize_up)
+	vim.keymap.set("n", "<Right>", require("smart-splits").resize_right)
 
 	-- Autocommands (https://neovim.io/doc/user/autocmd.html)
 	-- lvim.user_autocommands = {{ "BufWinEnter", "*", "echo \"hi again\""}}
@@ -37,6 +43,12 @@ M.config = function()
 		name = "Terminal",
 		h = { ":ToggleTerm size=20  direction=horizontal<CR>", "Horizontal" },
 		v = { ":ToggleTerm size= direction=vertical<CR>", "Vertical" },
+		t = { "<cmd>TroubleToggle<cr>", "trouble" },
+		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
+		d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
+		q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+		l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+		r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 	}
 	-- lvim.builtin.which_key.mappings["f"] = lvim.builtin.which_key.mappings["s"]
 	-- lvim.builtin.which_key.mappings["s"] = { ':let @/=""<CR>', "No Highlight" }
