@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -83,7 +83,7 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 
 
 source $HOME/.aliases
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfgg='gg --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfa='dotfiles add $HOME/.config/astronvim/lua/user/**/*.lua && dotfiles add -u && dotfiles commit -S'
 alias dfc='dotfiles add -u && dotfiles commit -m $1'
@@ -103,6 +103,9 @@ alias lc='exa -la --icons'
 alias exat='exa -T --icons --git-ignore'
 alias lzd='lazydocker'
 alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
+alias neovide='/Applications/Neovide.app/Contents/MacOS/neovide'
+alias nvim='lvim'
+alias vim='nvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -131,13 +134,14 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/usr/local/opt/node@14/bin:$PATH"
-
+PATH=/usr/local/bin:$PATH
 # To make R work properly
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 eval "$(zoxide init zsh)"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
 export GPG_TTY=$(tty)
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

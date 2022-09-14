@@ -22,4 +22,3 @@ alias branchclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git
 alias lzn='lazynpm'
 alias lzd='lazydocker'
 alias lzg='lazygit'
-alias neovide='(~/utils/neovide &) > /dev/null'

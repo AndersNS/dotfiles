@@ -147,6 +147,7 @@ M.config = function()
 			end,
 			cmd = "TroubleToggle",
 		},
+		{ "nvim-treesitter/nvim-treesitter-context" },
 		{
 			"jose-elias-alvarez/nvim-lsp-ts-utils",
 			ft = {
