@@ -36,8 +36,8 @@ imap jk <Esc>
 imap <C-b> <ESC>^i
 imap <C-e> <END>
 
-map <tab>       <Action>(NextTab)
-map <s-tab>     <Action>(PreviousTab)
+map <S-l>       <Action>(NextTab)
+map <s-h>     <Action>(PreviousTab)
 
 let g:WhichKeyDesc_zen = "<Space>z  Zen"
 map <leader>z   <Action>(ToggleDistractionFreeMode)
@@ -102,7 +102,7 @@ map K           <Action>(QuickJavaDoc)
 map gR          <Action>(RenameElement)
 map gd          <Action>(GotoDeclaration)
 map gy          <Action>(GotoImplementation)
-map gr          <Action>(FindUsages)
+noremap gr          <Action>(FindUsages)
 map <C-n>       <Action>(GotoNextError)
 map <C-p>       <Action>(GotoPreviousError)
 

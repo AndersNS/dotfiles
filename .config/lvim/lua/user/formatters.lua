@@ -5,7 +5,7 @@ M.config = function()
 	local formatters = require("lvim.lsp.null-ls.formatters")
 	formatters.setup({
 		{
-			exe = "prettier",
+			exe = "prettierd",
 			---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
 			filetypes = { "css", "javascript", "typescript", "typescriptreact", "json", "jsonc", "html" },
 		},

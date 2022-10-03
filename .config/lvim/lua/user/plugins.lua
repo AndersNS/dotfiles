@@ -119,6 +119,33 @@ M.config = function()
 			end,
 		},
 		{
+			"pwntester/octo.nvim",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim",
+				"kyazdani42/nvim-web-devicons",
+			},
+			config = function()
+				require("octo").setup()
+			end,
+			event = "BufRead",
+		},
+
+		{
+			"sindrets/diffview.nvim",
+			event = "BufRead",
+		},
+		{
+			"nacro90/numb.nvim",
+			event = "BufRead",
+			config = function()
+				require("numb").setup({
+					show_numbers = true, -- Enable 'number' for the window while peeking
+					show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+				})
+			end,
+		},
+		{
 			"simrat39/symbols-outline.nvim",
 			config = function()
 				require("symbols-outline").setup()

@@ -27,6 +27,29 @@ M.config = function()
 		lvim.builtin.which_key.mappings["d"]["g"] = { "<cmd>lua require('dapui').toggle() <CR>", "Toggle UI" }
 	end
 
+	lvim.builtin.which_key.mappings["o"] = {
+		name = "Octo",
+		p = {
+			name = "Pull requests",
+			l = { "<cmd>Octo pr list<CR>", "List" },
+			r = { "<cmd>Octo pr reload<CR>", "Reload" },
+		},
+		r = {
+			name = "Review",
+			r = {
+				"<cmd>Octo review start<CR>",
+				"Start review",
+			},
+			s = {
+				"<cmd>Octo review submit<CR>",
+				"Submit review",
+			},
+			c = {
+				"<cmd>:lua require('octo.reviews').get_current_review():submit 'COMMENT' <CR>",
+				"Submit review with comments",
+			},
+		},
+	}
 	lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>lua vim.lsp.buf.code_action() <CR>", "Code actions" }
 	lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file" }
 	lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }
