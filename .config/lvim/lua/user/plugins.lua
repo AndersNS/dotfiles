@@ -5,11 +5,6 @@ M.config = function()
 		{ "sainnhe/gruvbox-material" },
 		{ "EdenEast/nightfox.nvim" },
 		{
-			"abzcoding/tokyonight.nvim",
-			branch = "feat/local",
-			config = function() end,
-		},
-		{
 			"rose-pine/neovim",
 			as = "rose-pine",
 			config = function() end,
@@ -80,16 +75,6 @@ M.config = function()
 					},
 				})
 			end,
-		},
-		{
-			"rcarriga/nvim-dap-ui",
-			config = function()
-				require("dapui").setup()
-			end,
-			ft = { "python", "rust", "rs", "go" },
-			event = "BufReadPost",
-			requires = { "mfussenegger/nvim-dap" },
-			disable = not lvim.builtin.dap.active,
 		},
 		{
 			"simrat39/rust-tools.nvim",

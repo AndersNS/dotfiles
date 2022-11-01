@@ -45,6 +45,9 @@ map <leader>z   <Action>(ToggleDistractionFreeMode)
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+
 " Buffers / windows
 let g:WhichKeyDesc_quit = "<Space>q  Quit"
 map <leader>q   <Action>(CloseContent)
@@ -56,6 +59,10 @@ let g:WhichKeyDesc_buffer_all_but_active = "<Space>be Close all but active"
 map <leader>be  <Action>(CloseAllEditorsButActive)
 let g:WhichKeyDesc_buffer_all = "<Space>bw Close all"
 map <leader>bw  <Action>(CloseAllEditors)
+let g:WhichKeyDesc_buffer_left = "<Space>bh Close all to the left"
+map <leader>bh <Action>(CloseAllToTheLeft)
+let g:WhichKeyDesc_buffer_right = "<Space>bl Close all to the right"
+map <leader>bl <Action>(CloseAllToTheRight)
 
 " Git
 let g:WhichKeyDesc_git = "<Space>g  Git"

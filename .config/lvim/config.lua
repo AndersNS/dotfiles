@@ -15,10 +15,9 @@ init_custom_options()
 
 lvim.format_on_save = true
 lvim.auto_complete = true
-lvim.lsp.installer.setup.automatic_installation = true
+-- lvim.lsp.installer.setup.automatic_installation = true
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
-vim.cmd([[colorscheme catppuccin]])
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 lvim.colorscheme = "catppuccin"
 lvim.builtin.notify.active = true
