@@ -17,10 +17,9 @@ lvim.format_on_save = true
 lvim.auto_complete = true
 -- lvim.lsp.installer.setup.automatic_installation = true
 
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+-- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
-lvim.colorscheme = "catppuccin"
-lvim.builtin.notify.active = true
+lvim.colorscheme = "duskfox"
 
 lvim.auto_close_tree = 1
 lvim.line_wrap_cursor_movement = false
@@ -44,6 +43,7 @@ lvim.builtin.terminal.size = function(term)
 		return vim.o.columns * 0.4
 	end
 end
+
 lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 require("user.treesitter").config()
