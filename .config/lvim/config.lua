@@ -12,7 +12,7 @@ local init_custom_options = function()
 	end
 end
 init_custom_options()
-
+vim.opt.guifont = { "JetBrainsMono Nerd Font Mono", ":h14" }
 lvim.format_on_save = true
 lvim.auto_complete = true
 -- lvim.lsp.installer.setup.automatic_installation = true
@@ -50,4 +50,5 @@ require("user.treesitter").config()
 require("user.plugins").config()
 require("user.dap").config()
 require("user.formatters").config()
+require("user.linters").config()
 require("user.keys").config()

@@ -160,20 +160,6 @@ M.config = function()
 			cmd = "TroubleToggle",
 		},
 		{ "nvim-treesitter/nvim-treesitter-context" },
-		{
-			"jose-elias-alvarez/nvim-lsp-ts-utils",
-			ft = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-			},
-			opt = true,
-			event = "BufReadPre",
-			before = "williamboman/nvim-lsp-installer",
-		},
 	}
 end
 
