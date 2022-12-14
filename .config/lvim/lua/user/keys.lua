@@ -27,6 +27,8 @@ M.config = function()
 		lvim.builtin.which_key.mappings["d"]["g"] = { "<cmd>lua require('dapui').toggle() <CR>", "Toggle UI" }
 	end
 
+	lvim.builtin.which_key.setup.plugins.registers = true
+
 	lvim.builtin.which_key.mappings["o"] = {
 		name = "Octo",
 		p = {

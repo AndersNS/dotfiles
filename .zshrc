@@ -71,6 +71,7 @@ plugins=(
   aliases
   git
   fzf
+  ripgrep
   docker
   docker-compose
   tmux
@@ -126,8 +127,8 @@ export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
 export GOPATH="$HOME/go"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 autoload -Uz compinit && compinit
 

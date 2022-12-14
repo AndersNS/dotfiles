@@ -3,12 +3,10 @@ let mapleader=" "
 
 """ Plugins  --------------------------------
 set surround
-set multiple-cursors
 set commentary
 set argtextobj
 "set easymotion
 set textobj-entire
-set ReplaceWithRegister
 set highlightedyank
 set sneak
 set which-key
