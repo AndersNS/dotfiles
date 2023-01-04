@@ -26,6 +26,7 @@ M.config = function()
 				require("user.better-escape").config()
 			end,
 		},
+		{ "towolf/vim-helm" },
 		{ "stevearc/dressing.nvim" },
 		{ "mrjones2014/smart-splits.nvim" },
 		{ "mzlogin/vim-markdown-toc" },

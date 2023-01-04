@@ -70,19 +70,31 @@ colors:
     - { index: 17, color: '0xdb4b4b' }
 
 font:
+  # normal:
+  #   family: "JetBrainsMono Nerd Font Mono"
+  #   style: Regular
+  # bold:
+  #   family: "JetBrainsMono Nerd Font Mono"
+  #   style: Bold
+  # italic:
+  #   family: "JetBrainsMono Nerd Font Mono"
+  #   style: Italic
+  # bold_italic:
+  #   family: "JetBrainsMono Nerd Font Mono"
+  #   style: Bold Italic
+
   normal:
-    family: "JetBrainsMono Nerd Font Mono"
+    family: "Hack Nerd Font Mono"
     style: Regular
   bold:
-    family: "JetBrainsMono Nerd Font Mono"
+    family: "Hack Nerd Font Mono"
     style: Bold
   italic:
-    family: "JetBrainsMono Nerd Font Mono"
+    family: "Hack Nerd Font Mono"
     style: Italic
   bold_italic:
-    family: "JetBrainsMono Nerd Font Mono"
+    family: "Hack Nerd Font Mono"
     style: Bold Italic
-
   # Point size
   size: 16.0
 
