@@ -2,16 +2,17 @@ local M = {}
 
 M.config = function()
 	lvim.plugins = {
+		{ "eandrju/cellular-automaton.nvim" },
 		{ "sainnhe/gruvbox-material" },
 		{ "EdenEast/nightfox.nvim" },
 		{
 			"rose-pine/neovim",
-			as = "rose-pine",
+			name = "rose-pine",
 			config = function() end,
 		},
 		{
 			"catppuccin/nvim",
-			as = "catppuccin",
+			name = "catppuccin",
 			config = function() end,
 		},
 		{
@@ -44,7 +45,7 @@ M.config = function()
 		{ "sotte/presenting.vim", ft = { "markdown" } },
 		{
 			"iamcco/markdown-preview.nvim",
-			run = [[sh -c 'cd app && yarn install']],
+			build = [[sh -c 'cd app && yarn install']],
 			ft = { "markdown" },
 		},
 		{
@@ -87,7 +88,7 @@ M.config = function()
 		{
 			"Saecki/crates.nvim",
 			event = { "BufRead Cargo.toml" },
-			requires = { "plenary.nvim" },
+			dependencies = { "plenary.nvim" },
 			config = function()
 				require("crates").setup({
 					null_ls = {
@@ -99,24 +100,11 @@ M.config = function()
 		},
 		{
 			"mhinz/vim-startify",
-			disable = lvim.builtin.alpha.active,
+			enable = not lvim.builtin.alpha.active,
 			config = function()
 				require("user.startify").config()
 			end,
 		},
-		{
-			"pwntester/octo.nvim",
-			requires = {
-				"nvim-lua/plenary.nvim",
-				"nvim-telescope/telescope.nvim",
-				"kyazdani42/nvim-web-devicons",
-			},
-			config = function()
-				require("octo").setup()
-			end,
-			event = "BufRead",
-		},
-
 		{
 			"sindrets/diffview.nvim",
 			event = "BufRead",
@@ -151,7 +139,7 @@ M.config = function()
 			"folke/trouble.nvim",
 			config = function()
 				require("trouble").setup({
-					auto_open = true,
+					auto_open = false,
 					auto_close = true,
 					padding = false,
 					height = 10,

@@ -104,10 +104,12 @@ map <leader>e   <Action>(SelectInProjectView)
 
 " Language
 map K           <Action>(QuickJavaDoc)
+map gh          <Action>(QuickJavaDoc)
+map gE          <Action>(ShowErrorDescription)
 map gR          <Action>(RenameElement)
 map gd          <Action>(GotoDeclaration)
 map gy          <Action>(GotoImplementation)
-noremap gr          <Action>(FindUsages)
+map gr          <Action>(FindUsages)
 map <C-n>       <Action>(GotoNextError)
 map <C-p>       <Action>(GotoPreviousError)
 
