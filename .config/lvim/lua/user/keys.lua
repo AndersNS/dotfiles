@@ -29,41 +29,9 @@ M.config = function()
 
 	lvim.builtin.which_key.setup.plugins.registers = true
 
-	lvim.builtin.which_key.mappings["o"] = {
-		name = "Octo",
-		p = {
-			name = "Pull requests",
-			l = { "<cmd>Octo pr list<CR>", "List" },
-			r = { "<cmd>Octo pr reload<CR>", "Reload" },
-		},
-		r = {
-			name = "Review",
-			r = {
-				"<cmd>Octo review start<CR>",
-				"Start review",
-			},
-			s = {
-				"<cmd>Octo review submit<CR>",
-				"Submit review",
-			},
-			c = {
-				"<cmd>:lua require('octo.reviews').get_current_review():submit 'COMMENT' <CR>",
-				"Submit review with comments",
-			},
-		},
-	}
 	lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>lua vim.lsp.buf.code_action() <CR>", "Code actions" }
 	lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file" }
 	lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }
-	lvim.builtin.which_key.mappings["P"] = {
-		name = "Packer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
-		i = { "<cmd>PackerInstall<cr>", "Install" },
-		r = { "<cmd>lua require('lv-utils').reload_lv_config()<cr>", "Reload" },
-		s = { "<cmd>PackerSync<cr>", "Sync" },
-		u = { "<cmd>PackerUpdate<cr>", "Update" },
-		t = { "<cmd>PackerStatus<cr>", "Status" },
-	}
 	lvim.builtin.which_key.mappings["t"] = {
 		name = "Terminal",
 		h = { ":ToggleTerm size=20  direction=horizontal<CR>", "Horizontal" },
@@ -75,12 +43,6 @@ M.config = function()
 		l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
 		r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 	}
-	-- lvim.builtin.which_key.mappings["f"] = lvim.builtin.which_key.mappings["s"]
-	-- lvim.builtin.which_key.mappings["s"] = { ':let @/=""<CR>', "No Highlight" }
-	-- lvim.builtin.which_key.mappings["l"]["r"] = { "<cmd>Lspsaga rename<cr>", "Rename" }
-	-- lvim.builtin.which_key.mappings["l"]["R"] = { "<cmd>Lspsaga lsp_finder<cr>", "References" }
-	-- lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>Lspsaga code_action<cr>", "Code Action" }
-	-- Not sure why config function doesnt work, but there you go, might give some errors on startup
 end
 
 return M

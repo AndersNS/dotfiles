@@ -64,7 +64,7 @@ M.config = function()
 		},
 		{ "yashguptaz/calvera-dark.nvim" },
 		{ "andymass/vim-matchup" },
-		{ "jxnblk/vim-mdx-js" },
+		{ "jxnblk/vim-mdx-js", ft = "markdown mdx" },
 		{
 			"norcalli/nvim-colorizer.lua",
 			config = function()

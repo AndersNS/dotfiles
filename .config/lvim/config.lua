@@ -15,11 +15,9 @@ init_custom_options()
 vim.opt.guifont = { "JetBrainsMono Nerd Font Mono", ":h14" }
 lvim.format_on_save = true
 lvim.auto_complete = true
--- lvim.lsp.installer.setup.automatic_installation = true
 
--- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-
-lvim.colorscheme = "duskfox"
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+lvim.colorscheme = "catppuccin"
 
 lvim.auto_close_tree = 1
 lvim.line_wrap_cursor_movement = false
