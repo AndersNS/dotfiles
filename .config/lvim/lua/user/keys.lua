@@ -36,12 +36,7 @@ M.config = function()
 		name = "Terminal",
 		h = { ":ToggleTerm size=20  direction=horizontal<CR>", "Horizontal" },
 		v = { ":ToggleTerm size= direction=vertical<CR>", "Vertical" },
-		t = { "<cmd>TroubleToggle<cr>", "trouble" },
-		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
-		d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
-		q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-		l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-		r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
+		w = { ":ToggleTerm size= direction=window<CR>", "Window" },
 	}
 end
 

@@ -80,6 +80,7 @@ M.config = function()
 		},
 		{
 			"simrat39/rust-tools.nvim",
+			lazy = true,
 			config = function()
 				require("user.rust_tools").config()
 			end,

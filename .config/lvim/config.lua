@@ -23,8 +23,11 @@ lvim.auto_close_tree = 1
 lvim.line_wrap_cursor_movement = false
 lvim.document_highlight = true
 lvim.transparent_window = false
-lvim.builtin.nvimtree.setup.filters.dotfiles = true
+
+lvim.builtin.nvimtree.setup.filters.dotfiles = false
 lvim.builtin.nvimtree.setup.view.width = 60
+lvim.builtin.nvimtree.setup.view.number = true
+lvim.builtin.nvimtree.setup.view.relativenumber = true
 
 lvim.builtin.alpha.active = false
 lvim.builtin.lualine.active = true
@@ -33,6 +36,8 @@ lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.luasnip.sources.friendly_snippets = true
+
+lvim.builtin.terminal.direction = "vertical"
 lvim.builtin.terminal.persist_size = true
 lvim.builtin.terminal.size = function(term)
 	if term.direction == "horizontal" then
