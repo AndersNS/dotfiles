@@ -1,7 +1,6 @@
 local M = {}
 
 M.config = function()
-	vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 	vim.api.nvim_set_keymap("n", "<C-c>", "<cmd> %y+ <CR>", { noremap = true, silent = false })
@@ -30,14 +29,42 @@ M.config = function()
 	lvim.builtin.which_key.setup.plugins.registers = true
 
 	lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>lua vim.lsp.buf.code_action() <CR>", "Code actions" }
+	lvim.builtin.which_key.mappings["l"]["T"] = { "<cmd>TroubleToggle<cr>", "Trouble toggle" }
+	lvim.builtin.which_key.mappings["l"]["t"] = { "<cmd>Trouble<cr>", "Trouble" }
+	vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help<cr>", { noremap = true, silent = true })
+
+	vim.api.nvim_set_keymap(
+		"n",
+		"]e",
+		"<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>",
+		{ noremap = true, silent = true }
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"[e",
+		"<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>",
+		{ noremap = true, silent = true }
+	)
+	vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
+	vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
+
 	lvim.builtin.which_key.mappings["p"] = { ":Telescope find_files<CR>", "Find file" }
 	lvim.builtin.which_key.mappings["c"] = { ":BufferKill<CR>", "Close buffer" }
 	lvim.builtin.which_key.mappings["t"] = {
 		name = "Terminal",
 		h = { ":ToggleTerm size=20  direction=horizontal<CR>", "Horizontal" },
-		v = { ":ToggleTerm size= direction=vertical<CR>", "Vertical" },
-		w = { ":ToggleTerm size= direction=window<CR>", "Window" },
+		v = { ":ToggleTerm size=20 direction=vertical<CR>", "Vertical" },
+		w = { ":ToggleTerm direction=window<CR>", "Window" },
 	}
+end
+
+function M.diagnostic_goto(next, severity)
+	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+	severity = severity and vim.diagnostic.severity[severity] or nil
+	return function()
+		go({ severity = severity })
+	end
 end
 
 return M
