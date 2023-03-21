@@ -16,9 +16,6 @@ vim.opt.guifont = { "JetBrainsMono Nerd Font Mono", ":h14" }
 lvim.format_on_save = true
 lvim.auto_complete = true
 
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-lvim.colorscheme = "catppuccin"
-
 lvim.auto_close_tree = 1
 lvim.line_wrap_cursor_movement = false
 lvim.document_highlight = true
@@ -39,6 +36,7 @@ lvim.builtin.luasnip.sources.friendly_snippets = true
 
 lvim.builtin.terminal.direction = "vertical"
 lvim.builtin.terminal.persist_size = true
+
 lvim.builtin.terminal.size = function(term)
 	if term.direction == "horizontal" then
 		return 15

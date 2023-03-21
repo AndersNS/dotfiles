@@ -28,6 +28,11 @@ M.config = function()
 
 	lvim.builtin.which_key.setup.plugins.registers = true
 
+	lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>lua require('spectre').open()<CR>", "Open spectre" }
+	lvim.builtin.which_key.mappings["s"]["w"] =
+		{ "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "Word search" }
+	lvim.lsp.buffer_mappings.visual_mode["<leader>s"] = { "<esc>:lua require('spectre').open_visual()<CR>", "Spectre" }
+
 	lvim.builtin.which_key.mappings["l"]["a"] = { "<cmd>lua vim.lsp.buf.code_action() <CR>", "Code actions" }
 	lvim.builtin.which_key.mappings["l"]["T"] = { "<cmd>TroubleToggle<cr>", "Trouble toggle" }
 	lvim.builtin.which_key.mappings["l"]["t"] = { "<cmd>Trouble<cr>", "Trouble" }
@@ -57,14 +62,6 @@ M.config = function()
 		v = { ":ToggleTerm size=20 direction=vertical<CR>", "Vertical" },
 		w = { ":ToggleTerm direction=window<CR>", "Window" },
 	}
-end
-
-function M.diagnostic_goto(next, severity)
-	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
-	severity = severity and vim.diagnostic.severity[severity] or nil
-	return function()
-		go({ severity = severity })
-	end
 end
 
 return M

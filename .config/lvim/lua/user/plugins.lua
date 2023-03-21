@@ -3,28 +3,50 @@ local M = {}
 M.config = function()
 	lvim.plugins = {
 		{ "eandrju/cellular-automaton.nvim" },
-		{ "sainnhe/gruvbox-material" },
-		{ "EdenEast/nightfox.nvim" },
 		{
 			"rose-pine/neovim",
 			name = "rose-pine",
-			config = function() end,
+			config = function()
+				require("user.colors").rose_pine()
+				lvim.colorscheme = "rose-pine"
+			end,
+			cond = function()
+				return false
+			end,
 		},
 		{
 			"catppuccin/nvim",
 			name = "catppuccin",
-			config = function() end,
+			config = function()
+				require("user.colors").catppuccin()
+				lvim.colorscheme = "catppuccin"
+			end,
+			cond = function()
+				return true
+			end,
 		},
 		{
 			"rebelot/kanagawa.nvim",
-			config = function() end,
-			cond = function() end,
+			config = function()
+				require("user.colors").kanagawa()
+				lvim.colorscheme = "kanagawa"
+			end,
+			cond = function()
+				return false
+			end,
 		},
 		{
 			"max397574/better-escape.nvim",
 			event = "InsertEnter",
 			config = function()
 				require("user.better-escape").config()
+			end,
+		},
+		{
+			"windwp/nvim-spectre",
+			event = "BufRead",
+			config = function()
+				require("spectre").setup()
 			end,
 		},
 		{ "towolf/vim-helm" },
