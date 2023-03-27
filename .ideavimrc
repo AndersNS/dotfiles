@@ -105,6 +105,7 @@ map <leader>e   <Action>(SelectInProjectView)
 " Language
 map K           <Action>(QuickJavaDoc)
 map gh          <Action>(QuickJavaDoc)
+map gl          <Action>(ShowErrorDescription)
 map gE          <Action>(ShowErrorDescription)
 map gR          <Action>(RenameElement)
 map gd          <Action>(GotoDeclaration)

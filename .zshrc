@@ -98,6 +98,7 @@ alias gg="lazygit"
 alias ns='npm start'
 alias n='npm'
 alias rider='open -na "Rider.app" --args $1'
+alias ridereap='open -na "Rider EAP.app" --args $1'
 alias tmnhn='tmux attach -t nhn || tmux new -s nhn'
 alias tmvar='tmux attach -t variant || tmux new -s variant'
 alias tmpriv='tmux attach -t priv || tmux new -s priv'
@@ -121,6 +122,8 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 # # --follow: Follow symlinks
 # # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+bindkey "ç" fzf-cd-widget
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$(yarn global bin)"
