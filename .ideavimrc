@@ -111,8 +111,8 @@ map gR          <Action>(RenameElement)
 map gd          <Action>(GotoDeclaration)
 map gy          <Action>(GotoImplementation)
 map gr          <Action>(FindUsages)
-map <C-n>       <Action>(GotoNextError)
-map <C-p>       <Action>(GotoPreviousError)
+map ]e          <Action>(GotoNextError)
+map [e          <Action>(GotoPreviousError)
 
 let g:WhichKeyDesc_lang = "<Space>l  LSP"
 map <leader>la  <Action>(ShowIntentionActions)
