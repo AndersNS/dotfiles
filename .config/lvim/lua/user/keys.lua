@@ -62,6 +62,13 @@ M.config = function()
     v = { ":ToggleTerm size=20 direction=vertical<CR>", "Vertical" },
     w = { ":ToggleTerm direction=window<CR>", "Window" },
   }
+
+  lvim.builtin.which_key.mappings["a"] = {
+    name = "A.I.",
+    s = { "<cmd>Copilot suggestion<cr>", "Toggle Copilot suggestion" },
+    p = { "<cmd>Copilot panel<cr>", "Toggle Copilot panel" },
+    t = { "<cmd>Copilot toggle<cr>", "Toggle Copilot" }
+  }
 end
 
 return M
