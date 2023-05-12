@@ -77,9 +77,9 @@ M.catppuccin = function()
 				},
 				underlines = {
 					errors = { "undercurl" },
-					hints = {},
+					hints = { "undercurl" },
 					warnings = { "undercurl" },
-					information = {},
+					information = { "undercurl" },
 				},
 			},
 			dap = {
