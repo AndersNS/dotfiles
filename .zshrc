@@ -136,10 +136,7 @@ export GOPATH="$HOME/go"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-autoload -Uz compinit && compinit
 
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
 export PATH="/usr/local/opt/node@14/bin:$PATH"
 PATH=/usr/local/bin:$PATH
 # To make R work properly
@@ -153,3 +150,13 @@ export GPG_TTY=$(tty)
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+autoload -U compinit promptinit
+
+
+promptinit
+compinit
+
+autoload -U +X bashcompinit && bashcompinit
+
+eval "$(zoxide init zsh)"

@@ -27,6 +27,8 @@ set notimeout
 set ideajoin
 set idearefactormode=keep
 
+set clipboard=unnamed
+
 """ Mappings --------------------------------
 imap jj <Esc>
 imap jk <Esc>
@@ -84,11 +86,11 @@ map <leader>td  <Action>(RiderUnitTestDebugContextAction)
 let g:WhichKeyDesc_p = "<Space>p  Find"
 map <leader>p   <Action>(SearchEverywhere)
 
-let g:WhichKeyDesc_search = "<Space>f  Search"
-let g:WhichKeyDesc_search_text = "<Space>ff Text"
-map <leader>ft  <Action>(FindInPath)
-let g:WhichKeyDesc_search_recent = "<Space>ff  Recent"
-map <leader>fr  <Action>(RecentFiles)
+let g:WhichKeyDesc_search = "<Space>s  Search"
+let g:WhichKeyDesc_search_text = "<Space>st Text"
+map <leader>st  <Action>(FindInPath)
+let g:WhichKeyDesc_search_recent = "<Space>sr  Recent"
+map <leader>sr  <Action>(RecentFiles)
 
 map <C-s>       <Action>(SaveDocument)
 let g:WhichKeyDesc_write = "<Space>w  Write"

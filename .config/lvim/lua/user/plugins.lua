@@ -51,67 +51,75 @@ M.config = function()
 			end,
 		},
 		{ "towolf/vim-helm" },
-		{
-			"codota/tabnine-nvim",
-			build = "./dl_binaries.sh",
-			config = function()
-				require("tabnine").setup({
-					disable_auto_comment = true,
-					accept_keymap = "<C-]>",
-					dismiss_keymap = "<C-[>",
-					debounce_ms = 800,
-					suggestion_color = { gui = "#808080", cterm = 244 },
-					exclude_filetypes = { "TelescopePrompt" },
-					log_file_path = nil, -- absolute path to Tabnine log file
-				})
-			end,
-		},
 		-- {
-		-- 	"zbirenbaum/copilot.lua",
+		-- 	"codota/tabnine-nvim",
+		-- 	build = "./dl_binaries.sh",
 		-- 	config = function()
-		-- 		require("copilot").setup({
-		-- 			panel = {
-		-- 				enabled = true,
-		-- 				auto_refresh = false,
-		-- 				keymap = {
-		-- 					jump_next = "<c-]>",
-		-- 					jump_prev = "<c-[>",
-		-- 					accept = "<c-a>",
-		-- 					refresh = "r",
-		-- 					open = "<M-CR>",
-		-- 				},
-		-- 				layout = {
-		-- 					position = "bottom", -- | top | left | right
-		-- 					ratio = 0.3,
-		-- 				},
-		-- 			},
-		-- 			suggestion = {
-		-- 				enabled = false,
-		-- 				auto_trigger = false,
-		-- 				debounce = 75,
-		-- 				keymap = {
-		-- 					accept = "<c-a>",
-		-- 					accept_word = false,
-		-- 					accept_line = false,
-		-- 					next = "<c-[>",
-		-- 					prev = "<c-]>",
-		-- 					dismiss = "<c-e>",
-		-- 				},
-		-- 			},
-		-- 			filetypes = {
-		-- 				yaml = false,
-		-- 				markdown = true,
-		-- 				help = false,
-		-- 				gitcommit = false,
-		-- 				gitrebase = false,
-		-- 				hgcommit = false,
-		-- 				svn = false,
-		-- 				cvs = false,
-		-- 				["."] = false,
-		-- 			},
+		-- 		require("tabnine").setup({
+		-- 			disable_auto_comment = true,
+		-- 			accept_keymap = "<C-]>",
+		-- 			dismiss_keymap = "<C-[>",
+		-- 			debounce_ms = 800,
+		-- 			suggestion_color = { gui = "#808080", cterm = 244 },
+		-- 			exclude_filetypes = { "TelescopePrompt" },
+		-- 			log_file_path = nil, -- absolute path to Tabnine log file
 		-- 		})
 		-- 	end,
 		-- },
+		{
+			"zbirenbaum/copilot.lua",
+			cond = function()
+				local cwd = vim.fn.getcwd()
+				if string.find(cwd, "/nhn/") then
+					return false
+				else
+					return true
+				end
+			end,
+			config = function()
+				require("copilot").setup({
+					panel = {
+						enabled = true,
+						auto_refresh = false,
+						keymap = {
+							jump_next = "<c-]>",
+							jump_prev = "<c-[>",
+							accept = "<c-a>",
+							refresh = "r",
+							open = "<M-CR>",
+						},
+						layout = {
+							position = "bottom", -- | top | left | right
+							ratio = 0.3,
+						},
+					},
+					suggestion = {
+						enabled = false,
+						auto_trigger = false,
+						debounce = 75,
+						keymap = {
+							accept = "<c-a>",
+							accept_word = false,
+							accept_line = false,
+							next = "<c-[>",
+							prev = "<c-]>",
+							dismiss = "<c-e>",
+						},
+					},
+					filetypes = {
+						yaml = false,
+						markdown = true,
+						help = false,
+						gitcommit = false,
+						gitrebase = false,
+						hgcommit = false,
+						svn = false,
+						cvs = false,
+						["."] = false,
+					},
+				})
+			end,
+		},
 		{
 			"zbirenbaum/copilot-cmp",
 			after = { "copilot.lua" },
