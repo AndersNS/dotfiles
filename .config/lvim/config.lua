@@ -36,13 +36,14 @@ lvim.builtin.telescope.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.dap.active = true
 lvim.builtin.luasnip.sources.friendly_snippets = true
+lvim.builtin.telescope.theme = "center"
 
 lvim.builtin.terminal.direction = "vertical"
 lvim.builtin.terminal.persist_size = true
 
 lvim.builtin.terminal.size = function(term)
 	if term.direction == "horizontal" then
-		return 15
+		return vim.o.columns * 0.4
 	elseif term.direction == "vertical" then
 		return vim.o.columns * 0.4
 	end

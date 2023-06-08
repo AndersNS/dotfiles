@@ -28,6 +28,7 @@ set ideajoin
 set idearefactormode=keep
 
 set clipboard=unnamed
+set clipboard+=ideaput
 
 """ Mappings --------------------------------
 imap jj <Esc>

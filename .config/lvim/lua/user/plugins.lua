@@ -66,67 +66,67 @@ M.config = function()
 		-- 		})
 		-- 	end,
 		-- },
-		{
-			"zbirenbaum/copilot.lua",
-			cond = function()
-				local cwd = vim.fn.getcwd()
-				if string.find(cwd, "/nhn/") then
-					return false
-				else
-					return true
-				end
-			end,
-			config = function()
-				require("copilot").setup({
-					panel = {
-						enabled = true,
-						auto_refresh = false,
-						keymap = {
-							jump_next = "<c-]>",
-							jump_prev = "<c-[>",
-							accept = "<c-a>",
-							refresh = "r",
-							open = "<M-CR>",
-						},
-						layout = {
-							position = "bottom", -- | top | left | right
-							ratio = 0.3,
-						},
-					},
-					suggestion = {
-						enabled = false,
-						auto_trigger = false,
-						debounce = 75,
-						keymap = {
-							accept = "<c-a>",
-							accept_word = false,
-							accept_line = false,
-							next = "<c-[>",
-							prev = "<c-]>",
-							dismiss = "<c-e>",
-						},
-					},
-					filetypes = {
-						yaml = false,
-						markdown = true,
-						help = false,
-						gitcommit = false,
-						gitrebase = false,
-						hgcommit = false,
-						svn = false,
-						cvs = false,
-						["."] = false,
-					},
-				})
-			end,
-		},
-		{
-			"zbirenbaum/copilot-cmp",
-			after = { "copilot.lua" },
-			config = function()
-				require("copilot_cmp").setup()
-			end,
-		},
+		-- {
+		-- 	"zbirenbaum/copilot.lua",
+		-- 	cond = function()
+		-- 		local cwd = vim.fn.getcwd()
+		-- 		if string.find(cwd, "/nhn/") then
+		-- 			return false
+		-- 		else
+		-- 			return true
+		-- 		end
+		-- 	end,
+		-- 	config = function()
+		-- 		require("copilot").setup({
+		-- 			panel = {
+		-- 				enabled = true,
+		-- 				auto_refresh = false,
+		-- 				keymap = {
+		-- 					jump_next = "<c-]>",
+		-- 					jump_prev = "<c-[>",
+		-- 					accept = "<c-a>",
+		-- 					refresh = "r",
+		-- 					open = "<M-CR>",
+		-- 				},
+		-- 				layout = {
+		-- 					position = "bottom", -- | top | left | right
+		-- 					ratio = 0.3,
+		-- 				},
+		-- 			},
+		-- 			suggestion = {
+		-- 				enabled = false,
+		-- 				auto_trigger = false,
+		-- 				debounce = 75,
+		-- 				keymap = {
+		-- 					accept = "<c-a>",
+		-- 					accept_word = false,
+		-- 					accept_line = false,
+		-- 					next = "<c-[>",
+		-- 					prev = "<c-]>",
+		-- 					dismiss = "<c-e>",
+		-- 				},
+		-- 			},
+		-- 			filetypes = {
+		-- 				yaml = false,
+		-- 				markdown = true,
+		-- 				help = false,
+		-- 				gitcommit = false,
+		-- 				gitrebase = false,
+		-- 				hgcommit = false,
+		-- 				svn = false,
+		-- 				cvs = false,
+		-- 				["."] = false,
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- },
+		-- {
+		-- 	"zbirenbaum/copilot-cmp",
+		-- 	after = { "copilot.lua" },
+		-- 	config = function()
+		-- 		require("copilot_cmp").setup()
+		-- 	end,
+		-- },
 		{ "stevearc/dressing.nvim" },
 		{ "mrjones2014/smart-splits.nvim" },
 		{ "mzlogin/vim-markdown-toc" },
