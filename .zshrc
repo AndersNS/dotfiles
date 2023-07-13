@@ -145,6 +145,8 @@ export LC_ALL=en_US.UTF-8
 
 eval "$(zoxide init zsh)"
 
+eval $(opam env)
+
 export GPG_TTY=$(tty)
 
 # Fig post block. Keep at the bottom of this file.

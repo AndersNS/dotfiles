@@ -16,8 +16,6 @@ M.config = function()
 		{ z = "~/.zshrc" },
 		{ t = "~/.tmux.conf" },
 		{ a = "~/.config/alacritty/alacritty.yml" },
-		{ k = "~/.config/kitty/kitty.conf" },
-		{ n = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/andersns" },
 	}
 
 	vim.g.startify_commands = {

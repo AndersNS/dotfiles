@@ -10,6 +10,7 @@ set textobj-entire
 set highlightedyank
 set sneak
 set which-key
+set NERDTree
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -17,6 +18,7 @@ let g:argtextobj_pairs="[:],(:),<:>"
 """ Common settings -------------------------
 set showmode
 set incsearch
+set smartcase
 set nu
 set scrolloff=5
 set relativenumber
@@ -112,6 +114,7 @@ map gl          <Action>(ShowErrorDescription)
 map gE          <Action>(ShowErrorDescription)
 map gR          <Action>(RenameElement)
 map gd          <Action>(GotoDeclaration)
+map gT          <Action>(GotoTypeDeclaration)
 map gy          <Action>(GotoImplementation)
 map gr          <Action>(FindUsages)
 map ]e          <Action>(GotoNextError)
