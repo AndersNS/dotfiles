@@ -39,12 +39,7 @@ M.config = function()
 	lvim.builtin.which_key.mappings["l"]["T"] = { "<cmd>TroubleToggle<cr>", "Trouble toggle" }
 	lvim.builtin.which_key.mappings["l"]["t"] = { "<cmd>Trouble<cr>", "Trouble" }
 	vim.api.nvim_set_keymap("n", "<C-q>", ":call QuickFixToggle()<CR>", { noremap = true, silent = true })
-	vim.api.nvim_set_keymap(
-		"i",
-		"<C-s>",
-		"<cmd>lua vim.lsp.buf.signature_help()<cr>",
-		{ noremap = true, silent = true }
-	)
+	vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 	vim.api.nvim_set_keymap(
 		"n",
