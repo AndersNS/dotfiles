@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias dfgg='gg --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias dfa='dotfiles add $HOME/.config/astronvim/lua/user/**/*.lua && dotfiles add $HOME/.config/lvim/**/*.lua && dotfiles add -u && dotfiles add $HOME/.config/lvim/lua/* && dotfiles commit -S'
+alias dfa='dotfiles add $HOME/.config/astronvim/lua/user/**/*.lua && dotfiles add $HOME/.config/lvim/**/*.lua && dotfiles add -u && dotfiles add $HOME/.config/lvim/lua/* && dotfiles add $HOME/.config/nvim/* && dotfiles commit -S' 
 alias dfc='dotfiles add -u && dotfiles commit -m $1'
 alias dfs='dotfiles status'
 alias dfu="dotfiles add -u && dotfiles add $HOME/.config/lvim/**/*.lua"
