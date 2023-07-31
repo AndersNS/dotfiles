@@ -109,7 +109,6 @@ alias exat='exa -T --icons --git-ignore'
 alias lzd='lazydocker'
 alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
 alias neovide='/Applications/Neovide.app/Contents/MacOS/neovide'
-alias nvim='lvim'
 alias vim='nvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
