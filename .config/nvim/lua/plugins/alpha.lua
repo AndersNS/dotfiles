@@ -21,10 +21,15 @@ return {
         dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
         dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-        dashboard.button("c", " " .. " Vimrc", ":e $MYVIMRC <CR>"),
+        dashboard.button("c", " " .. " Vimrc", ":cd ~/.config/nvim/ | e ~/.config/nvim/init.lua <CR>"),
         dashboard.button("z", " " .. " Zshrc", ":e ~/.zshrc <CR>"),
         dashboard.button("t", " " .. " Tmuxconf", ":e ~/.tmux.conf <CR>"),
         dashboard.button("a", "󰑣 " .. " Alaccritty", ":e ~/.config/alacritty/alacritty.yml <CR>"),
+        dashboard.button(
+          "oq",
+          " " .. " Notes - Quick Note",
+          ":cd /Users/andersns/obsidian/andersns | e /Users/andersns/obsidian/andersns/✈️ Quick notes.md <CR>"
+        ),
         dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
         dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
