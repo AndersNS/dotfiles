@@ -48,14 +48,12 @@ map <leader>z   <Action>(ToggleDistractionFreeMode)
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 
-map <C-o> <Action>(Back)
-map <C-i> <Action>(Forward)
+" map <C-o> <Action>(Back)
+" map <C-i> <Action>(Forward)
 
 " Buffers / windows
 let g:WhichKeyDesc_quit = "<Space>q  Quit"
 map <leader>q   <Action>(CloseContent)
-let g:WhichKeyDesc_close = "<Space>c  Close"
-map <leader>c   <Action>(CloseContent)
 
 let g:WhichKeyDesc_buffer = "<Space>b  Buffers"
 let g:WhichKeyDesc_buffer_all_but_active = "<Space>be Close all but active"
@@ -66,6 +64,8 @@ let g:WhichKeyDesc_buffer_left = "<Space>bh Close all to the left"
 map <leader>bh <Action>(CloseAllToTheLeft)
 let g:WhichKeyDesc_buffer_right = "<Space>bl Close all to the right"
 map <leader>bl <Action>(CloseAllToTheRight)
+let g:WhichKeyDesc_buffer_right = "<Space>bl Close all to the right"
+map <leader>bd <Action>(CloseContent)
 
 " Git
 let g:WhichKeyDesc_git = "<Space>g  Git"
@@ -120,11 +120,11 @@ map gr          <Action>(FindUsages)
 map ]e          <Action>(GotoNextError)
 map [e          <Action>(GotoPreviousError)
 
-let g:WhichKeyDesc_lang = "<Space>l  LSP"
-map <leader>la  <Action>(ShowIntentionActions)
-map <leader>lr  <Action>(RenameElement)
-map <leader>lf  <Action>(ReformatCode)
-map <leader>lR  <Action>(FindUsages)
-map <leader>ld  <Action>(GotoDeclaration)
-map <leader>li  <Action>(GotoImplementation)
+let g:WhichKeyDesc_lang = "<Space>c  Code (LSP)"
+map <leader>ca  <Action>(ShowIntentionActions)
+map <leader>cr  <Action>(RenameElement)
+map <leader>cf  <Action>(ReformatCode)
+map <leader>cR  <Action>(FindUsages)
+map <leader>cd  <Action>(GotoDeclaration)
+map <leader>ci  <Action>(GotoImplementation)
 
