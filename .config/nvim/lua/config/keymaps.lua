@@ -6,6 +6,8 @@
 -- see: https://github.com/christoomey/vim-tmux-navigator/blob/master/plugin/tmux_navigator.vim
 local keymap = vim.keymap
 
+keymap.set("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>")
+keymap.set("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>")
 keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
