@@ -8,7 +8,7 @@ return {
       plugins = {
         tmux = { enabled = false },
         alacritty = {
-          enabled = true,
+          enabled = false,
           font = "18", -- font size
         },
       },
