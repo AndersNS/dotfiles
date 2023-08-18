@@ -12,7 +12,13 @@ keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
-keymap.set("n", "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>")
+
+local Util = require("lazyvim.util")
+local lazyterm = function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end
+keymap.set("n", "<c-\\>", lazyterm, { desc = "which_key_ignore" })
+keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 keymap.del("n", "<leader>qq")
@@ -23,3 +29,10 @@ keymap.del("n", "<leader>w-")
 keymap.del("n", "<leader>w|")
 keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Save all" })
+
+keymap.set(
+  "n",
+  "<leader>h",
+  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / clear hlsearch / diff update" }
+)

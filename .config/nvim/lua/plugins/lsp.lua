@@ -28,5 +28,7 @@ return {
       desc = "Source Action",
       has = "codeAction",
     }
+    keys[#keys + 1] =
+      { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
   end,
 }
