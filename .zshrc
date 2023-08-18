@@ -105,6 +105,7 @@ alias tmstart='(tmux new -s nhn -d && tmux new -s variant -d && tmux new -s priv
 alias tmn='tmux attach -t $1 || tmux new -s $1'
 alias lc='exa -la --icons'
 alias ll='lsd -l'
+alias lla='lsd -la'
 alias exat='exa -T --icons --git-ignore'
 alias lzd='lazydocker'
 alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
