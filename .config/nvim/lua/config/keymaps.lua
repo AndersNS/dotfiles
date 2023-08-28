@@ -17,8 +17,8 @@ local Util = require("lazyvim.util")
 local lazyterm = function()
   Util.float_term(nil, { cwd = Util.get_root() })
 end
-keymap.set("n", "<c-\\>", lazyterm, { desc = "which_key_ignore" })
-keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+keymap.set("n", "<C-/>", lazyterm, { desc = "which_key_ignore" })
+keymap.set("t", "<C-/>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
 keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 keymap.del("n", "<leader>qq")
