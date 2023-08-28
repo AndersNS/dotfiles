@@ -91,17 +91,8 @@ font:
   #   style: Bold Italic
 
   normal:
-    family: "Hack Nerd Font Mono"
+    family: "FiraCode Nerd Font"
     style: Regular
-  bold:
-    family: "Hack Nerd Font Mono"
-    style: Bold
-  italic:
-    family: "Hack Nerd Font Mono"
-    style: Italic
-  bold_italic:
-    family: "Hack Nerd Font Mono"
-    style: Bold Italic
   # Point size
   size: 16.0
 
@@ -120,7 +111,7 @@ window:
   dynamic_padding: true
   class:
     instance: Alacritty
-    general: Alacritty 
+    general: Alacritty
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
