@@ -162,3 +162,5 @@ compinit
 autoload -U +X bashcompinit && bashcompinit
 
 eval "$(zoxide init zsh)"
+
+export WALK_EDITOR=nvim
