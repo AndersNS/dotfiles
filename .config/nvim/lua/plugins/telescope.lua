@@ -18,6 +18,11 @@ return {
         ":Telescope file_browser file_browser path=%:p:h=%:p:h<cr>",
         desc = "Browse Files",
       },
+      {
+        "<leader>bf",
+        ":Telescope buffers<cr>",
+        desc = "Find buffers",
+      },
     },
     config = function(_, _)
       require("telescope").load_extension("undo")
