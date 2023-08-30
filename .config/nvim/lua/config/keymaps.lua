@@ -36,3 +36,6 @@ keymap.set(
   "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
   { desc = "Redraw / clear hlsearch / diff update" }
 )
+
+keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<CR>", { desc = "Close left " })
+keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close right " })
