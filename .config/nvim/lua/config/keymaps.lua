@@ -6,8 +6,10 @@
 -- see: https://github.com/christoomey/vim-tmux-navigator/blob/master/plugin/tmux_navigator.vim
 local keymap = vim.keymap
 
-keymap.set("n", "<TAB>", "<cmd>BufferLineCycleNext<cr>")
-keymap.set("n", "<S-TAB>", "<cmd>BufferLineCyclePrev<cr>")
+keymap.set("n", "<leader>r", "<cmd>Neotree reveal<cr>")
+
+keymap.set("n", "<TAB>", "<cmd>b#<cr>")
+keymap.set("n", "<S-TAB>", "<cmd>b#>")
 keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
@@ -37,5 +39,5 @@ keymap.set(
   { desc = "Redraw / clear hlsearch / diff update" }
 )
 
-keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<CR>", { desc = "Close left " })
-keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close right " })
+keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<CR>", { desc = "Close left ", silent = true })
+keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close right ", silent = true })
