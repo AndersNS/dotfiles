@@ -166,3 +166,6 @@ autoload -U +X bashcompinit && bashcompinit
 eval "$(zoxide init zsh)"
 
 export WALK_EDITOR=nvim
+
+# bun completions
+[ -s "/Users/andersns/.bun/_bun" ] && source "/Users/andersns/.bun/_bun"

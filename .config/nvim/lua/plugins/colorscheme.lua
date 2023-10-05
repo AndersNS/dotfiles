@@ -36,6 +36,7 @@ return {
   },
   { "ellisonleao/gruvbox.nvim" },
   { "EdenEast/nightfox.nvim" },
+  { "folke/tokyonight.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
