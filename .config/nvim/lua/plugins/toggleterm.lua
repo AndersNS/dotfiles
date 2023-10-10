@@ -6,12 +6,12 @@ return {
       require("toggleterm").setup({
         open_mapping = [[<c-\>]],
         shade_terminals = false,
-        direction = "float",
+        direction = "horizontal",
         -- add --login so ~/.zprofile is loaded
         -- https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile/16021#16021
         shell = "zsh --login",
         float_opts = {
-          border = "shadow",
+          border = "single",
         },
       })
     end,
