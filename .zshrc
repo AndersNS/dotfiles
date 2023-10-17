@@ -166,6 +166,7 @@ autoload -U +X bashcompinit && bashcompinit
 eval "$(zoxide init zsh)"
 
 export WALK_EDITOR=nvim
+export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
 
 # bun completions
 [ -s "/Users/andersns/.bun/_bun" ] && source "/Users/andersns/.bun/_bun"
