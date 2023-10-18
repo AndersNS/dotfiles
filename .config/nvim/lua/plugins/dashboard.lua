@@ -38,7 +38,7 @@ return {
           { action = "e ~/.config/alacritty/alacritty.yml", desc = " Alacritty",       icon = "󰑣 ", key = "a" },
           { action = "e ~/.tmux.conf",                      desc = " Tmux",            icon = " ", key = "t" },
           { action = "cd /Users/andersns/obsidian/andersns | Telescope find_files",
-              desc = " Obsidian",            icon = " ", key = "o" },
+              desc = " Obsidian",            icon = " ", key = "n" },
           { action = "Lazy",                                desc = " Lazy",            icon = "󰒲 ", key = "l" },
           { action = "qa",                                  desc = " Quit",            icon = " ", key = "q" },
         },
