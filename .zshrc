@@ -112,6 +112,8 @@ alias lzd='lazydocker'
 alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
 alias neovide='/Applications/Neovide.app/Contents/MacOS/neovide'
 alias vim='nvim'
+alias cls='tput reset'
+alias clear='cls'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -132,7 +134,10 @@ export PATH="$PATH:$(yarn global bin)"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
 export GOPATH="$HOME/go"
+
+export EDITOR='nvim'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -140,7 +145,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 
 export PATH="/usr/local/opt/node@14/bin:$PATH"
-PATH=/usr/local/bin:$PATH
+# PATH=/usr/local/bin:$PATH
 # To make R work properly
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
