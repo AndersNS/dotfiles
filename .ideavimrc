@@ -119,6 +119,9 @@ map gy          <Action>(GotoImplementation)
 map gr          <Action>(FindUsages)
 map ]e          <Action>(GotoNextError)
 map [e          <Action>(GotoPreviousError)
+map <C-j>       <Action>(GotoNextError)
+map <C-k>       <Action>(GotoPreviousError)
+map <C-f>  <Action>(ShowIntentionActions)
 
 let g:WhichKeyDesc_lang = "<Space>c  Code (LSP)"
 map <leader>ca  <Action>(ShowIntentionActions)

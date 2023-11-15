@@ -45,3 +45,10 @@ keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<CR>", { desc = "Close left "
 keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close right ", silent = true })
 
 keymap.set("n", "<c-_>", ":ToggleTerm<cr>", { silent = true })
+
+keymap.set("n", "<C-j>", function()
+  vim.diagnostic.goto_next()
+end, { desc = "Next diagnostic" })
+keymap.set("n", "<C-k>", function()
+  vim.diagnostic.goto_prev()
+end, { desc = "Prev diagnostic" })

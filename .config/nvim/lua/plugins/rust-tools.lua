@@ -1,4 +1,36 @@
+-- vim.g.rustaceanvim = {
+--   -- Plugin configuration
+--   tools = {},
+--   -- LSP configuration
+--   server = {
+--     on_attach = function(_, bufnr)
+--       vim.keymap.set("n", "<leader>ra", function()
+--         vim.cmd.RustLsp("codeAction")
+--       end, { silent = true, buffer = bufnr })
+--       vim.keymap.set("n", "<leader>ci", ":RustLsp enableInlayHints<CR>", { silent = true, desc = "Enable hints" })
+--       vim.keymap.set("n", "<leader>cI", ":RustLsp disableInlayHints<CR>", { silent = true, desc = "Disable hints" })
+--       vim.keymap.set("n", "<leader>cR", ":RustLsp runnables<CR>", { desc = "Runnables" })
+--       vim.keymap.set("n", "<leader>cD", ":RustLsp debuggables<CR>", { desc = "Debuggables" })
+--       vim.keymap.set("n", "<leader>ck", ":RustLsp moveItem up<CR>", { desc = "Move item up" })
+--       vim.keymap.set("n", "<leader>cj", ":RustLsp moveItem down<CR>", { desc = "Move item down" })
+--       vim.keymap.set("n", "<leader>ch", ":RustLsp hoverActions<CR>", { desc = "Hover Actions (help)" })
+--       -- you can also put keymaps in here
+--     end,
+--     -- rust-analyzer language server configuration
+--     ["rust-analyzer"] = {
+--
+--     },
+--   },
+--   -- DAP configuration
+--   dap = {},
+-- }
+
 return {
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^3", -- Recommended
+  --   ft = { "rust" },
+  -- },
   {
     "simrat39/rust-tools.nvim",
     opts = {
@@ -19,14 +51,14 @@ return {
               name = "+rust",
             },
           })
-          vim.keymap.set("n", "<leader>ri", ":RustEnableInlayHints<CR>", { silent = true, desc = "Enable hints" })
-          vim.keymap.set("n", "<leader>rI", ":RustDisableInlayHints<CR>", { silent = true, desc = "Disable hints" })
-          vim.keymap.set("n", "<leader>rr", ":RustRun<CR>", { desc = "Run" })
-          vim.keymap.set("n", "<leader>ra", ":RustRunnables<CR>", { desc = "Runnables" })
-          vim.keymap.set("n", "<leader>rd", ":RustDebuggables<CR>", { desc = "Debuggables" })
-          vim.keymap.set("n", "<leader>rk", ":RustMoveItemUp<CR>", { desc = "Move item up" })
-          vim.keymap.set("n", "<leader>rj", ":RustMoveItemDown<CR>", { desc = "Move item down" })
-          vim.keymap.set("n", "<leader>rh", ":RustHoverActions<CR>", { desc = "Hover Actions (help)" })
+          vim.keymap.set("n", "<leader>ci", ":RustEnableInlayHints<CR>", { silent = true, desc = "Enable hints" })
+          vim.keymap.set("n", "<leader>cI", ":RustDisableInlayHints<CR>", { silent = true, desc = "Disable hints" })
+          vim.keymap.set("n", "<leader>cR", ":RustRun<CR>", { desc = "Run" })
+          vim.keymap.set("n", "<leader>cA", ":RustRunnables<CR>", { desc = "Runnables" })
+          vim.keymap.set("n", "<leader>cD", ":RustDebuggables<CR>", { desc = "Debuggables" })
+          vim.keymap.set("n", "<leader>ck", ":RustMoveItemUp<CR>", { desc = "Move item up" })
+          vim.keymap.set("n", "<leader>cj", ":RustMoveItemDown<CR>", { desc = "Move item down" })
+          vim.keymap.set("n", "<leader>ch", ":RustHoverActions<CR>", { desc = "Hover Actions (help)" })
         end,
       },
     },

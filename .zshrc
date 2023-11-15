@@ -77,6 +77,7 @@ plugins=(
   docker
   docker-compose
   tmux
+  fzf-zsh-plugin
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -98,19 +99,23 @@ alias ns='npm start'
 alias n='pnpm'
 alias rider='open -na "Rider.app" --args $1'
 alias ridereap='open -na "Rider EAP.app" --args $1'
-alias tmnhn='tmux attach -t nhn || tmux new -s nhn'
-alias tmvar='tmux attach -t variant || tmux new -s variant'
-alias tmpriv='tmux attach -t priv || tmux new -s priv'
+
+# tmux aliases
+alias tmnhn='tmn nhn'
+alias tmvar='tmuxifier s var'
+alias tmpriv='tmn priv'
+alias tmavim='tmn vim'
 alias tmstart='(tmux new -s nhn -d && tmux new -s variant -d && tmux new -s priv -d) &> /dev/null'
 alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
+
+
 alias lc='eza -la --icons'
 alias ll='lsd -l'
 alias lla='lsd -la'
 alias ezat='eza -T --icons --git-ignore'
 alias lzd='lazydocker'
 alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
-alias neovide='/Applications/Neovide.app/Contents/MacOS/neovide'
 alias vim='nvim'
 alias cls='tput reset'
 alias clear='cls'
