@@ -8,21 +8,25 @@ local keymap = vim.keymap
 
 keymap.set("n", "<leader>r", "<cmd>Neotree reveal<cr>")
 
-keymap.set("n", "<TAB>", "<cmd>b#<cr>")
-keymap.set("n", "<S-TAB>", "<cmd>b#<cr>")
 keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
 keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", float_opts = { border = "none" } })
+if vim.g.vscode then
+  -- VSCode extension
+else
+  -- ordinary Neovim
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit =
+    Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", float_opts = { border = "none" } })
 
-function _lazygit_toggle()
-  lazygit:toggle()
+  function _lazygit_toggle()
+    lazygit:toggle()
+  end
+  vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+  keymap.set("n", "<c-_>", ":ToggleTerm<cr>", { silent = true })
 end
-
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 
 keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 keymap.del("n", "<leader>qq")
@@ -44,11 +48,9 @@ keymap.set(
 keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<CR>", { desc = "Close left ", silent = true })
 keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close right ", silent = true })
 
-keymap.set("n", "<c-_>", ":ToggleTerm<cr>", { silent = true })
-
-keymap.set("n", "<C-j>", function()
-  vim.diagnostic.goto_next()
-end, { desc = "Next diagnostic" })
-keymap.set("n", "<C-k>", function()
-  vim.diagnostic.goto_prev()
-end, { desc = "Prev diagnostic" })
+-- keymap.set("n", "<C-j>", function()
+--   vim.diagnostic.goto_next()
+-- end, { desc = "Next diagnostic" })
+-- keymap.set("n", "<C-k>", function()
+--   vim.diagnostic.goto_prev()
+-- end, { desc = "Prev diagnostic" })
