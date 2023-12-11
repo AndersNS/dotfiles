@@ -91,7 +91,7 @@ font:
   #   style: Bold Italic
 
   normal:
-    family: 'JetBrainsMono Nerd Font Mono'
+    family: 'MonaspiceKR NF'
     style: Regular
   # Point size
   size: 16.0
