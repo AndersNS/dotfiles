@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
-    enabled = true,
+    enabled = false,
     opts = { mode = "cursor" },
   },
   {
@@ -11,16 +11,13 @@ return {
       matchup = {
         enable = false,
       },
-      -- highlight = { enable = true },
+      highlight = { enable = true },
       query_linter = {
         enable = true,
         use_virtual_text = true,
         lint_events = { "BufWrite", "CursorHold" },
       },
     },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
     dependencies = {
       { "windwp/nvim-ts-autotag", opts = {} },
     },

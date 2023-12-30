@@ -1,7 +1,11 @@
+local vars = require("variables")
+
 return {
   "epwalsh/obsidian.nvim",
+  -- version = "*", -- to use latest release instead of latest commit
   lazy = true,
-  event = { "BufReadPre /Users/andersns/obsidian/andersns/**.md" },
+  ft = "markdown",
+  -- event = { "BufReadPre " .. vars.vault_path .. "/**.md" },
   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
   -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
   dependencies = {
@@ -28,35 +32,38 @@ return {
   mappings = {
     -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
     -- ["gf"] = require("obsidian.mapping").gf_passthrough(),
+    ["gf"] = {
+      action = function()
+        return require("obsidian").util.gf_passthrough()
+      end,
+      opts = { noremap = false, expr = true, buffer = true },
+    },
+    -- Toggle check-boxes.
+    ["<leader>ch"] = {
+      action = function()
+        return require("obsidian").util.toggle_checkbox()
+      end,
+      opts = { buffer = true },
+    },
   },
   opts = {
-    dir = "/Users/andersns/obsidian/andersns", -- no need to call 'vim.fn.expand' here
+    workspaces = {
+      {
+        name = "andersns",
+        path = vars.vault_path,
+      },
+    },
     disable_frontmatter = true,
-    note_frontmatter_func = function(note)
-      -- This is equivalent to the default frontmatter function.
-      local out = { tags = note.tags }
-      -- `note.metadata` contains any manually added fields in the frontmatter.
-      -- So here we just make sure those fields are kept in the frontmatter.
-      if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
-        for k, v in pairs(note.metadata) do
-          out[k] = v
-        end
-      end
-      return nil
-    end,
+    templates = {
+      subdir = "Templates",
+      date_format = "%Y-%m-%d-%a",
+      time_format = "%H:%M",
+    },
   },
   config = function(_, opts)
     require("obsidian").setup(opts)
 
     local keymap = vim.keymap
-    -- override the 'gf' keymap to utilize Obsidian's search functionality.
-    keymap.set("n", "gf", function()
-      if require("obsidian").util.cursor_on_markdown_link() then
-        return "<cmd>ObsidianFollowLink<CR>"
-      else
-        return "gf"
-      end
-    end, { noremap = true, expr = true })
 
     keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch" })
     keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Open in Obsidian" })
