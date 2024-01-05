@@ -55,9 +55,15 @@ return {
     },
     disable_frontmatter = true,
     templates = {
-      subdir = "Templates",
+      subdir = "Extras/Templates",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
+    },
+    daily_notes = {
+      -- Optional, if you keep daily notes in a separate directory.
+      folder = "Calendar/Daily",
+      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+      template = "Daily-template.md",
     },
   },
   config = function(_, opts)

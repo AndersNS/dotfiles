@@ -10,7 +10,9 @@ end
 
 local function open_weekly_note()
   require("lazy").load({ plugins = { "obsidian.nvim" } })
-  local week_note_name = os.date("%Y-W", os.time()) .. tostring(utils.getWeekNumberOfYear(os.time())) .. ".md"
+  local week_note_name = os.date("%Y-W", os.time())
+    .. string.format("%02d", utils.getWeekNumberOfYear(os.time()))
+    .. ".md"
   local this_weeks_note = vars.weekly_note_path .. week_note_name
   vim.cmd("cd " .. vars.vault_path) -- TODO: Fix this when detect_cwd works
   if utils.file_exists(this_weeks_note) then
