@@ -20,11 +20,16 @@ return {
       },
       {
         "<leader>bf",
-        ":Telescope buffers<cr>",
+        "<cmd>lua require('telescope.builtin').buffers({ path_display = { 'truncate' }, sort_mru = true, sort_lastused = true })<cr>",
+        desc = "Find buffers",
+      },
+      {
+        "<leader>fb",
+        "<cmd>lua require('telescope.builtin').buffers({ path_display = { 'truncate' }, sort_mru = true, sort_lastused = true })<cr>",
         desc = "Find buffers",
       },
     },
-    config = function(_, _)
+    config = function(_, opts)
       require("telescope").load_extension("undo")
       require("telescope").load_extension("file_browser")
       require("telescope").load_extension("fzf")

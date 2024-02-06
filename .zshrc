@@ -3,7 +3,7 @@
 # confirmations, etc.) must go above this block, everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-    ZSH_THEME=powerlevel10k/powerlevel10k
+    ZSH_THEME="powerlevel10k/powerlevel10k"
 fi
 
 export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists
@@ -103,10 +103,8 @@ alias tmnhn='tmn nhn'
 alias tmvar='tmuxifier s var'
 alias tmpriv='tmn priv'
 alias tmavim='tmn vim'
-alias tmstart='(tmux new -s nhn -d && tmux new -s variant -d && tmux new -s priv -d) &> /dev/null'
 alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
-
 
 alias lc='eza -la --icons'
 alias ll='lsd -l'

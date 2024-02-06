@@ -59,7 +59,7 @@ return {
           { action = 'lua require("persistence").load()',   desc = " Restore Session", icon = " ", key = "s" },
           { action = "LazyExtras",                          desc = " Lazy Extras",     icon = " ", key = "x" },
           { action = "e ~/.zshrc",                          desc = " Zshrc",           icon = " ", key = "z" },
-          { action = "e ~/.config/alacritty/alacritty.yml", desc = " Alacritty",       icon = "󰑣 ", key = "a" },
+          { action = "e ~/.config/alacritty/alacritty.toml",desc = " Alacritty",       icon = "󰑣 ", key = "a" },
           { action = "e ~/.tmux.conf",                      desc = " Tmux",            icon = " ", key = "t" },
           { action = open_note_quick_switch,                desc = " Find Note",       icon = "󱙓", key = "n" },
           { action = open_weekly_note,                      desc = " Weekly Note",     icon = " ", key = "w" },

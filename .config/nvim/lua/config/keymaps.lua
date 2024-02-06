@@ -41,6 +41,19 @@ keymap.set("n", "<leader>uz", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
 keymap.set(
   "n",
+  "<leader>bf",
+  "<cmd>lua require('telescope.builtin').buffers({ path_display = { 'truncate' }, sort_mru = true, sort_lastused = true })<cr>",
+  { desc = "Find buffers" }
+)
+keymap.set(
+  "n",
+  "<leader>fb",
+  "<cmd>lua require('telescope.builtin').buffers({ path_display = { 'truncate' }, sort_mru = true, sort_lastused = true })<cr>",
+  { desc = "Find buffers" }
+)
+
+keymap.set(
+  "n",
   "<leader>h",
   "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
   { desc = "Redraw / clear hlsearch / diff update" }

@@ -38,8 +38,17 @@ return {
   { "EdenEast/nightfox.nvim" },
   { "folke/tokyonight.nvim" },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      dark_variant = "moon",
+      variant = "moon",
+    },
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
+      -- colorscheme = "rose-pine",
       colorscheme = "duskfox",
     },
   },

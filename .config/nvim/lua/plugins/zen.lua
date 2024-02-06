@@ -1,6 +1,16 @@
 return {
   {
+    "folke/twilight.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      alpha = 0.8,
+    },
+  },
+  {
     "folke/zen-mode.nvim",
+    dir = "~/source/zen-mode.nvim/",
     opts = {
       window = {
         backdrop = 1,
@@ -20,12 +30,12 @@ return {
         },
         tmux = { enabled = true },
         alacritty = {
-          enabled = false,
-          font = "18", -- font size
+          enabled = true,
+          font = "40", -- font size
         },
         kitty = {
           enabled = true,
-          font = "+4", -- font size increment
+          font = "+14", -- font size increment
         },
       },
     },

@@ -1,5 +1,6 @@
 return {
   { "dkarter/bullets.vim" },
+  { "sindrets/diffview.nvim" },
   {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
