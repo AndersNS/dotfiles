@@ -170,6 +170,7 @@ compinit
 autoload -U +X bashcompinit && bashcompinit
 
 eval "$(zoxide init zsh)"
+eval $(thefuck --alias)
 
 export WALK_EDITOR=nvim
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
