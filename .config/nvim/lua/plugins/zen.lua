@@ -6,6 +6,8 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
       alpha = 0.8,
+      context = 20,
+      treesitter = true,
     },
   },
   {
@@ -31,7 +33,7 @@ return {
         tmux = { enabled = true },
         alacritty = {
           enabled = true,
-          font = "40", -- font size
+          font = "20", -- font size
         },
         kitty = {
           enabled = true,
