@@ -113,6 +113,13 @@ map <leader>s   :let @/=""<CR>
 let g:WhichKeyDesc_explorer = "<Space>e  Explorer"
 map <leader>e   <Action>(SelectInProjectView)
 
+map <leader>ma :action TridentAppend<CR>
+map <leader>mm :action TridentToggleQuickMenu<CR>
+
+map <C-1> :action TridentSelect1<CR>
+map <C-2> :action TridentSelect2<CR>
+map <C-3> :action TridentSelect3<CR>
+map <C-4> :action TridentSelect4<CR>
 
 " Language
 map K           <Action>(QuickJavaDoc)
