@@ -11,6 +11,9 @@ return {
           -- to fully override the default_config, change the below
           -- filetypes = {}
         },
+        html = {
+          filetypes_include = { "tmpl" },
+        },
       },
     },
     setup = {

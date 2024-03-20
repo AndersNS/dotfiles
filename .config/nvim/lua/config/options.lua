@@ -11,3 +11,5 @@ vim.opt.lbr = true
 -- vim.opt.iskeyword.append(vim.opt.iskeyword, "-")
 vim.opt.iskeyword:append("-")
 vim.opt.conceallevel = 1
+
+vim.filetype.add({ extension = { templ = "templ" } })
