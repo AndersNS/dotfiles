@@ -21,6 +21,7 @@ local function open_weekly_note()
   else
     vim.cmd("e " .. this_weeks_note)
     vim.cmd("ObsidianTemplate " .. vars.weekly_template)
+    vim.cmd("w")
   end
 end
 

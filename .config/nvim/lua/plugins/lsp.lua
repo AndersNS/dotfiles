@@ -15,6 +15,14 @@ return {
           filetypes_include = { "tmpl" },
         },
       },
+      capabilities = {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+          workspaceFolders = true,
+        },
+      },
     },
     setup = {
       tailwindcss = function(_, opts)

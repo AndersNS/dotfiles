@@ -1,6 +1,10 @@
 -- vim.lsp.set_log_level("debug")
 
 return {
+  { "David-Kunz/gen.nvim", 
+opts = {
+    no_auto_close = true,
+  } },
   {
     "huggingface/llm.nvim",
     enabled = false, -- TODO Waiting for https://github.com/huggingface/llm-ls/issues/17

@@ -13,7 +13,6 @@ local line_contains_checked = function(line, char)
 end
 
 local line_with_checkbox = function(line, char)
-  -- return not line_contains_a_checked_checkbox(line) and not line_contains_an_unchecked_checkbox(line)
   return line:find("^%s*- " .. checked_checkbox(char))
     or line:find("^%s*- " .. unchecked_checkbox)
     or line:find("^%s*%d%. " .. checked_checkbox(char))
