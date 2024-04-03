@@ -64,6 +64,6 @@ keymap.set("n", "<leader>bl", ":BufferLineCloseRight<CR>", { desc = "Close right
 keymap.set(
   "n",
   "<leader>oD",
-  ":r!date -u +'\\%Y-\\%m-\\%dT\\%H:\\%M:\\%S:000Z' <cr>",
-  { desc = "Print current time UTC", silent = true }
+  ":r!date -u +'\\%Y-\\%m-\\%dT\\%H:\\%M:\\%S:000Z' <CR>",
+  { desc = "Print current UTC time", silent = true }
 )
