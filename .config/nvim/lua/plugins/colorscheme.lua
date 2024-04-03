@@ -95,17 +95,18 @@ return {
   {
     "comfysage/evergarden",
     opts = {
-      contrast_dark = "hard", -- 'hard'|'medium'|'soft'
+      contrast_dark = "soft", -- 'hard'|'medium'|'soft'
       overrides = {}, -- add custom overrides
     },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "rose-pine",
+      colorscheme = "rose-pine",
       -- colorscheme = "kanagawa",
       -- colorscheme = "catppuccin",
-      colorscheme = "nordfox",
+      -- colorscheme = "nordfox",
+      -- colorscheme = "evergarden",
       -- colorscheme = "nord",
     },
   },

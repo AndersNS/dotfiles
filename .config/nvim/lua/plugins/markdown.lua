@@ -11,6 +11,18 @@ return {
     },
   },
   {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    enabled = false,
+    opts = {
+      markdown = {
+        bullets = { "", "", "", "" },
+        fat_headline_upper_string = "▄",
+        fat_headline_lower_string = "▀",
+      },
+    },
+  },
+  {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && pnpm install",
