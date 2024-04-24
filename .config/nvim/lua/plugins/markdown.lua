@@ -17,18 +17,19 @@ return {
     opts = {
       markdown = {
         bullets = { "", "", "", "" },
+        fat_headlines = true,
         fat_headline_upper_string = "▄",
         fat_headline_lower_string = "▀",
       },
     },
   },
+  -- install without yarn or npm
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && pnpm install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
     ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
 }

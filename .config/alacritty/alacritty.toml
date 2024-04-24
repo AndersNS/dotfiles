@@ -16,6 +16,9 @@ y = 0
 
 [font.normal]
 family = "MonaspiceKR NF"
+# family = "Monoid Nerd Font"
+# family = "Monoid Nerd Font Mono"
+# family = "Iosevka Nerd Font "
 style = "Regular"
 
 [font.offset]

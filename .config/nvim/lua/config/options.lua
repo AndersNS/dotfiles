@@ -8,6 +8,7 @@ vim.opt.breakindent = true
 -- Ensures word-wrap does not split words
 vim.opt.formatoptions = "l"
 vim.opt.lbr = true
+
 -- vim.opt.iskeyword.append(vim.opt.iskeyword, "-")
 vim.opt.iskeyword:append("-")
 vim.opt.conceallevel = 1

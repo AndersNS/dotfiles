@@ -1,7 +1,8 @@
 return {
   {
     "catppuccin/nvim",
-    lazy = true,
+    lazy = false,
+    priority = 1000,
     name = "catppuccin",
     opts = {
       integrations = {
@@ -27,18 +28,22 @@ return {
         noice = true,
         notify = true,
         neotree = true,
+        harpoon = true,
         semantic_tokens = true,
-        telescope = true,
+        telescope = {
+          enabled = true,
+          style = "nvchad",
+        },
         treesitter = true,
         which_key = true,
       },
     },
   },
-  { "ellisonleao/gruvbox.nvim" },
   { "EdenEast/nightfox.nvim" },
-  { "folke/tokyonight.nvim" },
+  { "folke/tokyonight.nvim", lazy = true, priority = 1000, opts = {} },
   {
     "rebelot/kanagawa.nvim",
+    enabled = false,
     opts = {
       compile = false, -- enable compiling the colorscheme
       undercurl = false, -- enable undercurls
@@ -93,18 +98,13 @@ return {
     },
   },
   {
-    "comfysage/evergarden",
-    opts = {
-      contrast_dark = "soft", -- 'hard'|'medium'|'soft'
-      overrides = {}, -- add custom overrides
-    },
-  },
-  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      -- colorscheme = "rose-pine",
+      -- colorscheme = "tokyonight-night",
       -- colorscheme = "kanagawa",
-      -- colorscheme = "catppuccin",
+      colorscheme = "catppuccin",
+      -- colorscheme = "nordic",
       -- colorscheme = "nordfox",
       -- colorscheme = "evergarden",
       -- colorscheme = "nord",
