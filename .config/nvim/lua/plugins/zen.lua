@@ -6,7 +6,7 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
       alpha = 0.8,
-      context = 20,
+      context = 15,
       treesitter = true,
     },
   },

@@ -105,6 +105,7 @@ alias tmpriv='tmn priv'
 alias tmavim='tmn vim'
 alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
+alias tmss='tmux set status'
 
 alias lc='eza -la --icons'
 alias ll='lsd -l'
