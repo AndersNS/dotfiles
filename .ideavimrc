@@ -51,8 +51,8 @@ map <leader>z   <Action>(ToggleDistractionFreeMode)
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 
-" map <C-o> <Action>(Back)
-" map <C-i> <Action>(Forward)
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
 
 " Buffers / windows
 let g:WhichKeyDesc_quit = "<Space>q  Quit"
