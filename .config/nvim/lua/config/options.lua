@@ -14,3 +14,17 @@ vim.opt.iskeyword:append("-")
 vim.opt.conceallevel = 1
 
 vim.filetype.add({ extension = { templ = "templ" } })
+
+-- Neovide
+if vim.g.neovide then
+  vim.o.guifont = "MonaspiceKR NF:h18"
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_show_border = false
+  vim.g.neovide_scroll_animation_far_lines = 0
+  vim.g.neovide_cursor_animation_length = 0.05
+  vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+
+  -- Allow copy paste in neovim
+  vim.keymap.set({ "n", "i", "v" }, "<D-v>", "+p<CR>")
+  vim.keymap.set({ "n", "i", "v" }, "<D-c>", '"+y<CR> ')
+end
