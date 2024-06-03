@@ -23,6 +23,15 @@ return {
       },
     },
   },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+    enabled = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("render-markdown").setup({})
+    end,
+  },
   -- install without yarn or npm
   {
     "iamcco/markdown-preview.nvim",
