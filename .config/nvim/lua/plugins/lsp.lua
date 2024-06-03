@@ -1,5 +1,7 @@
 return {
+  { "towolf/vim-helm" },
   {
+
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
