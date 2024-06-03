@@ -5,7 +5,13 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #     ZSH_THEME="powerlevel10k/powerlevel10k"
 # fi
+ if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
+    autoload -Uz compinit
+    compinit
+  fi
+  
 export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists
 
 # If you come from bash you might have to change your $PATH.
@@ -74,6 +80,7 @@ plugins=(
   ripgrep
   docker
   docker-compose
+  kubectl
   tmux
   fzf-zsh-plugin
   zsh-autosuggestions
@@ -106,6 +113,19 @@ alias tmavim='tmn vim'
 alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
 alias tmss='tmux set status'
+
+function activedeploy() {
+  git fetch --tags -f > /dev/null
+  git show deploy/$1/active 
+  git branch --contains deploy/$1/active
+}
+
+# git
+alias fgc='fzf-git-checkout'
+alias activeprod='activedeploy prod'
+alias activetest='activedeploy test'
+alias activeqa='activedeploy qa'
+alias activeutv='activedeploy utv'
 
 alias lc='eza -la --icons'
 alias ll='lsd -l'
