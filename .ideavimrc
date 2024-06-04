@@ -42,10 +42,9 @@ imap jk <Esc>
 imap <C-b> <ESC>^i
 imap <C-e> <END>
 
-map <S-l>       <Action>(NextTab)
+map <S-l>        <Action>(NextTab)
 map <s-h>     <Action>(PreviousTab)
 
-let g:WhichKeyDesc_zen = "<Space>z  Zen"
 map <leader>z   <Action>(ToggleDistractionFreeMode)
 
 map <C-h>       <Action>(NextSplitter)
@@ -55,62 +54,40 @@ map <C-o> <Action>(Back)
 map <C-i> <Action>(Forward)
 
 " Buffers / windows
-let g:WhichKeyDesc_quit = "<Space>q  Quit"
-map <leader>q   <Action>(CloseContent)
+map <leader>q  <Action>(CloseContent)
 
-let g:WhichKeyDesc_buffer = "<Space>b  Buffers"
-let g:WhichKeyDesc_buffer_all_but_active = "<Space>be Close all but active"
-map <leader>be  <Action>(CloseAllEditorsButActive)
-let g:WhichKeyDesc_buffer_all = "<Space>bw Close all"
-map <leader>bw  <Action>(CloseAllEditors)
-let g:WhichKeyDesc_buffer_left = "<Space>bh Close all to the left"
+map <leader>be <Action>(CloseAllEditorsButActive)
+map <leader>bw <Action>(CloseAllEditors)
 map <leader>bh <Action>(CloseAllToTheLeft)
-let g:WhichKeyDesc_buffer_right = "<Space>bl Close all to the right"
 map <leader>bl <Action>(CloseAllToTheRight)
-let g:WhichKeyDesc_buffer_right = "<Space>bl Close all to the right"
 map <leader>bd <Action>(CloseContent)
-let g:WhichKeyDesc_buffer_right = "<Space>bf Switcher"
 map <leader>bf <Action>(Switcher)>
-let g:WhichKeyDesc_buffer_right = "<Space>bb Switcher"
 map <leader>bb <Action>(Switcher)>
 
+map <leader>uw <Action>(EditorToggleUseSoftWraps)
+
 " Git
-let g:WhichKeyDesc_git = "<Space>g  Git"
-let g:WhichKeyDesc_git_blame = "<Space>gl  Blame"
 map <leader>gl  <Action>(Annotate)
-let g:WhichKeyDesc_git_branches = "<Space>gb  Branches"
 map <leader>gb  <Action>(Git.Branches)
 
 " Debugging
-let g:WhichKeyDesc_debug = "<Space>d  Debug"
-let g:WhichKeyDesc_debug_breakpoint = "<Space>db  Breakpoint toggle"
 map <leader>db  <Action>(ToggleLineBreakpoint)
-let g:WhichKeyDesc_debug_run = "<Space>dr Run with debugging"
 map <leader>dr  <Action>(Debug)
-let g:WhichKeyDesc_debug_stop = "<Space>ds Stop debugging"
 map <leader>ds  <Action>(Stop)
 
 map <leader>td  <Action>(RiderUnitTestDebugContextAction)
 
 " Search
-let g:WhichKeyDesc_p = "<Space>p  Find"
 map <leader>p   <Action>(SearchEverywhere)
 
-let g:WhichKeyDesc_search = "<Space>s  Search"
-let g:WhichKeyDesc_search_text = "<Space>st Text"
 map <leader>st  <Action>(FindInPath)
-let g:WhichKeyDesc_search_recent = "<Space>sr  Recent"
 map <leader>sr  <Action>(RecentFiles)
 
 map <C-s>       <Action>(SaveDocument)
-let g:WhichKeyDesc_write = "<Space>w  Write"
 map <leader>w   <Action>(SaveDocument)
-let g:WhichKeyDesc_comment = "<Space>/  Comment"
 map <leader>/   <Action>(CommentByLineComment)
 
-let g:WhichKeyDesc_clear = "<Space>s  NoHighlight"
 map <leader>s   :let @/=""<CR>
-let g:WhichKeyDesc_explorer = "<Space>e  Explorer"
 map <leader>e   <Action>(SelectInProjectView)
 
 map <leader>ma :action TridentAppend<CR>
@@ -135,11 +112,9 @@ map ]e          <Action>(GotoNextError)
 map [e          <Action>(GotoPreviousError)
 map <C-f>  <Action>(ShowIntentionActions)
 
-let g:WhichKeyDesc_lang = "<Space>c  Code (LSP)"
 map <leader>ca  <Action>(ShowIntentionActions)
 map <leader>cr  <Action>(RenameElement)
 map <leader>cf  <Action>(ReformatCode)
 map <leader>cR  <Action>(FindUsages)
 map <leader>cd  <Action>(GotoDeclaration)
 map <leader>ci  <Action>(GotoImplementation)
-
