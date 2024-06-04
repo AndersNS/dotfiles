@@ -52,7 +52,7 @@ keymap.set(
   { desc = "Find buffers" }
 )
 
-keymap.set("n", "<leader>bw", "<cmd>:bufdo bwipeout<cr>", { desc = "Close all buffers" })
+keymap.set("n", "<leader>bw", "<cmd>:%bd<cr>", { desc = "Close all buffers" })
 
 keymap.set(
   "n",
