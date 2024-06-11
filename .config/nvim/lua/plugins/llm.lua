@@ -1,10 +1,16 @@
 -- vim.lsp.set_log_level("debug")
 
 return {
-  { "David-Kunz/gen.nvim", 
-opts = {
-    no_auto_close = true,
-  } },
+  {
+    "David-Kunz/gen.nvim",
+    opts = {
+      no_auto_close = true,
+      model = "mistral", -- The default model to use.
+      host = "localhost", -- The host running the Ollama service.
+      port = "11434", -- The port on which the Ollama service is listening.
+      quit_map = "q", -- set keymap for close the response window
+    },
+  },
   {
     "huggingface/llm.nvim",
     enabled = false, -- TODO Waiting for https://github.com/huggingface/llm-ls/issues/17
