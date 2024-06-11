@@ -1,5 +1,6 @@
+local util = require("lspconfig.util")
+
 return {
-  { "towolf/vim-helm" },
   {
 
     "neovim/nvim-lspconfig",
@@ -15,6 +16,10 @@ return {
         },
         html = {
           filetypes_include = { "tmpl" },
+        },
+        yamlls = {},
+        helm_ls = {
+          root_dir = util.find_git_ancestor,
         },
       },
       capabilities = {
