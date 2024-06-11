@@ -1,4 +1,1 @@
-return { {
-  "mini.indentscope",
-  enabled = false,
-} }
+return {}
