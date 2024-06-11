@@ -2,6 +2,14 @@ return {
   { "dkarter/bullets.vim" },
   { "sindrets/diffview.nvim" },
   {
+    "echasnovski/mini.indentscope",
+    opts = {
+      draw = {
+        animation = require("mini.indentscope").gen_animation.none(),
+      },
+    },
+  },
+  {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
     event = "VeryLazy",
