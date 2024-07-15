@@ -42,6 +42,12 @@ return {
   { "EdenEast/nightfox.nvim" },
   { "folke/tokyonight.nvim", lazy = true, priority = 1000, opts = {} },
   {
+    "sho-87/kanagawa-paper.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
     "rebelot/kanagawa.nvim",
     enabled = false,
     opts = {
@@ -101,6 +107,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "rose-pine",
+      -- colorscheme = "kanagawa-paper",
       -- colorscheme = "tokyonight-night",
       -- colorscheme = "kanagawa",
       -- colorscheme = "catppuccin",
