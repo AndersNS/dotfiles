@@ -17,25 +17,20 @@ if vim.g.vscode then
   -- VSCode extension
 else
   -- ordinary Neovim
-  local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit =
-    Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", float_opts = { border = "none" } })
-
-  function _lazygit_toggle()
-    lazygit:toggle()
-  end
-  vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-  keymap.set("n", "<c-_>", ":ToggleTerm<cr>", { silent = true })
+  -- local Terminal = require("toggleterm.terminal").Terminal
+  -- local lazygit =
+  --   Terminal:new({ cmd = "lazygit", hidden = true, direction = "float", float_opts = { border = "none" } })
+  --
+  -- function _lazygit_toggle()
+  --   lazygit:toggle()
+  -- end
+  -- vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+  -- keymap.set("n", "<c-_>", ":ToggleTerm<cr>", { silent = true })
 end
 
 keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 keymap.del("n", "<leader>qq")
 
-keymap.del("n", "<leader>ww")
-keymap.del("n", "<leader>wd")
-keymap.del("n", "<leader>w-")
-keymap.del("n", "<leader>w|")
-keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Save all" })
 keymap.set("n", "<leader>uz", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
