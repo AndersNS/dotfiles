@@ -77,7 +77,6 @@ plugins=(
   aliases
   git
   fzf
-  ripgrep
   docker
   docker-compose
   kubectl
