@@ -33,11 +33,16 @@ return {
         tmux = { enabled = true },
         alacritty = {
           enabled = true,
-          font = "20", -- font size
+          font = "24", -- font size
         },
         kitty = {
           enabled = true,
           font = "+14", -- font size increment
+        },
+        wezterm = {
+          enabled = true,
+          -- can be either an absolute font size or the number of incremental steps
+          font = "+4", -- (10% increase per step)
         },
       },
     },
