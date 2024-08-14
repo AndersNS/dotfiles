@@ -2,7 +2,7 @@ local vars = require("variables")
 
 return {
   "epwalsh/obsidian.nvim",
-  -- version = "*", -- to use latest release instead of latest commit
+  version = "*", -- to use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
   -- event = { "BufReadPre " .. vars.vault_path .. "/**.md" },
