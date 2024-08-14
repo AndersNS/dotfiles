@@ -1,0 +1,8 @@
+[alias]
+  todos = "!sh -c ' \
+    [ $GIT_PREFIX ] && cd $GIT_PREFIX; \
+    git status --short --branch $*; \
+    git --no-pager diff -U0 main | \
+    grep \"^+.*TODO\" | \
+    sed \"s/^+//\" | \
+    git --no-pager grep -nFf - 2> /dev/null' -"
