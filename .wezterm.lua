@@ -7,12 +7,13 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 config.enable_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha"
 
--- config.font = wezterm.font("MonaspiceKR NF", { weight = "Bold", italic = false })
--- config.font = wezterm.font("MonaspiceKR NF", { italic = true })
-config.font = wezterm.font("JetBrainsMono Nerd Font", { italic = true })
+-- config.font = wezterm.font("MonaspiceKR NF", { weight = "Regular", italic = false })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold", italic = false })
+-- config.font = wezterm.font("IosevkaTerm Nerd Font", { italic = false })
 config.font_size = 16
 config.font_rules = {
 	{
