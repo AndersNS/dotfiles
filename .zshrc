@@ -125,6 +125,7 @@ alias activeprod='activedeploy prod'
 alias activetest='activedeploy test'
 alias activeqa='activedeploy qa'
 alias activeutv='activedeploy utv'
+alias todos='git todos'
 
 alias lc='eza -la --icons'
 alias ll='lsd -l'
