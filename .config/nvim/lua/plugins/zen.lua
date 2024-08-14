@@ -16,6 +16,7 @@ return {
     opts = {
       window = {
         backdrop = 1,
+        width = 80,
         options = {
           number = false,
           relativenumber = false,
