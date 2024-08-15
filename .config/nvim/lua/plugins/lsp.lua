@@ -24,6 +24,9 @@ return {
         helm_ls = {
           root_dir = util.find_git_ancestor,
         },
+        marksman = {
+          root_dir = util.root_pattern(".obsidian.vimrc", ".git"),
+        },
       },
       capabilities = {
         workspace = {
