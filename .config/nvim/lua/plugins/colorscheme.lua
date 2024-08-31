@@ -29,6 +29,7 @@ return {
         notify = true,
         neotree = true,
         harpoon = true,
+        grug_far = true,
         semantic_tokens = true,
         telescope = {
           enabled = true,

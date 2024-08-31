@@ -119,14 +119,16 @@ function activedeploy() {
   git branch --contains deploy/$1/active
 }
 
-# git
-alias fgc='fzf-git-checkout'
 alias activeprod='activedeploy prod'
 alias activetest='activedeploy test'
 alias activeqa='activedeploy qa'
 alias activeutv='activedeploy utv'
+
+# git
+alias fgc='fzf-git-checkout'
 alias todos='git todos'
 
+alias gdc='git diff --cached'
 alias lc='eza -la --icons'
 alias ll='lsd -l'
 alias lla='lsd -la'
@@ -157,6 +159,7 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
+export PATH="$PATH:~/scripts/"
 export GOPATH="$HOME/go"
 
 export EDITOR='nvim'
