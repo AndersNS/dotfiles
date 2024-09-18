@@ -43,7 +43,7 @@ imap jk <Esc>
 imap <C-b> <ESC>^i
 imap <C-e> <END>
 
-map <S-l>        <Action>(NextTab)
+map <S-l>     <Action>(NextTab)
 map <s-h>     <Action>(PreviousTab)
 
 map <leader>z   <Action>(ToggleDistractionFreeMode)
@@ -52,19 +52,21 @@ map <leader>h   :nohlsearch<CR>
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 
-map <C-o> <Action>(Back)
-map <C-i> <Action>(Forward)
-
 " Buffers / windows
-map <leader>q  <Action>(CloseContent)
+map <leader>q  :q
 
 map <leader>be <Action>(CloseAllEditorsButActive)
 map <leader>bw <Action>(CloseAllEditors)
 map <leader>bh <Action>(CloseAllToTheLeft)
 map <leader>bl <Action>(CloseAllToTheRight)
-map <leader>bd <Action>(CloseContent)
+map <leader>bd :bd<CR>
 map <leader>bf <Action>(Switcher)>
 map <leader>bb <Action>(Switcher)>
+
+vnoremap < <gv
+vnoremap > >gv
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
 
 map <leader>uw <Action>(EditorToggleUseSoftWraps)
 
