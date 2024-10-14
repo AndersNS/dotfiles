@@ -83,6 +83,7 @@ map <leader>td  <Action>(RiderUnitTestDebugContextAction)
 
 " Search
 map <leader>p   <Action>(SearchEverywhere)
+map <leader><leader>   <Action>(SearchEverywhere)
 
 map <leader>st  <Action>(FindInPath)
 map <leader>sr  <Action>(RecentFiles)
