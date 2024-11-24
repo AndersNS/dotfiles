@@ -6,3 +6,10 @@
     grep \"^+.*TODO\" | \
     sed \"s/^+//\" | \
     git --no-pager grep -nFf - 2> /dev/null' -"
+  # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+  dlog = -c diff.external=difft log --ext-diff
+  dshow = -c diff.external=difft show --ext-diff
+  ddiff = -c diff.external=difft diff
+
+[rerere]
+	enabled = true
