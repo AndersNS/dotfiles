@@ -103,6 +103,7 @@ alias ns='npm start'
 alias n='pnpm'
 alias rider='open -na "Rider.app" --args $1'
 alias ridereap='open -na "Rider EAP.app" --args $1'
+alias maincp='git show main:$1  | pbcopy'
 
 # tmux aliases
 alias tmnhn='tmn nhn'
@@ -198,7 +199,7 @@ eval $(thefuck --alias)
 
 export WALK_EDITOR=nvim
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
-
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # bun completions
 [ -s "/Users/andersns/.bun/_bun" ] && source "/Users/andersns/.bun/_bun"
 
