@@ -10,6 +10,7 @@ config.enable_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 -- For example, changing the color scheme:
 config.color_scheme = "Catppuccin Mocha"
+config.front_end = "WebGpu"
 
 -- config.font = wezterm.font("MonaspiceKR NF", { weight = "Regular", italic = false })
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold", italic = false })

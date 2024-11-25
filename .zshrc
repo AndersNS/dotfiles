@@ -12,8 +12,8 @@
  #    compinit
  #  fi
   
+FPATH+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -161,6 +161,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/source/erlang_ls/_build/default/bin"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="$PATH:~/scripts/"
+
 export GOPATH="$HOME/go"
 
 export EDITOR='nvim'
@@ -195,7 +196,6 @@ compinit
 autoload -U +X bashcompinit && bashcompinit
 
 eval "$(zoxide init zsh)"
-eval $(thefuck --alias)
 
 export WALK_EDITOR=nvim
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
