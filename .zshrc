@@ -5,12 +5,12 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #     ZSH_THEME="powerlevel10k/powerlevel10k"
 # fi
- if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit
-  fi
+ # if type brew &>/dev/null; then
+ #    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+ #
+ #    autoload -Uz compinit
+ #    compinit
+ #  fi
   
 export PS1="$([[ ! -z "${UPTERM_ADMIN_SOCKET}"  ]] && echo -e '\xF0\x9F\x86\x99 ')$PS1" # Add an emoji to the prompt if `UPTERM_ADMIN_SOCKET` exists
 
@@ -184,7 +184,7 @@ export GPG_TTY=$(tty)
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+# export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
 autoload -U compinit promptinit
 

@@ -1,3 +1,31 @@
+[user]
+	name = Anders Njøs Slinde
+	email = anders.slinde@gmail.com
+  
+[init]
+	defaultBranch = main
+  
+[core]
+    pager = delta
+    attributesfile = ~/.gitattributes
+
+[push]
+	autoSetupRemote = true
+  
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    dark = true
+
+[merge]
+    conflictstyle = zdiff3
+
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P
+ 
 [alias]
   todos = "!sh -c ' \
     [ $GIT_PREFIX ] && cd $GIT_PREFIX; \
