@@ -1,4 +1,7 @@
 # dotfiles
+## Clone this repo
+
+`git clone --bare git@github.com:AndersNS/dotfiles.git $HOME/.dotfiles`
 
 ## Set up alias
 
