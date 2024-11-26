@@ -62,7 +62,6 @@
             finder.AppleShowAllExtensions = true;
             finder.FXPreferredViewStyle = "clmv";
             screencapture.location = "~/Pictures/screenshots";
-            screensaver.askForPasswordDelay = 10;
           };
 
           # necessary for using flakes on this system.
@@ -114,9 +113,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.andersns = import ./home.nix;
             users.users.andersns.home = "/Users/andersns"; # TODO: Not sure why this is needed
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
         ];
       };

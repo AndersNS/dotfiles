@@ -4,7 +4,7 @@ rec {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.stateVersion = "25.05"; # TODO: ??
+  home.stateVersion = "25.05";
 
   home.username = "andersns";
   home.homeDirectory = "/Users/andersns";
@@ -45,7 +45,6 @@ rec {
     pkgs.zsh-autosuggestions
     pkgs.zsh-completions
     pkgs.zsh-syntax-highlighting
-    pkgs.fzf-zsh
 
     # Editors
     pkgs.jetbrains.rider
@@ -86,6 +85,7 @@ rec {
     # Frontend
     pkgs.nodejs_20
     pkgs.pnpm
+    pkgs.yarn
 
     # Languages
     pkgs.go
@@ -101,5 +101,54 @@ rec {
       ]
     )
   ];
+
+  programs.starship.enable = true;
+  programs.zoxide.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    autosuggestion.enable = true;
+
+    initExtra = ''
+
+    '';
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "unixorn/fzf-zsh-plugin"; }
+        { name = "zsh-users/zsh-syntax-highlighting"; }
+      ];
+    };
+    envExtra = ''
+      source $HOME/.aliases
+      export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden"
+
+      export PATH="$HOME/.tmuxifier/bin:$PATH"
+      export PATH="$PATH:~/scripts/"
+      export GOPATH="$HOME/go"
+      export EDITOR="nvim"
+
+      # bindkey "ç" fzf-cd-widget
+      export WALK_EDITOR=nvim
+      export DOCKER_HOST='unix://$HOME/.colima/docker.sock'
+      export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    '';
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "aliases"
+        "git"
+        "fzf"
+        "docker"
+        "docker-compose"
+        "kubectl"
+        "tmux"
+      ];
+    };
+
+  };
 
 }

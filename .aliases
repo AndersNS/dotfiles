@@ -22,3 +22,52 @@ alias branchclean='git branch --merged | egrep -v "(^\*|master|dev)" | xargs git
 alias lzn='lazynpm'
 alias lzd='lazydocker'
 alias lzg='lazygit'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dfgg='gg --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dfa='dotfiles add $HOME/.config/astronvim/lua/user/**/*.lua && dotfiles add $HOME/.config/lvim/**/*.lua && dotfiles add -u && dotfiles add $HOME/.config/lvim/lua/* && dotfiles add $HOME/.config/nvim/*' 
+alias dfc='dotfiles add -u && dotfiles commit -m $1'
+alias dfs='dotfiles status'
+alias dfu="dotfiles add -u && dotfiles add $HOME/.config/lvim/**/*.lua"
+alias dfd="dotfiles diff"
+alias dfp="dotfiles push"
+alias gg="lazygit"
+alias ns='npm start'
+alias n='pnpm'
+alias rider='open -na "Rider.app" --args $1'
+alias ridereap='open -na "Rider EAP.app" --args $1'
+alias maincp='git show main:$1  | pbcopy'
+
+# tmux aliases
+alias tmnhn='tmn nhn'
+alias tmvar='tmuxifier s var'
+alias tmpriv='tmn priv'
+alias tmavim='tmn vim'
+alias tmn='tmux new -A -s $1'
+alias tmd='tmux detach'
+alias tmss='tmux set status'
+
+function activedeploy() {
+  git fetch --tags -f > /dev/null
+  git show deploy/$1/active 
+  git branch --contains deploy/$1/active
+}
+
+alias activeprod='activedeploy prod'
+alias activetest='activedeploy test'
+alias activeqa='activedeploy qa'
+alias activeutv='activedeploy utv'
+
+# git
+alias fgc='fzf-git-checkout'
+alias todos='git todos'
+
+alias gdc='git diff --cached'
+alias lc='eza -la --icons'
+alias ll='lsd -l'
+alias lla='lsd -la'
+alias ezat='eza -T --icons --git-ignore'
+alias lzd='lazydocker'
+alias drawio='/Applications/draw.io.app/Contents/MacOS/draw.io'
+alias vim='nvim'
+alias cls='tput reset'
+alias clear='cls'
