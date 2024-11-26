@@ -1,65 +1,6 @@
 # dotfiles
 
-## Set up a new computer
-
-### Install dependencies
-
-```zsh
-brew install node
-
-# Fuzzy finder
-brew install fzf
-
-# Syntax highlight everywhere
-brew install bat
-
-# To install useful key bindings and fuzzy completion:
-$(brew --prefix)/opt/fzf/install
-
-# Better faster grep
-brew install ripgrep
-
-brew install cmake
-brew install watchman
-
-brew install docker
-brew install docker-compose
-
-# Terminal "gui"s
-brew install jesseduffield/lazygit/lazygit
-brew install jesseduffield/lazydocker/lazydocker
-brew install jesseduffield/lazynpm/lazynpm
-
-
-```
-
-### Install Nerd Fonts
-
-I use Fira Code Nerd Font from https://www.nerdfonts.com/
-
-### Clone this repo
-
-`git clone --bare git@github.com:AndersNS/dotfiles.git $HOME/.dotfiles`
-
-### Install Oh My Zsh
-
-`sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-
-### Install the zsh theme:
-
-`git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`
-
-### Install Oh My Zsh plugins
-
-Autosuggestions:
-
-`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-
-Syntax highlighting
-
-`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-
-### Set up alias
+## Set up alias
 
 `alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'`
 
@@ -71,18 +12,7 @@ Syntax highlighting
 
 `dotfiles checkout`
 
-> If you already have some of the files you'll get an error. Delete them or something.
-
-### neovim first run
-
-1. Open a nvim with `nvim`
-2. (Should happen automatically) Install plugins `:PlugInstall`
-3. (Should happen automatical) Install CocPlugins
-4. Restart nvim
-
-> In your first run you will probably get some weird errors because of missing plugins and color themes
-
-# Dotfiles Alias Usage
+### Dotfiles Alias Usage
 
 ```
 dotfiles status
@@ -91,4 +21,28 @@ dotfiles commit -m "Add vimrc"
 dotfiles add .bashrc
 dotfiles commit -m "Add bashrc"
 dotfiles push
+```
+
+## Set up a new computer
+
+### Install brew
+
+Using the official installer:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+### Install nix
+
+Using the determinate installer:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+### Install nix packages
+
+```bash
+ nix run nix-darwin -- switch --flake ~/.config/nix-darwin
 ```
