@@ -7,6 +7,9 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -14,14 +17,13 @@
       self,
       nix-darwin,
       nixpkgs,
+      home-manager,
       nix-homebrew,
     }:
     let
       configuration =
         { pkgs, ... }:
         {
-          # List packages installed in system profile. To search by name, run:
-          # $ nix-env -qaP | grep wget
           environment.systemPackages = [
 
             # Terminal
@@ -105,12 +107,11 @@
             pkgs.go
             pkgs.libllvm
             pkgs.luajitPackages.luacheck
-            pkgs.dotnet-sdk_8
+
           ];
 
           homebrew = {
             enable = true;
-            # Comment away after fully over on nix
             onActivation.cleanup = "uninstall";
 
             taps = [ ];
@@ -138,6 +139,7 @@
               ];
             })
           ];
+
           system.defaults = {
             dock.autohide = true;
             dock.mru-spaces = false;
@@ -151,7 +153,7 @@
           nix.settings.experimental-features = "nix-command flakes";
 
           # Enable alternative shell support in nix-darwin.
-          # programs.fish.enable = true;
+          programs.zsh.enable = true;
 
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -168,7 +170,6 @@
 
           # Use touch id for sudo authentication
           security.pam.enableSudoTouchIdAuth = true;
-
         };
 
     in
@@ -181,18 +182,25 @@
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
-              # Install Homebrew under the default prefix
               enable = true;
 
               # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
               enableRosetta = true;
 
-              # User owning the Homebrew prefix
               user = "andersns";
 
-              # Automatically migrate existing Homebrew installations
               autoMigrate = true;
             };
+          }
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.andersns = import ./home.nix;
+            users.users.andersns.home = "/Users/andersns"; # TODO: Not sure why this is needed
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
           }
         ];
       };
