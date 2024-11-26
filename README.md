@@ -1,4 +1,5 @@
 # dotfiles
+
 ## Clone this repo
 
 `git clone --bare git@github.com:AndersNS/dotfiles.git $HOME/.dotfiles`
@@ -47,5 +48,5 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ### Install nix packages
 
 ```bash
- nix run nix-darwin -- switch --flake ~/.config/nix-darwin
+ nix run nix-darwin -- switch --flake ~/.config/nix-darwin#Anders-Max
 ```
