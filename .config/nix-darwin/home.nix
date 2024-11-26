@@ -36,7 +36,6 @@ rec {
     pkgs.gnupg
 
     # Utils
-    pkgs.raycast
     pkgs.karabiner-elements
     pkgs.hidden-bar
 

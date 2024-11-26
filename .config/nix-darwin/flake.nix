@@ -37,6 +37,7 @@
             ];
             casks = [
               "mongodb-compass"
+              "raycast"
             ];
             masApps = {
               "Things" = 904280696;
