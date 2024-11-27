@@ -110,7 +110,7 @@ rec {
     autosuggestion.enable = true;
 
     initExtra = ''
-
+      source $HOME/.aliases
     '';
     zplug = {
       enable = true;
@@ -121,7 +121,6 @@ rec {
       ];
     };
     envExtra = ''
-      source $HOME/.aliases
       export FZF_DEFAULT_COMMAND="rg --files --no-ignore-vcs --hidden"
 
       export PATH="$HOME/.tmuxifier/bin:$PATH"
