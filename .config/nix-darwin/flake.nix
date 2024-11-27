@@ -63,10 +63,18 @@
             finder.AppleShowAllExtensions = true;
             finder.FXPreferredViewStyle = "clmv";
             screencapture.location = "~/Pictures/screenshots";
+
+            NSGlobalDomain.KeyRepeat = 2;
+            NSGlobalDomain.InitialKeyRepeat = 15;
           };
+
+          system.keyboard.enableKeyMapping = true;
+          system.keyboard.remapCapsLockToControl = true;
+          system.startup.chime = false;
 
           # necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
+          nix.optimise.automatic = true;
 
           # Enable alternative shell support in nix-darwin.
           programs.zsh.enable = true;

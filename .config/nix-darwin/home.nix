@@ -103,6 +103,7 @@ rec {
 
   programs.starship.enable = true;
   programs.zoxide.enable = true;
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -146,7 +147,5 @@ rec {
         "tmux"
       ];
     };
-
   };
-
 }
