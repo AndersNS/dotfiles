@@ -9,7 +9,7 @@ local config = wezterm.config_builder()
 config.enable_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 -- For example, changing the color scheme:
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Tokyo Night"
 config.front_end = "WebGpu"
 
 -- config.font = wezterm.font("MonaspiceKR NF", { weight = "Regular", italic = false })
