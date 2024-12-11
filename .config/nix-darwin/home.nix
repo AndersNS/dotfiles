@@ -90,6 +90,7 @@ rec {
     pkgs.go
     pkgs.libllvm
     pkgs.luajitPackages.luacheck
+    pkgs.rustup
     (
       with dotnetCorePackages;
       combinePackages [

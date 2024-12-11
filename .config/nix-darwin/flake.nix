@@ -66,6 +66,7 @@
 
             NSGlobalDomain.KeyRepeat = 2;
             NSGlobalDomain.InitialKeyRepeat = 15;
+            NSGlobalDomain."com.apple.sound.beep.volume" = 0.0;
           };
 
           system.keyboard.enableKeyMapping = true;
