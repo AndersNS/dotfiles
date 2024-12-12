@@ -47,15 +47,15 @@ return {
           { icon = " ", key = "s", desc = "Restore Session", section = "session" },
           { icon = " ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
           { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
         },
         sections = {
           { icon = " ", title = "Keys", section = "keys", indent = 2, padding = 1 },
-          { icon = " ", title = "Recent", section = "recent_files", indent = 2, padding = 1 },
+          { icon = " ", pane = 2, title = "Recent", section = "recent_files", indent = 2, padding = 1 },
           { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
           {
+            pane = 2,
             icon = " ",
             title = "Git Status",
             section = "terminal",
@@ -63,7 +63,7 @@ return {
               return Snacks.git.get_root() ~= nil
             end,
             cmd = "git status --short --branch --renames",
-            height = 5,
+            height = 10,
             padding = 1,
             ttl = 5 * 60,
             indent = 3,

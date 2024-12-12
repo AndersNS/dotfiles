@@ -46,6 +46,11 @@ keymap.set(
   "<cmd>lua require('telescope.builtin').buffers({ path_display = { 'truncate' }, sort_mru = true, sort_lastused = true })<cr>",
   { desc = "Find buffers" }
 )
+keymap.set("n", "<leader>fC", function()
+  require("telescope.builtin").find_files({
+    cwd = "~/.config",
+  })
+end, { desc = "Find Configs" })
 
 keymap.set("n", "<leader>bw", "<cmd>:%bd<cr>", { desc = "Close all buffers" })
 
