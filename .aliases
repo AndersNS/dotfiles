@@ -33,6 +33,7 @@ alias dfp="dotfiles push"
 alias gg="lazygit"
 alias ns='npm start'
 alias n='pnpm'
+alias man='batman'
 alias rider='open -na "Rider.app" --args $1'
 alias ridereap='open -na "Rider EAP.app" --args $1'
 alias maincp='git show main:$1  | pbcopy'
@@ -46,6 +47,7 @@ alias tmavim='tmn vim'
 alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
 alias tmss='tmux set status'
+
 
 function activedeploy() {
   git fetch --tags -f > /dev/null

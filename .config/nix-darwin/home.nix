@@ -24,6 +24,7 @@ rec {
     # Terminal Utils
     pkgs.bash
     pkgs.bat
+    pkgs.bat-extras.batman
     pkgs.bottom
     pkgs.zoxide
     pkgs.lsd
@@ -133,7 +134,6 @@ rec {
       # bindkey "ç" fzf-cd-widget
       export WALK_EDITOR=nvim
       export DOCKER_HOST='unix://$HOME/.colima/docker.sock'
-      export MANPAGER="sh -c 'col -bx | bat -l man -p'"
     '';
 
     oh-my-zsh = {
