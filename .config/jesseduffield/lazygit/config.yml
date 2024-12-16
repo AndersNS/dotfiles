@@ -1,31 +1,39 @@
-reporting: "on"
+reporting: 'on'
 startuppopupversion: 1
-
 gui:
-  # stuff relating to the UI
-  showIcons: true
-  scrollHeight: 2 # how many lines you scroll by
-  scrollPastBottom: true # enable scrolling past the bottom
-  sidePanelWidth: 0.3333 # number from 0 to 1
-  theme:
-    selectedLineBgColor:
-      - black
-    selectedRangeBgColor:
-      - black  # theme:
-  #   lightTheme: false # For terminals with a light background
-  #   activeBorderColor:
-  #     - white
-  #     - bold
-  #   inactiveBorderColor:
-  #     - green
-  #   optionsTextColor:
-  #     - blue
-  #   selectedLineBgColor:
-  #     - reverse
-  #   selectedRangeBgColor:
-  #     - reverse
-  commitLength:
-    show: true
-  mouseEvents: true
-  skipUnstageLineWarning: false
-  skipStashWarning: true
+    # stuff relating to the UI
+    showIcons: true
+    scrollHeight: 2 # how many lines you scroll by
+    scrollPastBottom: true # enable scrolling past the bottom
+    sidePanelWidth: 0.3333 # number from 0 to 1
+    nerdFontsVersion: '3'
+    theme:
+        activeBorderColor:
+            - '#ff9e64'
+            - 'bold'
+        inactiveBorderColor:
+            - '#27a1b9'
+        searchingActiveBorderColor:
+            - '#ff9e64'
+            - 'bold'
+        optionsTextColor:
+            - '#7aa2f7'
+        selectedLineBgColor:
+            - '#283457'
+        cherryPickedCommitFgColor:
+            - '#7aa2f7'
+        cherryPickedCommitBgColor:
+            - '#bb9af7'
+        markedBaseCommitFgColor:
+            - '#7aa2f7'
+        markedBaseCommitBgColor:
+            - '#e0af68'
+        unstagedChangesColor:
+            - '#db4b4b'
+        defaultFgColor:
+            - '#c0caf5'
+    commitLength:
+        show: true
+    mouseEvents: true
+    skipDiscardChangeWarning: false
+    skipStashWarning: true

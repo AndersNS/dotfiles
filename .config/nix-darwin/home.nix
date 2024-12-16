@@ -130,6 +130,7 @@ rec {
       export PATH="$PATH:~/scripts/"
       export GOPATH="$HOME/go"
       export EDITOR="nvim"
+      export XDG_CONFIG_HOME="$HOME/.config"
 
       # bindkey "ç" fzf-cd-widget
       export WALK_EDITOR=nvim
