@@ -13,7 +13,7 @@ return {
   },
   {
     "folke/zen-mode.nvim",
-    dir = "~/source/zen-mode.nvim/",
+    enabled = false,
     opts = {
       window = {
         backdrop = 1,
@@ -46,6 +46,13 @@ return {
           -- can be either an absolute font size or the number of incremental steps
           font = "+4", -- (10% increase per step)
         },
+      },
+    },
+    keys = {
+      {
+        "<leader>uz",
+        "<cmd>ZenMode<cr>",
+        desc = "ZenMode",
       },
     },
   },

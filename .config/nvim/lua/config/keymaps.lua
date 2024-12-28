@@ -32,7 +32,6 @@ keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 keymap.del("n", "<leader>qq")
 
 keymap.set("n", "<leader>W", "<cmd>wa<cr>", { desc = "Save all" })
-keymap.set("n", "<leader>uz", "<cmd>ZenMode<cr>", { desc = "ZenMode" })
 
 keymap.set(
   "n",
