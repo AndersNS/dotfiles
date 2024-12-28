@@ -33,11 +33,13 @@
             taps = [ ];
             brews = [
               "git-delta"
+              "openssl"
               "mas" # Mac App Store CLI
             ];
             casks = [
               "mongodb-compass"
               "raycast"
+              "ghostty"
             ];
             masApps = {
               "Things" = 904280696;
@@ -46,15 +48,11 @@
             };
           };
 
-          fonts.packages = with pkgs; [
-            (nerdfonts.override {
-              fonts = [
-                "FiraCode"
-                "JetBrainsMono"
-                "Monaspace"
-                "Hack"
-              ];
-            })
+          fonts.packages = [
+            pkgs.nerd-fonts.fira-code
+            pkgs.nerd-fonts.jetbrains-mono
+            pkgs.nerd-fonts.monaspace
+            pkgs.nerd-fonts.hack
           ];
 
           system.defaults = {
