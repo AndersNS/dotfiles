@@ -16,10 +16,10 @@ return {
     "hrsh7th/nvim-cmp",
 
     -- Optional, for search and quick-switch functionality.
-    "nvim-telescope/telescope.nvim",
+    -- "nvim-telescope/telescope.nvim",
 
     -- Optional, an alternative to telescope for search and quick-switch functionality.
-    -- "ibhagwan/fzf-lua"
+    "ibhagwan/fzf-lua",
 
     -- Optional, another alternative to telescope for search and quick-switch functionality.
     -- "junegunn/fzf",
