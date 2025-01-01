@@ -53,7 +53,6 @@ rec {
 
     # Tools
     pkgs.nixfmt-rfc-style
-    pkgs.openssl
     pkgs.qmk
     pkgs.turso-cli
 
@@ -64,7 +63,10 @@ rec {
     pkgs.git-extras
     pkgs.diffsitter
     pkgs.difftastic
+    pkgs.mergiraf
     pkgs.gh # GitHub CLI
+    pkgs.glab # Gitlab CLI
+    pkgs.git-ps-rs # https://git-ps.sh/
 
     # Containers
     pkgs.colima
@@ -92,6 +94,8 @@ rec {
     pkgs.libllvm
     pkgs.luajitPackages.luacheck
     pkgs.rustup
+    pkgs.cargo-binstall
+
     (
       with dotnetCorePackages;
       combinePackages [
@@ -128,6 +132,7 @@ rec {
 
       export PATH="$HOME/.tmuxifier/bin:$PATH"
       export PATH="$PATH:~/scripts/"
+      export PATH="$HOME/.cargo/bin:$PATH"
       export GOPATH="$HOME/go"
       export EDITOR="nvim"
       export XDG_CONFIG_HOME="$HOME/.config"
