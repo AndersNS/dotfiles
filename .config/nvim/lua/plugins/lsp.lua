@@ -2,7 +2,6 @@ local util = require("lspconfig.util")
 
 return {
   {
-
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = {
@@ -16,6 +15,19 @@ return {
           filetypes_include = { "rust" },
           -- to fully override the default_config, change the below
           -- filetypes = {}
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                  { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  { "cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                  { "([a-zA-Z0-9\\-:]+)" },
+                  { 'class: "(.*)"' },
+                },
+              },
+            },
+          },
         },
         html = {
           filetypes_include = { "tmpl" },
