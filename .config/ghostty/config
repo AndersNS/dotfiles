@@ -1,14 +1,15 @@
 # font-family = "TX-02-Trial"
-# font-family = "JetBrainsMonoNL Nerd Font Mono"
-font-family = "JetBrainsMono Nerd Font"
-#font-family = "FiraCode Nerd Font Mono"
-#font-family = "Hack Nerd Font Mono"
-#font-family = "Iosevka Nerd Font Mono"
-#font-family = "MonaspiceKR Nerd Font Mono"
+font-family = "MonaspiceAr Nerd Font Mono"
+font-family = "MonaspiceNe Nerd Font Mono"
+font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "MonaspiceKR Nerd Font Mono"
+font-family = "Hack Nerd Font Mono"
+font-family = "FiraCode Nerd Font Mono"
+#font-family = "JetBrainsMono Nerd Font Mono"
 
-font-style-italic = false
-font-style = "Retina"
-font-size = 16
+#font-style-italic = false
+#font-style = "Retina"
+font-size = 18
 
 
 #font-thicken = true
