@@ -50,3 +50,9 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```bash
  nix run nix-darwin -- switch --flake ~/.config/nix-darwin#Anders-Max
 ```
+
+# Updating
+
+```bash
+nix flake update
+```

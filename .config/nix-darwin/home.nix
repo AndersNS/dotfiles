@@ -101,7 +101,7 @@ rec {
       combinePackages [
         sdk_8_0
         (sdk_9_0.overrideAttrs (oldAttrs: {
-          version = "9.0.100";
+          version = "9.0.102";
         }))
       ]
     )
