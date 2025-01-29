@@ -19,17 +19,6 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    keys = {
-      {
-        "<leader>gd",
-        ":DiffviewOpen ",
-        desc = "Diff open",
-      },
-      {
-        "<leader>gD",
-        ":DiffviewClose <cr>",
-        desc = "Diff close",
-      },
-    },
+    keys = {},
   },
 }
