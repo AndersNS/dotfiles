@@ -141,7 +141,7 @@ rec {
 
       # bindkey "ç" fzf-cd-widget
       export WALK_EDITOR=nvim
-      export DOCKER_HOST='unix://$HOME/.colima/docker.sock'
+      export DOCKER_HOST=unix:///$HOME/.config/colima/default/docker.sock
     '';
 
     oh-my-zsh = {
