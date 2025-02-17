@@ -56,6 +56,8 @@ rec {
     pkgs.qmk
     pkgs.turso-cli
 
+    pkgs.postgresql
+
     # Git
     pkgs.git
     pkgs.lazygit
