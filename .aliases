@@ -30,6 +30,7 @@ alias dfs='dotfiles status'
 alias dfu="dotfiles add -u && dotfiles add $HOME/.config/lvim/**/*.lua"
 alias dfd="dotfiles diff"
 alias dfp="dotfiles push"
+alias dfpu="dotfiles pull --rebase"
 alias gg="lazygit"
 alias ns='npm start'
 alias n='pnpm'
