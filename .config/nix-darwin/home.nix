@@ -135,6 +135,7 @@ rec {
       export PATH="$HOME/.tmuxifier/bin:$PATH"
       export PATH="$PATH:~/scripts/"
       export PATH="$HOME/.cargo/bin:$PATH"
+      export PATH="/Users/andersns/Library/Python/3.9/bin:$PATH"
       export GOPATH="$HOME/go"
       export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
       export EDITOR="nvim"
