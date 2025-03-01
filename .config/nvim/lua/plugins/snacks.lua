@@ -75,6 +75,17 @@ return {
       notifier = {
         top_down = false, -- place notifications from top to bottom
       },
+      picker = {
+        win = {
+          input = {
+            keys = {
+
+              ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+              ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
+            },
+          },
+        },
+      },
       zen = {
         toggles = {
           dim = false,
