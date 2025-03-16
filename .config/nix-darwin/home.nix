@@ -42,9 +42,6 @@ rec {
 
     # Zsh
     pkgs.oh-my-zsh
-    pkgs.zsh-autosuggestions
-    pkgs.zsh-completions
-    pkgs.zsh-syntax-highlighting
 
     # Editors
     pkgs.jetbrains.rider
