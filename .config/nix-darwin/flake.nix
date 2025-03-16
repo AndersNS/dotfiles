@@ -35,6 +35,8 @@
               "git-delta"
               "openssl"
               "mas" # Mac App Store CLI
+              "python"
+              "pipx"
             ];
             casks = [
               "mongodb-compass"
