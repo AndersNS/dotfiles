@@ -94,7 +94,7 @@
           nixpkgs.config.allowUnfree = true;
 
           # Use touch id for sudo authentication
-          security.pam.enableSudoTouchIdAuth = true;
+          security.pam.services.sudo_local.touchIdAuth = true;
         };
 
     in
