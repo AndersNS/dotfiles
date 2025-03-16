@@ -40,6 +40,7 @@
             ];
             casks = [
               "mongodb-compass"
+              "karabiner-elements"
               "raycast"
               "ghostty"
             ];
