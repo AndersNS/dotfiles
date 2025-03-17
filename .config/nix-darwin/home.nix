@@ -20,6 +20,7 @@ rec {
     pkgs.tmuxPlugins.sensible
     pkgs.tmuxPlugins.tmux-fzf
     pkgs.tmuxPlugins.fzf-tmux-url
+    pkgs.tmuxifier
 
     # Terminal Utils
     pkgs.bash
