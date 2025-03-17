@@ -44,6 +44,8 @@
               "raycast"
               "ghostty"
               "elgato-wave-link"
+              "scroll-reverser"
+              "spotify"
             ];
             masApps = {
               "Things" = 904280696;
