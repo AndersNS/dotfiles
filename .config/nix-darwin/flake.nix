@@ -43,6 +43,7 @@
               "karabiner-elements"
               "raycast"
               "ghostty"
+              "elgato-wave-link"
             ];
             masApps = {
               "Things" = 904280696;
