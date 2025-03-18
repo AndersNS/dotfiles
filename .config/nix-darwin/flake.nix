@@ -37,6 +37,7 @@
               "mas" # Mac App Store CLI
               "python"
               "pipx"
+              "atuin"
             ];
             casks = [
               "mongodb-compass"

@@ -36,6 +36,8 @@ rec {
     pkgs.tree
     pkgs.gnused
     pkgs.gnupg
+    pkgs.tldr
+    pkgs.atuin
 
     # Utils
     pkgs.karabiner-elements
@@ -96,15 +98,6 @@ rec {
     pkgs.rustup
     pkgs.cargo-binstall
 
-    (
-      with dotnetCorePackages;
-      combinePackages [
-        sdk_8_0
-        (sdk_9_0.overrideAttrs (oldAttrs: {
-          version = "9.0.200";
-        }))
-      ]
-    )
   ];
 
   programs.starship.enable = true;
@@ -118,6 +111,8 @@ rec {
 
     initExtra = ''
       source $HOME/.aliases
+
+      eval "$(atuin init zsh)"
     '';
     zplug = {
       enable = true;
@@ -136,7 +131,8 @@ rec {
       export PATH="/Users/andersns/Library/Python/3.9/bin:$PATH"
       export PATH="/Users/andersns/.local/bin:$PATH"
       export GOPATH="$HOME/go"
-      export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+      export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+      export PATH="$PATH:/usr/local/share/dotnet"
 
       export EDITOR="nvim"
       export XDG_CONFIG_HOME="$HOME/.config"
