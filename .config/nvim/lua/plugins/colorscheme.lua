@@ -2,6 +2,7 @@ return {
   {
     "catppuccin/nvim",
     lazy = false,
+    enabled = true,
     priority = 1000,
     name = "catppuccin",
     opts = {
@@ -41,7 +42,7 @@ return {
     },
   },
   { "EdenEast/nightfox.nvim" },
-  { "folke/tokyonight.nvim", lazy = true, priority = 1000, opts = {} },
+  { "folke/tokyonight.nvim", enabled = false, lazy = true, priority = 1000, opts = {} },
   {
     "rebelot/kanagawa.nvim",
     enabled = false,
@@ -92,6 +93,7 @@ return {
   },
   {
     "rose-pine/neovim",
+    enabled = true,
     name = "rose-pine",
     opts = {
       dark_variant = "main",
@@ -101,14 +103,14 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "rose-pine",
+      colorscheme = "rose-pine",
       -- colorscheme = "kanagawa-paper",
       -- colorscheme = "tokyonight-night",
       -- colorscheme = "kanagawa",
       -- colorscheme = "catppuccin",
       -- colorscheme = "nordic",
       -- colorscheme = "nordfox",
-      colorscheme = "duskfox",
+      -- colorscheme = "duskfox",
       -- colorscheme = "evergarden",
       -- colorscheme = "nord",
     },
