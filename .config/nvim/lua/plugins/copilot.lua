@@ -7,6 +7,8 @@ return {
       ---@diagnostic disable-next-line: param-type-mismatch
       if string.find(cwd, "/nhn/") then
         return false
+      elseif string.find(cwd, "/obsidian/") then
+        return false
       else
         return true
       end
