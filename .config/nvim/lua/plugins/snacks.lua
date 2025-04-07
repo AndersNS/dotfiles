@@ -130,6 +130,13 @@ return {
           },
         },
       },
+
+      image = {
+        enabled = true,
+        convert = {
+          notify = false,
+        },
+      },
     },
   },
 }
