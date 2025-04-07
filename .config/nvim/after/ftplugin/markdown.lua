@@ -16,3 +16,6 @@ vim.keymap.set(
   ":lua require('toggle-checkbox').toggle_checked('~')<CR>",
   { desc = "Toggle removed", silent = true }
 )
+
+vim.opt.spell = false
+vim.opt.wrap = true

@@ -68,6 +68,7 @@ return {
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
       template = "Daily-template.md",
     },
+    new_notes_location = "+ Encounters",
   },
   config = function(_, opts)
     require("obsidian").setup(opts)
