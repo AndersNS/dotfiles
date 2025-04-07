@@ -37,7 +37,6 @@ rec {
     pkgs.gnused
     pkgs.gnupg
     pkgs.tldr
-    pkgs.atuin
 
     # Utils
     pkgs.karabiner-elements
