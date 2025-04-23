@@ -5,21 +5,20 @@ let mapleader=" "
 set surround
 set commentary
 set argtextobj
-"set easymotion
 set textobj-entire
 set highlightedyank
-set sneak
 set which-key
 set NERDTree
 set multiple-cursors
 set matchit
-" set quickscope
+set quickscope
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
 
 """ Common settings -------------------------
 set showmode
+set ignorecase
 set smartcase
 set incsearch
 set nu
@@ -29,12 +28,18 @@ set number
 set notimeout
 set hlsearch
 
+" Which keys to quick scope highlight on
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 """ Idea specific settings ------------------
 set ideajoin
 set idearefactormode=keep
 
 set clipboard=unnamed
+
 set clipboard+=ideaput
+
+map <C-n> <Plug>NextWholeOccurrence
 
 """ Mappings --------------------------------
 imap jj <Esc>
@@ -60,7 +65,7 @@ map <leader>bw <Action>(CloseAllEditors)
 map <leader>bh <Action>(CloseAllToTheLeft)
 map <leader>bl <Action>(CloseAllToTheRight)
 map <leader>bd :bd<CR>
-map <leader>bf <Action>(Switcher)>
+map <leader>bf <Action>(RecentChangedFiles)
 map <leader>bb <Action>(Switcher)>
 
 vnoremap < <gv
@@ -74,6 +79,10 @@ map <leader>uw <Action>(EditorToggleUseSoftWraps)
 map <leader>gl  <Action>(Annotate)
 map <leader>gb  <Action>(Git.Branches)
 
+" Alt+j/k for autocompletion popup
+inoremap <A-j> <C-n>
+inoremap <A-k> <C-p>
+
 " Debugging
 map <leader>db  <Action>(ToggleLineBreakpoint)
 map <leader>dr  <Action>(Debug)
@@ -83,16 +92,17 @@ map <leader>td  <Action>(RiderUnitTestDebugContextAction)
 
 " Search
 map <leader>p   <Action>(SearchEverywhere)
-map <leader><leader>   <Action>(SearchEverywhere)
+nmap <leader><leader> :action GotoFile<cr>
+nmap <leader>ss :action GotoSymbol<cr>
 
 map <leader>st  <Action>(FindInPath)
 map <leader>sr  <Action>(RecentFiles)
+nmap <leader>sf <Action>(FileStructurePopup)
 
 map <C-s>       <Action>(SaveDocument)
 map <leader>w   <Action>(SaveDocument)
 map <leader>/   <Action>(CommentByLineComment)
 
-map <leader>s   :let @/=""<CR>
 map <leader>e   <Action>(SelectInProjectView)
 
 map <leader>ma :action TridentAppend<CR>
@@ -118,6 +128,14 @@ map [e          <Action>(GotoPreviousError)
 map g[e         <Action>(ReSharperGotoNextErrorInSolution)
 map g]e         <Action>(ReSharperGotoPrevErrorInSolution)
 map <C-f>       <Action>(ShowIntentionActions)
+map <C-f>       <Action>(ShowIntentionActions)
+
+" Make C-u and C-d center cursor
+map <C-u> <C-u>zz
+map <C-d> <C-d>zz
+
+" AceJump shortcut
+nmap s :action AceAction<cr>
 
 map <leader>ca  <Action>(ShowIntentionActions)
 map <leader>cr  <Action>(RenameElement)
