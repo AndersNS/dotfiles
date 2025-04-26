@@ -39,6 +39,7 @@ alias rider='open -na "Rider.app" --args $1'
 alias ridereap='open -na "Rider EAP.app" --args $1'
 alias maincp='git show main:$1  | pbcopy'
 alias vf="fzf --preview 'bat -n --color=always {}' --preview-window 'right:60%:wrap:nohidden' --bind 'enter:become(nvim {})'"
+alias cf="fd -t f . ~/.config | fzf --preview 'bat -n --color=always {}' --preview-window 'right:60%:wrap:nohidden' --bind 'enter:become(nvim {})'"
 
 # tmux aliases
 alias tmnhn='tmn nhn'
