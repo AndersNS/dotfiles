@@ -60,6 +60,14 @@
             pkgs.nerd-fonts.jetbrains-mono
             pkgs.nerd-fonts.monaspace
             pkgs.nerd-fonts.hack
+            pkgs.nerd-fonts._3270
+
+            # Maple Mono (Ligature TTF unhinted)
+            pkgs.maple-mono.truetype
+            # Maple Mono NF (Ligature unhinted)
+            pkgs.maple-mono.NF-unhinted
+            # Maple Mono NF CN (Ligature unhinted)
+            pkgs.maple-mono.NF-CN-unhinted
           ];
 
           system.defaults = {

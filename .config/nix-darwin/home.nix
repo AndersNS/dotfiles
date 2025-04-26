@@ -37,6 +37,7 @@ rec {
     pkgs.gnused
     pkgs.gnupg
     pkgs.tldr
+    pkgs.fd # find
 
     # Utils
     pkgs.karabiner-elements
@@ -108,7 +109,7 @@ rec {
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
 
-    initExtra = ''
+    initContent = ''
       source $HOME/.aliases
 
       eval "$(atuin init zsh)"
