@@ -12,6 +12,7 @@ set NERDTree
 set multiple-cursors
 set matchit
 set quickscope
+set peekaboo
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -39,7 +40,12 @@ set clipboard=unnamed
 
 set clipboard+=ideaput
 
-map <C-n> <Plug>NextWholeOccurrence
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
 
 """ Mappings --------------------------------
 imap jj <Esc>
