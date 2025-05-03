@@ -133,6 +133,7 @@ rec {
       export GOPATH="$HOME/go"
       export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
       export PATH="$PATH:/usr/local/share/dotnet"
+      export PATH="$PATH:/Users/andersns/.dotnet/tools"
 
       export EDITOR="nvim"
       export XDG_CONFIG_HOME="$HOME/.config"
