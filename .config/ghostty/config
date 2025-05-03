@@ -1,18 +1,20 @@
-# font-family = "TX-02-Trial"
-font-family = "MonaspiceAr Nerd Font Mono"
-font-family = "MonaspiceNe Nerd Font Mono"
-font-family = "JetBrainsMono Nerd Font Mono"
-font-family = "MonaspiceKR Nerd Font Mono"
-font-family = "Hack Nerd Font Mono"
-font-family = "FiraCode Nerd Font Mono"
+font-family = "Maple Mono NF CN"
+# font-family = "MonaspiceAr Nerd Font Mono"
+# font-family = "MonaspiceNe Nerd Font Mono"
+# font-family = "JetBrainsMono Nerd Font Mono"
+# font-family = "MonaspiceKR Nerd Font Mono"
+# font-family = "Hack Nerd Font Mono"
+# font-family = "FiraCode Nerd Font Mono"
 #font-family = "JetBrainsMono Nerd Font Mono"
 
-#font-style-italic = false
-#font-style = "Retina"
-font-size = 18
+#font-style-italic = false =>
+# font-family = "3270 Nerd Font Mono"
+font-style = "medium"
+# font-style = 'Retina'
+font-size = 18 
 
 
-#font-thicken = true
+# font-thicken = true
 
 # Three liens to disable ligatures
 # font-feature = "-calt"
