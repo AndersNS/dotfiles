@@ -24,6 +24,16 @@
       configuration =
         { pkgs, ... }:
         {
+          nix.gc = {
+            automatic = true;
+            interval = {
+              Hour = 3;
+              Minute = 15;
+              Weekday = 7; # Sunday
+            };
+            options = "--delete-older-than 7d";
+          };
+
           environment.systemPackages = [ ];
 
           homebrew = {
@@ -73,13 +83,19 @@
           system.defaults = {
             dock.autohide = true;
             dock.mru-spaces = false;
-            finder.AppleShowAllExtensions = true;
-            finder.FXPreferredViewStyle = "clmv";
             screencapture.location = "~/Pictures/screenshots";
 
             NSGlobalDomain.KeyRepeat = 2;
             NSGlobalDomain.InitialKeyRepeat = 15;
             NSGlobalDomain."com.apple.sound.beep.volume" = 0.0;
+
+            finder = {
+              AppleShowAllExtensions = true;
+              ShowPathbar = true;
+              FXEnableExtensionChangeWarning = false;
+              FXPreferredViewStyle = "clmv";
+              ShowStatusBar = true;
+            };
           };
 
           system.keyboard.enableKeyMapping = true;
@@ -108,6 +124,7 @@
 
           # Use touch id for sudo authentication
           security.pam.services.sudo_local.touchIdAuth = true;
+
         };
 
     in
