@@ -1,7 +1,7 @@
 local vars = require("variables")
 
 return {
-  "epwalsh/obsidian.nvim",
+  "obsidian-nvim/obsidian.nvim",
   version = "*", -- to use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
@@ -19,7 +19,7 @@ return {
     -- "nvim-telescope/telescope.nvim",
 
     -- Optional, an alternative to telescope for search and quick-switch functionality.
-    "ibhagwan/fzf-lua",
+    -- "ibhagwan/fzf-lua",
 
     -- Optional, another alternative to telescope for search and quick-switch functionality.
     -- "junegunn/fzf",
@@ -69,6 +69,24 @@ return {
       template = "Daily-template.md",
     },
     new_notes_location = "+ Encounters",
+    picker = {
+      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
+      name = "snacks.pick",
+      -- Optional, configure key mappings for the picker. These are the defaults.
+      -- Not all pickers support all mappings.
+      note_mappings = {
+        -- Create a new note from your query.
+        new = "<C-x>",
+        -- Insert a link to the selected note.
+        insert_link = "<C-l>",
+      },
+      tag_mappings = {
+        -- Add tag(s) to current note.
+        tag_note = "<C-x>",
+        -- Insert a tag at the current location.
+        insert_tag = "<C-l>",
+      },
+    },
   },
   config = function(_, opts)
     require("obsidian").setup(opts)
