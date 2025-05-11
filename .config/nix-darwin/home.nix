@@ -79,6 +79,7 @@ rec {
     pkgs.k9s
 
     pkgs.azure-cli
+    pkgs.terraform
 
     # Rice
     pkgs.aerospace
