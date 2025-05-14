@@ -85,6 +85,11 @@ return {
             },
           },
         },
+        formatters = {
+          file = {
+            truncate = 80, -- truncate the file path to (roughly) this length
+          },
+        },
       },
       zen = {
         toggles = {
