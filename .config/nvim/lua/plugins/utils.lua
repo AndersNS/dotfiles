@@ -1,6 +1,25 @@
 return {
   { "dkarter/bullets.vim" },
-  { "sindrets/diffview.nvim" },
+  {
+    "sindrets/diffview.nvim",
+    keys = {
+      {
+        "<leader>gD",
+        "<cmd>DiffviewOpen<cr>",
+        desc = "Diffview",
+      },
+    },
+    opts = {
+      hooks = {
+        diff_buf_read = function(bufnr)
+          -- Change local options in diff buffers
+          vim.opt_local.wrap = true
+          -- vim.opt_local.list = false
+          -- vim.opt_local.colorcolumn = { 80 }
+        end,
+      },
+    },
+  },
   {
     "echasnovski/mini.indentscope",
     opts = {
