@@ -16,6 +16,7 @@ set peekaboo
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
+let b:match_words = '<:>,<tag>:</tag>'
 
 """ Common settings -------------------------
 set showmode
@@ -63,6 +64,8 @@ map <leader>h   :nohlsearch<CR>
 map <C-h>       <Action>(NextSplitter)
 map <C-l>       <Action>(PrevSplitter)
 
+nmap Y y$
+
 " Buffers / windows
 map <leader>q  :q
 
@@ -88,6 +91,11 @@ map <leader>gb  <Action>(Git.Branches)
 " Alt+j/k for autocompletion popup
 inoremap <A-j> <C-n>
 inoremap <A-k> <C-p>
+
+" AI
+"
+map <leader>ag <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
+map <leader>aa <Action>(ActivateAIAssistantToolWindow)
 
 " Debugging
 map <leader>db  <Action>(ToggleLineBreakpoint)
