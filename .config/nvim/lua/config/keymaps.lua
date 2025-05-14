@@ -13,6 +13,8 @@ keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 
+keymap.set("n", "Y", "y$")
+
 if vim.g.vscode then
   -- VSCode extension
 else
