@@ -2,7 +2,7 @@ return {
   {
     "catppuccin/nvim",
     lazy = false,
-    enabled = true,
+    enabled = false,
     priority = 1000,
     name = "catppuccin",
     opts = {
@@ -41,7 +41,7 @@ return {
       },
     },
   },
-  { "EdenEast/nightfox.nvim" },
+  { "EdenEast/nightfox.nvim", enabled = false },
   { "folke/tokyonight.nvim", enabled = false, lazy = true, priority = 1000, opts = {} },
   {
     "rebelot/kanagawa.nvim",
