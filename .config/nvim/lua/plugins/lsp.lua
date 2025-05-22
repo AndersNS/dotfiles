@@ -3,7 +3,6 @@ local util = require("lspconfig.util")
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = {},
     setup = {
       tailwindcss = function(_, opts)
         local tw = require("lspconfig.server_configurations.tailwindcss")
