@@ -73,13 +73,14 @@ rec {
     # Containers
     pkgs.colima
     pkgs.docker
+    pkgs.docker-buildx
     pkgs.docker-compose
     pkgs.lazydocker
     pkgs.kubernetes-helm
     pkgs.k9s
 
     pkgs.azure-cli
-    pkgs.terraform
+    # pkgs.terraform
 
     # Rice
     pkgs.aerospace

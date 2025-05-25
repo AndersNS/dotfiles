@@ -58,11 +58,6 @@
               "scroll-reverser"
               "spotify"
             ];
-            masApps = {
-              "Things" = 904280696;
-              "Greenshot" = 1103915944;
-              "Messenger" = 1480068668;
-            };
           };
 
           fonts.packages = [
@@ -97,7 +92,7 @@
               ShowStatusBar = true;
             };
           };
-
+          system.primaryUser = "andersns";
           system.keyboard.enableKeyMapping = true;
           system.keyboard.remapCapsLockToControl = true;
           system.startup.chime = false;

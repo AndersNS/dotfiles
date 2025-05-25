@@ -16,6 +16,11 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    opts = { model = "claude-3.7-sonnet" },
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    opts = { model = "claude-sonnet-4" },
+    build = "make tiktoken", -- Only on MacOS or Linux
   },
 }
