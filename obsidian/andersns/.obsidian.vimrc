@@ -15,3 +15,5 @@ nmap <C-i> :forward
 
 exmap toggleleft obcommand app:toggle-left-sidebar
 nmap <Space>e :toggleleft<CR>
+
+nnoremap Y y$

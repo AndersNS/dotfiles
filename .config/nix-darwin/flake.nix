@@ -57,6 +57,7 @@
               "elgato-wave-link"
               "scroll-reverser"
               "spotify"
+              "bruno"
             ];
           };
 
