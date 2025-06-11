@@ -122,6 +122,7 @@ rec {
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "unixorn/fzf-zsh-plugin"; }
         { name = "zsh-users/zsh-syntax-highlighting"; }
+        { name = "wfxr/forgit"; }
       ];
     };
     envExtra = ''

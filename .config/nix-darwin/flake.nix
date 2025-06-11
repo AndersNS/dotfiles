@@ -44,7 +44,6 @@
             brews = [
               "git-delta"
               "openssl"
-              "mas" # Mac App Store CLI
               "python"
               "pipx"
               "atuin"
@@ -126,7 +125,7 @@
     in
     {
       # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#Anders-Max
+      # $ sudo darwin-rebuild build --flake .#Anders-Max
       darwinConfigurations."Anders-Max" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
