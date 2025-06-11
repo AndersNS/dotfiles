@@ -97,7 +97,7 @@ return {
     name = "rose-pine",
     opts = {
       dark_variant = "main",
-      variant = "moon",
+      variant = "main",
     },
   },
   {
