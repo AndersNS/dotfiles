@@ -90,6 +90,7 @@ rec {
 
     # Frontend
     pkgs.nodejs_20
+    pkgs.bun
     pkgs.pnpm
     pkgs.yarn
 
