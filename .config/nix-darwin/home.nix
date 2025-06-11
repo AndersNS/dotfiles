@@ -139,6 +139,9 @@ rec {
       export PATH="$PATH:/usr/local/share/dotnet"
       export PATH="$PATH:/Users/andersns/.dotnet/tools"
 
+      export PATH="$PATH:$ZPLUG_HOME/repos/wfxr/forgit/bin"
+      export FORGIT_LOG_FORMAT="%C(auto)%h%d %s %C(cyan)%C(dim)%cr%Creset"
+
       export EDITOR="nvim"
       export XDG_CONFIG_HOME="$HOME/.config"
       # bindkey "ç" fzf-cd-widget

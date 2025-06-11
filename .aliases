@@ -1,4 +1,3 @@
-alias gl='git log --oneline --all --graph --decorate $*'
 alias clear='cls'
 alias unalias='alias /d $1'
 alias gitlog='git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master $1'
@@ -17,6 +16,16 @@ alias glog='git log --pretty=format:"%C(green)%h %C(yellow)%ad %C(green)%<(10,tr
 alias glg='git log --oneline --decorate --color --graph --max-count=8'
 alias l='ls -o -l -a'
 alias gall='git add --all'
+
+alias gl='git forgit log'
+alias ga='git forgit add'
+alias gd='git forgit diff'
+alias gcb='git forgit checkout_branch'
+alias gct='git forgit checkout_tag'
+alias gcp='git forgit cherry-pick'
+
+
+alias l='ls -o -l -a'
 alias merged='git branch --merged master'
 alias branchclean='git branch --merged | egrep -v "(^\*|master|dev|main)" | xargs git branch -d'
 alias lzn='lazynpm'
