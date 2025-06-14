@@ -1,0 +1,13 @@
+[user]
+	signingkey = /Users/andersns/.ssh/id_rsa.pub
+
+[commit]
+	gpgsign = true
+
+[diff]
+    colorMoved = default 
+
+[include]
+  path = ~/.config/.gitconfig
+[gpg]
+	format = ssh
