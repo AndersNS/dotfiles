@@ -37,7 +37,7 @@ Using the official installer:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Install nix
+## Nix
 
 Using the determinate installer:
 
@@ -45,14 +45,26 @@ Using the determinate installer:
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-### Install nix packages
+### Run darwin (macs)
 
 ```bash
  nix run nix-darwin -- switch --flake ~/.config/nix-darwin#Anders-Max
 ```
 
-# Updating
+### Updating
 
 ```bash
 nix flake update
+```
+
+### Home manager (linux)
+
+```bash
+nix run .#homeConfigurations.wsl.activationPackage
+```
+
+Then use:
+
+```bash
+home-manager switch --flake .#wsl
 ```
