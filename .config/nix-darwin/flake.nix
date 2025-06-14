@@ -124,6 +124,17 @@
 
     in
     {
+      homeConfigurations = {
+        wsl = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+          };
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./home.nix
+          ];
+        };
+      };
       # Build darwin flake using:
       # $ sudo darwin-rebuild build --flake .#Anders-Max
       darwinConfigurations."Anders-Max" = nix-darwin.lib.darwinSystem {

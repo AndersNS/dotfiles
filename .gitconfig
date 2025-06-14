@@ -1,13 +1,15 @@
 [user]
-	signingkey = /Users/andersns/.ssh/id_rsa.pub
+	signingkey = /home/andersns/.ssh/id_ed25519.pub
 
 [commit]
 	gpgsign = true
+
+[gpg]
+	format = ssh
 
 [diff]
     colorMoved = default 
 
 [include]
   path = ~/.config/.gitconfig
-[gpg]
-	format = ssh
+
