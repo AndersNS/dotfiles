@@ -52,6 +52,9 @@ in {
       pkgs.nixfmt-rfc-style
       pkgs.qmk
       pkgs.turso-cli
+      pkgs.sops
+      pkgs.age
+      pkgs.ssh-to-age
 
       pkgs.postgresql
 
@@ -122,6 +125,10 @@ in {
       source $HOME/.aliases
 
       eval "$(atuin init zsh)"
+
+      if [[ -n "$SOPS_SECRETS_DIR" ]]; then
+        export api_token=$(<"$SOPS_SECRETS_DIR/api_token")
+      fi
     '';
     zplug = {
       enable = true;

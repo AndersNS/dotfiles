@@ -68,3 +68,11 @@ Then use:
 ```bash
 home-manager switch --flake .#wsl
 ```
+
+### Home secrets
+
+Edit secretsfile
+
+```bash
+sops ~/.config/nix-darwin/secrets.yaml
+```

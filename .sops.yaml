@@ -1,0 +1,6 @@
+creation_rules:
+  - encrypted_regex: "^(.*)$" # encrypt every value
+    # the public keys we encrypt for
+    key_groups:
+      - age:
+          - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICMKzXSa5hI68dddFqYiJZ+05aWJ/jqyRvdM2KpO8oKG post@ander.sh"
