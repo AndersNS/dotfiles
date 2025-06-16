@@ -14,102 +14,118 @@
   };
 
   outputs =
-    inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, sops-nix, }:
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      home-manager,
+      nix-homebrew,
+      sops-nix,
+    }:
     let
-      configuration = { pkgs, ... }: {
-        nix.gc = {
-          automatic = true;
-          interval = {
-            Hour = 3;
-            Minute = 15;
-            Weekday = 7; # Sunday
+      configuration =
+        { pkgs, ... }:
+        {
+          nix.gc = {
+            automatic = true;
+            interval = {
+              Hour = 3;
+              Minute = 15;
+              Weekday = 7; # Sunday
+            };
+            options = "--delete-older-than 7d";
           };
-          options = "--delete-older-than 7d";
-        };
 
-        environment.systemPackages = [ ];
+          environment.systemPackages = [ ];
 
-        homebrew = {
-          enable = true;
-          onActivation.cleanup = "uninstall";
+          homebrew = {
+            enable = true;
+            onActivation.cleanup = "uninstall";
 
-          taps = [ ];
-          brews = [ "git-delta" "openssl" "python" "pipx" "atuin" ];
-          casks = [
-            "mongodb-compass"
-            "karabiner-elements"
-            "raycast"
-            "ghostty"
-            "elgato-wave-link"
-            "scroll-reverser"
-            "spotify"
-            "bruno"
+            taps = [ ];
+            brews = [
+              "git-delta"
+              "openssl"
+              "python"
+              "pipx"
+              "atuin"
+            ];
+            casks = [
+              "mongodb-compass"
+              "karabiner-elements"
+              "raycast"
+              "ghostty"
+              "elgato-wave-link"
+              "scroll-reverser"
+              "spotify"
+              "bruno"
+            ];
+          };
+
+          fonts.packages = with pkgs; [
+            nerd-fonts.fira-code
+            nerd-fonts.jetbrains-mono
+            nerd-fonts.monaspace
+            nerd-fonts.hack
+            nerd-fonts._3270
+
+            # Maple Mono (Ligature TTF unhinted)
+            maple-mono.truetype
+            # Maple Mono NF (Ligature unhinted)
+            maple-mono.NF-unhinted
+            # Maple Mono NF CN (Ligature unhinted)
+            maple-mono.NF-CN-unhinted
           ];
-        };
 
-        fonts.packages = [
-          pkgs.nerd-fonts.fira-code
-          pkgs.nerd-fonts.jetbrains-mono
-          pkgs.nerd-fonts.monaspace
-          pkgs.nerd-fonts.hack
-          pkgs.nerd-fonts._3270
+          system.defaults = {
+            dock.autohide = true;
+            dock.mru-spaces = false;
+            screencapture.location = "~/Pictures/screenshots";
 
-          # Maple Mono (Ligature TTF unhinted)
-          pkgs.maple-mono.truetype
-          # Maple Mono NF (Ligature unhinted)
-          pkgs.maple-mono.NF-unhinted
-          # Maple Mono NF CN (Ligature unhinted)
-          pkgs.maple-mono.NF-CN-unhinted
-        ];
+            NSGlobalDomain.KeyRepeat = 2;
+            NSGlobalDomain.InitialKeyRepeat = 15;
+            NSGlobalDomain."com.apple.sound.beep.volume" = 0.0;
 
-        system.defaults = {
-          dock.autohide = true;
-          dock.mru-spaces = false;
-          screencapture.location = "~/Pictures/screenshots";
-
-          NSGlobalDomain.KeyRepeat = 2;
-          NSGlobalDomain.InitialKeyRepeat = 15;
-          NSGlobalDomain."com.apple.sound.beep.volume" = 0.0;
-
-          finder = {
-            AppleShowAllExtensions = true;
-            ShowPathbar = true;
-            FXEnableExtensionChangeWarning = false;
-            FXPreferredViewStyle = "clmv";
-            ShowStatusBar = true;
+            finder = {
+              AppleShowAllExtensions = true;
+              ShowPathbar = true;
+              FXEnableExtensionChangeWarning = false;
+              FXPreferredViewStyle = "clmv";
+              ShowStatusBar = true;
+            };
           };
+          system.primaryUser = "andersns";
+          system.keyboard.enableKeyMapping = true;
+          system.keyboard.remapCapsLockToControl = true;
+          system.startup.chime = false;
+
+          # necessary for using flakes on this system.
+          nix.settings.experimental-features = "nix-command flakes";
+          nix.optimise.automatic = true;
+
+          # Enable alternative shell support in nix-darwin.
+          programs.zsh.enable = true;
+
+          # Set Git commit hash for darwin-version.
+          system.configurationRevision = self.rev or self.dirtyRev or null;
+
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          system.stateVersion = 5;
+
+          # The platform the configuration will be used on.
+          nixpkgs.hostPlatform = "aarch64-darwin";
+
+          # Allow unfree software (needed for rider)
+          nixpkgs.config.allowUnfree = true;
+
+          # Use touch id for sudo authentication
+          security.pam.services.sudo_local.touchIdAuth = true;
+
         };
-        system.primaryUser = "andersns";
-        system.keyboard.enableKeyMapping = true;
-        system.keyboard.remapCapsLockToControl = true;
-        system.startup.chime = false;
 
-        # necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
-        nix.optimise.automatic = true;
-
-        # Enable alternative shell support in nix-darwin.
-        programs.zsh.enable = true;
-
-        # Set Git commit hash for darwin-version.
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
-        system.stateVersion = 5;
-
-        # The platform the configuration will be used on.
-        nixpkgs.hostPlatform = "aarch64-darwin";
-
-        # Allow unfree software (needed for rider)
-        nixpkgs.config.allowUnfree = true;
-
-        # Use touch id for sudo authentication
-        security.pam.services.sudo_local.touchIdAuth = true;
-
-      };
-
-    in {
+    in
+    {
       homeConfigurations = {
         wsl = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -144,8 +160,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.andersns = import ./home.nix;
-            users.users.andersns.home =
-              "/Users/andersns"; # TODO: Not sure why this is needed
+            users.users.andersns.home = "/Users/andersns"; # TODO: Not sure why this is needed
 
             home-manager.extraSpecialArgs = { inherit sops-nix; };
           }
