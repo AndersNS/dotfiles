@@ -1,9 +1,16 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  sops-nix,
+  ...
+}:
 
 let
   isDarwin = pkgs.stdenv.isDarwin;
   homeDirectory = "/${if isDarwin then "Users" else "home"}/andersns";
-in {
+in
+{
   programs.home-manager.enable = true;
 
   home.stateVersion = "25.05";
@@ -11,7 +18,8 @@ in {
   home.username = "andersns";
   home.homeDirectory = homeDirectory;
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       # Terminal
       pkgs.alacritty
@@ -97,7 +105,8 @@ in {
       pkgs.rustup
       pkgs.cargo-binstall
 
-    ] ++ lib.optionals isDarwin [
+    ]
+    ++ lib.optionals isDarwin [
       pkgs.jetbrains.rider
       pkgs.obsidian
 
@@ -114,6 +123,11 @@ in {
 
   programs.starship.enable = true;
   programs.zoxide.enable = true;
+
+  imports = [
+    sops-nix.homeManagerModules.sops
+    ./home-secrets.nix
+  ];
 
   programs.zsh = {
     enable = true;
@@ -160,16 +174,20 @@ in {
       export XDG_CONFIG_HOME="$HOME/.config"
       # bindkey "ç" fzf-cd-widget
       export WALK_EDITOR=nvim
-      ${if isDarwin then
-        "export DOCKER_HOST=unix:///$HOME/.config/colima/default/docker.sock"
-      else
-        ""}
+      ${if isDarwin then "export DOCKER_HOST=unix:///$HOME/.config/colima/default/docker.sock" else ""}
     '';
 
     oh-my-zsh = {
       enable = true;
-      plugins =
-        [ "aliases" "git" "fzf" "docker" "docker-compose" "kubectl" "tmux" ];
+      plugins = [
+        "aliases"
+        "git"
+        "fzf"
+        "docker"
+        "docker-compose"
+        "kubectl"
+        "tmux"
+      ];
     };
   };
 
