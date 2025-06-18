@@ -23,6 +23,7 @@
       sops-nix,
     }:
     let
+
       configuration =
         { pkgs, ... }:
         {
@@ -124,16 +125,50 @@
 
         };
 
+      homeManagerConfig = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.andersns = import ./home.nix;
+        home-manager.extraSpecialArgs = { inherit sops-nix; };
+      };
+
+      userSettings = {
+        username = "andersns";
+        darwinSystem = "aarch64-darwin";
+        linuxSystem = "x86_64-linux";
+      };
     in
     {
       homeConfigurations = {
         wsl = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          pkgs = import nixpkgs { system = userSettings.linuxSystem; };
           extraSpecialArgs = {
             inherit inputs;
             inherit sops-nix;
           };
-          modules = [ ./home.nix ];
+          modules = [
+            ./home.nix
+            {
+              home = {
+                username = userSettings.username;
+              };
+            }
+          ];
+        };
+        mac = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = userSettings.darwinSystem;
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = homeManagerConfig.home-manager.extraSpecialArgs;
+          modules = [
+            ./home.nix
+            {
+              home = {
+                username = userSettings.username;
+              };
+            }
+          ];
         };
       };
       # Build darwin flake using:
@@ -146,23 +181,16 @@
           {
             nix-homebrew = {
               enable = true;
-
               # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
               enableRosetta = true;
-
-              user = "andersns";
-
+              user = userSettings.username;
               autoMigrate = true;
             };
           }
           home-manager.darwinModules.home-manager
+          homeManagerConfig # Reuse the config here
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.andersns = import ./home.nix;
-            users.users.andersns.home = "/Users/andersns"; # TODO: Not sure why this is needed
-
-            home-manager.extraSpecialArgs = { inherit sops-nix; };
+            users.users.${userSettings.username}.home = "/Users/andersns"; # TODO: Not sure if this is needed
           }
         ];
       };

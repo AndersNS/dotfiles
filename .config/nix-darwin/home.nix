@@ -12,10 +12,7 @@ let
 in
 {
   programs.home-manager.enable = true;
-
   home.stateVersion = "25.05";
-
-  home.username = "andersns";
   home.homeDirectory = homeDirectory;
 
   home.packages =
@@ -77,6 +74,7 @@ in
       gh # GitHub CLI
       glab # Gitlab CLI
       git-ps-rs # https://git-ps.sh/
+      git-spice
 
       # Containers
       docker

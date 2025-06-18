@@ -3,6 +3,7 @@
   lib,
   ...
 }:
+
 {
   sops.defaultSopsFile = ./secrets.yaml;
   sops.defaultSopsFormat = "yaml";
