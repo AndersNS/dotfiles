@@ -173,7 +173,18 @@ in
       export XDG_CONFIG_HOME="$HOME/.config"
       # bindkey "ç" fzf-cd-widget
       export WALK_EDITOR=nvim
-      ${if isDarwin then "export DOCKER_HOST=unix:///$HOME/.config/colima/default/docker.sock" else ""}
+      ${
+        if isDarwin then
+          ''
+
+            export DOCKER_HOST=unix:///$HOME/.config/colima/default/docker.sock
+            export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+            export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
+          ''
+        else
+          ""
+      }
+
     '';
 
     oh-my-zsh = {
