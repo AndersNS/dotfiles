@@ -5,10 +5,10 @@ return {
       local cwd = vim.fn.getcwd()
       --- Thinks cwd is nil, but it is never nil in nvim
       ---@diagnostic disable-next-line: param-type-mismatch
-      if string.find(cwd, "/nhn/") then
+      if string.find(cwd, "/obsidian/") then
         return false
-      elseif string.find(cwd, "/obsidian/") then
-        return false
+      -- elseif string.find(cwd, "/nhn/") then
+      --   return false
       else
         return true
       end

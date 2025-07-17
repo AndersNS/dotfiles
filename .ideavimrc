@@ -94,8 +94,8 @@ inoremap <A-k> <C-p>
 
 " AI
 "
-map <leader>ag <Action>(AIAssistant.Editor.AskAiAssistantInEditor)
-map <leader>aa <Action>(ActivateAIAssistantToolWindow)
+map <leader>ag <Action>(copilot.chat.inline)
+map <leader>aa <Action>(copilot.chat.show)
 
 " Debugging
 map <leader>db  <Action>(ToggleLineBreakpoint)

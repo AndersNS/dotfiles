@@ -38,6 +38,7 @@ return {
     lazy = true,
     cmd = "CodeCompanion",
     event = "InsertEnter",
+    enabled = false,
     opts = function()
       local cwd = vim.fn.getcwd()
       if string.find(cwd, "/nhn/") then
