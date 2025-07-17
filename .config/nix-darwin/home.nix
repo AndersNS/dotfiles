@@ -74,7 +74,7 @@ in
       gh # GitHub CLI
       glab # Gitlab CLI
       git-ps-rs # https://git-ps.sh/
-      git-spice
+      # TODO: add this back git-spice
 
       # Containers
       docker

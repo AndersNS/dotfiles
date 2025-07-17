@@ -59,6 +59,8 @@ alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
 alias tmss='tmux set status'
 
+alias nfu='nix flake update --flake .config/nix-darwin'
+alias nds='sudo -H nix run nix-darwin -- switch --flake ~/.config/nix-darwin#Anders-Max'
 
 function activedeploy() {
   git fetch --tags -f > /dev/null

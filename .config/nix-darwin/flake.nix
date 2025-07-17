@@ -50,6 +50,7 @@
               "python"
               "pipx"
               "atuin"
+              "git-spice"
             ];
             casks = [
               "mongodb-compass"
