@@ -25,5 +25,9 @@ return {
     config = function()
       require("gitlab").setup()
     end,
+    keys = {
+      { "<leader>gr", ":lua require('gitlab').review()<cr>", desc = "Review" },
+      { "<leader>gm", ":lua require('gitlab').choose_merge_request()<cr>", desc = "Merge requests" },
+    },
   },
 }
