@@ -23,6 +23,7 @@ alias gd='git forgit diff'
 alias gcb='git forgit checkout_branch'
 alias gct='git forgit checkout_tag'
 alias gcp='git forgit cherry-pick'
+alias gfof='git fetch origin -f -p'
 
 
 alias l='ls -o -l -a'
