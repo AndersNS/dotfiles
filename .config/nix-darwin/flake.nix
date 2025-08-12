@@ -51,6 +51,7 @@
               "pipx"
               "atuin"
               "git-spice"
+              "1password-cli"
             ];
             casks = [
               "mongodb-compass"
