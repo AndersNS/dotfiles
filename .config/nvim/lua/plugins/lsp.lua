@@ -1,10 +1,8 @@
 local util = require("lspconfig.util")
 
-require 'lspconfig'.nil_ls.setup {}
-
 return {
   {
-    "neovim/nvim-lspconfig",
+    "mason-lspconfig.nvim",
     setup = {
       nil_ls = function(_, opts)
         -- require("lspconfig.server_configurations.nil").setup {}
@@ -134,9 +132,9 @@ return {
               tailwindCSS = {
                 experimental = {
                   classRegex = {
-                    { "cva\\(([^)]*)\\)",  "[\"'`]([^\"'`]*).*?[\"'`]" },
-                    { "cx\\(([^)]*)\\)",   "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-                    { "cn\\(([^)]*)\\)",   "[\"'`]([^\"'`]*).*?[\"'`]" },
+                    { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                    { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                    { "cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
                     { "([a-zA-Z0-9\\-:]+)" },
                     { 'class: "(.*)"' },
                   },
@@ -184,7 +182,7 @@ return {
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document", has = "formatting" }
       keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "rangeFormatting" }
       keys[#keys + 1] =
-      { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
+        { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
       keys[#keys + 1] = {
         "<leader>lA",
         function()
@@ -200,7 +198,7 @@ return {
       }
 
       keys[#keys + 1] =
-      { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
+        { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
 
       local go_to_definition = function()
         if vim.bo.filetype == "go" then

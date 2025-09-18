@@ -53,6 +53,8 @@ in
       # Editors
       neovim
 
+      tree-sitter
+
       # Tools
       nixfmt-rfc-style
       qmk

@@ -15,16 +15,22 @@ vim.opt.conceallevel = 1
 
 vim.filetype.add({ extension = { templ = "templ" } })
 
--- Neovide
-if vim.g.neovide then
-  vim.o.guifont = "MonaspiceKR NF:h18"
-  vim.g.neovide_window_blurred = true
-  vim.g.neovide_show_border = false
-  vim.g.neovide_scroll_animation_far_lines = 0
-  vim.g.neovide_cursor_animation_length = 0.05
-  vim.g.neovide_input_macos_option_key_is_meta = "only_left"
+local original_notify = vim.notify
 
-  -- Allow copy paste in neovim
-  vim.keymap.set({ "n", "i", "v" }, "<D-v>", "+p<CR>")
-  vim.keymap.set({ "n", "i", "v" }, "<D-c>", '"+y<CR> ')
+vim.notify = function(msg, level, opts)
+  -- List of patterns to ignore
+  local ignore_patterns = {
+    "`LazyVim.ui.foldexpr` is deprecated. Please use `LazyVim.treesitter.foldexpr` instead",
+    -- Add more patterns as needed
+  }
+
+  -- Check if message matches any ignore pattern
+  for _, pattern in ipairs(ignore_patterns) do
+    if string.match(msg, pattern) then
+      return -- Don't show this notification
+    end
+  end
+
+  -- Show the notification if it doesn't match ignore patterns
+  original_notify(msg, level, opts)
 end
