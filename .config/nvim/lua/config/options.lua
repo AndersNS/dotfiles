@@ -14,23 +14,3 @@ vim.opt.iskeyword:append("-")
 vim.opt.conceallevel = 1
 
 vim.filetype.add({ extension = { templ = "templ" } })
-
-local original_notify = vim.notify
-
-vim.notify = function(msg, level, opts)
-  -- List of patterns to ignore
-  local ignore_patterns = {
-    "`LazyVim.ui.foldexpr` is deprecated. Please use `LazyVim.treesitter.foldexpr` instead",
-    -- Add more patterns as needed
-  }
-
-  -- Check if message matches any ignore pattern
-  for _, pattern in ipairs(ignore_patterns) do
-    if string.match(msg, pattern) then
-      return -- Don't show this notification
-    end
-  end
-
-  -- Show the notification if it doesn't match ignore patterns
-  original_notify(msg, level, opts)
-end
