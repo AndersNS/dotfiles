@@ -1,11 +1,10 @@
-local Util = require("lazyvim.util")
 local utils = require("utils")
 local vars = require("variables")
 
 local function open_note_quick_switch()
   require("lazy").load({ plugins = { "obsidian.nvim" } })
   vim.cmd("cd " .. vars.vault_path) -- TODO: Fix this when detect_cwd works
-  vim.cmd("ObsidianQuickSwitch")
+  vim.cmd("Obsidian quick_switch")
 end
 
 local function open_weekly_note()
@@ -20,7 +19,7 @@ local function open_weekly_note()
     return
   else
     vim.cmd("e " .. this_weeks_note)
-    vim.cmd("ObsidianTemplate " .. vars.weekly_template)
+    vim.cmd("Obsidian template " .. vars.weekly_template)
     vim.cmd("w")
   end
 end
