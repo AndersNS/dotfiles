@@ -2,6 +2,82 @@ local util = require("lspconfig.util")
 
 return {
   {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      servers = {
+        lua_ls = {
+          -- mason = false, -- set to false if you don't want this server to be installed with mason
+          -- Use this to add any additional keymaps
+          -- for specific lsp servers
+          -- ---@type LazyKeysSpec[]
+          -- keys = {},
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              codeLens = {
+                enable = true,
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+            },
+          },
+        },
+
+        tailwindcss = {
+          -- exclude a filetype from the default_config
+          filetypes_exclude = { "markdown" },
+          -- add additional filetypes to the default_config
+          filetypes_include = { "rust", "templ" },
+          -- to fully override the default_config, change the below
+          -- filetypes = {}
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                  { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                  { "cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+                  { "([a-zA-Z0-9\\-:]+)" },
+                  { 'class: "(.*)"' },
+                },
+              },
+            },
+          },
+        },
+        html = {
+          filetypes_include = { "templ" },
+        },
+        yamlls = {
+          root_dir = util.root_pattern(".git"),
+        },
+        helm_ls = {
+          root_dir = util.root_pattern(".git"),
+        },
+        marksman = {
+          root_dir = util.root_pattern(".obsidian.vimrc", ".git"),
+        },
+        inlay_hints = {
+          enabled = false,
+        },
+      },
+    },
+  },
+  {
     "mason-lspconfig.nvim",
     setup = {
       nil_ls = function(_, opts)
@@ -88,74 +164,6 @@ return {
         },
         -- LSP Server Settings
         ---@type lspconfig.options
-        servers = {
-          lua_ls = {
-            -- mason = false, -- set to false if you don't want this server to be installed with mason
-            -- Use this to add any additional keymaps
-            -- for specific lsp servers
-            -- ---@type LazyKeysSpec[]
-            -- keys = {},
-            settings = {
-              Lua = {
-                workspace = {
-                  checkThirdParty = false,
-                },
-                codeLens = {
-                  enable = true,
-                },
-                completion = {
-                  callSnippet = "Replace",
-                },
-                doc = {
-                  privateName = { "^_" },
-                },
-                hint = {
-                  enable = true,
-                  setType = false,
-                  paramType = true,
-                  paramName = "Disable",
-                  semicolon = "Disable",
-                  arrayIndex = "Disable",
-                },
-              },
-            },
-          },
-
-          tailwindcss = {
-            -- exclude a filetype from the default_config
-            filetypes_exclude = { "markdown" },
-            -- add additional filetypes to the default_config
-            filetypes_include = { "rust", "templ" },
-            -- to fully override the default_config, change the below
-            -- filetypes = {}
-            settings = {
-              tailwindCSS = {
-                experimental = {
-                  classRegex = {
-                    { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-                    { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-                    { "cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-                    { "([a-zA-Z0-9\\-:]+)" },
-                    { 'class: "(.*)"' },
-                  },
-                },
-              },
-            },
-          },
-          html = {
-            filetypes_include = { "templ" },
-          },
-          yamlls = {},
-          helm_ls = {
-            root_dir = util.find_git_ancestor,
-          },
-          marksman = {
-            root_dir = util.root_pattern(".obsidian.vimrc", ".git"),
-          },
-          inlay_hints = {
-            enabled = false,
-          },
-        },
 
         -- you can do any additional lsp server setup here
         -- return true if you don't want this server to be setup with lspconfig
@@ -237,6 +245,7 @@ return {
       end
 
       keys[#keys + 1] = { "gd", go_goto_def }
+
       return ret
     end,
   },
