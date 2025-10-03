@@ -93,7 +93,7 @@ in
       starship
 
       # Frontend
-      nodejs_20
+      nodejs_22
       bun
       pnpm
       yarn
