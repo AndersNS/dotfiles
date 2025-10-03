@@ -67,7 +67,7 @@ map <C-l>       <Action>(PrevSplitter)
 nmap Y y$
 
 " Buffers / windows
-map <leader>q  :q
+map <leader>q  :q<CR>
 
 map <leader>be <Action>(CloseAllEditorsButActive)
 map <leader>bw <Action>(CloseAllEditors)
