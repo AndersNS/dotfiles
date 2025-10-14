@@ -78,7 +78,6 @@ return {
         win = {
           input = {
             keys = {
-
               ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
               ["<c-i>"] = { "toggle_ignored", mode = { "i", "n" } },
             },
@@ -87,6 +86,14 @@ return {
         formatters = {
           file = {
             truncate = 80, -- truncate the file path to (roughly) this length
+          },
+        },
+        sources = {
+          explorer = {
+            hidden = true,
+          },
+          files = {
+            hidden = true,
           },
         },
       },
