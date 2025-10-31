@@ -1,11 +1,68 @@
 local util = require("lspconfig.util")
 
+local format = function()
+  require("lazyvim.plugins.lsp.format").format({ force = true })
+end
+
+local go_to_definition = function()
+  if vim.bo.filetype == "go" then
+    vim.lsp.buf.definition({
+      on_list = function(options)
+        if options == nil or options.items == nil or #options.items == 0 then
+          return
+        end
+
+        local targetFile = options.items[1].filename
+        local prefix = string.match(targetFile, "(.-)_templ%.go$")
+
+        if prefix then
+          local function_name = vim.fn.expand("<cword>")
+          options.items[1].filename = prefix .. ".templ"
+
+          vim.fn.setqflist({}, " ", options)
+          vim.api.nvim_command("cfirst")
+
+          vim.api.nvim_command("silent! /templ " .. function_name)
+        else
+          vim.lsp.buf.definition()
+        end
+      end,
+    })
+  else
+    vim.lsp.buf.definition()
+  end
+end
+
+local function go_goto_def()
+  if vim.bo.filetype == "go" then
+    return go_to_definition()
+  else
+    return vim.lsp.buf.definition()
+  end
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
       servers = {
+        ["*"] = {
+          -- add any global capabilities here
+          capabilities = {
+            workspace = {
+              fileOperations = {
+                didRename = true,
+                willRename = true,
+              },
+
+              didChangeWatchedFiles = {
+                dynamicRegistration = true,
+              },
+              workspaceFolders = true,
+            },
+          },
+        },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps
@@ -111,20 +168,30 @@ return {
       codelens = {
         enabled = false,
       },
-      -- add any global capabilities here
-      capabilities = {
-        workspace = {
-          fileOperations = {
-            didRename = true,
-            willRename = true,
-          },
-
-          didChangeWatchedFiles = {
-            dynamicRegistration = true,
-          },
-          workspaceFolders = true,
-        },
+    },
+    keys = {
+      { "<leader>lI", "<cmd>MasonLspInfo<cr>", desc = "Mason LSP Info" },
+      { "<leader>ld", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+      { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+      { "<leader>ll", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+      { "<leader>lf", format, desc = "Format Document" },
+      { "<leader>lf", format, desc = "Format Range", mode = "v" },
+      { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
+      {
+        "<leader>lA",
+        function()
+          vim.lsp.buf.code_action({
+            context = {
+              only = {
+                "source",
+              },
+              diagnostics = {},
+            },
+          })
+        end,
       },
+      { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
+      { "gd", go_goto_def },
     },
   },
   {
@@ -191,20 +258,6 @@ return {
         codelens = {
           enabled = false,
         },
-        -- add any global capabilities here
-        capabilities = {
-          workspace = {
-            fileOperations = {
-              didRename = true,
-              willRename = true,
-            },
-
-            didChangeWatchedFiles = {
-              dynamicRegistration = true,
-            },
-            workspaceFolders = true,
-          },
-        },
         -- options for vim.lsp.buf.format
         -- `bufnr` and `filter` is handled by the LazyVim formatter,
         -- but can be also overridden when specified
@@ -228,73 +281,6 @@ return {
           -- ["*"] = function(server, opts) end,
         },
       }
-
-      local format = function()
-        require("lazyvim.plugins.lsp.format").format({ force = true })
-      end
-      local M = require("lazyvim.plugins.lsp.keymaps")
-      local keys = M.get()
-      keys[#keys + 1] = { "<leader>ld", vim.diagnostic.open_float, desc = "Line Diagnostics" }
-      keys[#keys + 1] = { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" }
-      keys[#keys + 1] = { "<leader>ll", "<cmd>LspInfo<cr>", desc = "Lsp Info" }
-      keys[#keys + 1] = { "<leader>lf", format, desc = "Format Document", has = "formatting" }
-      keys[#keys + 1] = { "<leader>lf", format, desc = "Format Range", mode = "v", has = "rangeFormatting" }
-      keys[#keys + 1] =
-        { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
-      keys[#keys + 1] = {
-        "<leader>lA",
-        function()
-          vim.lsp.buf.code_action({
-            context = {
-              only = {
-                "source",
-              },
-              diagnostics = {},
-            },
-          })
-        end,
-      }
-
-      keys[#keys + 1] =
-        { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
-
-      local go_to_definition = function()
-        if vim.bo.filetype == "go" then
-          vim.lsp.buf.definition({
-            on_list = function(options)
-              if options == nil or options.items == nil or #options.items == 0 then
-                return
-              end
-
-              local targetFile = options.items[1].filename
-              local prefix = string.match(targetFile, "(.-)_templ%.go$")
-
-              if prefix then
-                local function_name = vim.fn.expand("<cword>")
-                options.items[1].filename = prefix .. ".templ"
-
-                vim.fn.setqflist({}, " ", options)
-                vim.api.nvim_command("cfirst")
-
-                vim.api.nvim_command("silent! /templ " .. function_name)
-              else
-                vim.lsp.buf.definition()
-              end
-            end,
-          })
-        else
-          vim.lsp.buf.definition()
-        end
-      end
-      local function go_goto_def()
-        if vim.bo.filetype == "go" then
-          return go_to_definition()
-        else
-          return vim.lsp.buf.definition()
-        end
-      end
-
-      keys[#keys + 1] = { "gd", go_goto_def }
 
       return ret
     end,
