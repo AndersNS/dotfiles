@@ -124,6 +124,7 @@ in
 
   programs.starship.enable = true;
   programs.zoxide.enable = true;
+  programs.bottom.enable = true;
 
   imports = [
     sops-nix.homeManagerModules.sops
