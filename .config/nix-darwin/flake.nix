@@ -51,6 +51,7 @@
               "pipx"
               "atuin"
               "git-spice"
+              "mongosh"
             ];
             casks = [
               "mongodb-compass"
@@ -61,6 +62,7 @@
               "scroll-reverser"
               "spotify"
               "bruno"
+              "1password"
             ];
           };
 
