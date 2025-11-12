@@ -51,6 +51,7 @@
               "pipx"
               "atuin"
               "git-spice"
+              "git-lfs"
               "mongosh"
             ];
             casks = [
