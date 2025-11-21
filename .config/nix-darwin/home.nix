@@ -46,6 +46,7 @@ in
       gnupg
       tldr
       fd # find
+      yazi
 
       # Zsh
       oh-my-zsh
@@ -57,6 +58,7 @@ in
 
       # Tools
       nixfmt-rfc-style
+      statix
       qmk
       turso-cli
       sops
@@ -131,6 +133,11 @@ in
     sops-nix.homeManagerModules.sops
     ./home-secrets.nix
   ];
+
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh = {
     enable = true;
