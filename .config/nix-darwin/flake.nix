@@ -64,6 +64,7 @@
               "spotify"
               "bruno"
               "1password"
+              "ollama-app"
             ];
           };
 

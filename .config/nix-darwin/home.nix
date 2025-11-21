@@ -171,6 +171,7 @@ in
 
       export PATH="$PATH:$ZPLUG_HOME/repos/wfxr/forgit/bin"
       export PATH="$PATH:$HOME/.cache/npm/global/bin"
+      export PATH="$HOME/.bun/bin:$PATH"
       export FORGIT_LOG_FORMAT="%C(auto)%h%d %s %C(cyan)%C(dim)%cr%Creset"
 
       export EDITOR="nvim"
