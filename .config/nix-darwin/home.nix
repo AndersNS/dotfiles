@@ -212,7 +212,10 @@ in
   };
 
   home.activation = {
-    installtmp = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    installtmp = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      # At this point, PATH should be set up
+      PATH="${homeDirectory}/.nix-profile/bin:$PATH"
+
       # Install or update tmux package manager (TPM)
       dir='$HOME/.tmux/plugins/tpm'
       repo='https://github.com/tmux-plugins/tpm'
@@ -228,6 +231,10 @@ in
         ${pkgs.nodejs_20}/bin/npm config set prefix "$HOME/.cache/npm/global"
         mkdir -p "$HOME/.cache/npm/global" 
       fi
+
+
+      # Install yazi packages
+      ya pkg install
     '';
   };
 }
