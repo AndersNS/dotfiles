@@ -148,8 +148,6 @@ in
     initContent = ''
       source $HOME/.aliases
 
-      eval "$(atuin init zsh)"
-
       if [[ -n "$SOPS_SECRETS_DIR" ]]; then
         export api_token=$(<"$SOPS_SECRETS_DIR/api_token")
       fi

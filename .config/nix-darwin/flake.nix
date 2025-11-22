@@ -49,7 +49,6 @@
               "openssl"
               "python"
               "pipx"
-              "atuin"
               "git-spice"
               "git-lfs"
               "mongosh"
