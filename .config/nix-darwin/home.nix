@@ -212,7 +212,7 @@ in
   };
 
   home.activation = {
-    installtmp = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    installtmp = lib.hm.dag.entryAfter [ "installtmp" ] ''
       # At this point, PATH should be set up
       PATH="${homeDirectory}/.nix-profile/bin:$PATH"
 
@@ -234,7 +234,7 @@ in
 
 
       # Install yazi packages
-      ya pkg install
+      ${pkgs.yazi}/bin/ya pkg install
     '';
   };
 }
