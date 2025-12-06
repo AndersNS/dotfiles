@@ -34,7 +34,7 @@ in
       bash
       bat
       bat-extras.batman
-      bottom
+      bottom # btm, alternative to top
       zoxide
       lsd
       fzf
@@ -46,7 +46,8 @@ in
       gnupg
       tldr
       fd # find
-      yazi
+      yazi # file manager
+      hyperfine # benchmarking tool
 
       # Zsh
       oh-my-zsh
@@ -234,7 +235,7 @@ in
 
 
       # Install yazi packages
-      ${pkgs.yazi}/bin/ya pkg install
+      # ${pkgs.yazi}/bin/ya pkg install
     '';
   };
 }

@@ -62,6 +62,30 @@ return {
               workspaceFolders = true,
             },
           },
+          keys = {
+            { "<leader>lI", "<cmd>MasonLspInfo<cr>", desc = "Mason LSP Info" },
+            { "<leader>ld", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+            { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
+            { "<leader>ll", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+            { "<leader>lf", format, desc = "Format Document" },
+            { "<leader>lf", format, desc = "Format Range", mode = "v" },
+            { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
+            {
+              "<leader>lA",
+              function()
+                vim.lsp.buf.code_action({
+                  context = {
+                    only = {
+                      "source",
+                    },
+                    diagnostics = {},
+                  },
+                })
+              end,
+            },
+            { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
+            { "gd", go_goto_def },
+          },
         },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
@@ -168,30 +192,6 @@ return {
       codelens = {
         enabled = false,
       },
-    },
-    keys = {
-      { "<leader>lI", "<cmd>MasonLspInfo<cr>", desc = "Mason LSP Info" },
-      { "<leader>ld", vim.diagnostic.open_float, desc = "Line Diagnostics" },
-      { "gl", vim.diagnostic.open_float, desc = "Line Diagnostics" },
-      { "<leader>ll", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
-      { "<leader>lf", format, desc = "Format Document" },
-      { "<leader>lf", format, desc = "Format Range", mode = "v" },
-      { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
-      {
-        "<leader>lA",
-        function()
-          vim.lsp.buf.code_action({
-            context = {
-              only = {
-                "source",
-              },
-              diagnostics = {},
-            },
-          })
-        end,
-      },
-      { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
-      { "gd", go_goto_def },
     },
   },
   {
