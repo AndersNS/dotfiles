@@ -1,5 +1,7 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "19dc890"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[flavor.deps]]
 use = "Mintass/rose-pine-moon"
@@ -10,3 +12,8 @@ hash = "97cd4819252cb1a9d0f55daa14e481e"
 use = "Mintass/rose-pine"
 rev = "8343340"
 hash = "e2336631865c0f90276dcbc553d532fc"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "a0b1d9d"
+hash = "abfb0b2371259b2c8adfc7b617c3d7e5"

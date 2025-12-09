@@ -45,15 +45,31 @@ return {
   { "folke/tokyonight.nvim", enabled = false, lazy = true, priority = 1000, opts = {} },
   {
     "rebelot/kanagawa.nvim",
-    enabled = false,
+    enabled = true,
     opts = {
       compile = false, -- enable compiling the colorscheme
-      undercurl = false, -- enable undercurls
+      undercurl = true, -- enable undercurls
       commentStyle = { italic = true },
       functionStyle = {},
       keywordStyle = { italic = true },
       statementStyle = { bold = true },
       typeStyle = {},
+      transparent = false, -- do not set background color
+      dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+      terminalColors = true, -- define vim.g.terminal_color_{0,17}
+      colors = { -- add/modify theme and palette colors
+        palette = {},
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+          wave = {},
+          lotus = {},
+          dragon = {},
+        },
+      },
       overrides = function(colors)
         local theme = colors.theme
         return {
@@ -72,21 +88,9 @@ return {
           MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
         }
       end,
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          },
-        },
-      },
-      transparent = false, -- do not set background color
-      dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-      terminalColors = false, -- define vim.g.terminal_color_{0,17}
-      theme = "dragon", -- Load "wave" theme when 'background' option is not set
+      theme = "wave", -- Load "wave" theme
       background = { -- map the value of 'background' option to a theme
-        dark = "dragon", -- try "dragon" !
+        dark = "wave", -- try "dragon" !
         light = "lotus",
       },
     },
@@ -103,10 +107,10 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      -- colorscheme = "rose-pine",
       -- colorscheme = "kanagawa-paper",
       -- colorscheme = "tokyonight-night",
-      -- colorscheme = "kanagawa",
+      colorscheme = "kanagawa",
       -- colorscheme = "catppuccin",
       -- colorscheme = "nordic",
       -- colorscheme = "nordfox",

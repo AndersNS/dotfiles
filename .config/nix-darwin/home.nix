@@ -89,6 +89,7 @@ in
       lazydocker
       kubernetes-helm
       k9s
+      kubectl
 
       azure-cli
       # terraform
