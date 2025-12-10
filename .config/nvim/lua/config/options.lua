@@ -13,4 +13,9 @@ vim.opt.lbr = true
 vim.opt.iskeyword:append("-")
 vim.opt.conceallevel = 1
 
-vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({
+  extension = { templ = "templ" },
+  pattern = {
+    [".*appsettings.*%.json"] = "jsonc",
+  },
+})
