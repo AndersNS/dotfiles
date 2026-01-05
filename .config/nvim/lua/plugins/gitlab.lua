@@ -26,8 +26,9 @@ return {
       require("gitlab").setup()
     end,
     keys = {
-      { "<leader>gr", ":lua require('gitlab').review()<cr>", desc = "Review" },
-      { "<leader>gm", ":lua require('gitlab').choose_merge_request()<cr>", desc = "Merge requests" },
+      { "<leader>gr", ":lua require('gitlab').review()<cr>", desc = "Review", silent = true },
+      { "<leader>gm", ":lua require('gitlab').choose_merge_request()<cr>", desc = "Merge requests", silent = true },
+      { "<leader>gC", ":lua require('gitlab').create_mr()<cr> ", desc = "Merge requests", silent = true },
     },
   },
 }
