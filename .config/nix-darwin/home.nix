@@ -114,7 +114,6 @@ in
 
     ]
     ++ lib.optionals isDarwin [
-      jetbrains.rider
       obsidian
 
       colima
