@@ -1,19 +1,19 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "19dc890"
+rev = "6c71385"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[flavor.deps]]
 use = "Mintass/rose-pine-moon"
-rev = "aa2d937"
-hash = "97cd4819252cb1a9d0f55daa14e481e"
+rev = "94385fe"
+hash = "c43af67ff78b88b73a61a27cf19aa82b"
 
 [[flavor.deps]]
 use = "Mintass/rose-pine"
-rev = "8343340"
-hash = "e2336631865c0f90276dcbc553d532fc"
+rev = "d91f8f2"
+hash = "76de77aa573569e85a8a25f04713aae2"
 
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
-rev = "a0b1d9d"
-hash = "abfb0b2371259b2c8adfc7b617c3d7e5"
+rev = "04985d1"
+hash = "8fab444fdbdecadb16422fc0a566fd22"

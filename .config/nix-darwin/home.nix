@@ -35,6 +35,7 @@ in
       bat
       bat-extras.batman
       bottom # btm, alternative to top
+      delta
       zoxide
       lsd
       fzf

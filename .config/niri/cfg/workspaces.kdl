@@ -1,0 +1,16 @@
+// Named workspaces matching AeroSpace config
+// Verify app-ids with: niri msg windows
+
+workspace "1" {}
+workspace "2" {}
+workspace "3" {}
+workspace "4" {}
+workspace "B" {}
+workspace "D" {}
+workspace "E" {}
+workspace "G" {}
+workspace "M" {}
+workspace "N" {}
+workspace "R" {}
+workspace "S" {}
+workspace "T" {}

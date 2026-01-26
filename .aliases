@@ -1,3 +1,11 @@
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 alias clear='cls'
 alias unalias='alias /d $1'
 alias gitlog='git log --graph --decorate --pretty=oneline --abbrev-commit master origin/master $1'
