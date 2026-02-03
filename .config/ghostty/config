@@ -1,3 +1,4 @@
+font-family = "Iosevka Custom"
 font-family = "Maple Mono NF CN"
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family = "MonaspiceNe Nerd Font Mono"
@@ -24,6 +25,8 @@ font-size = 18
 # theme = rose-pine
 theme = Kanagawa Wave
 title = " "
+
 macos-titlebar-proxy-icon = "hidden"
 macos-titlebar-style = "hidden"
 
+keybind = shift+enter=text:\x1b\r

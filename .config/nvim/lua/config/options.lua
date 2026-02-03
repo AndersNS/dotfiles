@@ -17,5 +17,6 @@ vim.filetype.add({
   extension = { templ = "templ" },
   pattern = {
     [".*appsettings.*%.json"] = "jsonc",
+    [".aliases"] = "zsh",
   },
 })

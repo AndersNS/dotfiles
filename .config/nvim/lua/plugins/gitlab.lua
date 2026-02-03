@@ -23,7 +23,9 @@ return {
       require("gitlab.server").build(true)
     end, -- Builds the Go binary
     config = function()
-      require("gitlab").setup()
+      require("gitlab").setup({
+        config_path = "/Users/andersns/source/nhn/", -- Path to config file
+      })
     end,
     keys = {
       { "<leader>gr", ":lua require('gitlab').review()<cr>", desc = "Review", silent = true },
