@@ -24,9 +24,107 @@ local function open_weekly_note()
   end
 end
 
+local function custom_grep_picker()
+  -- Custom grep picker that supports pattern syntax: "search term :: pattern"
+  -- Example: "kind: Service :: manifests/**"
+  -- Transforms input live as you type, no separate prompt needed
+  Snacks.picker.pick({
+    format = "file",
+    preview = "file",
+    live = true,
+    ---@param opts table
+    ---@param ctx snacks.picker.finder.ctx
+    finder = function(opts, ctx)
+      local search = ctx.filter.search or ""
+      if search == "" or search:match("^%s*$") then
+        return {}
+      end
+
+      -- Parse input for "search :: pattern" syntax
+      local search_term, pattern = search:match("^(.-)::(.+)$")
+      local args = { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column" }
+
+      if search_term and pattern then
+        -- Trim whitespace
+        search_term = search_term:match("^%s*(.-)%s*$")
+        pattern = pattern:match("^%s*(.-)%s*$")
+
+        -- Only use pattern if it's at least 3 characters and looks like a valid glob
+        -- This prevents errors while typing incomplete patterns
+        if
+          pattern:len() >= 3
+          and (
+            pattern:match("%.%w+$") -- file extension like .lua
+            or pattern:match("%*%*") -- has **
+            or pattern:match("^[%w_%-]+/") -- starts with dir/
+            or pattern:match("^%*%.%w+$") -- wildcard with extension like *.lua
+          )
+        then
+          table.insert(args, "-g")
+          table.insert(args, pattern)
+        end
+      else
+        search_term = search
+      end
+
+      -- Only search if we have a search term
+      if search_term == "" or search_term:match("^%s*$") then
+        return {}
+      end
+
+      table.insert(args, "--")
+      table.insert(args, search_term)
+
+      return require("snacks.picker.source.proc").proc({
+        cmd = "rg",
+        args = args,
+        notify = false, -- Disable error notifications
+        ---@param item table
+        transform = function(item)
+          local line = item.text
+
+          -- Parse the ripgrep output: file:line:col:text
+          local file, lnum, col, text = line:match("^([^:]+):(%d+):(%d+):(.*)$")
+
+          if not file then
+            return { text = line }
+          end
+
+          return {
+            file = file,
+            pos = { tonumber(lnum) or 1, tonumber(col) or 1 },
+            text = text or "",
+          }
+        end,
+        -- Accept any exit code to avoid error notifications
+        on_exit = function(state)
+          return true -- Always treat as success
+        end,
+        -- Suppress stderr output
+        on_error = function(err)
+          -- Silently ignore all errors
+        end,
+      }, ctx)
+    end,
+  })
+end
+
 return {
   {
     "folke/snacks.nvim",
+    keys = {
+      {
+        "<leader>sp",
+        custom_grep_picker,
+        desc = "Grep with Pattern",
+      },
+    },
+    init = function()
+      -- Create user command for custom grep picker
+      vim.api.nvim_create_user_command("GrepPattern", custom_grep_picker, {
+        desc = "Grep with pattern support (search :: pattern)",
+      })
+    end,
     opts = {
       scroll = { enabled = false },
       dashboard = {
@@ -93,6 +191,9 @@ return {
             hidden = true,
           },
           files = {
+            hidden = true,
+          },
+          grep = {
             hidden = true,
           },
         },
