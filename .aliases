@@ -98,3 +98,718 @@ alias vim='nvim'
 alias cls='tput reset'
 alias clear='cls'
 alias top='btm'
+
+# =============================================================================
+# Git Worktree Stuff
+# =============================================================================
+
+function wtree-new() {
+  # Create a new git worktree with automatic branch creation
+  # Usage: new-worktree <branch-name> [from-branch]
+  # Example: new-worktree feature/my-feature
+  # Example: new-worktree feature/my-feature develop
+
+  # Validate arguments
+  if [[ $# -lt 1 || $# -gt 2 ]]; then
+    echo "Error: Invalid number of arguments" >&2
+    echo "Usage: new-worktree <branch-name> [from-branch]" >&2
+    echo "  branch-name: Full branch name (e.g., feature/my-feature)" >&2
+    echo "  from-branch: Base branch for creation (default: main)" >&2
+    return 1
+  fi
+
+  local branch_name="$1"
+  local from_branch="${2:-main}"
+
+  # Extract folder name (last component after final slash)
+  local folder_name="${branch_name##*/}"
+
+  # Replace dots with hyphens in folder name
+  folder_name="${folder_name//./-}"
+
+  # Validate folder name extracted successfully
+  if [[ -z "$folder_name" ]]; then
+    echo "Error: Invalid branch name. Cannot extract folder name." >&2
+    return 1
+  fi
+
+  # Validate folder name contains only safe characters
+  if [[ ! "$folder_name" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+    echo "Error: Invalid folder name '$folder_name'" >&2
+    echo "  Folder names must contain only alphanumeric characters, hyphens, and underscores" >&2
+    return 1
+  fi
+
+  # Validate branch name format
+  if [[ ! "$branch_name" =~ ^[a-zA-Z0-9/_.-]+$ ]]; then
+    echo "Error: Invalid branch name '$branch_name'" >&2
+    echo "  Branch names must contain only alphanumeric characters, slashes, hyphens, underscores, and dots" >&2
+    return 1
+  fi
+
+  # Get the common git directory (points to bare repo for worktrees)
+  local git_common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
+  if [[ -z "$git_common_dir" ]]; then
+    echo "Error: Not in a git repository" >&2
+    return 1
+  fi
+
+  # Convert to absolute path - this is the bare repo location
+  local git_root=$(cd "$git_common_dir" && pwd)
+
+  local worktree_path="$git_root/$folder_name"
+
+  # Check if worktree path already exists
+  if [[ -e "$worktree_path" ]]; then
+    echo "Error: Worktree path already exists: $worktree_path" >&2
+    return 1
+  fi
+
+  # Check if branch already exists
+  if git rev-parse --verify "$branch_name" > /dev/null 2>&1; then
+    echo "Error: Branch '$branch_name' already exists" >&2
+    echo "  Tip: Use 'git worktree add $folder_name $branch_name' to checkout existing branch" >&2
+    return 1
+  fi
+
+  # Verify base branch exists
+  if ! git rev-parse --verify "$from_branch" > /dev/null 2>&1; then
+    echo "Error: Base branch '$from_branch' does not exist" >&2
+    echo "  Available branches:" >&2
+    git branch -a | sed 's/^/    /' >&2
+    return 1
+  fi
+
+  # Create the worktree
+  echo "Creating worktree..."
+  echo "  Path: $worktree_path"
+  echo "  Branch: $branch_name"
+  echo "  Base: $from_branch"
+  echo ""
+
+  if git worktree add "$worktree_path" -b "$branch_name" "$from_branch"; then
+    echo ""
+    echo "Success! Worktree created at: $worktree_path"
+    echo ""
+    echo "What would you like to do?"
+    echo "  1) CD into the worktree"
+    echo "  2) Create and switch to tmux-session: '$folder_name' (default)"
+    echo "  3) Stay in current directory"
+    echo ""
+    read "choice?Choose [1-3, Enter=2]: "
+
+    # Default to option 2 if user just presses Enter
+    choice=${choice:-2}
+
+    case $choice in
+      1)
+        cd "$worktree_path"
+        echo "Changed directory to: $worktree_path"
+        ;;
+      2)
+        tmux new-session -d -s "$folder_name" -c "$worktree_path"
+        tmux switch-client -t "$folder_name"
+        ;;
+      3)
+        echo "Staying in current directory"
+        ;;
+      *)
+        echo "Invalid choice. Staying in current directory."
+        ;;
+    esac
+    return 0
+  else
+    echo "Error: Failed to create worktree" >&2
+    return 1
+  fi
+}
+
+function wtree-existing() {
+  # Check out an existing branch into a new git worktree
+  # Usage: wtree-existing <branch-name> [folder-name]
+  # Example: wtree-existing feature/my-feature
+  # Example: wtree-existing feature/my-feature custom-folder
+
+  # Validate arguments
+  if [[ $# -lt 1 || $# -gt 2 ]]; then
+    echo "Error: Invalid number of arguments" >&2
+    echo "Usage: wtree-existing <branch-name> [folder-name]" >&2
+    echo "  branch-name: Existing branch to checkout" >&2
+    echo "  folder-name: Optional custom folder name (default: last component of branch)" >&2
+    return 1
+  fi
+
+  local branch_name="$1"
+  local folder_name="${2:-${branch_name##*/}}"
+
+  # Replace dots with hyphens in folder name (if not explicitly provided)
+  if [[ $# -lt 2 ]]; then
+    folder_name="${folder_name//./-}"
+  fi
+
+  # Validate folder name contains only safe characters
+  if [[ ! "$folder_name" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+    echo "Error: Invalid folder name '$folder_name'" >&2
+    echo "  Folder names must contain only alphanumeric characters, hyphens, and underscores" >&2
+    return 1
+  fi
+
+  # Get the common git directory (points to bare repo for worktrees)
+  local git_common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
+  if [[ -z "$git_common_dir" ]]; then
+    echo "Error: Not in a git repository" >&2
+    return 1
+  fi
+
+  # Convert to absolute path - this is the bare repo location
+  local git_root=$(cd "$git_common_dir" && pwd)
+
+  local worktree_path="$git_root/$folder_name"
+
+  # Check if worktree path already exists
+  if [[ -e "$worktree_path" ]]; then
+    echo "Worktree already exists at: $worktree_path"
+    echo ""
+
+    # Check if it's a valid git worktree
+    if git worktree list | grep -q "$worktree_path"; then
+      echo "What would you like to do?"
+      echo "  1) CD into the worktree"
+      echo "  2) Create and switch to tmux-session: '$folder_name' (default)"
+      echo "  3) Cancel"
+      echo ""
+      read "choice?Choose [1-3, Enter=2]: "
+
+      # Default to option 2 if user just presses Enter
+      choice=${choice:-2}
+
+      case $choice in
+        1)
+          cd "$worktree_path"
+          echo "Changed directory to: $worktree_path"
+          return 0
+          ;;
+        2)
+          # Check if session already exists
+          if tmux has-session -t "$folder_name" 2>/dev/null; then
+            echo "Tmux session '$folder_name' already exists. Switching to it."
+            tmux switch-client -t "$folder_name"
+          else
+            tmux new-session -d -s "$folder_name" -c "$worktree_path"
+            tmux switch-client -t "$folder_name"
+          fi
+          return 0
+          ;;
+        3)
+          echo "Cancelled."
+          return 0
+          ;;
+        *)
+          echo "Invalid choice. Cancelled."
+          return 1
+          ;;
+      esac
+    else
+      echo "Error: Path exists but is not a valid git worktree" >&2
+      return 1
+    fi
+  fi
+
+  # Verify branch exists (check local first, then remote)
+  local is_remote=false
+  if git rev-parse --verify "$branch_name" > /dev/null 2>&1; then
+    # Local branch exists
+    is_remote=false
+  elif git rev-parse --verify "origin/$branch_name" > /dev/null 2>&1; then
+    # Remote branch exists
+    is_remote=true
+    echo "Note: Checking out remote branch 'origin/$branch_name' and creating local tracking branch"
+  else
+    echo "Error: Branch '$branch_name' does not exist locally or on remote" >&2
+    echo "  Available branches:" >&2
+    git branch -a | sed 's/^/    /' >&2
+    return 1
+  fi
+
+  # Create the worktree
+  echo "Creating worktree..."
+  echo "  Path: $worktree_path"
+  echo "  Branch: $branch_name"
+  echo ""
+
+  if [[ "$is_remote" == true ]]; then
+    # Create worktree with new local branch tracking the remote
+    if git worktree add "$worktree_path" -b "$branch_name" "origin/$branch_name"; then
+      :
+    else
+      echo "Error: Failed to create worktree" >&2
+      return 1
+    fi
+  else
+    # Checkout existing local branch
+    if git worktree add "$worktree_path" "$branch_name"; then
+      :
+    else
+      echo "Error: Failed to create worktree" >&2
+      return 1
+    fi
+  fi
+
+  if true; then
+    echo ""
+    echo "Success! Worktree created at: $worktree_path"
+    echo ""
+    echo "What would you like to do?"
+    echo "  1) CD into the worktree"
+    echo "  2) Create and switch to tmux-session: '$folder_name' (default)"
+    echo "  3) Stay in current directory"
+    echo ""
+    read "choice?Choose [1-3, Enter=2]: "
+
+    # Default to option 2 if user just presses Enter
+    choice=${choice:-2}
+
+    case $choice in
+      1)
+        cd "$worktree_path"
+        echo "Changed directory to: $worktree_path"
+        ;;
+      2)
+        tmux new-session -d -s "$folder_name" -c "$worktree_path"
+        tmux switch-client -t "$folder_name"
+        ;;
+      3)
+        echo "Staying in current directory"
+        ;;
+      *)
+        echo "Invalid choice. Staying in current directory."
+        ;;
+    esac
+    return 0
+  else
+    echo "Error: Failed to create worktree" >&2
+    return 1
+  fi
+}
+
+function wtree-cleanup() {
+  # Interactive cleanup of git worktrees using fzf
+  # Shows all worktrees with markers for merged/deleted branches
+  # Usage: wtree-cleanup
+
+  echo "Fetching and pruning remote branches..."
+  git fetch -p
+
+  # Get the common git directory
+  local git_common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
+  if [[ -z "$git_common_dir" ]]; then
+    echo "Error: Not in a git repository" >&2
+    return 1
+  fi
+
+  local git_root=$(cd "$git_common_dir" && pwd)
+
+  # Build list of worktrees with their status
+  local worktree_list=()
+  local worktree_data=()
+
+  # Parse git worktree list --porcelain output
+  local current_path=""
+  local current_branch=""
+
+  while IFS= read -r line; do
+    if [[ "$line" =~ ^worktree ]]; then
+      # Save previous worktree if exists
+      if [[ -n "$current_path" && -n "$current_branch" ]]; then
+        # Skip the main/bare worktree
+        if [[ "$current_path" != "$git_root" ]]; then
+          local folder_name=$(basename "$current_path")
+
+          # Check if remote tracking branch exists
+          local branch_status=""
+          # Check if the remote branch exists (after fetch -p, deleted branches are pruned)
+          if ! git rev-parse --verify "refs/remotes/origin/${current_branch}" > /dev/null 2>&1; then
+            branch_status="[MERGED/DELETED] "
+          fi
+
+          # Add to lists
+          worktree_list+=("${branch_status}${folder_name} (${current_branch})")
+          worktree_data+=("${folder_name}|${current_branch}|${current_path}")
+        fi
+      fi
+
+      # Start new worktree - extract path after "worktree "
+      current_path="${line#worktree }"
+      current_branch=""
+    elif [[ "$line" =~ ^branch ]]; then
+      # Extract branch name after "branch refs/heads/"
+      current_branch="${line#branch refs/heads/}"
+    elif [[ "$line" == "bare" ]]; then
+      current_branch=""
+    fi
+  done < <(git worktree list --porcelain)
+
+  # Don't forget the last worktree
+  if [[ -n "$current_path" && -n "$current_branch" ]]; then
+    if [[ "$current_path" != "$git_root" ]]; then
+      local folder_name=$(basename "$current_path")
+
+      local branch_status=""
+      # Check if the remote branch exists (after fetch -p, deleted branches are pruned)
+      if ! git rev-parse --verify "refs/remotes/origin/${current_branch}" > /dev/null 2>&1; then
+        branch_status="[MERGED/DELETED] "
+      fi
+
+      worktree_list+=("${branch_status}${folder_name} (${current_branch})")
+      worktree_data+=("${folder_name}|${current_branch}|${current_path}")
+    fi
+  fi
+
+  if [[ ${#worktree_list[@]} -eq 0 ]]; then
+    echo "No worktrees found to clean up."
+    return 0
+  fi
+
+  # Sort: [MERGED/DELETED] branches first, then alphabetically
+  local sorted_list=()
+  local sorted_data=()
+
+  # First, add all [MERGED/DELETED] branches (sorted alphabetically)
+  for ((i=1; i<=${#worktree_list[@]}; i++)); do
+    if [[ "${worktree_list[$i]}" =~ ^\[MERGED/DELETED\] ]]; then
+      sorted_list+=("${worktree_list[$i]}")
+      sorted_data+=("${worktree_data[$i]}")
+    fi
+  done
+
+  # Sort the merged/deleted section
+  local merged_count=${#sorted_list[@]}
+  if [[ $merged_count -gt 1 ]]; then
+    # Create temporary arrays for sorting
+    local temp_list=("${sorted_list[@]}")
+    local temp_data=("${sorted_data[@]}")
+
+    # Simple bubble sort for the merged section
+    for ((i=1; i<=$merged_count; i++)); do
+      for ((j=i+1; j<=$merged_count; j++)); do
+        if [[ "${temp_list[$i]}" > "${temp_list[$j]}" ]]; then
+          # Swap list items
+          local tmp="${temp_list[$i]}"
+          temp_list[$i]="${temp_list[$j]}"
+          temp_list[$j]="$tmp"
+          # Swap data items
+          tmp="${temp_data[$i]}"
+          temp_data[$i]="${temp_data[$j]}"
+          temp_data[$j]="$tmp"
+        fi
+      done
+    done
+    sorted_list=("${temp_list[@]}")
+    sorted_data=("${temp_data[@]}")
+  fi
+
+  # Then, add all non-deleted branches (sorted alphabetically)
+  local active_list=()
+  local active_data=()
+  for ((i=1; i<=${#worktree_list[@]}; i++)); do
+    if [[ ! "${worktree_list[$i]}" =~ ^\[MERGED/DELETED\] ]]; then
+      active_list+=("${worktree_list[$i]}")
+      active_data+=("${worktree_data[$i]}")
+    fi
+  done
+
+  # Sort the active section
+  if [[ ${#active_list[@]} -gt 1 ]]; then
+    for ((i=1; i<=${#active_list[@]}; i++)); do
+      for ((j=i+1; j<=${#active_list[@]}; j++)); do
+        if [[ "${active_list[$i]}" > "${active_list[$j]}" ]]; then
+          local tmp="${active_list[$i]}"
+          active_list[$i]="${active_list[$j]}"
+          active_list[$j]="$tmp"
+          tmp="${active_data[$i]}"
+          active_data[$i]="${active_data[$j]}"
+          active_data[$j]="$tmp"
+        fi
+      done
+    done
+  fi
+
+  # Combine sorted lists
+  sorted_list+=("${active_list[@]}")
+  sorted_data+=("${active_data[@]}")
+
+  echo ""
+  echo "Select worktrees to delete (Tab to select, Enter to confirm):"
+  echo "Branches marked [MERGED/DELETED] have been removed from remote"
+  echo ""
+
+  # Use fzf for selection
+  local selected_indices=$(printf '%s\n' "${sorted_list[@]}" | \
+    fzf --multi \
+        --height=80% \
+        --border \
+        --header="Tab: select | Ctrl-A: select all | Ctrl-D: deselect all | Enter: confirm | Esc: cancel" \
+        --prompt="Select worktrees to delete > " \
+        --preview='echo "Branch: {}" | sed "s/\[MERGED\/DELETED\] //"' \
+        --bind='ctrl-a:select-all' \
+        --bind='ctrl-d:deselect-all')
+
+  if [[ -z "$selected_indices" ]]; then
+    echo "No worktrees selected. Exiting."
+    return 0
+  fi
+
+  # Process selected items
+  echo ""
+  echo "Selected worktrees for deletion:"
+  echo "$selected_indices"
+  echo ""
+
+  # Convert selected items to array using parameter expansion
+  local selected_array=("${(@f)selected_indices}")
+
+  read "confirm?Are you sure you want to delete these worktrees and branches? [y/N]: "
+
+  if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    echo "Cancelled."
+    return 0
+  fi
+
+  # Delete selected worktrees
+  echo ""
+
+  # Process each selected item (array was already created above for debugging)
+  for selected_item in "${selected_array[@]}"; do
+    # Remove status markers
+    selected_item=$(echo "$selected_item" | sed 's/\[MERGED\/DELETED\] //')
+
+    # Find matching worktree data
+    for ((i=1; i<=${#sorted_list[@]}; i++)); do
+      local clean_list_item=$(echo "${sorted_list[$i]}" | sed 's/\[MERGED\/DELETED\] //')
+      if [[ "$clean_list_item" == "$selected_item" ]]; then
+        # Parse data using awk to split by pipe
+        local data_line="${sorted_data[$i]}"
+        local folder_name=$(echo "$data_line" | awk -F'|' '{print $1}')
+        local branch_name=$(echo "$data_line" | awk -F'|' '{print $2}')
+        local worktree_path=$(echo "$data_line" | awk -F'|' '{print $3}')
+
+        echo "Deleting worktree: $folder_name (branch: $branch_name)"
+
+        # Close tmux session if it exists
+        if tmux has-session -t "$folder_name" 2>/dev/null; then
+          if tmux kill-session -t "$folder_name" 2>/dev/null; then
+            echo "  ✓ Tmux session closed"
+          else
+            echo "  ✗ Failed to close tmux session" >&2
+          fi
+        fi
+
+        # Remove worktree
+        if git worktree remove "$worktree_path" --force > /dev/null 2>&1; then
+          echo "  ✓ Worktree removed"
+        else
+          echo "  ✗ Failed to remove worktree" >&2
+        fi
+
+        # Delete branch
+        if git branch -D "$branch_name" > /dev/null 2>&1; then
+          echo "  ✓ Branch deleted"
+        else
+          echo "  ✗ Failed to delete branch" >&2
+        fi
+
+        echo ""
+        break
+      fi
+    done
+  done
+
+  echo "Cleanup complete!"
+}
+
+function wtree-delete() {
+  # Delete a git worktree and its associated branch
+  # Usage: wtree-delete <folder-name>
+  # Example: wtree-delete my-feature
+
+  # Validate arguments
+  if [[ $# -ne 1 ]]; then
+    echo "Error: Invalid number of arguments" >&2
+    echo "Usage: wtree-delete <folder-name>" >&2
+    echo "  folder-name: Name of the worktree folder to delete" >&2
+    return 1
+  fi
+
+  local folder_name="$1"
+
+  # Get the common git directory (points to bare repo for worktrees)
+  local git_common_dir=$(git rev-parse --git-common-dir 2>/dev/null)
+  if [[ -z "$git_common_dir" ]]; then
+    echo "Error: Not in a git repository" >&2
+    return 1
+  fi
+
+  # Convert to absolute path - this is the bare repo location
+  local git_root=$(cd "$git_common_dir" && pwd)
+
+  local worktree_path="$git_root/$folder_name"
+
+  # Check if worktree exists
+  if ! git worktree list | grep -q "$worktree_path"; then
+    echo "Error: Worktree '$folder_name' not found" >&2
+    echo "" >&2
+    echo "Available worktrees:" >&2
+    git worktree list | sed 's/^/  /' >&2
+    return 1
+  fi
+
+  # Get the branch name associated with this worktree
+  local branch_name
+  branch_name=$(git worktree list --porcelain | grep -A 2 "worktree $worktree_path" | grep "branch" | sed 's/branch refs\/heads\///')
+
+  if [[ -z "$branch_name" ]]; then
+    echo "Warning: Could not determine branch name for worktree" >&2
+    echo "Worktree will be removed, but you may need to delete the branch manually" >&2
+  fi
+
+  # Show what will be deleted
+  echo "About to delete:"
+  echo "  Worktree: $worktree_path"
+  if [[ -n "$branch_name" ]]; then
+    echo "  Branch: $branch_name"
+  fi
+  echo ""
+  read "confirm?Are you sure? [y/N]: "
+
+  if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    echo "Cancelled."
+    return 0
+  fi
+
+  # Remove the worktree
+  echo ""
+  echo "Removing worktree..."
+  if git worktree remove "$folder_name" 2>/dev/null; then
+    echo "Worktree removed successfully"
+  elif git worktree remove -f "$folder_name" 2>/dev/null; then
+    echo "Worktree removed (forced due to uncommitted changes)"
+  else
+    echo "Error: Failed to remove worktree" >&2
+    return 1
+  fi
+
+  # Delete the branch if we found one
+  if [[ -n "$branch_name" ]]; then
+    echo "Deleting branch..."
+    if git branch -D "$branch_name" 2>/dev/null; then
+      echo "Branch '$branch_name' deleted successfully"
+    else
+      echo "Warning: Could not delete branch '$branch_name'" >&2
+      echo "You may need to delete it manually with: git branch -D $branch_name" >&2
+    fi
+  fi
+
+  echo ""
+  echo "Done!"
+  return 0
+}
+
+# =============================================================================
+# SB Services Startup
+# =============================================================================
+
+function sb-start() {
+  # Start all SB services in a new tmux window
+  # Works with git worktrees by using current directory
+
+  local working_dir=$(pwd)
+
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "Error: Not in a git repository" >&2
+    return 1
+  fi
+
+  if [ -z "$TMUX" ]; then
+    echo "Error: Not in a tmux session" >&2
+    return 1
+  fi
+
+  tmux new-window -n "sb-local" -c "$working_dir"
+
+  tmux split-window -v -p 50 -c "$working_dir"
+  tmux split-window -v -p 50 -c "$working_dir"
+
+  tmux select-pane -t 1
+  tmux split-window -h -p 50 -c "$working_dir"
+
+  tmux select-pane -t 3
+  tmux split-window -h -p 50 -c "$working_dir"
+
+  tmux select-pane -t 1
+  tmux send-keys "cd External" C-m
+  tmux send-keys "dotnet watch run" C-m
+
+  tmux select-pane -t 3
+  tmux send-keys "cd Client" C-m
+  tmux send-keys "dotnet watch run" C-m
+
+  tmux select-pane -t 4
+  tmux send-keys "cd Activations" C-m
+  tmux send-keys "sleep 5 && dotnet watch run" C-m
+
+  tmux select-pane -t 5
+  tmux send-keys "npm run start-client-assets" C-m
+
+  tmux select-pane -t 2
+  tmux send-keys "cd WebApp" C-m
+  tmux send-keys "dotnet watch run" C-m
+
+  tmux select-pane -t 1
+}
+
+alias sb='sb-start'
+
+# =============================================================================
+# GitLab MR Browser
+# =============================================================================
+
+function gmr() {
+  # Interactive GitLab merge request browser with fzf
+  # Shows MRs with draft, approval, comments, and reviewer info
+  # Usage: gmr
+
+  # Fetch MRs as JSON and format with jq
+  formatted=$(glab mr list --output json --per-page 100 | jq -r '.[] |
+    [
+      .iid,
+      .source_branch,
+      (if .draft then "DRAFT" else "     " end),
+      (
+        if .detailed_merge_status == "mergeable" or .detailed_merge_status == "approved" then "✅ Approved"
+        elif .detailed_merge_status == "not_approved" then "👀 Review"
+        elif .detailed_merge_status == "unchecked" then "👀 Review"
+        elif .detailed_merge_status == "discussions_not_resolved" then "🙊 Unresolved"
+        elif .detailed_merge_status == "need_rebase" then "🔃 Rebase"
+        else .detailed_merge_status
+        end
+      ),
+      ("💬" + (.user_notes_count | tostring)),
+      ("👤" + (.reviewers | length | tostring)),
+      (.title | gsub("[\n\t\r]"; " ") | gsub("  +"; " "))
+    ] | @tsv
+  ')
+
+  # Run fzf with preview and custom action
+  selected=$(echo "$formatted" | fzf \
+    --ansi \
+    --delimiter='\t' \
+    --with-nth=1,3,4,5,6,7 \
+    --preview='approval_info=$(glab api projects/:fullpath/merge_requests/{1}/approvals 2>/dev/null | jq -r "if .approved then \"✅ Approved by \" + ([.approved_by[].user.name] | join(\", \")) else \"Not approved\" end" || echo "Unknown"); glab mr view {1} --output json | jq -r --arg approval "$approval_info" ".title, \"\", (\"**Author:** \" + .author.name + \" (@\" + .author.username + \")\"), (\"**Approval:** \" + \$approval), (\"**Status:** \" + .state + \" | **Draft:** \" + (.draft | tostring) + \" | **Merge:** \" + .detailed_merge_status), (\"**Branch:** \" + .source_branch + \" → \" + .target_branch), (\"**Reviewers:** \" + (if (.reviewers | length) > 0 then (.reviewers | map(.name) | join(\", \")) else \"None\" end)), (\"**Labels:** \" + (if (.labels | length) > 0 then (.labels | join(\", \")) else \"None\" end)), (\"**Comments:** \" + (.user_notes_count | tostring)), \"\", \"---\", \"\", .description, \"\", \"---\", \"\", (\"**URL:** \" + .web_url)" | bat --style=plain --color=always -l md' \
+    --preview-window=right:60%:wrap:hidden \
+    --header='ENTER: wtree-existing | o: open in browser | ?: toggle preview | ESC: cancel' \
+    --bind='enter:execute(source ~/.aliases && wtree-existing {2})+abort' \
+    --bind='o:execute-silent(glab mr view {1} -w)' \
+    --bind='?:toggle-preview' \
+    --height=100% \
+    || true)
+}
