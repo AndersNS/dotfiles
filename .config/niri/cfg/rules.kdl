@@ -1,0 +1,88 @@
+    window-rule {
+        geometry-corner-radius 20 // Set every window radius to 20
+        clip-to-geometry true
+    }
+
+    // ─── App → Workspace Affinities ───
+    // Verify app-ids with: niri msg windows
+
+    // T — Terminals
+    window-rule {
+        match app-id=r#"ghostty|com\.mitchellh\.ghostty"#
+        open-on-workspace "T"
+    }
+    window-rule {
+        match app-id=r#"wezterm|org\.wezfurlong\.wezterm"#
+        open-on-workspace "T"
+    }
+
+    // B — Browsers
+    window-rule {
+        match app-id=r#"zen|zen-browser"#
+        open-on-workspace "B"
+    }
+
+    // 1 — Media
+    window-rule {
+        match app-id="spotify"
+        open-on-workspace "1"
+    }
+
+    // N — Notes
+    window-rule {
+        match app-id=r#"obsidian|md\.obsidian"#
+        open-on-workspace "N"
+    }
+
+    // E — Editor
+    window-rule {
+        match app-id=r#"jetbrains-rider"#
+        open-on-workspace "E"
+    }
+
+    // M — Messaging
+    window-rule {
+        match app-id=r#"teams|com\.microsoft\.Teams"#
+        open-on-workspace "M"
+    }
+
+    // S — Slack
+    window-rule {
+        match app-id=r#"Slack|slack"#
+        open-on-workspace "S"
+    }
+
+    window-rule {
+        match app-id=r#"vesktop"#
+        open-on-workspace "S"
+    }
+    
+    // D — Database
+    window-rule {
+        match app-id=r#"mongodb-compass|com\.mongodb\.compass"#
+        open-on-workspace "D"
+    }
+
+    // G — Gaming
+    window-rule {
+        match app-id=r#"hero-launcher|herolauncher|faugus-launcher"#
+        open-on-workspace "G"
+    }
+    window-rule {
+        match app-id="lutris"
+        open-on-workspace "G"
+    }
+    window-rule {
+        match app-id="steam"
+        open-on-workspace "G"
+    }
+    window-rule {
+        match app-id="steam_app_default"
+        variable-refresh-rate true
+        open-fullscreen true
+    }
+    
+    layer-rule {
+        match namespace="^noctalia-wallpaper*"
+        place-within-backdrop true
+    }

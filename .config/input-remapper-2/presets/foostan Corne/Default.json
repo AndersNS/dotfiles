@@ -1,0 +1,55 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 125,
+                "origin_hash": "c408393743706497aec9957a4234f8d9"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Alt_R",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 126,
+                "origin_hash": "c408393743706497aec9957a4234f8d9"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Alt_R",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 100,
+                "origin_hash": "c408393743706497aec9957a4234f8d9"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Super_L",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 100,
+                "origin_hash": "c408393743706497aec9957a4234f8d9"
+            },
+            {
+                "type": 1,
+                "code": 30,
+                "origin_hash": "c408393743706497aec9957a4234f8d9"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "\u00e5",
+        "mapping_type": "key_macro"
+    }
+]

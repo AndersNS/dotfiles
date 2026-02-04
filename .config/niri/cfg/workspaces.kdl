@@ -1,0 +1,41 @@
+// Verify app-ids with: niri msg windows
+
+workspace "1" {
+  open-on-output "DP-1"
+}
+workspace "2" {
+  open-on-output "DP-2"
+}
+workspace "3" {
+  open-on-output "DP-2"
+}
+workspace "4" {
+  open-on-output "DP-2"
+}
+workspace "B" {
+open-on-output "DP-1"
+}
+workspace "D" {
+open-on-output "DP-1"
+}
+workspace "E" {
+  open-on-output "DP-1"
+}
+workspace "G" {
+  open-on-output "DP-1"
+}
+workspace "M" {
+  open-on-output "DP-1"
+}
+workspace "N" {
+  open-on-output "DP-1"
+}
+workspace "R" {
+  open-on-output "DP-1"
+}
+workspace "S" {
+  open-on-output "DP-1"
+}
+workspace "T" {
+  open-on-output "DP-1"
+}
