@@ -77,7 +77,8 @@
         open-on-workspace "G"
     }
     window-rule {
-        match app-id="steam_app_default"
+        match app-id=r#"steam_app_default|dragon age the veilguard.exe"#
+        open-on-workspace "G"
         variable-refresh-rate true
         open-fullscreen true
     }
