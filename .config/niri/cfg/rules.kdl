@@ -10,6 +10,7 @@
     window-rule {
         match app-id=r#"ghostty|com\.mitchellh\.ghostty"#
         open-on-workspace "T"
+        default-column-width { proportion 1.0; }
     }
     window-rule {
         match app-id=r#"wezterm|org\.wezfurlong\.wezterm"#
@@ -20,12 +21,20 @@
     window-rule {
         match app-id=r#"zen|zen-browser"#
         open-on-workspace "B"
+        default-column-width { proportion 1.0; }
     }
 
     // 1 — Media
     window-rule {
         match app-id="spotify"
         open-on-workspace "1"
+        default-column-width { proportion 1.0; }
+    }
+    
+    window-rule {
+        match app-id="calibre-gui"
+        open-on-workspace "R"
+        default-column-width { proportion 1.0; }
     }
 
     // N — Notes
