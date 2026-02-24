@@ -92,6 +92,13 @@
         open-fullscreen true
     }
     
+    window-rule {
+        match title=r#"Avowed$"#
+        open-on-workspace "G"
+        variable-refresh-rate true
+        open-fullscreen true
+    }
+    
     layer-rule {
         match namespace="^noctalia-wallpaper*"
         place-within-backdrop true
