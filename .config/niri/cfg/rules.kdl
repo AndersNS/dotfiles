@@ -93,7 +93,7 @@
     }
     
     window-rule {
-        match title=r#"Avowed$"#
+        match title="Avowed "
         open-on-workspace "G"
         variable-refresh-rate true
         open-fullscreen true
