@@ -155,6 +155,12 @@ return {
         inlay_hints = {
           enabled = false,
         },
+        dockerls = {
+          autoformat = false,
+          init_options = {
+            provideFormatter = false,
+          },
+        },
       },
       -- options for vim.diagnostic.config()
       ---@type vim.diagnostic.Opts
