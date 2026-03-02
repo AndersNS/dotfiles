@@ -5,7 +5,6 @@ return {
   version = "*", -- to use latest release instead of latest commit
   lazy = true,
   ft = "markdown",
-  enabled = not vim.fn.has("wls"),
 
   -- event = { "BufReadPre " .. vars.vault_path .. "/**.md" },
   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
