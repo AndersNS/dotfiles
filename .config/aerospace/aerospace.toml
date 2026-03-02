@@ -53,6 +53,8 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
+automatically-unhide-macos-hidden-apps = false
+
 [workspace-to-monitor-force-assignment]
 1 = 1 # Monitor sequence number from left to right. 1-based indexing
 2 = 'main' # Main monitor
