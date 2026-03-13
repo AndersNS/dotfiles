@@ -5,7 +5,7 @@ input {
     keyboard {
         xkb {
           layout "us,no"
-          options "grp:switch,grp:sclk_toggle"
+          options "grp:alt_space_toggle,grp:sclk_toggle"
         }
         track-layout "global"
         numlock // Enable numlock on startup

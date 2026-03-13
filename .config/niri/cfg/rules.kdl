@@ -93,9 +93,21 @@
     }
     
     window-rule {
+      match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+      default-floating-position x=10 y=10 relative-to="bottom-right"
+    }
+ 
+    window-rule {
         match title="Avowed "
         open-on-workspace "G"
-        variable-refresh-rate true
+        variable-refresh-rate false
+        open-fullscreen true
+    }
+    
+    window-rule {
+        match app-id="cyberpunk2077.exe"
+        open-on-workspace "G"
+        variable-refresh-rate false
         open-fullscreen true
     }
     
