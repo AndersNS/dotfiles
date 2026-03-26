@@ -87,6 +87,18 @@ return {
             { "gd", go_goto_def },
           },
         },
+        csharp_ls = {
+          cmd = function(dispatchers, config)
+            return vim.lsp.rpc.start({ "csharp-ls", "--features", "razor-support" }, dispatchers, {
+              -- csharp-ls attempt to locate sln, slnx or csproj files from cwd, so set cwd to root directory.
+              -- If cmd_cwd is provided, use it instead.
+              cwd = config.cmd_cwd or config.root_dir,
+              env = config.cmd_env,
+              detached = config.detached,
+            })
+          end,
+          filetypes = { "cs" },
+        },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps

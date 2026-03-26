@@ -14,7 +14,7 @@ vim.opt.iskeyword:append("-")
 vim.opt.conceallevel = 1
 
 vim.filetype.add({
-  extension = { templ = "templ" },
+  extension = { templ = "templ", razor = "razor", cshtml = "razor" },
   pattern = {
     [".*appsettings.*%.json"] = "jsonc",
     [".aliases"] = "zsh",

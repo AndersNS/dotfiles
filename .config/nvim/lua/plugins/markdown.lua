@@ -148,6 +148,13 @@ return {
         -- | foreground | optional override for the foreground                 |
         custom = {},
       },
+      html = {
+        comment = {
+          conceal = false,
+
+          highlight = "RenderMarkdownHtmlComment",
+        },
+      },
     },
   },
 }
