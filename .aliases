@@ -67,6 +67,7 @@ alias tmavim='tmn vim'
 alias tmn='tmux new -A -s $1'
 alias tmd='tmux detach'
 alias tmss='tmux set status'
+alias tm='sesh connect $(sesh list | fzf)'
 
 alias nfu='nix flake update --flake ~/.config/nix-darwin'
 alias nds='sudo -H nix run nix-darwin -- switch --flake ~/.config/nix-darwin#Anders-Max'
