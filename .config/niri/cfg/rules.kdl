@@ -1,5 +1,5 @@
     window-rule {
-        geometry-corner-radius 20 // Set every window radius to 20
+        geometry-corner-radius 5 // Set every window radius to 20
         clip-to-geometry true
     }
 
@@ -105,9 +105,9 @@
     }
     
     window-rule {
-        match app-id="cyberpunk2077.exe"
+        match title=r#"Cyberpunk$"
         open-on-workspace "G"
-        variable-refresh-rate false
+        variable-refresh-rate true
         open-fullscreen true
     }
     
