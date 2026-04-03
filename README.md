@@ -60,13 +60,13 @@ nix flake update
 ### Home manager (linux)
 
 ```bash
-nix run .#homeConfigurations.wsl.activationPackage
+nix run ~/.config/nix-darwin#homeConfigurations.arch.activationPackage
 ```
 
 Then use:
 
 ```bash
-home-manager switch --flake .#wsl
+home-manager switch --flake ~/.config/nix-darwin#arch
 ```
 
 ### Home secrets

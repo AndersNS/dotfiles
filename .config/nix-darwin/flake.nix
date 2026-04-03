@@ -27,14 +27,20 @@
       configuration =
         { pkgs, ... }:
         {
-          nix.gc = {
-            automatic = true;
-            interval = {
-              Hour = 3;
-              Minute = 15;
-              Weekday = 7; # Sunday
+          nix = {
+            gc = {
+              automatic = true;
+              interval = {
+                Hour = 3;
+                Minute = 15;
+                Weekday = 7; # Sunday
+              };
+              options = "--delete-older-than 7d";
             };
-            options = "--delete-older-than 7d";
+
+            # necessary for using flakes on this system.
+            settings.experimental-features = "nix-command flakes";
+            optimise.automatic = true;
           };
 
           environment.systemPackages = [ ];
@@ -81,42 +87,42 @@
             # Maple Mono NF CN (Ligature unhinted)
             maple-mono.NF-CN-unhinted
           ];
+          system = {
 
-          system.defaults = {
-            dock.autohide = true;
-            dock.mru-spaces = false;
-            screencapture.location = "~/Pictures/screenshots";
+            defaults = {
+              dock.autohide = true;
+              dock.mru-spaces = false;
+              screencapture.location = "~/Pictures/screenshots";
+              NSGlobalDomain = {
 
-            NSGlobalDomain.KeyRepeat = 2;
-            NSGlobalDomain.InitialKeyRepeat = 15;
-            NSGlobalDomain."com.apple.sound.beep.volume" = 0.0;
+                KeyRepeat = 2;
+                InitialKeyRepeat = 15;
+                "com.apple.sound.beep.volume" = 0.0;
+              };
 
-            finder = {
-              AppleShowAllExtensions = true;
-              ShowPathbar = true;
-              FXEnableExtensionChangeWarning = false;
-              FXPreferredViewStyle = "clmv";
-              ShowStatusBar = true;
+              finder = {
+                AppleShowAllExtensions = true;
+                ShowPathbar = true;
+                FXEnableExtensionChangeWarning = false;
+                FXPreferredViewStyle = "clmv";
+                ShowStatusBar = true;
+              };
             };
-          };
-          system.primaryUser = "andersns";
-          system.keyboard.enableKeyMapping = true;
-          system.keyboard.remapCapsLockToControl = true;
-          system.startup.chime = false;
+            primaryUser = "andersns";
+            keyboard.enableKeyMapping = true;
+            keyboard.remapCapsLockToControl = true;
+            startup.chime = false;
 
-          # necessary for using flakes on this system.
-          nix.settings.experimental-features = "nix-command flakes";
-          nix.optimise.automatic = true;
+            # Set Git commit hash for darwin-version.
+            configurationRevision = self.rev or self.dirtyRev or null;
+
+            # Used for backwards compatibility, please read the changelog before changing.
+            # $ darwin-rebuild changelog
+            stateVersion = 5;
+          };
 
           # Enable alternative shell support in nix-darwin.
           programs.zsh.enable = true;
-
-          # Set Git commit hash for darwin-version.
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-
-          # Used for backwards compatibility, please read the changelog before changing.
-          # $ darwin-rebuild changelog
-          system.stateVersion = 5;
 
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
@@ -130,10 +136,12 @@
         };
 
       homeManagerConfig = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.andersns = import ./home.nix;
-        home-manager.extraSpecialArgs = { inherit sops-nix; };
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.andersns = import ./home.nix;
+          extraSpecialArgs = { inherit sops-nix; };
+        };
       };
 
       userSettings = {
@@ -144,7 +152,7 @@
     in
     {
       homeConfigurations = {
-        wsl = home-manager.lib.homeManagerConfiguration {
+        arch = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = userSettings.linuxSystem; };
           extraSpecialArgs = {
             inherit inputs;
@@ -154,7 +162,7 @@
             ./home.nix
             {
               home = {
-                username = userSettings.username;
+                inherit (userSettings) username;
               };
             }
           ];
@@ -164,12 +172,12 @@
             system = userSettings.darwinSystem;
             config.allowUnfree = true;
           };
-          extraSpecialArgs = homeManagerConfig.home-manager.extraSpecialArgs;
+          inherit (homeManagerConfig.home-manager) extraSpecialArgs;
           modules = [
             ./home.nix
             {
               home = {
-                username = userSettings.username;
+                inherit (userSettings) username;
               };
             }
           ];
