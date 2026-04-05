@@ -58,6 +58,7 @@
               "git-spice"
               "git-lfs"
               "mongosh"
+              "sesh"
             ];
             casks = [
               "mongodb-compass"

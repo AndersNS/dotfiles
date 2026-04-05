@@ -135,7 +135,9 @@ in
         fd # find
         yazi # file manager
         hyperfine # benchmarking tool
-        sesh # tmux session manager
+        # sesh # tmux session manager - nix is quite out of date
+
+        devenv
 
         # Zsh
         oh-my-zsh
