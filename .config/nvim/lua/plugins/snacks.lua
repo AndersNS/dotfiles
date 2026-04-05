@@ -7,7 +7,7 @@ local function open_note_quick_switch()
   vim.cmd("Obsidian quick_switch")
 end
 
-local function open_weekly_note()
+function open_weekly_note()
   require("lazy").load({ plugins = { "obsidian.nvim" } })
   local week_note_name = os.date("%Y-W", os.time())
     .. string.format("%02d", utils.getWeekNumberOfYear(os.time()))

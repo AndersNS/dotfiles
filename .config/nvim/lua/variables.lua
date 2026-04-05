@@ -1,4 +1,4 @@
-local vault_path = os.getenv("HOME") .. "/obsidian/andersns"
+local vault_path = os.getenv("HOME") .. "/obsidian/andersns/"
 local weekly_note_path = vault_path .. "Calendar/Weekly/"
 local weekly_template = "Weekly-template.md"
 
