@@ -105,7 +105,7 @@
     }
     
     window-rule {
-        match title=r#"Cyberpunk$"
+        match title=r#"Cyberpunk$"#
         open-on-workspace "G"
         variable-refresh-rate true
         open-fullscreen true
