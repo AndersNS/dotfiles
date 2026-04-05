@@ -4,3 +4,8 @@
 name = "Notes 📓"
 path = "~/obsidian/andersns/"
 startup_command = "nvim"
+
+[[session]]
+name = "Rice 🍚"
+path = "~/"
+startup_command = "dotfiles status"
