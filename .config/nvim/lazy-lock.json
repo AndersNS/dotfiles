@@ -74,6 +74,7 @@
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
   "render-markdown.nvim": { "branch": "main", "commit": "07d088bf8bdadd159eb807b90eaee86a4778383f" },
   "rose-pine": { "branch": "main", "commit": "cf2a288696b03d0934da713d66c6d71557b5c997" },
+  "roslyn.nvim": { "branch": "main", "commit": "ff43201090361b8936e008a006473b59ef2c0ca6" },
   "rustaceanvim": { "branch": "master", "commit": "d50597d482a6f44ddfc54d1af2f69f052053b4de" },
   "smart-splits.nvim": { "branch": "master", "commit": "1ea2e55bcc0dd2bdec5c5fef0082219f76c532fc" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },

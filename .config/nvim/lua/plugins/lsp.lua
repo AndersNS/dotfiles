@@ -41,7 +41,26 @@ local function go_goto_def()
   end
 end
 
+-- vim.lsp.enable("roslyn_ls")
 return {
+  {
+    "seblyng/roslyn.nvim",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+    },
+  },
+  {
+
+    "mason-org/mason.nvim",
+    opts = {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
+    },
+  },
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
@@ -86,18 +105,6 @@ return {
             { "<C-f>", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" } },
             { "gd", go_goto_def },
           },
-        },
-        csharp_ls = {
-          cmd = function(dispatchers, config)
-            return vim.lsp.rpc.start({ "csharp-ls", "--features", "razor-support" }, dispatchers, {
-              -- csharp-ls attempt to locate sln, slnx or csproj files from cwd, so set cwd to root directory.
-              -- If cmd_cwd is provided, use it instead.
-              cwd = config.cmd_cwd or config.root_dir,
-              env = config.cmd_env,
-              detached = config.detached,
-            })
-          end,
-          filetypes = { "cs" },
         },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
