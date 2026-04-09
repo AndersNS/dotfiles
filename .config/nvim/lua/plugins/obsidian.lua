@@ -48,6 +48,7 @@ return {
     },
   },
   opts = {
+    legacy_commands = false,
     ui = {
       enable = false,
     },
@@ -57,7 +58,6 @@ return {
         path = vars.vault_path,
       },
     },
-    disable_frontmatter = true,
     templates = {
       subdir = "Extras/Templates",
       date_format = "%Y-%m-%d-%a",
@@ -94,11 +94,11 @@ return {
 
     local keymap = vim.keymap
 
-    keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", { desc = "Quick switch" })
-    keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<cr>", { desc = "Open in Obsidian" })
+    keymap.set("n", "<leader>of", "<cmd>Obsidian quick_switch<cr>", { desc = "Quick switch" })
+    keymap.set("n", "<leader>oo", "<cmd>Obsidian open<cr>", { desc = "Open in Obsidian" })
     keymap.set("n", "<leader>on", function()
       vim.ui.input({ prompt = "Name:" }, function(input)
-        vim.cmd("ObsidianNew " .. input)
+        vim.cmd("Obsidian new " .. input)
       end)
     end, { desc = "New note" })
   end,
