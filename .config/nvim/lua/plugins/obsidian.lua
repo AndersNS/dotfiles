@@ -69,7 +69,7 @@ return {
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
       template = "Daily-template.md",
     },
-    new_notes_location = "+ Encounters",
+    new_notes_location = "Notes",
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
       name = "snacks.pick",
