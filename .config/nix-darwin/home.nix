@@ -39,9 +39,9 @@ in
       zplug = {
         enable = true;
         plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; }
+          # { name = "zsh-users/zsh-autosuggestions"; }
           { name = "unixorn/fzf-zsh-plugin"; }
-          { name = "zsh-users/zsh-syntax-highlighting"; }
+          # { name = "zsh-users/zsh-syntax-highlighting"; }
           { name = "wfxr/forgit"; }
         ];
       };
@@ -75,7 +75,7 @@ in
 
               export DOCKER_HOST=unix:///$HOME/.config/colima/default/docker.sock
               export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
-              export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
+              # export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
             ''
           else
             ""
