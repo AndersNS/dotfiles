@@ -78,7 +78,9 @@ in
               # export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')
             ''
           else
-            ""
+            ''
+              eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+            ''
         }
 
       '';
