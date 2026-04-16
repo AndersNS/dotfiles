@@ -48,6 +48,7 @@ return {
     ---@module 'roslyn.config'
     ---@type RoslynNvimConfig
     opts = {
+      broad_search = true,
       -- your configuration comes here; leave empty for default settings
     },
   },
@@ -139,6 +140,7 @@ return {
         },
 
         tailwindcss = {
+          root_dir = util.root_pattern(".git"),
           -- exclude a filetype from the default_config
           filetypes_exclude = { "markdown" },
           -- add additional filetypes to the default_config
