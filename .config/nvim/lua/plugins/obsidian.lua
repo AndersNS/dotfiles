@@ -88,6 +88,12 @@ return {
         insert_tag = "<C-l>",
       },
     },
+
+    checkbox = {
+      enabled = true,
+      create_new = true,
+      order = { " ", "x", ">", "!", "~" },
+    },
   },
   config = function(_, opts)
     require("obsidian").setup(opts)
