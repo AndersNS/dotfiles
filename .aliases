@@ -773,6 +773,53 @@ function sb-start() {
 
 alias sb='sb-start'
 
+function sb-start-prod-test() {
+  # Start all SB services in a new tmux window
+  # Works with git worktrees by using current directory
+
+  local working_dir=$(pwd)
+
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "Error: Not in a git repository" >&2
+    return 1
+  fi
+
+  if [ -z "$TMUX" ]; then
+    echo "Error: Not in a tmux session" >&2
+    return 1
+  fi
+
+  tmux new-window -n "sb-prod-test" -c "$working_dir"
+
+  tmux split-window -v -p 50 -c "$working_dir"
+  tmux split-window -v -p 50 -c "$working_dir"
+
+  tmux select-pane -t 1
+  tmux split-window -h -p 50 -c "$working_dir"
+
+  tmux select-pane -t 3
+  tmux split-window -h -p 50 -c "$working_dir"
+
+  tmux select-pane -t 1
+  tmux send-keys "TAKT_EXTRA_CONFIG=LocalTest dotnet watch --project WebApp" C-m
+
+  tmux select-pane -t 3
+  tmux send-keys "sleep 3 && TAKT_EXTRA_CONFIG=LocalTest dotnet watch --project Activations" C-m
+
+  tmux select-pane -t 4
+  tmux send-keys " sleep 7 && TAKT_EXTRA_CONFIG=LocalProd dotnet watch --project Activations" C-m
+
+  tmux select-pane -t 5
+  # tmux send-keys " sleep 7 && TAKT_EXTRA_CONFIG=LocalProd dotnet watch --project Activations" C-m
+
+  tmux select-pane -t 2
+  tmux send-keys "sleep 5 && TAKT_EXTRA_CONFIG=LocalProd dotnet watch --project WebApp" C-m
+
+  tmux select-pane -t 1
+}
+
+alias sbprodtest='sb-start-prod-test'
+
 # =============================================================================
 # GitLab MR Browser
 # =============================================================================
