@@ -1,0 +1,35 @@
+# Ignore everything by default
+*
+
+# Un-ignore .config/ so git will look inside it
+!.config/
+!.config/nvim/
+!.config/nvim/**
+!.config/kitty/
+!.config/kitty/**
+!.config/ghostty/
+!.config/ghostty/**
+!.config/Kvantum/
+!.config/Kvantum/**
+!.config/nix-darwin/
+!.config/nix-darwin/**
+!.config/gtk-3.0/
+!.config/gtk-3.0/settings.ini
+!.config/gtk-4.0/
+!.config/gtk-4.0/settings.ini
+!.config/input-remapper-2/
+!.config/input-remapper-2/**
+!.config/niri/
+!.config/niri/**
+!.config/noctalia/
+!.config/noctalia/**.json
+!.config/qt5ct/
+!.config/qt5ct/**
+!.config/yazi/
+!.config/yazi/**.toml
+!.config/sesh/
+!.config/sesh/**.toml
+
+
+# Re-ignore .log files inside .config
+.config/**/*.log
