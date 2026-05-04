@@ -2,6 +2,7 @@
     "version": "2.2.0",
     "autoload": {
         "foostan Corne": "Default",
-        "MelGeek MOJO68": "Default"
+        "MelGeek MOJO68": "Default",
+        "Wacom Intuos4 4x6 Pad": "Aseprite"
     }
 }

@@ -10,7 +10,10 @@ input {
         track-layout "global"
         numlock // Enable numlock on startup
     }
-
+    tablet {
+        map-to-output "DP-1"
+    }
+    
     touchpad {
         tap // Enable tap-to-click
         natural-scroll // Enable natural (macOS-style) scrolling

@@ -1,0 +1,50 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 260,
+                "origin_hash": "22e70b394727d99d566de678b495146a"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Right",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 261,
+                "origin_hash": "22e70b394727d99d566de678b495146a"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Left",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 257,
+                "origin_hash": "22e70b394727d99d566de678b495146a"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Alt_L+1",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 258,
+                "origin_hash": "22e70b394727d99d566de678b495146a"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Alt_L+2",
+        "mapping_type": "key_macro"
+    }
+]
