@@ -145,6 +145,7 @@ alt-e = 'workspace --auto-back-and-forth E'
 alt-m = 'workspace --auto-back-and-forth M'
 alt-n = 'workspace --auto-back-and-forth N'
 alt-s = 'workspace --auto-back-and-forth S'
+alt-g = 'workspace --auto-back-and-forth G'
 alt-t = 'workspace --auto-back-and-forth T'
 alt-r = 'workspace --auto-back-and-forth R'
 
@@ -225,6 +226,10 @@ run = "move-node-to-workspace M"
 [[on-window-detected]]
 if.app-id = 'com.mongodb.compass'
 run = "move-node-to-workspace D"
+
+[[on-window-detected]]
+if.window-title-regex-substring = 'GOTY2026'
+run = "move-node-to-workspace G"
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
