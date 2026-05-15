@@ -7,64 +7,66 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "relative_line_numbers": "enabled",
+  "multi_cursor_modifier": "cmd_or_ctrl",
   "toolbar": {
     "agent_review": false,
     "selections_menu": true,
-    "quick_actions": false
+    "quick_actions": false,
   },
   "inline_code_actions": true,
   "preview_tabs": {
-    "enabled": false
+    "enabled": false,
   },
   "active_pane_modifiers": {
-    "border_size": 0.0
+    "border_size": 0.0,
   },
   "tab_bar": {
     "show_tab_bar_buttons": false,
-    "show": true
+    "show": true,
   },
   "title_bar": {
     "show_user_picture": false,
-    "show_user_menu": true,
-    "show_project_items": true,
+    "show_user_menu": false,
+    "show_project_items": false,
     "show_onboarding_banner": false,
     "show_sign_in": false,
-    "show_branch_name": true
+    "show_branch_name": false,
   },
   "search": {
-    "button": false
+    "button": false,
   },
   "terminal": {
-    "button": false
+    "button": false,
   },
   "status_bar": {
-    "active_language_button": true
+    "active_language_button": true,
   },
   "which_key": {
-    "enabled": true
+    "enabled": true,
   },
   "git": {
     "inline_blame": {
-      "enabled": false
+      "enabled": false,
     },
-    "enable_status": true
+    "enable_status": true,
   },
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "agent": {
     "dock": "right",
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "icon_theme": "Zed (Default)",
   "buffer_font_family": "Iosevka Custom",
@@ -75,6 +77,6 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "Kanagawa Wave"
-  }
+    "dark": "Kanagawa Dragon",
+  },
 }
