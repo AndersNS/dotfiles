@@ -34,7 +34,7 @@
     git --no-pager diff -U0 main | \
     grep \"^+.*TODO\" | \
     sed \"s/^+//\" | \
-    git --no-pager grep -nFf - 2> /dev/null' -"
+    git --no-pager grep --heading --break -B 2 -A 5 -nFf - 2> /dev/null ' -"
   # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
   dlog = -c diff.external=difft log --ext-diff
   dshow = -c diff.external=difft show --ext-diff
