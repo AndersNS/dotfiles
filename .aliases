@@ -718,6 +718,22 @@ function wtree-delete() {
   return 0
 }
 
+
+function sb-session-init() {
+  tmux split-window -h -p 70 -c "$working_dir"
+
+  tmux select-pane -t 1
+  tmux send-keys "claude" C-m
+
+  tmux select-pane -t 2
+ 
+  local dir=$(pwd)
+ if [ ! -d $dir/node_modules ] ; then
+  tmux send-keys "npm install && npm run prepare && dotnet restore" C-m
+ fi
+}
+
+alias sb-session-init="sb-session-init"
 # =============================================================================
 # SB Services Startup
 # =============================================================================

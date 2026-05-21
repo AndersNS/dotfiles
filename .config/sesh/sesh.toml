@@ -11,3 +11,33 @@ startup_command = "nvim"
 name = "Rice 🍚"
 path = "~/"
 startup_command = "dotfiles status"
+windows = [ "nvim config", "nix" ]
+
+[[session]]
+name = "SbTrix"
+path = "~/source/nhn/selvbetjening-tricks/"
+startup_command = "git status"
+
+[[wildcard]]
+pattern = "~/source/nhn/sb-worktree/*"
+startup_command = "sb-session-init"
+
+
+[[windows]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "ls"
+
+[[session]]
+name = "tmux config"
+path = "~/c/dotfiles/.config/tmux"
+startup_command = "nvim tmux.conf"
+preview_command = "bat --color=always ~/c/dotfiles/.config/tmux/tmux.conf"
+
+[[window]]
+name = "nvim config"
+startup_script = "cd ~/.config/nvim/ && nvim"
+
+[[window]]
+name = "nix"
+startup_script = "cd ~/.config/nix-darwin/ && nvim home.nix"
