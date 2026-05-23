@@ -484,8 +484,8 @@
     },
     "network": {
         "bluetoothAutoConnect": true,
-        "bluetoothDetailsViewMode": "grid",
-        "bluetoothHideUnnamedDevices": false,
+        "bluetoothDetailsViewMode": "list",
+        "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": true,
         "disableDiscoverability": false,
