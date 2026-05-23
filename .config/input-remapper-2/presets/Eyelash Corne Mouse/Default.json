@@ -1,0 +1,26 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 125,
+                "origin_hash": "15fe6f869336445b9afe9900572e224a"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Alt_R",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 100,
+                "origin_hash": "15fe6f869336445b9afe9900572e224a"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Super_L",
+        "mapping_type": "key_macro"
+    }
+]
