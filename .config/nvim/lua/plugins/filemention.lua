@@ -13,12 +13,18 @@ return {
     end,
     -- build = "nix run .#release",
     opts = {
+      title = "Files",
       debug = {
         enabled = false,
         show_scores = false,
       },
       layout = {
-        prompt_positin = "top",
+        height = 0.9,
+        width = 0.9,
+        preview_position = "right", -- 'left' | 'right' | 'top' | 'bottom'
+        prompt_position = "top",
+        preview_size = 0.5,
+        path_shorten_strategy = "middle_number", -- 'middle_number' | 'middle' | 'end' | 'start'
       },
     },
     lazy = false, -- the plugin lazy-initialises itself

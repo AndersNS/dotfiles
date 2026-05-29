@@ -44,15 +44,6 @@ end
 -- vim.lsp.enable("roslyn_ls")
 return {
   {
-    "seblyng/roslyn.nvim",
-    ---@module 'roslyn.config'
-    ---@type RoslynNvimConfig
-    opts = {
-      broad_search = true,
-      -- your configuration comes here; leave empty for default settings
-    },
-  },
-  {
 
     "mason-org/mason.nvim",
     opts = {

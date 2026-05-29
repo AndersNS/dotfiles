@@ -203,6 +203,8 @@ in
         cargo-binstall
         nil
 
+        netcoredbg
+
       ]
       ++ lib.optionals isDarwin [
         obsidian
