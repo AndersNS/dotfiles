@@ -100,7 +100,7 @@ in
     };
   };
   home = {
-    stateVersion = "25.05";
+    stateVersion = "26.05";
     inherit homeDirectory;
 
     packages =
@@ -150,7 +150,7 @@ in
         tree-sitter
 
         # Tools
-        nixfmt-rfc-style
+        nixfmt
         statix
         qmk
         turso-cli
@@ -237,7 +237,7 @@ in
 
         # Fix for npm global packages
         if [ ! -d '$HOME/.cache/npm/global' ]; then
-          ${pkgs.nodejs_20}/bin/npm config set prefix "$HOME/.cache/npm/global"
+          ${pkgs.nodejs_22}/bin/npm config set prefix "$HOME/.cache/npm/global"
           mkdir -p "$HOME/.cache/npm/global" 
         fi
 
