@@ -1,0 +1,20 @@
+[keys]
+prefix = "ctrl+a"
+goto = "prefix+g"
+new_tab = "prefix+c"
+next_tab = "prefix+n"
+previous_tab = "prefix+a"
+focus_pane_left = ["prefix+h", "ctrl+h"]
+focus_pane_right = ["prefix+l", "ctrl+l"]
+focus_pane_down = ["prefix+j", "ctrl+j"]
+focus_pane_up = ["prefix+k", "ctrl+k"]
+split_horizontal = "prefix+minus"
+
+
+[ui]
+prompt_new_tab_name = false
+pane_gaps = false
+
+[theme]
+name = "kanagawa"
+auto_switch = false

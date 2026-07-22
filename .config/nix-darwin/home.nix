@@ -138,6 +138,7 @@ in
         yazi # file manager
         hyperfine # benchmarking tool
         # sesh # tmux session manager - nix is quite out of date
+        herdr
 
         devenv
 

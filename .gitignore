@@ -29,6 +29,8 @@
 !.config/yazi/**.toml
 !.config/sesh/
 !.config/sesh/**.toml
+!.config/herdr/
+!.config/herdr/config.toml
 
 
 # Re-ignore .log files inside .config
