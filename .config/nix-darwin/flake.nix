@@ -142,6 +142,7 @@
           useUserPackages = true;
           users.andersns = import ./home.nix;
           extraSpecialArgs = { inherit sops-nix; };
+          backupFileExtension = "backup";
         };
       };
 
