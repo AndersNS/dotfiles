@@ -31,6 +31,8 @@
 !.config/sesh/**.toml
 !.config/herdr/
 !.config/herdr/config.toml
+!.config/aerospace/
+!.config/aerospace/**.toml
 
 
 # Re-ignore .log files inside .config

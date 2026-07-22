@@ -231,11 +231,3 @@ run = "move-node-to-workspace D"
 if.window-title-regex-substring = 'GOTY2026'
 run = "move-node-to-workspace G"
 
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = ['layout floating', 'move-node-to-workspace 4']
-
-[[on-window-detected]]
-if.app-id = 'com.fortinet.FortiClient'
-run = ['layout floating', 'move-node-to-workspace 4', 'workspace 4']
-
