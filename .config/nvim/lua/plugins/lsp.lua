@@ -98,6 +98,37 @@ return {
             { "gd", go_goto_def },
           },
         },
+        roslyn = {
+          on_attach = function(_, bufnr)
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          end,
+          settings = {
+            ["csharp|inlay_hints"] = {
+              csharp_enable_inlay_hints_for_implicit_object_creation = true,
+              csharp_enable_inlay_hints_for_implicit_variable_types = true,
+              csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+              csharp_enable_inlay_hints_for_types = false,
+              dotnet_enable_inlay_hints_for_indexer_parameters = true,
+              dotnet_enable_inlay_hints_for_literal_parameters = true,
+              dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+              dotnet_enable_inlay_hints_for_other_parameters = true,
+              dotnet_enable_inlay_hints_for_parameters = true,
+              dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = true,
+              dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
+              dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
+            },
+            ["csharp|code_lens"] = {
+              dotnet_enable_references_code_lens = false,
+            },
+            ["csharp|formatting"] = {
+              dotnet_organize_imports_on_format = true,
+            },
+            ["csharp|background_analysis"] = {
+              ["background_analysis.dotnet_analyzer_diagnostics_scope"] = "openFiles",
+              ["background_analysis.dotnet_compiler_diagnostics_scope"] = "solution",
+            },
+          },
+        },
         lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           -- Use this to add any additional keymaps
@@ -154,6 +185,26 @@ return {
         },
         html = {
           filetypes_include = { "templ" },
+          ft_exclude = { "razor" },
+          on_attach = function(_, bufnr)
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            vim.bo[bufnr].shiftwidth = 4
+            vim.bo[bufnr].tabstop = 4
+            vim.bo[bufnr].softtabstop = 4
+          end,
+          settings = {
+            html = {
+              format = {
+                wrapLineLength = 120,
+                tabSize = 4,
+                insertSpaces = true,
+                wrapAttributes = "preserve-aligned",
+                templating = true,
+                indentInnerHtml = false,
+                contentUnformatted = "pre,code,textarea,script,style",
+              },
+            },
+          },
         },
         yamlls = {
           root_dir = util.root_pattern(".git"),
