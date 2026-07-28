@@ -26,6 +26,7 @@ return {
         preview_size = 0.5,
         path_shorten_strategy = "middle_number", -- 'middle_number' | 'middle' | 'end' | 'start'
       },
+      hl = { winhl = "Normal:Normal,FloatBorder:Border,FloatTitle:Title" },
     },
     lazy = false, -- the plugin lazy-initialises itself
     keys = {
