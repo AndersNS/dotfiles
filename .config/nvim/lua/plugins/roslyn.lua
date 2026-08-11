@@ -63,6 +63,28 @@ return {
     config = function(_, opts)
       require("roslyn").setup(opts)
 
+      vim.lsp.config("html", {
+        ft_exclude = { "razor" },
+        on_attach = function(_, bufnr)
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          vim.bo[bufnr].shiftwidth = 4
+          vim.bo[bufnr].tabstop = 4
+          vim.bo[bufnr].softtabstop = 4
+        end,
+        settings = {
+          html = {
+            format = {
+              wrapLineLength = 120,
+              tabSize = 4,
+              insertSpaces = true,
+              wrapAttributes = "preserve-aligned",
+              templating = true,
+              indentInnerHtml = false,
+              contentUnformatted = "pre,code,textarea,script,style",
+            },
+          },
+        },
+      })
       vim.lsp.enable("html")
 
       vim.api.nvim_create_autocmd("DiagnosticChanged", {
