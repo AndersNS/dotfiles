@@ -59,6 +59,7 @@
               "git-lfs"
               "mongosh"
               "sesh"
+              "raine/workmux/workmux"
             ];
             casks = [
               "mongodb-compass"

@@ -14,7 +14,7 @@ y = 0
 
 [font.normal]
 family = "MonaspiceKR NF"
-# family = "Monoid Nerd Font"
+#family = "Monoid Nerd Font"
 # family = "Monoid Nerd Font Mono"
 # family = "Iosevka Nerd Font "
 style = "Regular"
@@ -71,4 +71,32 @@ y = 0
 
 [general]
 live_config_reload = true
-import = ["/Users/andersns/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+
+# Colors (Gruvbox Material Hard Dark)
+
+# Default colors
+[colors.primary]
+background = '#1d2021'
+foreground = '#d4be98'
+
+# Normal colors
+[colors.normal]
+black   = '#32302f'
+red     = '#ea6962'
+green   = '#a9b665'
+yellow  = '#d8a657'
+blue    = '#7daea3'
+magenta = '#d3869b'
+cyan    = '#89b482'
+white   = '#d4be98'
+
+# Bright colors (same as normal colors)
+[colors.bright]
+black   = '#32302f'
+red     = '#ea6962'
+green   = '#a9b665'
+yellow  = '#d8a657'
+blue    = '#7daea3'
+magenta = '#d3869b'
+cyan    = '#89b482'
+white   = '#d4be98'

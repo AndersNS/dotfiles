@@ -56,8 +56,11 @@ in
         export GOPATH="$HOME/go"
         export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
         export PATH="$PATH:/usr/local/share/dotnet"
+        export PATH="$PATH:/usr/local/share/dotnet"
         export PATH="$PATH:/Users/andersns/.dotnet"
         export PATH="$PATH:/home/andersns/.dotnet"
+        export PATH="$PATH:/Users/andersns/.dotnet/tools"
+        export PATH="$PATH:/home/andersns/.dotnet/tools"
 
         export PATH="$PATH:$ZPLUG_HOME/repos/wfxr/forgit/bin"
         export PATH="$PATH:$HOME/.cache/npm/global/bin"
