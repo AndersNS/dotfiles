@@ -111,6 +111,7 @@ return {
   {
     "sainnhe/gruvbox-material",
     lazy = false,
+    enabled = false,
     priority = 1000,
     config = function()
       -- Optionally configure and load the colorscheme
@@ -125,7 +126,7 @@ return {
   },
   {
     "rose-pine/neovim",
-    enabled = false,
+    enabled = true,
     name = "rose-pine",
     opts = {
       dark_variant = "main",
@@ -135,11 +136,11 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "rose-pine",
+      colorscheme = "rose-pine",
       -- colorscheme = "kanagawa-paper",
       -- colorscheme = "tokyonight-night",
       -- colorscheme = "kanagawa",
-      colorscheme = "gruvbox-material",
+      -- colorscheme = "gruvbox-material",
       -- colorscheme = "catppuccin",
       -- colorscheme = "nordic",
       -- colorscheme = "nordfox",
