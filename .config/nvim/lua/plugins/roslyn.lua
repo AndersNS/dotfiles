@@ -57,7 +57,7 @@ return {
     ---@module 'roslyn.config'
     ---@type RoslynNvimConfig
     opts = {
-      filewatching = "off",
+      filewatching = "auto",
       broad_search = false,
     },
     config = function(_, opts)

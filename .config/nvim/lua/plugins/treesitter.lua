@@ -7,9 +7,11 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = false,
     opts = {
+      ensure_installed = { "razor", "c_sharp", "html" },
       matchup = {
-        enable = false,
+        enable = true,
       },
       highlight = { enable = true },
       query_linter = {
@@ -18,8 +20,13 @@ return {
         lint_events = { "BufWrite", "CursorHold" },
       },
     },
-    dependencies = {
-      { "windwp/nvim-ts-autotag", opts = {} },
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    opts = {
+      aliases = {
+        ["razor"] = "html",
+      },
     },
   },
   {
