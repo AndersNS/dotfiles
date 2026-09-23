@@ -7,7 +7,7 @@
 }:
 
 let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
   homeDirectory = "/${if isDarwin then "Users" else "home"}/andersns";
 in
 {
@@ -102,6 +102,10 @@ in
       };
     };
   };
+  # Skip the home-configuration.nix reference manpage; it rebuilds on every
+  # home-manager bump. html and json manuals are already off by default.
+  manual.manpages.enable = false;
+
   home = {
     stateVersion = "26.05";
     inherit homeDirectory;

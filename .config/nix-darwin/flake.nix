@@ -45,9 +45,15 @@
 
           environment.systemPackages = [ ];
 
+          # Skip building the nix-darwin options manual, manpages and darwin-help.
+          # They rebuild on every nixpkgs bump and cost several minutes; the same
+          # options are on the web. `man` itself still works: programs.man.enable
+          # defaults to true independently of this.
+          documentation.enable = false;
+
           homebrew = {
             enable = true;
-            onActivation.cleanup = "uninstall";
+            # onActivation.cleanup = "uninstall";
 
             taps = [ ];
             brews = [
@@ -64,7 +70,6 @@
             casks = [
               "mongodb-compass"
               "karabiner-elements"
-              "raycast"
               "ghostty"
               "elgato-wave-link"
               "scroll-reverser"
