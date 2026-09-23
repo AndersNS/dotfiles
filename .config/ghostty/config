@@ -11,7 +11,7 @@ font-family = "Maple Mono NF CN"
 #font-style-italic = false =>
 # font-family = "3270 Nerd Font Mono"
 font-style = "medium"
-# font-style = 'Retina'
+#font-style = 'Retina'
 font-size = 18 
 
 
@@ -22,8 +22,8 @@ font-size = 18
 # font-feature = "-liga"
 # font-feature = "-dlig"
 
-# theme = rose-pine
-theme = Gruvbox Material
+theme = Rose Pine
+# theme = Gruvbox Material
 title = " "
 
 macos-titlebar-proxy-icon = "hidden"
