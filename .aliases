@@ -33,6 +33,8 @@ alias gct='git forgit checkout_tag'
 alias gcp='git forgit cherry-pick'
 alias gfof='git fetch origin -f -p'
 
+alias gs='git-spice'
+
 
 alias l='ls -o -l -a'
 alias merged='git branch --merged master'
@@ -211,8 +213,9 @@ function wtree-new() {
         echo "Changed directory to: $worktree_path"
         ;;
       2)
-        tmux new-session -d -s "$folder_name" -c "$worktree_path"
-        tmux switch-client -t "$folder_name"
+        workmux open "$branch_name"
+        # tmux new-session -d -s "$folder_name" -c "$worktree_path"
+        # tmux switch-client -t "$folder_name"
         ;;
       3)
         echo "Staying in current directory"
