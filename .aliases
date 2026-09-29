@@ -297,14 +297,15 @@ function wtree-existing() {
           return 0
           ;;
         2)
+          workmux open "$branch_name"
           # Check if session already exists
-          if tmux has-session -t "$folder_name" 2>/dev/null; then
-            echo "Tmux session '$folder_name' already exists. Switching to it."
-            tmux switch-client -t "$folder_name"
-          else
-            tmux new-session -d -s "$folder_name" -c "$worktree_path"
-            tmux switch-client -t "$folder_name"
-          fi
+          # if tmux has-session -t "$folder_name" 2>/dev/null; then
+          #   echo "Tmux session '$folder_name' already exists. Switching to it."
+          #   tmux switch-client -t "$folder_name"
+          # else
+          #   tmux new-session -d -s "$folder_name" -c "$worktree_path"
+          #   tmux switch-client -t "$folder_name"
+          # fi
           return 0
           ;;
         3)
