@@ -87,56 +87,61 @@ return {
       })
       vim.lsp.enable("html")
 
+      -- Roslyn (and html) report the same razor diagnostics in several namespaces
+      -- (push + pull). Keep the first occurrence and strip duplicates from the rest.
+      local dedup_running = false
+      local dedup_pending = {}
+
+      local function dedup_client_ns(bufnr, client_name)
+        local prefix = "nvim.lsp." .. client_name .. "."
+        local ns_list = {}
+        for ns, ns_info in pairs(vim.diagnostic.get_namespaces()) do
+          if vim.startswith(ns_info.name, prefix) then
+            table.insert(ns_list, ns)
+          end
+        end
+        if #ns_list < 2 then
+          return
+        end
+        table.sort(ns_list)
+
+        local seen = {}
+        for _, ns in ipairs(ns_list) do
+          local diags = vim.diagnostic.get(bufnr, { namespace = ns })
+          local kept = {}
+          for _, d in ipairs(diags) do
+            local key = d.lnum .. ":" .. d.message
+            if not seen[key] then
+              seen[key] = true
+              table.insert(kept, d)
+            end
+          end
+          -- Only touch namespaces that actually had duplicates
+          if #kept < #diags then
+            vim.diagnostic.set(ns, bufnr, kept)
+          end
+        end
+      end
+
       vim.api.nvim_create_autocmd("DiagnosticChanged", {
+        pattern = { "*.razor", "*.cshtml" },
         callback = function(args)
           local bufnr = args.buf
-          if vim.bo[bufnr].filetype ~= "razor" then
+          -- Ignore events fired by our own vim.diagnostic.set, and coalesce bursts
+          if dedup_running or dedup_pending[bufnr] then
             return
           end
-          if vim.b[bufnr]._roslyn_dedup then
-            return
-          end
-          vim.b[bufnr]._roslyn_dedup = true
-          local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "roslyn" })
-          if #clients == 0 then
-            vim.b[bufnr]._roslyn_dedup = false
-            return
-          end
-          local dedup_client_ns = function(client_name)
-            local ns_list = {}
-            for ns, ns_info in pairs(vim.diagnostic.get_namespaces()) do
-              if ns_info.name:match("^nvim%.lsp%." .. client_name .. "%.") then
-                table.insert(ns_list, ns)
-              end
-            end
-            if #ns_list < 2 then
+          dedup_pending[bufnr] = true
+          vim.schedule(function()
+            dedup_pending[bufnr] = nil
+            if not vim.api.nvim_buf_is_valid(bufnr) then
               return
             end
-            local all_diags = {}
-            for _, ns in ipairs(ns_list) do
-              vim.list_extend(all_diags, vim.diagnostic.get(bufnr, { namespace = ns }))
-            end
-            if #all_diags < 2 then
-              return
-            end
-            local seen = {}
-            local unique = {}
-            for _, d in ipairs(all_diags) do
-              if not seen[d.message] then
-                seen[d.message] = true
-                table.insert(unique, d)
-              end
-            end
-            if #unique < #all_diags then
-              for _, ns in ipairs(ns_list) do
-                vim.diagnostic.reset(ns, bufnr)
-              end
-              vim.diagnostic.set(ns_list[1], bufnr, unique)
-            end
-          end
-          dedup_client_ns("roslyn")
-          dedup_client_ns("html")
-          vim.b[bufnr]._roslyn_dedup = false
+            dedup_running = true
+            pcall(dedup_client_ns, bufnr, "roslyn")
+            pcall(dedup_client_ns, bufnr, "html")
+            dedup_running = false
+          end)
         end,
       })
 
