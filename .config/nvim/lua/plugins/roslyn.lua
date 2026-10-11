@@ -2,6 +2,7 @@ return {
   {
     "nvim-neotest/neotest",
     opts = {
+      adapters = { "neotest-vstest" },
       signs = {
         parameterized = { text = "◈" },
       },
@@ -13,11 +14,6 @@ return {
       vim.fn.sign_define("neotest_parameterized", {
         text = "◈",
         texthl = "NeotestMarked",
-      })
-      require("neotest").setup({
-        adapters = {
-          require("neotest-vstest"),
-        },
       })
     end,
   },
@@ -41,7 +37,7 @@ return {
             "github:mason-org/mason-registry",
             "github:Crashdummyy/mason-registry",
           },
-          ensure_installed = { "roslyn", "html-lsp" },
+          ensure_installed = { "roslyn" },
         },
       },
     },
@@ -51,6 +47,14 @@ return {
           razor = "razor",
           cshtml = "razor",
         },
+      })
+
+      -- Opt out of daemon mode (one server shared across nvim instances). When one
+      -- instance disconnects, Razor's html forwarding in the shared daemon keeps a
+      -- disposed connection, so razor formatting fails with ObjectDisposedException.
+      -- Must be set here: plugin/roslyn.lua enables the server before `config` runs.
+      vim.lsp.config("roslyn", {
+        cmd = { vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", "roslyn-language-server"), "--stdio" },
       })
     end,
     ft = { "cs", "razor" },
@@ -62,30 +66,6 @@ return {
     },
     config = function(_, opts)
       require("roslyn").setup(opts)
-
-      vim.lsp.config("html", {
-        ft_exclude = { "razor" },
-        on_attach = function(_, bufnr)
-          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-          vim.bo[bufnr].shiftwidth = 4
-          vim.bo[bufnr].tabstop = 4
-          vim.bo[bufnr].softtabstop = 4
-        end,
-        settings = {
-          html = {
-            format = {
-              wrapLineLength = 120,
-              tabSize = 4,
-              insertSpaces = true,
-              wrapAttributes = "preserve-aligned",
-              templating = true,
-              indentInnerHtml = false,
-              contentUnformatted = "pre,code,textarea,script,style",
-            },
-          },
-        },
-      })
-      vim.lsp.enable("html")
 
       -- Roslyn (and html) report the same razor diagnostics in several namespaces
       -- (push + pull). Keep the first occurrence and strip duplicates from the rest.
@@ -142,17 +122,6 @@ return {
             pcall(dedup_client_ns, bufnr, "html")
             dedup_running = false
           end)
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "razor",
-        callback = function()
-          vim.bo.shiftwidth = 4
-          vim.bo.tabstop = 4
-          vim.bo.softtabstop = 4
-          vim.bo.smartindent = false
-          vim.bo.indentexpr = ""
         end,
       })
     end,

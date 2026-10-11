@@ -1,3 +1,9 @@
+vim.bo.shiftwidth = 4
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 4
+vim.bo.smartindent = false
+vim.bo.indentexpr = ""
+
 -- nvim-ts-autotag only closes tags in razor when the cursor is already inside an
 -- html element; at the top level or directly in @if/@foreach blocks the razor
 -- grammar parses an unclosed tag as ERROR. Own `>` here: try autotag first, then
